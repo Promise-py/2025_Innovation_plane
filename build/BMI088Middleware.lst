@@ -1,0 +1,547 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"BMI088Middleware.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.BMI088_GPIO_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	BMI088_GPIO_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	BMI088_GPIO_init:
+  25              	.LFB65:
+  26              		.file 1 "BMI088/Src/BMI088Middleware.c"
+   1:BMI088/Src/BMI088Middleware.c **** #include "BMI088Middleware.h"
+   2:BMI088/Src/BMI088Middleware.c **** #include "main.h"
+   3:BMI088/Src/BMI088Middleware.c **** 
+   4:BMI088/Src/BMI088Middleware.c **** extern SPI_HandleTypeDef hspi2;
+   5:BMI088/Src/BMI088Middleware.c **** 
+   6:BMI088/Src/BMI088Middleware.c **** void BMI088_GPIO_init(void)
+   7:BMI088/Src/BMI088Middleware.c **** {
+  27              		.loc 1 7 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+   8:BMI088/Src/BMI088Middleware.c **** 
+   9:BMI088/Src/BMI088Middleware.c **** }
+  32              		.loc 1 9 1 view .LVU1
+  33 0000 7047     		bx	lr
+  34              		.cfi_endproc
+  35              	.LFE65:
+  37              		.section	.text.BMI088_com_init,"ax",%progbits
+  38              		.align	1
+  39              		.global	BMI088_com_init
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	BMI088_com_init:
+  45              	.LFB66:
+  10:BMI088/Src/BMI088Middleware.c **** 
+  11:BMI088/Src/BMI088Middleware.c **** void BMI088_com_init(void)
+  12:BMI088/Src/BMI088Middleware.c **** {
+  46              		.loc 1 12 1 view -0
+  47              		.cfi_startproc
+  48              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 2
+
+
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50              		@ link register save eliminated.
+  13:BMI088/Src/BMI088Middleware.c **** 
+  14:BMI088/Src/BMI088Middleware.c **** 
+  15:BMI088/Src/BMI088Middleware.c **** }
+  51              		.loc 1 15 1 view .LVU3
+  52 0000 7047     		bx	lr
+  53              		.cfi_endproc
+  54              	.LFE66:
+  56              		.section	.text.BMI088_delay_us,"ax",%progbits
+  57              		.align	1
+  58              		.global	BMI088_delay_us
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+  63              	BMI088_delay_us:
+  64              	.LVL0:
+  65              	.LFB68:
+  16:BMI088/Src/BMI088Middleware.c **** 
+  17:BMI088/Src/BMI088Middleware.c **** void BMI088_delay_ms(uint16_t ms)
+  18:BMI088/Src/BMI088Middleware.c **** {
+  19:BMI088/Src/BMI088Middleware.c ****     while(ms--)
+  20:BMI088/Src/BMI088Middleware.c ****     {
+  21:BMI088/Src/BMI088Middleware.c ****         BMI088_delay_us(1000);
+  22:BMI088/Src/BMI088Middleware.c ****     }
+  23:BMI088/Src/BMI088Middleware.c **** }
+  24:BMI088/Src/BMI088Middleware.c **** 
+  25:BMI088/Src/BMI088Middleware.c **** void BMI088_delay_us(uint16_t us)
+  26:BMI088/Src/BMI088Middleware.c **** {
+  66              		.loc 1 26 1 view -0
+  67              		.cfi_startproc
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70              		@ link register save eliminated.
+  71              		.loc 1 26 1 is_stmt 0 view .LVU5
+  72 0000 10B4     		push	{r4}
+  73              	.LCFI0:
+  74              		.cfi_def_cfa_offset 4
+  75              		.cfi_offset 4, -4
+  27:BMI088/Src/BMI088Middleware.c **** 
+  28:BMI088/Src/BMI088Middleware.c ****     uint32_t ticks = 0;
+  76              		.loc 1 28 5 is_stmt 1 view .LVU6
+  77              	.LVL1:
+  29:BMI088/Src/BMI088Middleware.c ****     uint32_t told = 0;
+  78              		.loc 1 29 5 view .LVU7
+  30:BMI088/Src/BMI088Middleware.c ****     uint32_t tnow = 0;
+  79              		.loc 1 30 5 view .LVU8
+  31:BMI088/Src/BMI088Middleware.c ****     uint32_t tcnt = 0;
+  80              		.loc 1 31 5 view .LVU9
+  32:BMI088/Src/BMI088Middleware.c ****     uint32_t reload = 0;
+  81              		.loc 1 32 5 view .LVU10
+  33:BMI088/Src/BMI088Middleware.c ****     reload = SysTick->LOAD;
+  82              		.loc 1 33 5 view .LVU11
+  83              		.loc 1 33 12 is_stmt 0 view .LVU12
+  84 0002 4FF0E023 		mov	r3, #-536813568
+  85 0006 5C69     		ldr	r4, [r3, #20]
+  86              	.LVL2:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 3
+
+
+  34:BMI088/Src/BMI088Middleware.c ****     ticks = us * 168;
+  87              		.loc 1 34 5 is_stmt 1 view .LVU13
+  88              		.loc 1 34 16 is_stmt 0 view .LVU14
+  89 0008 4FF0A80C 		mov	ip, #168
+  90 000c 0CFB00FC 		mul	ip, ip, r0
+  91              	.LVL3:
+  35:BMI088/Src/BMI088Middleware.c ****     told = SysTick->VAL;
+  92              		.loc 1 35 5 is_stmt 1 view .LVU15
+  93              		.loc 1 35 10 is_stmt 0 view .LVU16
+  94 0010 9B69     		ldr	r3, [r3, #24]
+  95              	.LVL4:
+  31:BMI088/Src/BMI088Middleware.c ****     uint32_t reload = 0;
+  96              		.loc 1 31 14 view .LVU17
+  97 0012 0021     		movs	r1, #0
+  98 0014 04E0     		b	.L7
+  99              	.LVL5:
+ 100              	.L5:
+  36:BMI088/Src/BMI088Middleware.c ****     while (1)
+  37:BMI088/Src/BMI088Middleware.c ****     {
+  38:BMI088/Src/BMI088Middleware.c ****         tnow = SysTick->VAL;
+  39:BMI088/Src/BMI088Middleware.c ****         if (tnow != told)
+  40:BMI088/Src/BMI088Middleware.c ****         {
+  41:BMI088/Src/BMI088Middleware.c ****             if (tnow < told)
+  42:BMI088/Src/BMI088Middleware.c ****             {
+  43:BMI088/Src/BMI088Middleware.c ****                 tcnt += told - tnow;
+  44:BMI088/Src/BMI088Middleware.c ****             }
+  45:BMI088/Src/BMI088Middleware.c ****             else
+  46:BMI088/Src/BMI088Middleware.c ****             {
+  47:BMI088/Src/BMI088Middleware.c ****                 tcnt += reload - tnow + told;
+ 101              		.loc 1 47 17 is_stmt 1 view .LVU18
+ 102              		.loc 1 47 32 is_stmt 0 view .LVU19
+ 103 0016 E01A     		subs	r0, r4, r3
+ 104              		.loc 1 47 39 view .LVU20
+ 105 0018 0244     		add	r2, r2, r0
+ 106              	.LVL6:
+ 107              		.loc 1 47 22 view .LVU21
+ 108 001a 1144     		add	r1, r1, r2
+ 109              	.LVL7:
+ 110              	.L6:
+  48:BMI088/Src/BMI088Middleware.c ****             }
+  49:BMI088/Src/BMI088Middleware.c ****             told = tnow;
+ 111              		.loc 1 49 13 is_stmt 1 view .LVU22
+  50:BMI088/Src/BMI088Middleware.c ****             if (tcnt >= ticks)
+ 112              		.loc 1 50 13 view .LVU23
+ 113              		.loc 1 50 16 is_stmt 0 view .LVU24
+ 114 001c 6145     		cmp	r1, ip
+ 115 001e 09D2     		bcs	.L9
+ 116              	.LVL8:
+ 117              	.L7:
+  31:BMI088/Src/BMI088Middleware.c ****     uint32_t reload = 0;
+ 118              		.loc 1 31 14 view .LVU25
+ 119 0020 1A46     		mov	r2, r3
+ 120              	.LVL9:
+ 121              	.L4:
+  36:BMI088/Src/BMI088Middleware.c ****     {
+ 122              		.loc 1 36 5 is_stmt 1 view .LVU26
+  38:BMI088/Src/BMI088Middleware.c ****         if (tnow != told)
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 4
+
+
+ 123              		.loc 1 38 9 view .LVU27
+  38:BMI088/Src/BMI088Middleware.c ****         if (tnow != told)
+ 124              		.loc 1 38 14 is_stmt 0 view .LVU28
+ 125 0022 4FF0E023 		mov	r3, #-536813568
+ 126 0026 9B69     		ldr	r3, [r3, #24]
+ 127              	.LVL10:
+  39:BMI088/Src/BMI088Middleware.c ****         {
+ 128              		.loc 1 39 9 is_stmt 1 view .LVU29
+  39:BMI088/Src/BMI088Middleware.c ****         {
+ 129              		.loc 1 39 12 is_stmt 0 view .LVU30
+ 130 0028 9A42     		cmp	r2, r3
+ 131 002a FAD0     		beq	.L4
+  41:BMI088/Src/BMI088Middleware.c ****             {
+ 132              		.loc 1 41 13 is_stmt 1 view .LVU31
+  41:BMI088/Src/BMI088Middleware.c ****             {
+ 133              		.loc 1 41 16 is_stmt 0 view .LVU32
+ 134 002c F3D9     		bls	.L5
+  43:BMI088/Src/BMI088Middleware.c ****             }
+ 135              		.loc 1 43 17 is_stmt 1 view .LVU33
+  43:BMI088/Src/BMI088Middleware.c ****             }
+ 136              		.loc 1 43 30 is_stmt 0 view .LVU34
+ 137 002e D21A     		subs	r2, r2, r3
+ 138              	.LVL11:
+  43:BMI088/Src/BMI088Middleware.c ****             }
+ 139              		.loc 1 43 22 view .LVU35
+ 140 0030 1144     		add	r1, r1, r2
+ 141              	.LVL12:
+  43:BMI088/Src/BMI088Middleware.c ****             }
+ 142              		.loc 1 43 22 view .LVU36
+ 143 0032 F3E7     		b	.L6
+ 144              	.LVL13:
+ 145              	.L9:
+  51:BMI088/Src/BMI088Middleware.c ****             {
+  52:BMI088/Src/BMI088Middleware.c ****                 break;
+  53:BMI088/Src/BMI088Middleware.c ****             }
+  54:BMI088/Src/BMI088Middleware.c ****         }
+  55:BMI088/Src/BMI088Middleware.c ****     }
+  56:BMI088/Src/BMI088Middleware.c **** 
+  57:BMI088/Src/BMI088Middleware.c **** 
+  58:BMI088/Src/BMI088Middleware.c **** }
+ 146              		.loc 1 58 1 view .LVU37
+ 147 0034 10BC     		pop	{r4}
+ 148              	.LCFI1:
+ 149              		.cfi_restore 4
+ 150              		.cfi_def_cfa_offset 0
+ 151              	.LVL14:
+ 152              		.loc 1 58 1 view .LVU38
+ 153 0036 7047     		bx	lr
+ 154              		.cfi_endproc
+ 155              	.LFE68:
+ 157              		.section	.text.BMI088_delay_ms,"ax",%progbits
+ 158              		.align	1
+ 159              		.global	BMI088_delay_ms
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	BMI088_delay_ms:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 5
+
+
+ 165              	.LVL15:
+ 166              	.LFB67:
+  18:BMI088/Src/BMI088Middleware.c ****     while(ms--)
+ 167              		.loc 1 18 1 is_stmt 1 view -0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+  18:BMI088/Src/BMI088Middleware.c ****     while(ms--)
+ 171              		.loc 1 18 1 is_stmt 0 view .LVU40
+ 172 0000 10B5     		push	{r4, lr}
+ 173              	.LCFI2:
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 4, -8
+ 176              		.cfi_offset 14, -4
+  19:BMI088/Src/BMI088Middleware.c ****     {
+ 177              		.loc 1 19 5 is_stmt 1 view .LVU41
+  19:BMI088/Src/BMI088Middleware.c ****     {
+ 178              		.loc 1 19 10 is_stmt 0 view .LVU42
+ 179 0002 04E0     		b	.L11
+ 180              	.LVL16:
+ 181              	.L12:
+  21:BMI088/Src/BMI088Middleware.c ****     }
+ 182              		.loc 1 21 9 is_stmt 1 view .LVU43
+ 183 0004 4FF47A70 		mov	r0, #1000
+ 184 0008 FFF7FEFF 		bl	BMI088_delay_us
+ 185              	.LVL17:
+  19:BMI088/Src/BMI088Middleware.c ****     {
+ 186              		.loc 1 19 13 is_stmt 0 view .LVU44
+ 187 000c 2046     		mov	r0, r4
+ 188              	.LVL18:
+ 189              	.L11:
+  19:BMI088/Src/BMI088Middleware.c ****     {
+ 190              		.loc 1 19 10 is_stmt 1 view .LVU45
+  19:BMI088/Src/BMI088Middleware.c ****     {
+ 191              		.loc 1 19 13 is_stmt 0 view .LVU46
+ 192 000e 431E     		subs	r3, r0, #1
+ 193 0010 9CB2     		uxth	r4, r3
+ 194              	.LVL19:
+  19:BMI088/Src/BMI088Middleware.c ****     {
+ 195              		.loc 1 19 10 view .LVU47
+ 196 0012 0028     		cmp	r0, #0
+ 197 0014 F6D1     		bne	.L12
+  23:BMI088/Src/BMI088Middleware.c **** 
+ 198              		.loc 1 23 1 view .LVU48
+ 199 0016 10BD     		pop	{r4, pc}
+  23:BMI088/Src/BMI088Middleware.c **** 
+ 200              		.loc 1 23 1 view .LVU49
+ 201              		.cfi_endproc
+ 202              	.LFE67:
+ 204              		.section	.text.BMI088_ACCEL_NS_L,"ax",%progbits
+ 205              		.align	1
+ 206              		.global	BMI088_ACCEL_NS_L
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 211              	BMI088_ACCEL_NS_L:
+ 212              	.LFB69:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 6
+
+
+  59:BMI088/Src/BMI088Middleware.c **** 
+  60:BMI088/Src/BMI088Middleware.c **** 
+  61:BMI088/Src/BMI088Middleware.c **** 
+  62:BMI088/Src/BMI088Middleware.c **** 
+  63:BMI088/Src/BMI088Middleware.c **** void BMI088_ACCEL_NS_L(void)
+  64:BMI088/Src/BMI088Middleware.c **** {
+ 213              		.loc 1 64 1 is_stmt 1 view -0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217 0000 08B5     		push	{r3, lr}
+ 218              	.LCFI3:
+ 219              		.cfi_def_cfa_offset 8
+ 220              		.cfi_offset 3, -8
+ 221              		.cfi_offset 14, -4
+  65:BMI088/Src/BMI088Middleware.c ****     HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_RESET);
+ 222              		.loc 1 65 5 view .LVU51
+ 223 0002 0022     		movs	r2, #0
+ 224 0004 4FF40061 		mov	r1, #2048
+ 225 0008 0148     		ldr	r0, .L16
+ 226 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 227              	.LVL20:
+  66:BMI088/Src/BMI088Middleware.c **** }
+ 228              		.loc 1 66 1 is_stmt 0 view .LVU52
+ 229 000e 08BD     		pop	{r3, pc}
+ 230              	.L17:
+ 231              		.align	2
+ 232              	.L16:
+ 233 0010 00080140 		.word	1073809408
+ 234              		.cfi_endproc
+ 235              	.LFE69:
+ 237              		.section	.text.BMI088_ACCEL_NS_H,"ax",%progbits
+ 238              		.align	1
+ 239              		.global	BMI088_ACCEL_NS_H
+ 240              		.syntax unified
+ 241              		.thumb
+ 242              		.thumb_func
+ 244              	BMI088_ACCEL_NS_H:
+ 245              	.LFB70:
+  67:BMI088/Src/BMI088Middleware.c **** void BMI088_ACCEL_NS_H(void)
+  68:BMI088/Src/BMI088Middleware.c **** {
+ 246              		.loc 1 68 1 is_stmt 1 view -0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250 0000 08B5     		push	{r3, lr}
+ 251              	.LCFI4:
+ 252              		.cfi_def_cfa_offset 8
+ 253              		.cfi_offset 3, -8
+ 254              		.cfi_offset 14, -4
+  69:BMI088/Src/BMI088Middleware.c ****     HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_SET);
+ 255              		.loc 1 69 5 view .LVU54
+ 256 0002 0122     		movs	r2, #1
+ 257 0004 4FF40061 		mov	r1, #2048
+ 258 0008 0148     		ldr	r0, .L20
+ 259 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 260              	.LVL21:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 7
+
+
+  70:BMI088/Src/BMI088Middleware.c **** }
+ 261              		.loc 1 70 1 is_stmt 0 view .LVU55
+ 262 000e 08BD     		pop	{r3, pc}
+ 263              	.L21:
+ 264              		.align	2
+ 265              	.L20:
+ 266 0010 00080140 		.word	1073809408
+ 267              		.cfi_endproc
+ 268              	.LFE70:
+ 270              		.section	.text.BMI088_GYRO_NS_L,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	BMI088_GYRO_NS_L
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 277              	BMI088_GYRO_NS_L:
+ 278              	.LFB71:
+  71:BMI088/Src/BMI088Middleware.c **** 
+  72:BMI088/Src/BMI088Middleware.c **** void BMI088_GYRO_NS_L(void)
+  73:BMI088/Src/BMI088Middleware.c **** {
+ 279              		.loc 1 73 1 is_stmt 1 view -0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283 0000 08B5     		push	{r3, lr}
+ 284              	.LCFI5:
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 3, -8
+ 287              		.cfi_offset 14, -4
+  74:BMI088/Src/BMI088Middleware.c ****     HAL_GPIO_WritePin(CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, GPIO_PIN_RESET);
+ 288              		.loc 1 74 5 view .LVU57
+ 289 0002 0022     		movs	r2, #0
+ 290 0004 4FF48051 		mov	r1, #4096
+ 291 0008 0148     		ldr	r0, .L24
+ 292 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 293              	.LVL22:
+  75:BMI088/Src/BMI088Middleware.c **** }
+ 294              		.loc 1 75 1 is_stmt 0 view .LVU58
+ 295 000e 08BD     		pop	{r3, pc}
+ 296              	.L25:
+ 297              		.align	2
+ 298              	.L24:
+ 299 0010 00080140 		.word	1073809408
+ 300              		.cfi_endproc
+ 301              	.LFE71:
+ 303              		.section	.text.BMI088_GYRO_NS_H,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	BMI088_GYRO_NS_H
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 310              	BMI088_GYRO_NS_H:
+ 311              	.LFB72:
+  76:BMI088/Src/BMI088Middleware.c **** void BMI088_GYRO_NS_H(void)
+  77:BMI088/Src/BMI088Middleware.c **** {
+ 312              		.loc 1 77 1 is_stmt 1 view -0
+ 313              		.cfi_startproc
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 8
+
+
+ 314              		@ args = 0, pretend = 0, frame = 0
+ 315              		@ frame_needed = 0, uses_anonymous_args = 0
+ 316 0000 08B5     		push	{r3, lr}
+ 317              	.LCFI6:
+ 318              		.cfi_def_cfa_offset 8
+ 319              		.cfi_offset 3, -8
+ 320              		.cfi_offset 14, -4
+  78:BMI088/Src/BMI088Middleware.c ****     HAL_GPIO_WritePin(CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, GPIO_PIN_SET);
+ 321              		.loc 1 78 5 view .LVU60
+ 322 0002 0122     		movs	r2, #1
+ 323 0004 4FF48051 		mov	r1, #4096
+ 324 0008 0148     		ldr	r0, .L28
+ 325 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 326              	.LVL23:
+  79:BMI088/Src/BMI088Middleware.c **** }
+ 327              		.loc 1 79 1 is_stmt 0 view .LVU61
+ 328 000e 08BD     		pop	{r3, pc}
+ 329              	.L29:
+ 330              		.align	2
+ 331              	.L28:
+ 332 0010 00080140 		.word	1073809408
+ 333              		.cfi_endproc
+ 334              	.LFE72:
+ 336              		.section	.text.BMI088_read_write_byte,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	BMI088_read_write_byte
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	BMI088_read_write_byte:
+ 344              	.LVL24:
+ 345              	.LFB73:
+  80:BMI088/Src/BMI088Middleware.c **** 
+  81:BMI088/Src/BMI088Middleware.c **** uint8_t BMI088_read_write_byte(uint8_t txdata)
+  82:BMI088/Src/BMI088Middleware.c **** {
+ 346              		.loc 1 82 1 is_stmt 1 view -0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 16
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350              		.loc 1 82 1 is_stmt 0 view .LVU63
+ 351 0000 00B5     		push	{lr}
+ 352              	.LCFI7:
+ 353              		.cfi_def_cfa_offset 4
+ 354              		.cfi_offset 14, -4
+ 355 0002 87B0     		sub	sp, sp, #28
+ 356              	.LCFI8:
+ 357              		.cfi_def_cfa_offset 32
+ 358 0004 8DF80F00 		strb	r0, [sp, #15]
+  83:BMI088/Src/BMI088Middleware.c ****     uint8_t rx_data;
+ 359              		.loc 1 83 5 is_stmt 1 view .LVU64
+  84:BMI088/Src/BMI088Middleware.c ****     HAL_SPI_TransmitReceive(&hspi2, &txdata, &rx_data, 1, 1000);
+ 360              		.loc 1 84 5 view .LVU65
+ 361 0008 4FF47A73 		mov	r3, #1000
+ 362 000c 0093     		str	r3, [sp]
+ 363 000e 0123     		movs	r3, #1
+ 364 0010 0DF11702 		add	r2, sp, #23
+ 365 0014 0DF10F01 		add	r1, sp, #15
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 9
+
+
+ 366 0018 0348     		ldr	r0, .L32
+ 367              	.LVL25:
+ 368              		.loc 1 84 5 is_stmt 0 view .LVU66
+ 369 001a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 370              	.LVL26:
+  85:BMI088/Src/BMI088Middleware.c ****     return rx_data;
+ 371              		.loc 1 85 5 is_stmt 1 view .LVU67
+  86:BMI088/Src/BMI088Middleware.c **** }
+ 372              		.loc 1 86 1 is_stmt 0 view .LVU68
+ 373 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 374 0022 07B0     		add	sp, sp, #28
+ 375              	.LCFI9:
+ 376              		.cfi_def_cfa_offset 4
+ 377              		@ sp needed
+ 378 0024 5DF804FB 		ldr	pc, [sp], #4
+ 379              	.L33:
+ 380              		.align	2
+ 381              	.L32:
+ 382 0028 00000000 		.word	hspi2
+ 383              		.cfi_endproc
+ 384              	.LFE73:
+ 386              		.text
+ 387              	.Letext0:
+ 388              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 389              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 390              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 391              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 392              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 393              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 394              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 395              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 BMI088Middleware.c
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:18     .text.BMI088_GPIO_init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:24     .text.BMI088_GPIO_init:00000000 BMI088_GPIO_init
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:38     .text.BMI088_com_init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:44     .text.BMI088_com_init:00000000 BMI088_com_init
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:57     .text.BMI088_delay_us:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:63     .text.BMI088_delay_us:00000000 BMI088_delay_us
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:158    .text.BMI088_delay_ms:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:164    .text.BMI088_delay_ms:00000000 BMI088_delay_ms
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:205    .text.BMI088_ACCEL_NS_L:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:211    .text.BMI088_ACCEL_NS_L:00000000 BMI088_ACCEL_NS_L
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:233    .text.BMI088_ACCEL_NS_L:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:238    .text.BMI088_ACCEL_NS_H:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:244    .text.BMI088_ACCEL_NS_H:00000000 BMI088_ACCEL_NS_H
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:266    .text.BMI088_ACCEL_NS_H:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:271    .text.BMI088_GYRO_NS_L:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:277    .text.BMI088_GYRO_NS_L:00000000 BMI088_GYRO_NS_L
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:299    .text.BMI088_GYRO_NS_L:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:304    .text.BMI088_GYRO_NS_H:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:310    .text.BMI088_GYRO_NS_H:00000000 BMI088_GYRO_NS_H
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:332    .text.BMI088_GYRO_NS_H:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:337    .text.BMI088_read_write_byte:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:343    .text.BMI088_read_write_byte:00000000 BMI088_read_write_byte
+C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:382    .text.BMI088_read_write_byte:00000028 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_SPI_TransmitReceive
+hspi2

@@ -1,0 +1,369 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"freertos.c"
+  14              		.section	.rodata.str1.4,"aMS",%progbits,1
+  15              		.align	2
+  16              	.LC0:
+  17 0000 64656661 		.ascii	"defaultTask\000"
+  17      756C7454 
+  17      61736B00 
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.StartDefaultTask,"ax",%progbits
+  22              		.align	1
+  23              		.global	StartDefaultTask
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  28              	StartDefaultTask:
+  29              	.LFB72:
+  30              		.file 1 "Core/Src/freertos.c"
+   1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/freertos.c **** /**
+   3:Core/Src/freertos.c ****   ******************************************************************************
+   4:Core/Src/freertos.c ****   * File Name          : freertos.c
+   5:Core/Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Core/Src/freertos.c ****   ******************************************************************************
+   7:Core/Src/freertos.c ****   * @attention
+   8:Core/Src/freertos.c ****   *
+   9:Core/Src/freertos.c ****   * Copyright (c) 2024 STMicroelectronics.
+  10:Core/Src/freertos.c ****   * All rights reserved.
+  11:Core/Src/freertos.c ****   *
+  12:Core/Src/freertos.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:Core/Src/freertos.c ****   * in the root directory of this software component.
+  14:Core/Src/freertos.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:Core/Src/freertos.c ****   *
+  16:Core/Src/freertos.c ****   ******************************************************************************
+  17:Core/Src/freertos.c ****   */
+  18:Core/Src/freertos.c **** /* USER CODE END Header */
+  19:Core/Src/freertos.c **** 
+  20:Core/Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/freertos.c **** #include "FreeRTOS.h"
+  22:Core/Src/freertos.c **** #include "task.h"
+  23:Core/Src/freertos.c **** #include "main.h"
+  24:Core/Src/freertos.c **** #include "cmsis_os.h"
+  25:Core/Src/freertos.c **** 
+  26:Core/Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 2
+
+
+  27:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
+  28:Core/Src/freertos.c **** 
+  29:Core/Src/freertos.c **** /* USER CODE END Includes */
+  30:Core/Src/freertos.c **** 
+  31:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  32:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
+  33:Core/Src/freertos.c **** 
+  34:Core/Src/freertos.c **** /* USER CODE END PTD */
+  35:Core/Src/freertos.c **** 
+  36:Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  37:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
+  38:Core/Src/freertos.c **** 
+  39:Core/Src/freertos.c **** /* USER CODE END PD */
+  40:Core/Src/freertos.c **** 
+  41:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  42:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
+  43:Core/Src/freertos.c **** 
+  44:Core/Src/freertos.c **** /* USER CODE END PM */
+  45:Core/Src/freertos.c **** 
+  46:Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  47:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  48:Core/Src/freertos.c **** 
+  49:Core/Src/freertos.c **** /* USER CODE END Variables */
+  50:Core/Src/freertos.c **** osThreadId defaultTaskHandle;
+  51:Core/Src/freertos.c **** 
+  52:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  53:Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  54:Core/Src/freertos.c **** 
+  55:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  56:Core/Src/freertos.c **** 
+  57:Core/Src/freertos.c **** void StartDefaultTask(void const * argument);
+  58:Core/Src/freertos.c **** 
+  59:Core/Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+  60:Core/Src/freertos.c **** 
+  61:Core/Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
+  62:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  63:Core/Src/freertos.c **** 
+  64:Core/Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+  65:Core/Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  66:Core/Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  67:Core/Src/freertos.c **** 
+  68:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  69:Core/Src/freertos.c **** {
+  70:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  71:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  72:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  73:Core/Src/freertos.c ****   /* place for user code */
+  74:Core/Src/freertos.c **** }
+  75:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+  76:Core/Src/freertos.c **** 
+  77:Core/Src/freertos.c **** /**
+  78:Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
+  79:Core/Src/freertos.c ****   * @param  None
+  80:Core/Src/freertos.c ****   * @retval None
+  81:Core/Src/freertos.c ****   */
+  82:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
+  83:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 3
+
+
+  84:Core/Src/freertos.c **** 
+  85:Core/Src/freertos.c ****   /* USER CODE END Init */
+  86:Core/Src/freertos.c **** 
+  87:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
+  88:Core/Src/freertos.c ****   /* add mutexes, ... */
+  89:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
+  90:Core/Src/freertos.c **** 
+  91:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
+  92:Core/Src/freertos.c ****   /* add semaphores, ... */
+  93:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
+  94:Core/Src/freertos.c **** 
+  95:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
+  96:Core/Src/freertos.c ****   /* start timers, add new ones, ... */
+  97:Core/Src/freertos.c ****   /* USER CODE END RTOS_TIMERS */
+  98:Core/Src/freertos.c **** 
+  99:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_QUEUES */
+ 100:Core/Src/freertos.c ****   /* add queues, ... */
+ 101:Core/Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
+ 102:Core/Src/freertos.c **** 
+ 103:Core/Src/freertos.c ****   /* Create the thread(s) */
+ 104:Core/Src/freertos.c ****   /* definition and creation of defaultTask */
+ 105:Core/Src/freertos.c ****   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+ 106:Core/Src/freertos.c ****   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+ 107:Core/Src/freertos.c **** 
+ 108:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
+ 109:Core/Src/freertos.c ****   /* add threads, ... */
+ 110:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ 111:Core/Src/freertos.c **** 
+ 112:Core/Src/freertos.c **** }
+ 113:Core/Src/freertos.c **** 
+ 114:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartDefaultTask */
+ 115:Core/Src/freertos.c **** /**
+ 116:Core/Src/freertos.c ****   * @brief  Function implementing the defaultTask thread.
+ 117:Core/Src/freertos.c ****   * @param  argument: Not used
+ 118:Core/Src/freertos.c ****   * @retval None
+ 119:Core/Src/freertos.c ****   */
+ 120:Core/Src/freertos.c **** /* USER CODE END Header_StartDefaultTask */
+ 121:Core/Src/freertos.c **** void StartDefaultTask(void const * argument)
+ 122:Core/Src/freertos.c **** {
+  31              		.loc 1 122 1 view -0
+  32              		.cfi_startproc
+  33              		@ Volatile: function does not return.
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36              	.LVL0:
+  37              		.loc 1 122 1 is_stmt 0 view .LVU1
+  38 0000 08B5     		push	{r3, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 3, -8
+  42              		.cfi_offset 14, -4
+  43              	.LVL1:
+  44              	.L2:
+ 123:Core/Src/freertos.c ****   /* USER CODE BEGIN StartDefaultTask */
+ 124:Core/Src/freertos.c ****   /* Infinite loop */
+ 125:Core/Src/freertos.c ****   for(;;)
+  45              		.loc 1 125 3 is_stmt 1 discriminator 1 view .LVU2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 4
+
+
+ 126:Core/Src/freertos.c ****   {
+ 127:Core/Src/freertos.c ****     // osThreadTerminate(defaultTaskHandle);
+ 128:Core/Src/freertos.c **** 
+ 129:Core/Src/freertos.c ****     osDelay(100);
+  46              		.loc 1 129 5 discriminator 1 view .LVU3
+  47 0002 6420     		movs	r0, #100
+  48 0004 FFF7FEFF 		bl	osDelay
+  49              	.LVL2:
+ 125:Core/Src/freertos.c ****   {
+  50              		.loc 1 125 8 discriminator 1 view .LVU4
+  51 0008 FBE7     		b	.L2
+  52              		.cfi_endproc
+  53              	.LFE72:
+  55              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+  56              		.align	1
+  57              		.global	vApplicationGetIdleTaskMemory
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  62              	vApplicationGetIdleTaskMemory:
+  63              	.LVL3:
+  64              	.LFB70:
+  69:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  65              		.loc 1 69 1 view -0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  70              		.loc 1 70 3 view .LVU6
+  70:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  71              		.loc 1 70 25 is_stmt 0 view .LVU7
+  72 0000 034B     		ldr	r3, .L5
+  73 0002 0360     		str	r3, [r0]
+  71:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  74              		.loc 1 71 3 is_stmt 1 view .LVU8
+  71:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  75              		.loc 1 71 27 is_stmt 0 view .LVU9
+  76 0004 034B     		ldr	r3, .L5+4
+  77 0006 0B60     		str	r3, [r1]
+  72:Core/Src/freertos.c ****   /* place for user code */
+  78              		.loc 1 72 3 is_stmt 1 view .LVU10
+  72:Core/Src/freertos.c ****   /* place for user code */
+  79              		.loc 1 72 25 is_stmt 0 view .LVU11
+  80 0008 8023     		movs	r3, #128
+  81 000a 1360     		str	r3, [r2]
+  74:Core/Src/freertos.c **** /* USER CODE END GET_IDLE_TASK_MEMORY */
+  82              		.loc 1 74 1 view .LVU12
+  83 000c 7047     		bx	lr
+  84              	.L6:
+  85 000e 00BF     		.align	2
+  86              	.L5:
+  87 0010 00000000 		.word	.LANCHOR0
+  88 0014 00000000 		.word	.LANCHOR1
+  89              		.cfi_endproc
+  90              	.LFE70:
+  92              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 5
+
+
+  93              		.align	1
+  94              		.global	MX_FREERTOS_Init
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	MX_FREERTOS_Init:
+ 100              	.LFB71:
+  82:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 101              		.loc 1 82 29 is_stmt 1 view -0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 32
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105 0000 10B5     		push	{r4, lr}
+ 106              	.LCFI1:
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 4, -8
+ 109              		.cfi_offset 14, -4
+ 110 0002 88B0     		sub	sp, sp, #32
+ 111              	.LCFI2:
+ 112              		.cfi_def_cfa_offset 40
+ 105:Core/Src/freertos.c ****   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+ 113              		.loc 1 105 3 view .LVU14
+ 114 0004 0DF1040C 		add	ip, sp, #4
+ 115 0008 074C     		ldr	r4, .L9
+ 116 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 117 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 118 0010 94E80700 		ldm	r4, {r0, r1, r2}
+ 119 0014 8CE80700 		stm	ip, {r0, r1, r2}
+ 106:Core/Src/freertos.c **** 
+ 120              		.loc 1 106 3 view .LVU15
+ 106:Core/Src/freertos.c **** 
+ 121              		.loc 1 106 23 is_stmt 0 view .LVU16
+ 122 0018 0021     		movs	r1, #0
+ 123 001a 01A8     		add	r0, sp, #4
+ 124 001c FFF7FEFF 		bl	osThreadCreate
+ 125              	.LVL4:
+ 106:Core/Src/freertos.c **** 
+ 126              		.loc 1 106 21 view .LVU17
+ 127 0020 024B     		ldr	r3, .L9+4
+ 128 0022 1860     		str	r0, [r3]
+ 112:Core/Src/freertos.c **** 
+ 129              		.loc 1 112 1 view .LVU18
+ 130 0024 08B0     		add	sp, sp, #32
+ 131              	.LCFI3:
+ 132              		.cfi_def_cfa_offset 8
+ 133              		@ sp needed
+ 134 0026 10BD     		pop	{r4, pc}
+ 135              	.L10:
+ 136              		.align	2
+ 137              	.L9:
+ 138 0028 00000000 		.word	.LANCHOR2
+ 139 002c 00000000 		.word	.LANCHOR3
+ 140              		.cfi_endproc
+ 141              	.LFE71:
+ 143              		.global	defaultTaskHandle
+ 144              		.section	.rodata
+ 145              		.align	2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 6
+
+
+ 146              		.set	.LANCHOR2,. + 0
+ 147              	.LC2:
+ 148 0000 00000000 		.word	.LC0
+ 149 0004 00000000 		.word	StartDefaultTask
+ 150 0008 0000     		.short	0
+ 151 000a 0000     		.space	2
+ 152 000c 00000000 		.word	0
+ 153 0010 80000000 		.word	128
+ 154 0014 00000000 		.word	0
+ 155 0018 00000000 		.word	0
+ 156              		.section	.bss.defaultTaskHandle,"aw",%nobits
+ 157              		.align	2
+ 158              		.set	.LANCHOR3,. + 0
+ 161              	defaultTaskHandle:
+ 162 0000 00000000 		.space	4
+ 163              		.section	.bss.xIdleStack,"aw",%nobits
+ 164              		.align	2
+ 165              		.set	.LANCHOR1,. + 0
+ 168              	xIdleStack:
+ 169 0000 00000000 		.space	512
+ 169      00000000 
+ 169      00000000 
+ 169      00000000 
+ 169      00000000 
+ 170              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+ 171              		.align	2
+ 172              		.set	.LANCHOR0,. + 0
+ 175              	xIdleTaskTCBBuffer:
+ 176 0000 00000000 		.space	84
+ 176      00000000 
+ 176      00000000 
+ 176      00000000 
+ 176      00000000 
+ 177              		.text
+ 178              	.Letext0:
+ 179              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 180              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 181              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 182              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 183              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 184              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 freertos.c
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:15     .rodata.str1.4:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:22     .text.StartDefaultTask:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:28     .text.StartDefaultTask:00000000 StartDefaultTask
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:56     .text.vApplicationGetIdleTaskMemory:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:62     .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:87     .text.vApplicationGetIdleTaskMemory:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:93     .text.MX_FREERTOS_Init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:99     .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:138    .text.MX_FREERTOS_Init:00000028 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:161    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:145    .rodata:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:157    .bss.defaultTaskHandle:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:164    .bss.xIdleStack:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:168    .bss.xIdleStack:00000000 xIdleStack
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:171    .bss.xIdleTaskTCBBuffer:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1gdpaz.s:175    .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
+
+UNDEFINED SYMBOLS
+osDelay
+osThreadCreate

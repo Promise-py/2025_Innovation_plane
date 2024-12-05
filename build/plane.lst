@@ -1,0 +1,437 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"plane.c"
+  14              		.section	.rodata.str1.4,"aMS",%progbits,1
+  15              		.align	2
+  16              	.LC0:
+  17 0000 696E7374 		.ascii	"instask\000"
+  17      61736B00 
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.StartINSTASK,"ax",%progbits
+  22              		.align	1
+  23              		.global	StartINSTASK
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  28              	StartINSTASK:
+  29              	.LVL0:
+  30              	.LFB127:
+  31              		.file 1 "application/plane_task.h"
+   1:application/plane_task.h **** #pragma once
+   2:application/plane_task.h **** 
+   3:application/plane_task.h **** #include "FreeRTOS.h"
+   4:application/plane_task.h **** #include "main.h"
+   5:application/plane_task.h **** #include "cmsis_os.h"
+   6:application/plane_task.h **** #include "ins_task.h"
+   7:application/plane_task.h **** #include "tim.h"
+   8:application/plane_task.h **** 
+   9:application/plane_task.h **** /*任务节点创建区*/
+  10:application/plane_task.h **** osThreadId insTaskHandle;
+  11:application/plane_task.h **** 
+  12:application/plane_task.h **** /*任务函数声明*/
+  13:application/plane_task.h **** void StartINSTASK(void const *argument);
+  14:application/plane_task.h **** 
+  15:application/plane_task.h **** /**
+  16:application/plane_task.h ****  * @name    oSTASKInit
+  17:application/plane_task.h ****  * @brief   任务初始化，所有运行的任务都在此初始化
+  18:application/plane_task.h ****  */
+  19:application/plane_task.h **** void OSTASKInit(void)
+  20:application/plane_task.h **** {
+  21:application/plane_task.h ****     osThreadDef(instask,StartINSTASK,osPriorityAboveNormal,0,1024);
+  22:application/plane_task.h ****     insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
+  23:application/plane_task.h **** }
+  24:application/plane_task.h **** 
+  25:application/plane_task.h **** int a;
+  26:application/plane_task.h **** void StartINSTASK(void const *argument)
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 2
+
+
+  27:application/plane_task.h **** {
+  32              		.loc 1 27 1 view -0
+  33              		.cfi_startproc
+  34              		@ Volatile: function does not return.
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37              		.loc 1 27 1 is_stmt 0 view .LVU1
+  38 0000 08B5     		push	{r3, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 3, -8
+  42              		.cfi_offset 14, -4
+  28:application/plane_task.h ****     static float ins_start;
+  43              		.loc 1 28 5 is_stmt 1 view .LVU2
+  29:application/plane_task.h ****     static float ins_dt;
+  44              		.loc 1 29 5 view .LVU3
+  30:application/plane_task.h ****     INS_Init();
+  45              		.loc 1 30 5 view .LVU4
+  46 0002 FFF7FEFF 		bl	INS_Init
+  47              	.LVL1:
+  48              	.L2:
+  31:application/plane_task.h ****     for (;;)
+  49              		.loc 1 31 5 discriminator 1 view .LVU5
+  32:application/plane_task.h ****     {
+  33:application/plane_task.h ****         // 1kHz
+  34:application/plane_task.h ****         INS_Task();
+  50              		.loc 1 34 9 discriminator 1 view .LVU6
+  51 0006 FFF7FEFF 		bl	INS_Task
+  52              	.LVL2:
+  35:application/plane_task.h ****         osDelay(1);
+  53              		.loc 1 35 9 discriminator 1 view .LVU7
+  54 000a 0120     		movs	r0, #1
+  55 000c FFF7FEFF 		bl	osDelay
+  56              	.LVL3:
+  31:application/plane_task.h ****     for (;;)
+  57              		.loc 1 31 11 discriminator 1 view .LVU8
+  58 0010 F9E7     		b	.L2
+  59              		.cfi_endproc
+  60              	.LFE127:
+  62              		.section	.text.OSTASKInit,"ax",%progbits
+  63              		.align	1
+  64              		.global	OSTASKInit
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  69              	OSTASKInit:
+  70              	.LFB126:
+  20:application/plane_task.h ****     osThreadDef(instask,StartINSTASK,osPriorityAboveNormal,0,1024);
+  71              		.loc 1 20 1 view -0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 32
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75 0000 10B5     		push	{r4, lr}
+  76              	.LCFI1:
+  77              		.cfi_def_cfa_offset 8
+  78              		.cfi_offset 4, -8
+  79              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 3
+
+
+  80 0002 88B0     		sub	sp, sp, #32
+  81              	.LCFI2:
+  82              		.cfi_def_cfa_offset 40
+  21:application/plane_task.h ****     insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
+  83              		.loc 1 21 5 view .LVU10
+  84 0004 0DF1040C 		add	ip, sp, #4
+  85 0008 074C     		ldr	r4, .L6
+  86 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+  87 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+  88 0010 94E80700 		ldm	r4, {r0, r1, r2}
+  89 0014 8CE80700 		stm	ip, {r0, r1, r2}
+  22:application/plane_task.h **** }
+  90              		.loc 1 22 5 view .LVU11
+  22:application/plane_task.h **** }
+  91              		.loc 1 22 21 is_stmt 0 view .LVU12
+  92 0018 0021     		movs	r1, #0
+  93 001a 01A8     		add	r0, sp, #4
+  94 001c FFF7FEFF 		bl	osThreadCreate
+  95              	.LVL4:
+  22:application/plane_task.h **** }
+  96              		.loc 1 22 19 view .LVU13
+  97 0020 024B     		ldr	r3, .L6+4
+  98 0022 1860     		str	r0, [r3]
+  23:application/plane_task.h **** 
+  99              		.loc 1 23 1 view .LVU14
+ 100 0024 08B0     		add	sp, sp, #32
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_offset 8
+ 103              		@ sp needed
+ 104 0026 10BD     		pop	{r4, pc}
+ 105              	.L7:
+ 106              		.align	2
+ 107              	.L6:
+ 108 0028 00000000 		.word	.LANCHOR0
+ 109 002c 00000000 		.word	.LANCHOR1
+ 110              		.cfi_endproc
+ 111              	.LFE126:
+ 113              		.section	.text.PlaneInit,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	PlaneInit
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 120              	PlaneInit:
+ 121              	.LFB128:
+ 122              		.file 2 "application/plane.c"
+   1:application/plane.c **** #include "plane_task.h"
+   2:application/plane.c **** 
+   3:application/plane.c **** 
+   4:application/plane.c **** void PlaneInit(void)
+   5:application/plane.c **** {
+ 123              		.loc 2 5 1 is_stmt 1 view -0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 08B5     		push	{r3, lr}
+ 128              	.LCFI4:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 4
+
+
+ 129              		.cfi_def_cfa_offset 8
+ 130              		.cfi_offset 3, -8
+ 131              		.cfi_offset 14, -4
+   6:application/plane.c ****     __disable_irq();
+ 132              		.loc 2 6 5 view .LVU16
+ 133              	.LBB6:
+ 134              	.LBI6:
+ 135              		.file 3 "Drivers/CMSIS/Include/cmsis_gcc.h"
+   1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
+   5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
+   6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
+   7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
+   8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
+   9:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
+  23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+  24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  25:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+  27:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  28:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
+  36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
+  41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
+  44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
+  45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 5
+
+
+  50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
+  52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
+  56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+  57:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  58:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
+  59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
+  62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  84:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  86:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ 106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 6
+
+
+ 107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
+ 114:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 116:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 117:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ 119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 120:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 121:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
+ 122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 123:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 128:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 129:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 134:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+ 137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+ 138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
+ 136              		.loc 3 140 27 view .LVU17
+ 137              	.LBB7:
+ 141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+ 138              		.loc 3 142 3 view .LVU18
+ 139              		.syntax unified
+ 140              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 141 0002 72B6     		cpsid i
+ 142              	@ 0 "" 2
+ 143              		.thumb
+ 144              		.syntax unified
+ 145              	.LBE7:
+ 146              	.LBE6:
+   7:application/plane.c **** 
+   8:application/plane.c ****     OSTASKInit();
+ 147              		.loc 2 8 5 view .LVU19
+ 148 0004 FFF7FEFF 		bl	OSTASKInit
+ 149              	.LVL5:
+   9:application/plane.c **** 
+  10:application/plane.c ****     __enable_irq();
+ 150              		.loc 2 10 5 view .LVU20
+ 151              	.LBB8:
+ 152              	.LBI8:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 7
+
+
+ 129:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 153              		.loc 3 129 27 view .LVU21
+ 154              	.LBB9:
+ 131:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 155              		.loc 3 131 3 view .LVU22
+ 156              		.syntax unified
+ 157              	@ 131 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 158 0008 62B6     		cpsie i
+ 159              	@ 0 "" 2
+ 160              		.thumb
+ 161              		.syntax unified
+ 162              	.LBE9:
+ 163              	.LBE8:
+  11:application/plane.c **** }
+ 164              		.loc 2 11 1 is_stmt 0 view .LVU23
+ 165 000a 08BD     		pop	{r3, pc}
+ 166              		.cfi_endproc
+ 167              	.LFE128:
+ 169              		.global	a
+ 170              		.global	insTaskHandle
+ 171              		.section	.rodata
+ 172              		.align	2
+ 173              		.set	.LANCHOR0,. + 0
+ 174              	.LC2:
+ 175 0000 00000000 		.word	.LC0
+ 176 0004 00000000 		.word	StartINSTASK
+ 177 0008 0100     		.short	1
+ 178 000a 0000     		.space	2
+ 179 000c 00000000 		.word	0
+ 180 0010 00040000 		.word	1024
+ 181 0014 00000000 		.word	0
+ 182 0018 00000000 		.word	0
+ 183              		.section	.bss.a,"aw",%nobits
+ 184              		.align	2
+ 187              	a:
+ 188 0000 00000000 		.space	4
+ 189              		.section	.bss.insTaskHandle,"aw",%nobits
+ 190              		.align	2
+ 191              		.set	.LANCHOR1,. + 0
+ 194              	insTaskHandle:
+ 195 0000 00000000 		.space	4
+ 196              		.text
+ 197              	.Letext0:
+ 198              		.file 4 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 199              		.file 5 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 200              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 201              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 202              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 203              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 204              		.file 10 "BMI088/Inc/ins_task.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 plane.c
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:15     .rodata.str1.4:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:22     .text.StartINSTASK:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:28     .text.StartINSTASK:00000000 StartINSTASK
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:63     .text.OSTASKInit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:69     .text.OSTASKInit:00000000 OSTASKInit
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:108    .text.OSTASKInit:00000028 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:114    .text.PlaneInit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:120    .text.PlaneInit:00000000 PlaneInit
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:187    .bss.a:00000000 a
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:194    .bss.insTaskHandle:00000000 insTaskHandle
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:172    .rodata:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:184    .bss.a:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:190    .bss.insTaskHandle:00000000 $d
+
+UNDEFINED SYMBOLS
+INS_Init
+INS_Task
+osDelay
+osThreadCreate
