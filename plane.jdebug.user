@@ -1,28 +1,39 @@
 
-OpenDocument="stm32f1xx_hal_spi.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c", Line=3567
-OpenDocument="BMI088Middleware.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/BMI088/Src/BMI088Middleware.c", Line=32
-OpenDocument="main.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Core/Src/main.c", Line=38
+GraphedExpression="distance", Color=#a00909
+GraphedExpression="1.0", Color=#09a01b
+OpenDocument="startup_stm32f103xb.s", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/startup_stm32f103xb.s", Line=49
+OpenDocument="main.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Core/Src/main.c", Line=58
+OpenDocument="deca_device.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/decadriver/deca_device.c", Line=1220
+OpenDocument="deca_spi.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/platform/deca_spi.c", Line=87
+OpenDocument="stm32f1xx_hal_gpio.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c", Line=425
+OpenDocument="measure.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/wave/measure.c", Line=0
+OpenDocument="plane_task.h", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/application/plane_task.h", Line=46
+OpenDocument="tasks.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Middlewares/Third_Party/FreeRTOS/Source/tasks.c", Line=1334
+OpenDocument="stm32f1xx_it.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Core/Src/stm32f1xx_it.c", Line=75
+OpenDocument="stm32f1xx_hal_spi.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c", Line=3592
+OpenDocument="stm32f1xx_hal.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c", Line=293
+OpenDocument="ex_05a_main.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/DWM1000/Src/ex_05a_main.c", Line=728
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=3, w=839, h=125, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=4, w=839, h=241, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=1
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=2, w=839, h=124, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Break & Tracepoints", DockArea=LEFT, x=0, y=1, w=526, h=312, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VectorCatchIndexMask=254
-OpenWindow="Memory 1", DockArea=BOTTOM, x=1, y=0, w=1018, h=323, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, EditorAddress=0x0
-OpenWindow="Watched Data 1", DockArea=LEFT, x=0, y=0, w=526, h=327, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Functions", DockArea=LEFT, x=0, y=2, w=526, h=320, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=1, w=839, h=169, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
-OpenWindow="Timeline", DockArea=RIGHT, x=0, y=0, w=839, h=298, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=1, DataPaneShown=1, PowerPaneShown=1, CodePaneShown=1, PinCursor="Cursor Movable", TimePerDiv="1 ns / Div", TimeStampFormat="Time", DataGraphDrawAsPoints=0, DataGraphLegendShown=1, DataGraphUniformSampleSpacing=0, DataGraphLegendPosition="666;0", PowerGraphDrawAsPoints=0, PowerGraphLegendShown=1, PowerGraphAvgFilterTime=Off, PowerGraphAvgFilterLen=Off, PowerGraphUniformSampleSpacing=0, PowerGraphLegendPosition="638;-8", CodeGraphLegendShown=1, CodeGraphLegendPosition="652;0"
-OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=1541, h=323, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-TableHeader="Vector Catches", SortCol="None", SortOrder="ASCENDING", VisibleCols=["";"Vector Catch";"Description"], ColWidths=[50;300;500]
-TableHeader="Break & Tracepoints", SortCol="None", SortOrder="ASCENDING", VisibleCols=["";"Type";"Location";"Extras"], ColWidths=[100;100;100;226]
-TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[595;100;100;100;210]
-TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Stack Frame";"Source";"PC";"Return Address";"Stack Used"], ColWidths=[182;149;100;100;112;196]
-TableHeader="Data Sampling Table", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time"], ColWidths=[100;100]
-TableHeader="Data Sampling Setup", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[100;100;100;100;100;100;100;107;107]
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=1, w=839, h=673, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Watched Data 1", DockArea=LEFT, x=0, y=0, w=515, h=1098, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=0, w=839, h=424, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
+OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=2560, h=323, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+TableHeader="Data Sampling Table", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time";" distance";" 1.0"], ColWidths=[100;100;100;100]
+TableHeader="Data Sampling Setup", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[100;100;100;100;100;100;110;126;126]
 TableHeader="Power Sampling", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
-TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Description"], ColWidths=[100;118;600]
-TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Refresh"], ColWidths=[191;121;100;114]
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Refresh"], ColWidths=[191;104;100;120]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
-TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;351]
-WatchedExpression="gyro", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="ins", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="dt", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="accel", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="gyro", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="distance", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="Cnt", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="high_time", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="count_10", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="q", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="HIGH_RxPort", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="distance", Window=Watched Data 1
+WatchedExpression="pos_z", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="command", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="height_pid", RefreshRate=5, Window=Watched Data 1

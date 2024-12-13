@@ -23,6 +23,7 @@ build/ins_task.o: BMI088/Src/ins_task.c BMI088/Inc/ins_task.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  algorithm/QuaternionEKF.h algorithm/kalman_filter.h algorithm/arm_math.h \
  Tools/DSP/Include/arm_math_types.h \
  Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -74,6 +75,7 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 algorithm/QuaternionEKF.h:
 algorithm/kalman_filter.h:
 algorithm/arm_math.h:

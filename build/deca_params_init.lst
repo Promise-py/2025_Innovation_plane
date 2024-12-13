@@ -1,0 +1,165 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"deca_params_init.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	lde_replicaCoeff
+  18              		.global	digital_bb_config
+  19              		.global	dtune1
+  20              		.global	sftsh
+  21              		.global	dwnsSFDlen
+  22              		.global	agc_config
+  23              		.global	rx_config
+  24              		.global	fs_pll_tune
+  25              		.global	fs_pll_cfg
+  26              		.global	tx_config
+  27              		.global	chan_idx
+  28              		.section	.rodata.agc_config,"a"
+  29              		.align	2
+  32              	agc_config:
+  33 0000 07A90225 		.word	620931335
+  34 0004 7088     		.short	-30608
+  35 0006 9B88     		.short	-30565
+  36              		.section	.rodata.chan_idx,"a"
+  37              		.align	2
+  40              	chan_idx:
+  41 0000 00000102 		.ascii	"\000\000\001\002\003\004\000\005"
+  41      03040005 
+  42              		.section	.rodata.digital_bb_config,"a"
+  43              		.align	2
+  46              	digital_bb_config:
+  47 0000 3C001A31 		.word	823787580
+  48 0004 52001A33 		.word	857342034
+  49 0008 9A001A35 		.word	890896538
+  50 000c 1D011A37 		.word	924451101
+  51 0010 6B003B31 		.word	825950315
+  52 0014 BE003B33 		.word	859504830
+  53 0018 5E013B35 		.word	893059422
+  54 001c 96023B37 		.word	926614166
+  55              		.section	.rodata.dtune1,"a"
+  56              		.align	2
+  59              	dtune1:
+  60 0000 8700     		.short	135
+  61 0002 8D00     		.short	141
+  62              		.section	.rodata.dwnsSFDlen,"a"
+  63              		.align	2
+  66              	dwnsSFDlen:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s 			page 2
+
+
+  67 0000 401008   		.ascii	"@\020\010"
+  68              		.section	.rodata.fs_pll_cfg,"a"
+  69              		.align	2
+  72              	fs_pll_cfg:
+  73 0000 07040009 		.word	150995975
+  74 0004 08054008 		.word	138413320
+  75 0008 09104008 		.word	138416137
+  76 000c 08054008 		.word	138413320
+  77 0010 1D040008 		.word	134218781
+  78 0014 1D040008 		.word	134218781
+  79              		.section	.rodata.fs_pll_tune,"a"
+  80              		.align	2
+  83              	fs_pll_tune:
+  84 0000 1E265626 		.ascii	"\036&V&\276\276"
+  84      BEBE
+  85              		.section	.rodata.lde_replicaCoeff,"a"
+  86              		.align	2
+  89              	lde_replicaCoeff:
+  90 0000 0000     		.short	0
+  91 0002 9859     		.short	22936
+  92 0004 9859     		.short	22936
+  93 0006 EA51     		.short	20970
+  94 0008 8E42     		.short	17038
+  95 000a 1E45     		.short	17694
+  96 000c 142E     		.short	11796
+  97 000e 0080     		.short	-32768
+  98 0010 EA51     		.short	20970
+  99 0012 F428     		.short	10484
+ 100 0014 3233     		.short	13106
+ 101 0016 E03A     		.short	15072
+ 102 0018 703D     		.short	15728
+ 103 001a E03A     		.short	15072
+ 104 001c C235     		.short	13762
+ 105 001e 842B     		.short	11140
+ 106 0020 C235     		.short	13762
+ 107 0022 3233     		.short	13106
+ 108 0024 C235     		.short	13762
+ 109 0026 C235     		.short	13762
+ 110 0028 AE47     		.short	18350
+ 111 002a E03A     		.short	15072
+ 112 002c 5038     		.short	14416
+ 113 002e A230     		.short	12450
+ 114 0030 5038     		.short	14416
+ 115              		.section	.rodata.rx_config,"a"
+ 116              		.align	2
+ 119              	rx_config:
+ 120 0000 D8BC     		.ascii	"\330\274"
+ 121              		.section	.rodata.sftsh,"a"
+ 122              		.align	2
+ 125              	sftsh:
+ 126 0000 0A00     		.short	10
+ 127 0002 1600     		.short	22
+ 128 0004 0100     		.short	1
+ 129 0006 0600     		.short	6
+ 130 0008 0100     		.short	1
+ 131 000a 0200     		.short	2
+ 132              		.section	.rodata.tx_config,"a"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s 			page 3
+
+
+ 133              		.align	2
+ 136              	tx_config:
+ 137 0000 405C0000 		.word	23616
+ 138 0004 A05C0400 		.word	285856
+ 139 0008 C06C0800 		.word	552128
+ 140 000c 805C0400 		.word	285824
+ 141 0010 E03F1E00 		.word	1982432
+ 142 0014 E07D1E00 		.word	1998304
+ 143              		.text
+ 144              	.Letext0:
+ 145              		.file 1 "Drivers/decadriver/deca_types.h"
+ 146              		.file 2 "Drivers/decadriver/deca_param_types.h"
+ 147              		.file 3 "Drivers/decadriver/deca_params_init.c"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 deca_params_init.c
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:89     .rodata.lde_replicaCoeff:00000000 lde_replicaCoeff
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:46     .rodata.digital_bb_config:00000000 digital_bb_config
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:59     .rodata.dtune1:00000000 dtune1
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:125    .rodata.sftsh:00000000 sftsh
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:66     .rodata.dwnsSFDlen:00000000 dwnsSFDlen
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:32     .rodata.agc_config:00000000 agc_config
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:119    .rodata.rx_config:00000000 rx_config
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:83     .rodata.fs_pll_tune:00000000 fs_pll_tune
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:72     .rodata.fs_pll_cfg:00000000 fs_pll_cfg
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:136    .rodata.tx_config:00000000 tx_config
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:40     .rodata.chan_idx:00000000 chan_idx
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:29     .rodata.agc_config:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:37     .rodata.chan_idx:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:43     .rodata.digital_bb_config:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:56     .rodata.dtune1:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:63     .rodata.dwnsSFDlen:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:69     .rodata.fs_pll_cfg:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:80     .rodata.fs_pll_tune:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:86     .rodata.lde_replicaCoeff:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:116    .rodata.rx_config:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:122    .rodata.sftsh:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccGxkITh.s:133    .rodata.tx_config:00000000 $d
+
+NO UNDEFINED SYMBOLS

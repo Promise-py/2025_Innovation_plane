@@ -1,0 +1,763 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"flash.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.STMFLASH_ReadHalfWord,"ax",%progbits
+  18              		.align	1
+  19              		.global	STMFLASH_ReadHalfWord
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	STMFLASH_ReadHalfWord:
+  25              	.LVL0:
+  26              	.LFB65:
+  27              		.file 1 "Drivers/flash/flash.c"
+   1:Drivers/flash/flash.c **** #include "flash.h"
+   2:Drivers/flash/flash.c **** 
+   3:Drivers/flash/flash.c **** FLASH_ProcessTypeDef p_Flash; 
+   4:Drivers/flash/flash.c **** uint16_t STMFLASH_BUF[STM_SECTOR_SIZE/2];    //»º´æÊý×é
+   5:Drivers/flash/flash.c ****  
+   6:Drivers/flash/flash.c ****  /**********************************************************************************
+   7:Drivers/flash/flash.c ****   * º¯Êý¹¦ÄÜ: ¶ÁÈ¡Ö¸¶¨µØÖ·µÄ°ë×Ö(16Î»Êý¾Ý) 
+   8:Drivers/flash/flash.c ****   * ÊäÈë²ÎÊý: faddr£º¶ÁµØÖ·
+   9:Drivers/flash/flash.c ****   * ·µ »Ø Öµ: ¶ÔÓ¦Êý¾Ý
+  10:Drivers/flash/flash.c ****   * Ëµ    Ã÷£º 
+  11:Drivers/flash/flash.c ****   */
+  12:Drivers/flash/flash.c **** uint16_t STMFLASH_ReadHalfWord(uint32_t faddr)
+  13:Drivers/flash/flash.c **** {
+  28              		.loc 1 13 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  14:Drivers/flash/flash.c **** 	return *(vu16*)faddr; 
+  33              		.loc 1 14 2 view .LVU1
+  34              		.loc 1 14 9 is_stmt 0 view .LVU2
+  35 0000 0088     		ldrh	r0, [r0]
+  36              	.LVL1:
+  15:Drivers/flash/flash.c **** }
+  37              		.loc 1 15 1 view .LVU3
+  38 0002 80B2     		uxth	r0, r0
+  39 0004 7047     		bx	lr
+  40              		.cfi_endproc
+  41              	.LFE65:
+  43              		.section	.text.STMFLASH_Write_NoCheck,"ax",%progbits
+  44              		.align	1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 2
+
+
+  45              		.global	STMFLASH_Write_NoCheck
+  46              		.syntax unified
+  47              		.thumb
+  48              		.thumb_func
+  50              	STMFLASH_Write_NoCheck:
+  51              	.LVL2:
+  52              	.LFB66:
+  16:Drivers/flash/flash.c ****  
+  17:Drivers/flash/flash.c **** #if STM32_FLASH_WREN	//Èç¹ûÊ¹ÄÜÁËÐ´   
+  18:Drivers/flash/flash.c ****  /**********************************************************************************
+  19:Drivers/flash/flash.c ****   * º¯Êý¹¦ÄÜ:²»¼ì²éµÄÐ´Èë
+  20:Drivers/flash/flash.c ****   * ÊäÈë²ÎÊý: WriteAddr:ÆðÊ¼µØÖ·¡¢pBuffer:Êý¾ÝÖ¸Õë¡¢NumToWrite:°ë×Ö(16Î»)Êý 
+  21:Drivers/flash/flash.c ****   * ·µ »Ø Öµ: ÎÞ
+  22:Drivers/flash/flash.c ****   * Ëµ    Ã÷£º 
+  23:Drivers/flash/flash.c ****   */
+  24:Drivers/flash/flash.c **** void STMFLASH_Write_NoCheck(uint32_t WriteAddr,uint16_t *pBuffer,uint16_t NumToWrite)   
+  25:Drivers/flash/flash.c **** { 			 		 
+  53              		.loc 1 25 1 is_stmt 1 view -0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		.loc 1 25 1 is_stmt 0 view .LVU5
+  58 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  59              	.LCFI0:
+  60              		.cfi_def_cfa_offset 24
+  61              		.cfi_offset 3, -24
+  62              		.cfi_offset 4, -20
+  63              		.cfi_offset 5, -16
+  64              		.cfi_offset 6, -12
+  65              		.cfi_offset 7, -8
+  66              		.cfi_offset 14, -4
+  67 0002 0546     		mov	r5, r0
+  68 0004 0F46     		mov	r7, r1
+  69 0006 1646     		mov	r6, r2
+  26:Drivers/flash/flash.c **** 	uint16_t i;
+  70              		.loc 1 26 2 is_stmt 1 view .LVU6
+  27:Drivers/flash/flash.c **** 	for(i=0;i<NumToWrite;i++)
+  71              		.loc 1 27 2 view .LVU7
+  72              	.LVL3:
+  73              		.loc 1 27 7 is_stmt 0 view .LVU8
+  74 0008 0024     		movs	r4, #0
+  75              		.loc 1 27 2 view .LVU9
+  76 000a 09E0     		b	.L3
+  77              	.LVL4:
+  78              	.L4:
+  28:Drivers/flash/flash.c **** 	{
+  29:Drivers/flash/flash.c **** 		HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,WriteAddr,pBuffer[i]);
+  79              		.loc 1 29 3 is_stmt 1 discriminator 3 view .LVU10
+  80 000c 37F81420 		ldrh	r2, [r7, r4, lsl #1]
+  81 0010 0023     		movs	r3, #0
+  82 0012 2946     		mov	r1, r5
+  83 0014 0120     		movs	r0, #1
+  84 0016 FFF7FEFF 		bl	HAL_FLASH_Program
+  85              	.LVL5:
+  30:Drivers/flash/flash.c **** 	    WriteAddr+=2;//µØÖ·Ôö¼Ó2.
+  86              		.loc 1 30 6 discriminator 3 view .LVU11
+  87              		.loc 1 30 15 is_stmt 0 discriminator 3 view .LVU12
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 3
+
+
+  88 001a 0235     		adds	r5, r5, #2
+  89              	.LVL6:
+  27:Drivers/flash/flash.c **** 	for(i=0;i<NumToWrite;i++)
+  90              		.loc 1 27 23 is_stmt 1 discriminator 3 view .LVU13
+  27:Drivers/flash/flash.c **** 	for(i=0;i<NumToWrite;i++)
+  91              		.loc 1 27 24 is_stmt 0 discriminator 3 view .LVU14
+  92 001c 0134     		adds	r4, r4, #1
+  93              	.LVL7:
+  27:Drivers/flash/flash.c **** 	for(i=0;i<NumToWrite;i++)
+  94              		.loc 1 27 24 discriminator 3 view .LVU15
+  95 001e A4B2     		uxth	r4, r4
+  96              	.LVL8:
+  97              	.L3:
+  27:Drivers/flash/flash.c **** 	for(i=0;i<NumToWrite;i++)
+  98              		.loc 1 27 10 is_stmt 1 discriminator 1 view .LVU16
+  27:Drivers/flash/flash.c **** 	for(i=0;i<NumToWrite;i++)
+  99              		.loc 1 27 2 is_stmt 0 discriminator 1 view .LVU17
+ 100 0020 B442     		cmp	r4, r6
+ 101 0022 F3D3     		bcc	.L4
+  31:Drivers/flash/flash.c **** 	}  
+  32:Drivers/flash/flash.c **** } 
+ 102              		.loc 1 32 1 view .LVU18
+ 103 0024 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 104              		.loc 1 32 1 view .LVU19
+ 105              		.cfi_endproc
+ 106              	.LFE66:
+ 108              		.section	.text.STMFLASH_Read,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	STMFLASH_Read
+ 111              		.syntax unified
+ 112              		.thumb
+ 113              		.thumb_func
+ 115              	STMFLASH_Read:
+ 116              	.LVL9:
+ 117              	.LFB68:
+  33:Drivers/flash/flash.c ****  /**********************************************************************************
+  34:Drivers/flash/flash.c ****   * º¯Êý¹¦ÄÜ:´ÓÖ¸¶¨µØÖ·¿ªÊ¼Ð´ÈëÖ¸¶¨³¤¶ÈµÄÊý¾Ý
+  35:Drivers/flash/flash.c ****   * ÊäÈë²ÎÊý:WriteAddr:ÆðÊ¼µØÖ·(´ËµØÖ·±ØÐëÎª2µÄ±¶Êý!!)¡¢pBuffer:Êý¾ÝÖ¸Õë¡¢NumToWrite£º°ë×Ö(16Î»)Êý(
+  36:Drivers/flash/flash.c ****   * ·µ »Ø Öµ: ÎÞ
+  37:Drivers/flash/flash.c ****   * Ëµ    Ã÷£º 
+  38:Drivers/flash/flash.c ****   */
+  39:Drivers/flash/flash.c **** void STMFLASH_Write(uint32_t WriteAddr,uint16_t *pBuffer,uint16_t NumToWrite)	
+  40:Drivers/flash/flash.c **** {
+  41:Drivers/flash/flash.c **** 	uint32_t secpos;	   //ÉÈÇøµØÖ·
+  42:Drivers/flash/flash.c **** 	uint16_t secoff;	   //ÉÈÇøÄÚÆ«ÒÆµØÖ·(16Î»×Ö¼ÆËã)
+  43:Drivers/flash/flash.c **** 	uint16_t secremain; //ÉÈÇøÄÚÊ£ÓàµØÖ·(16Î»×Ö¼ÆËã)	   
+  44:Drivers/flash/flash.c ****  	uint16_t i;    
+  45:Drivers/flash/flash.c **** 	uint32_t offaddr;   //È¥µô0X08000000ºóµÄµØÖ·
+  46:Drivers/flash/flash.c **** 	
+  47:Drivers/flash/flash.c **** 	if(WriteAddr<STM32_FLASH_BASE||(WriteAddr>=(STM32_FLASH_BASE+1024*STM32_FLASH_SIZE)))return;//·Ç·¨
+  48:Drivers/flash/flash.c **** 	
+  49:Drivers/flash/flash.c **** 	HAL_FLASH_Unlock();					    //½âËø
+  50:Drivers/flash/flash.c **** 	offaddr=WriteAddr-STM32_FLASH_BASE;		//Êµ¼ÊÆ«ÒÆµØÖ·.
+  51:Drivers/flash/flash.c **** 	secpos=offaddr/STM_SECTOR_SIZE;			//ÉÈÇøµØÖ·  0~64 for STM32F103C8T6
+  52:Drivers/flash/flash.c **** 	secoff=(offaddr%STM_SECTOR_SIZE)/2;		//ÔÚÉÈÇøÄÚµÄÆ«ÒÆ(2¸ö×Ö½ÚÎª»ù±¾µ¥Î».)
+  53:Drivers/flash/flash.c **** 	secremain=STM_SECTOR_SIZE/2-secoff;		//ÉÈÇøÊ£Óà¿Õ¼ä´óÐ¡   
+  54:Drivers/flash/flash.c **** 	if(NumToWrite<=secremain)secremain=NumToWrite;//²»´óÓÚ¸ÃÉÈÇø·¶Î§
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 4
+
+
+  55:Drivers/flash/flash.c **** 	while(1) 
+  56:Drivers/flash/flash.c **** 	{	
+  57:Drivers/flash/flash.c **** 		STMFLASH_Read(secpos*STM_SECTOR_SIZE+STM32_FLASH_BASE,STMFLASH_BUF,STM_SECTOR_SIZE/2);//¶Á³öÕû¸öÉ
+  58:Drivers/flash/flash.c **** 		for(i=0;i<secremain;i++)	//Ð£ÑéÊý¾Ý
+  59:Drivers/flash/flash.c **** 		{
+  60:Drivers/flash/flash.c **** 			if(STMFLASH_BUF[secoff+i]!=0XFFFF)break;//ÐèÒª²Á³ý  	  
+  61:Drivers/flash/flash.c **** 		}
+  62:Drivers/flash/flash.c **** 		if(i<secremain)				//ÐèÒª²Á³ý
+  63:Drivers/flash/flash.c **** 		{
+  64:Drivers/flash/flash.c **** 			Flash_PageErase(secpos*STM_SECTOR_SIZE+STM32_FLASH_BASE);	//²Á³ýÕâ¸öÉÈÇø
+  65:Drivers/flash/flash.c **** 			FLASH_WaitForLastOperation(FLASH_WAITETIME);            	//µÈ´ýÉÏ´Î²Ù×÷Íê³É
+  66:Drivers/flash/flash.c **** 			CLEAR_BIT(FLASH->CR, FLASH_CR_PER);							//Çå³ýCR¼Ä´æÆ÷µÄPERÎ»£¬´Ë²Ù×÷Ó¦¸ÃÔÚFLASH_PageErase()ÖÐ
+  67:Drivers/flash/flash.c **** 																		//µ«ÊÇHAL¿âÀïÃæ²¢Ã»ÓÐ×ö£¬Ó¦¸ÃÊÇHAL¿âbug£¡
+  68:Drivers/flash/flash.c **** 			for(i=0;i<secremain;i++)//¸´ÖÆ
+  69:Drivers/flash/flash.c **** 			{
+  70:Drivers/flash/flash.c **** 				STMFLASH_BUF[i+secoff]=pBuffer[i];	  
+  71:Drivers/flash/flash.c **** 			}
+  72:Drivers/flash/flash.c **** 			STMFLASH_Write_NoCheck(secpos*STM_SECTOR_SIZE+STM32_FLASH_BASE,STMFLASH_BUF,STM_SECTOR_SIZE/2);/
+  73:Drivers/flash/flash.c **** 		}else 
+  74:Drivers/flash/flash.c **** 		{
+  75:Drivers/flash/flash.c **** 			FLASH_WaitForLastOperation(FLASH_WAITETIME);       	//µÈ´ýÉÏ´Î²Ù×÷Íê³É
+  76:Drivers/flash/flash.c **** 			STMFLASH_Write_NoCheck(WriteAddr,pBuffer,secremain);//Ð´ÒÑ¾­²Á³ýÁËµÄ,Ö±½ÓÐ´ÈëÉÈÇøÊ£ÓàÇø¼ä. 
+  77:Drivers/flash/flash.c **** 		}
+  78:Drivers/flash/flash.c **** 		if(NumToWrite==secremain)break;//Ð´Èë½áÊøÁË
+  79:Drivers/flash/flash.c **** 		else//Ð´ÈëÎ´½áÊø
+  80:Drivers/flash/flash.c **** 		{
+  81:Drivers/flash/flash.c **** 			secpos++;				//ÉÈÇøµØÖ·Ôö1
+  82:Drivers/flash/flash.c **** 			secoff=0;				//Æ«ÒÆÎ»ÖÃÎª0 	 
+  83:Drivers/flash/flash.c **** 		   	pBuffer+=secremain;  	//Ö¸ÕëÆ«ÒÆ
+  84:Drivers/flash/flash.c **** 			WriteAddr+=secremain*2;	//Ð´µØÖ·Æ«ÒÆ(16Î»Êý¾ÝµØÖ·,ÐèÒª*2)	   
+  85:Drivers/flash/flash.c **** 		   	NumToWrite-=secremain;	//×Ö½Ú(16Î»)ÊýµÝ¼õ
+  86:Drivers/flash/flash.c **** 			if(NumToWrite>(STM_SECTOR_SIZE/2))secremain=STM_SECTOR_SIZE/2;//ÏÂÒ»¸öÉÈÇø»¹ÊÇÐ´²»Íê
+  87:Drivers/flash/flash.c **** 			else secremain=NumToWrite;//ÏÂÒ»¸öÉÈÇø¿ÉÒÔÐ´ÍêÁË
+  88:Drivers/flash/flash.c **** 		}	 
+  89:Drivers/flash/flash.c **** 	};	
+  90:Drivers/flash/flash.c **** 	HAL_FLASH_Lock();		//ÉÏËø
+  91:Drivers/flash/flash.c **** }
+  92:Drivers/flash/flash.c **** #endif
+  93:Drivers/flash/flash.c ****  /**********************************************************************************
+  94:Drivers/flash/flash.c ****   * º¯Êý¹¦ÄÜ:´ÓÖ¸¶¨µØÖ·¿ªÊ¼¶Á³öÖ¸¶¨³¤¶ÈµÄÊý¾Ý
+  95:Drivers/flash/flash.c ****   * ÊäÈë²ÎÊý:ReadAddr:ÆðÊ¼µØÖ·¡¢pBuffer:Êý¾ÝÖ¸Õë¡¢NumToWrite:°ë×Ö(16Î»)Êý
+  96:Drivers/flash/flash.c ****   * ·µ »Ø Öµ: ÎÞ
+  97:Drivers/flash/flash.c ****   * Ëµ    Ã÷£º 
+  98:Drivers/flash/flash.c ****   */
+  99:Drivers/flash/flash.c **** void STMFLASH_Read(uint32_t ReadAddr,uint16_t *pBuffer,uint16_t NumToRead)   	
+ 100:Drivers/flash/flash.c **** {
+ 118              		.loc 1 100 1 is_stmt 1 view -0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122              		.loc 1 100 1 is_stmt 0 view .LVU21
+ 123 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 124              	.LCFI1:
+ 125              		.cfi_def_cfa_offset 24
+ 126              		.cfi_offset 3, -24
+ 127              		.cfi_offset 4, -20
+ 128              		.cfi_offset 5, -16
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 5
+
+
+ 129              		.cfi_offset 6, -12
+ 130              		.cfi_offset 7, -8
+ 131              		.cfi_offset 14, -4
+ 132 0002 0546     		mov	r5, r0
+ 133 0004 0F46     		mov	r7, r1
+ 134 0006 1646     		mov	r6, r2
+ 101:Drivers/flash/flash.c **** 	uint16_t i;
+ 135              		.loc 1 101 2 is_stmt 1 view .LVU22
+ 102:Drivers/flash/flash.c **** 	for(i=0;i<NumToRead;i++)
+ 136              		.loc 1 102 2 view .LVU23
+ 137              	.LVL10:
+ 138              		.loc 1 102 7 is_stmt 0 view .LVU24
+ 139 0008 0024     		movs	r4, #0
+ 140              		.loc 1 102 2 view .LVU25
+ 141 000a 07E0     		b	.L7
+ 142              	.LVL11:
+ 143              	.L8:
+ 103:Drivers/flash/flash.c **** 	{
+ 104:Drivers/flash/flash.c **** 		pBuffer[i]=STMFLASH_ReadHalfWord(ReadAddr);//¶ÁÈ¡2¸ö×Ö½Ú.
+ 144              		.loc 1 104 3 is_stmt 1 discriminator 3 view .LVU26
+ 145              		.loc 1 104 14 is_stmt 0 discriminator 3 view .LVU27
+ 146 000c 2846     		mov	r0, r5
+ 147 000e FFF7FEFF 		bl	STMFLASH_ReadHalfWord
+ 148              	.LVL12:
+ 149              		.loc 1 104 13 discriminator 3 view .LVU28
+ 150 0012 27F81400 		strh	r0, [r7, r4, lsl #1]	@ movhi
+ 105:Drivers/flash/flash.c **** 		ReadAddr+=2;//Æ«ÒÆ2¸ö×Ö½Ú.	
+ 151              		.loc 1 105 3 is_stmt 1 discriminator 3 view .LVU29
+ 152              		.loc 1 105 11 is_stmt 0 discriminator 3 view .LVU30
+ 153 0016 0235     		adds	r5, r5, #2
+ 154              	.LVL13:
+ 102:Drivers/flash/flash.c **** 	for(i=0;i<NumToRead;i++)
+ 155              		.loc 1 102 22 is_stmt 1 discriminator 3 view .LVU31
+ 102:Drivers/flash/flash.c **** 	for(i=0;i<NumToRead;i++)
+ 156              		.loc 1 102 23 is_stmt 0 discriminator 3 view .LVU32
+ 157 0018 0134     		adds	r4, r4, #1
+ 158              	.LVL14:
+ 102:Drivers/flash/flash.c **** 	for(i=0;i<NumToRead;i++)
+ 159              		.loc 1 102 23 discriminator 3 view .LVU33
+ 160 001a A4B2     		uxth	r4, r4
+ 161              	.LVL15:
+ 162              	.L7:
+ 102:Drivers/flash/flash.c **** 	for(i=0;i<NumToRead;i++)
+ 163              		.loc 1 102 10 is_stmt 1 discriminator 1 view .LVU34
+ 102:Drivers/flash/flash.c **** 	for(i=0;i<NumToRead;i++)
+ 164              		.loc 1 102 2 is_stmt 0 discriminator 1 view .LVU35
+ 165 001c B442     		cmp	r4, r6
+ 166 001e F5D3     		bcc	.L8
+ 106:Drivers/flash/flash.c **** 	}
+ 107:Drivers/flash/flash.c **** }
+ 167              		.loc 1 107 1 view .LVU36
+ 168 0020 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 169              		.loc 1 107 1 view .LVU37
+ 170              		.cfi_endproc
+ 171              	.LFE68:
+ 173              		.section	.text.Flash_PageErase,"ax",%progbits
+ 174              		.align	1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 6
+
+
+ 175              		.global	Flash_PageErase
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 180              	Flash_PageErase:
+ 181              	.LVL16:
+ 182              	.LFB69:
+ 108:Drivers/flash/flash.c ****  
+ 109:Drivers/flash/flash.c ****  /**********************************************************************************
+ 110:Drivers/flash/flash.c ****   * º¯Êý¹¦ÄÜ:²Á³ýÉÈÇø
+ 111:Drivers/flash/flash.c ****   * ÊäÈë²ÎÊý:PageAddress:²Á³ýÉÈÇøµØÖ·
+ 112:Drivers/flash/flash.c ****   * ·µ »Ø Öµ: ÎÞ
+ 113:Drivers/flash/flash.c ****   * Ëµ    Ã÷£º 
+ 114:Drivers/flash/flash.c ****   */
+ 115:Drivers/flash/flash.c **** void Flash_PageErase(uint32_t PageAddress)
+ 116:Drivers/flash/flash.c **** {
+ 183              		.loc 1 116 1 is_stmt 1 view -0
+ 184              		.cfi_startproc
+ 185              		@ args = 0, pretend = 0, frame = 0
+ 186              		@ frame_needed = 0, uses_anonymous_args = 0
+ 187              		@ link register save eliminated.
+ 117:Drivers/flash/flash.c ****   /* Clean the error context */
+ 118:Drivers/flash/flash.c ****   p_Flash.ErrorCode = HAL_FLASH_ERROR_NONE;
+ 188              		.loc 1 118 3 view .LVU39
+ 189              		.loc 1 118 21 is_stmt 0 view .LVU40
+ 190 0000 064B     		ldr	r3, .L11
+ 191 0002 0022     		movs	r2, #0
+ 192 0004 DA61     		str	r2, [r3, #28]
+ 119:Drivers/flash/flash.c ****  
+ 120:Drivers/flash/flash.c **** #if defined(FLASH_BANK2_END)
+ 121:Drivers/flash/flash.c ****   if(PageAddress > FLASH_BANK1_END)
+ 122:Drivers/flash/flash.c ****   { 
+ 123:Drivers/flash/flash.c ****     /* Proceed to erase the page */
+ 124:Drivers/flash/flash.c ****     SET_BIT(FLASH->CR2, FLASH_CR2_PER);
+ 125:Drivers/flash/flash.c ****     WRITE_REG(FLASH->AR2, PageAddress);
+ 126:Drivers/flash/flash.c ****     SET_BIT(FLASH->CR2, FLASH_CR2_STRT);
+ 127:Drivers/flash/flash.c ****   }
+ 128:Drivers/flash/flash.c ****   else
+ 129:Drivers/flash/flash.c ****   {
+ 130:Drivers/flash/flash.c **** #endif /* FLASH_BANK2_END */
+ 131:Drivers/flash/flash.c ****     /* Proceed to erase the page */
+ 132:Drivers/flash/flash.c ****     SET_BIT(FLASH->CR, FLASH_CR_PER);
+ 193              		.loc 1 132 5 is_stmt 1 view .LVU41
+ 194 0006 064B     		ldr	r3, .L11+4
+ 195 0008 1A69     		ldr	r2, [r3, #16]
+ 196 000a 42F00202 		orr	r2, r2, #2
+ 197 000e 1A61     		str	r2, [r3, #16]
+ 133:Drivers/flash/flash.c ****     WRITE_REG(FLASH->AR, PageAddress);
+ 198              		.loc 1 133 5 view .LVU42
+ 199 0010 5861     		str	r0, [r3, #20]
+ 134:Drivers/flash/flash.c ****     SET_BIT(FLASH->CR, FLASH_CR_STRT);
+ 200              		.loc 1 134 5 view .LVU43
+ 201 0012 1A69     		ldr	r2, [r3, #16]
+ 202 0014 42F04002 		orr	r2, r2, #64
+ 203 0018 1A61     		str	r2, [r3, #16]
+ 135:Drivers/flash/flash.c **** #if defined(FLASH_BANK2_END)
+ 136:Drivers/flash/flash.c ****  
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 7
+
+
+ 137:Drivers/flash/flash.c ****   }
+ 138:Drivers/flash/flash.c **** #endif /* FLASH_BANK2_END */
+ 139:Drivers/flash/flash.c ****   }
+ 204              		.loc 1 139 3 is_stmt 0 view .LVU44
+ 205 001a 7047     		bx	lr
+ 206              	.L12:
+ 207              		.align	2
+ 208              	.L11:
+ 209 001c 00000000 		.word	.LANCHOR0
+ 210 0020 00200240 		.word	1073881088
+ 211              		.cfi_endproc
+ 212              	.LFE69:
+ 214              		.section	.text.STMFLASH_Write,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	STMFLASH_Write
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	STMFLASH_Write:
+ 222              	.LVL17:
+ 223              	.LFB67:
+  40:Drivers/flash/flash.c **** 	uint32_t secpos;	   //ÉÈÇøµØÖ·
+ 224              		.loc 1 40 1 is_stmt 1 view -0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+  40:Drivers/flash/flash.c **** 	uint32_t secpos;	   //ÉÈÇøµØÖ·
+ 228              		.loc 1 40 1 is_stmt 0 view .LVU46
+ 229 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 230              	.LCFI2:
+ 231              		.cfi_def_cfa_offset 32
+ 232              		.cfi_offset 4, -32
+ 233              		.cfi_offset 5, -28
+ 234              		.cfi_offset 6, -24
+ 235              		.cfi_offset 7, -20
+ 236              		.cfi_offset 8, -16
+ 237              		.cfi_offset 9, -12
+ 238              		.cfi_offset 10, -8
+ 239              		.cfi_offset 14, -4
+  41:Drivers/flash/flash.c **** 	uint16_t secoff;	   //ÉÈÇøÄÚÆ«ÒÆµØÖ·(16Î»×Ö¼ÆËã)
+ 240              		.loc 1 41 2 is_stmt 1 view .LVU47
+  42:Drivers/flash/flash.c **** 	uint16_t secremain; //ÉÈÇøÄÚÊ£ÓàµØÖ·(16Î»×Ö¼ÆËã)	   
+ 241              		.loc 1 42 2 view .LVU48
+  43:Drivers/flash/flash.c ****  	uint16_t i;    
+ 242              		.loc 1 43 2 view .LVU49
+  44:Drivers/flash/flash.c **** 	uint32_t offaddr;   //È¥µô0X08000000ºóµÄµØÖ·
+ 243              		.loc 1 44 3 view .LVU50
+  45:Drivers/flash/flash.c **** 	
+ 244              		.loc 1 45 2 view .LVU51
+  47:Drivers/flash/flash.c **** 	
+ 245              		.loc 1 47 2 view .LVU52
+  47:Drivers/flash/flash.c **** 	
+ 246              		.loc 1 47 31 is_stmt 0 view .LVU53
+ 247 0004 00F17845 		add	r5, r0, #-134217728
+  47:Drivers/flash/flash.c **** 	
+ 248              		.loc 1 47 4 view .LVU54
+ 249 0008 B5F5803F 		cmp	r5, #65536
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 8
+
+
+ 250 000c 01D3     		bcc	.L29
+ 251              	.LVL18:
+ 252              	.L13:
+  91:Drivers/flash/flash.c **** #endif
+ 253              		.loc 1 91 1 view .LVU55
+ 254 000e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 255              	.LVL19:
+ 256              	.L29:
+  91:Drivers/flash/flash.c **** #endif
+ 257              		.loc 1 91 1 view .LVU56
+ 258 0012 8146     		mov	r9, r0
+ 259 0014 0E46     		mov	r6, r1
+ 260 0016 1746     		mov	r7, r2
+  49:Drivers/flash/flash.c **** 	offaddr=WriteAddr-STM32_FLASH_BASE;		//Êµ¼ÊÆ«ÒÆµØÖ·.
+ 261              		.loc 1 49 2 is_stmt 1 view .LVU57
+ 262 0018 FFF7FEFF 		bl	HAL_FLASH_Unlock
+ 263              	.LVL20:
+  50:Drivers/flash/flash.c **** 	secpos=offaddr/STM_SECTOR_SIZE;			//ÉÈÇøµØÖ·  0~64 for STM32F103C8T6
+ 264              		.loc 1 50 2 view .LVU58
+  51:Drivers/flash/flash.c **** 	secoff=(offaddr%STM_SECTOR_SIZE)/2;		//ÔÚÉÈÇøÄÚµÄÆ«ÒÆ(2¸ö×Ö½ÚÎª»ù±¾µ¥Î».)
+ 265              		.loc 1 51 2 view .LVU59
+  51:Drivers/flash/flash.c **** 	secoff=(offaddr%STM_SECTOR_SIZE)/2;		//ÔÚÉÈÇøÄÚµÄÆ«ÒÆ(2¸ö×Ö½ÚÎª»ù±¾µ¥Î».)
+ 266              		.loc 1 51 8 is_stmt 0 view .LVU60
+ 267 001c 4FEA952A 		lsr	r10, r5, #10
+ 268              	.LVL21:
+  52:Drivers/flash/flash.c **** 	secremain=STM_SECTOR_SIZE/2-secoff;		//ÉÈÇøÊ£Óà¿Õ¼ä´óÐ¡   
+ 269              		.loc 1 52 2 is_stmt 1 view .LVU61
+  52:Drivers/flash/flash.c **** 	secremain=STM_SECTOR_SIZE/2-secoff;		//ÉÈÇøÊ£Óà¿Õ¼ä´óÐ¡   
+ 270              		.loc 1 52 8 is_stmt 0 view .LVU62
+ 271 0020 C5F34805 		ubfx	r5, r5, #1, #9
+ 272              	.LVL22:
+  53:Drivers/flash/flash.c **** 	if(NumToWrite<=secremain)secremain=NumToWrite;//²»´óÓÚ¸ÃÉÈÇø·¶Î§
+ 273              		.loc 1 53 2 is_stmt 1 view .LVU63
+  53:Drivers/flash/flash.c **** 	if(NumToWrite<=secremain)secremain=NumToWrite;//²»´óÓÚ¸ÃÉÈÇø·¶Î§
+ 274              		.loc 1 53 11 is_stmt 0 view .LVU64
+ 275 0024 C5F50074 		rsb	r4, r5, #512
+ 276 0028 A4B2     		uxth	r4, r4
+ 277              	.LVL23:
+  54:Drivers/flash/flash.c **** 	while(1) 
+ 278              		.loc 1 54 2 is_stmt 1 view .LVU65
+  54:Drivers/flash/flash.c **** 	while(1) 
+ 279              		.loc 1 54 4 is_stmt 0 view .LVU66
+ 280 002a BC42     		cmp	r4, r7
+ 281 002c 04D3     		bcc	.L16
+  54:Drivers/flash/flash.c **** 	while(1) 
+ 282              		.loc 1 54 36 view .LVU67
+ 283 002e 3C46     		mov	r4, r7
+ 284              	.LVL24:
+  54:Drivers/flash/flash.c **** 	while(1) 
+ 285              		.loc 1 54 36 view .LVU68
+ 286 0030 02E0     		b	.L16
+ 287              	.LVL25:
+ 288              	.L25:
+  86:Drivers/flash/flash.c **** 			else secremain=NumToWrite;//ÏÂÒ»¸öÉÈÇø¿ÉÒÔÐ´ÍêÁË
+ 289              		.loc 1 86 47 view .LVU69
+ 290 0032 4FF40074 		mov	r4, #512
+ 291              	.LVL26:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 9
+
+
+ 292              	.L26:
+  86:Drivers/flash/flash.c **** 			else secremain=NumToWrite;//ÏÂÒ»¸öÉÈÇø¿ÉÒÔÐ´ÍêÁË
+ 293              		.loc 1 86 47 view .LVU70
+ 294 0036 0025     		movs	r5, #0
+ 295              	.LVL27:
+ 296              	.L16:
+  55:Drivers/flash/flash.c **** 	{	
+ 297              		.loc 1 55 2 is_stmt 1 view .LVU71
+  57:Drivers/flash/flash.c **** 		for(i=0;i<secremain;i++)	//Ð£ÑéÊý¾Ý
+ 298              		.loc 1 57 3 view .LVU72
+  57:Drivers/flash/flash.c **** 		for(i=0;i<secremain;i++)	//Ð£ÑéÊý¾Ý
+ 299              		.loc 1 57 39 is_stmt 0 view .LVU73
+ 300 0038 0AF50038 		add	r8, r10, #131072
+  57:Drivers/flash/flash.c **** 		for(i=0;i<secremain;i++)	//Ð£ÑéÊý¾Ý
+ 301              		.loc 1 57 3 view .LVU74
+ 302 003c 4FEA8828 		lsl	r8, r8, #10
+ 303 0040 4FF40072 		mov	r2, #512
+ 304 0044 2649     		ldr	r1, .L31
+ 305 0046 4046     		mov	r0, r8
+ 306 0048 FFF7FEFF 		bl	STMFLASH_Read
+ 307              	.LVL28:
+  58:Drivers/flash/flash.c **** 		{
+ 308              		.loc 1 58 3 is_stmt 1 view .LVU75
+  58:Drivers/flash/flash.c **** 		{
+ 309              		.loc 1 58 8 is_stmt 0 view .LVU76
+ 310 004c 0023     		movs	r3, #0
+ 311              	.LVL29:
+ 312              	.L17:
+  58:Drivers/flash/flash.c **** 		{
+ 313              		.loc 1 58 11 is_stmt 1 discriminator 1 view .LVU77
+  58:Drivers/flash/flash.c **** 		{
+ 314              		.loc 1 58 3 is_stmt 0 discriminator 1 view .LVU78
+ 315 004e 9C42     		cmp	r4, r3
+ 316 0050 0AD9     		bls	.L18
+  60:Drivers/flash/flash.c **** 		}
+ 317              		.loc 1 60 4 is_stmt 1 view .LVU79
+  60:Drivers/flash/flash.c **** 		}
+ 318              		.loc 1 60 26 is_stmt 0 view .LVU80
+ 319 0052 EA18     		adds	r2, r5, r3
+  60:Drivers/flash/flash.c **** 		}
+ 320              		.loc 1 60 19 view .LVU81
+ 321 0054 2249     		ldr	r1, .L31
+ 322 0056 31F81210 		ldrh	r1, [r1, r2, lsl #1]
+  60:Drivers/flash/flash.c **** 		}
+ 323              		.loc 1 60 6 view .LVU82
+ 324 005a 4FF6FF72 		movw	r2, #65535
+ 325 005e 9142     		cmp	r1, r2
+ 326 0060 02D1     		bne	.L18
+  58:Drivers/flash/flash.c **** 		{
+ 327              		.loc 1 58 23 is_stmt 1 discriminator 2 view .LVU83
+  58:Drivers/flash/flash.c **** 		{
+ 328              		.loc 1 58 24 is_stmt 0 discriminator 2 view .LVU84
+ 329 0062 0133     		adds	r3, r3, #1
+ 330              	.LVL30:
+  58:Drivers/flash/flash.c **** 		{
+ 331              		.loc 1 58 24 discriminator 2 view .LVU85
+ 332 0064 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 10
+
+
+ 333              	.LVL31:
+  58:Drivers/flash/flash.c **** 		{
+ 334              		.loc 1 58 24 discriminator 2 view .LVU86
+ 335 0066 F2E7     		b	.L17
+ 336              	.L18:
+  62:Drivers/flash/flash.c **** 		{
+ 337              		.loc 1 62 3 is_stmt 1 view .LVU87
+  62:Drivers/flash/flash.c **** 		{
+ 338              		.loc 1 62 5 is_stmt 0 view .LVU88
+ 339 0068 9C42     		cmp	r4, r3
+ 340 006a 17D8     		bhi	.L30
+  75:Drivers/flash/flash.c **** 			STMFLASH_Write_NoCheck(WriteAddr,pBuffer,secremain);//Ð´ÒÑ¾­²Á³ýÁËµÄ,Ö±½ÓÐ´ÈëÉÈÇøÊ£ÓàÇø¼ä. 
+ 341              		.loc 1 75 4 is_stmt 1 view .LVU89
+ 342 006c 4CF25030 		movw	r0, #50000
+ 343 0070 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 344              	.LVL32:
+  76:Drivers/flash/flash.c **** 		}
+ 345              		.loc 1 76 4 view .LVU90
+ 346 0074 2246     		mov	r2, r4
+ 347 0076 3146     		mov	r1, r6
+ 348 0078 4846     		mov	r0, r9
+ 349 007a FFF7FEFF 		bl	STMFLASH_Write_NoCheck
+ 350              	.LVL33:
+ 351              	.L23:
+  78:Drivers/flash/flash.c **** 		else//Ð´ÈëÎ´½áÊø
+ 352              		.loc 1 78 3 view .LVU91
+  78:Drivers/flash/flash.c **** 		else//Ð´ÈëÎ´½áÊø
+ 353              		.loc 1 78 5 is_stmt 0 view .LVU92
+ 354 007e A742     		cmp	r7, r4
+ 355 0080 2BD0     		beq	.L24
+  81:Drivers/flash/flash.c **** 			secoff=0;				//Æ«ÒÆÎ»ÖÃÎª0 	 
+ 356              		.loc 1 81 4 is_stmt 1 view .LVU93
+  81:Drivers/flash/flash.c **** 			secoff=0;				//Æ«ÒÆÎ»ÖÃÎª0 	 
+ 357              		.loc 1 81 10 is_stmt 0 view .LVU94
+ 358 0082 0AF1010A 		add	r10, r10, #1
+ 359              	.LVL34:
+  82:Drivers/flash/flash.c **** 		   	pBuffer+=secremain;  	//Ö¸ÕëÆ«ÒÆ
+ 360              		.loc 1 82 4 is_stmt 1 view .LVU95
+  83:Drivers/flash/flash.c **** 			WriteAddr+=secremain*2;	//Ð´µØÖ·Æ«ÒÆ(16Î»Êý¾ÝµØÖ·,ÐèÒª*2)	   
+ 361              		.loc 1 83 7 view .LVU96
+  83:Drivers/flash/flash.c **** 			WriteAddr+=secremain*2;	//Ð´µØÖ·Æ«ÒÆ(16Î»Êý¾ÝµØÖ·,ÐèÒª*2)	   
+ 362              		.loc 1 83 14 is_stmt 0 view .LVU97
+ 363 0086 06EB4406 		add	r6, r6, r4, lsl #1
+ 364              	.LVL35:
+  84:Drivers/flash/flash.c **** 		   	NumToWrite-=secremain;	//×Ö½Ú(16Î»)ÊýµÝ¼õ
+ 365              		.loc 1 84 4 is_stmt 1 view .LVU98
+  84:Drivers/flash/flash.c **** 		   	NumToWrite-=secremain;	//×Ö½Ú(16Î»)ÊýµÝ¼õ
+ 366              		.loc 1 84 13 is_stmt 0 view .LVU99
+ 367 008a 09EB4409 		add	r9, r9, r4, lsl #1
+ 368              	.LVL36:
+  85:Drivers/flash/flash.c **** 			if(NumToWrite>(STM_SECTOR_SIZE/2))secremain=STM_SECTOR_SIZE/2;//ÏÂÒ»¸öÉÈÇø»¹ÊÇÐ´²»Íê
+ 369              		.loc 1 85 7 is_stmt 1 view .LVU100
+  85:Drivers/flash/flash.c **** 			if(NumToWrite>(STM_SECTOR_SIZE/2))secremain=STM_SECTOR_SIZE/2;//ÏÂÒ»¸öÉÈÇø»¹ÊÇÐ´²»Íê
+ 370              		.loc 1 85 17 is_stmt 0 view .LVU101
+ 371 008e 3F1B     		subs	r7, r7, r4
+ 372              	.LVL37:
+  85:Drivers/flash/flash.c **** 			if(NumToWrite>(STM_SECTOR_SIZE/2))secremain=STM_SECTOR_SIZE/2;//ÏÂÒ»¸öÉÈÇø»¹ÊÇÐ´²»Íê
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 11
+
+
+ 373              		.loc 1 85 17 view .LVU102
+ 374 0090 BFB2     		uxth	r7, r7
+ 375              	.LVL38:
+  86:Drivers/flash/flash.c **** 			else secremain=NumToWrite;//ÏÂÒ»¸öÉÈÇø¿ÉÒÔÐ´ÍêÁË
+ 376              		.loc 1 86 4 is_stmt 1 view .LVU103
+  86:Drivers/flash/flash.c **** 			else secremain=NumToWrite;//ÏÂÒ»¸öÉÈÇø¿ÉÒÔÐ´ÍêÁË
+ 377              		.loc 1 86 6 is_stmt 0 view .LVU104
+ 378 0092 B7F5007F 		cmp	r7, #512
+ 379 0096 CCD8     		bhi	.L25
+  87:Drivers/flash/flash.c **** 		}	 
+ 380              		.loc 1 87 18 view .LVU105
+ 381 0098 3C46     		mov	r4, r7
+ 382              	.LVL39:
+  87:Drivers/flash/flash.c **** 		}	 
+ 383              		.loc 1 87 18 view .LVU106
+ 384 009a CCE7     		b	.L26
+ 385              	.LVL40:
+ 386              	.L30:
+  64:Drivers/flash/flash.c **** 			FLASH_WaitForLastOperation(FLASH_WAITETIME);            	//µÈ´ýÉÏ´Î²Ù×÷Íê³É
+ 387              		.loc 1 64 4 is_stmt 1 view .LVU107
+ 388 009c 4046     		mov	r0, r8
+ 389 009e FFF7FEFF 		bl	Flash_PageErase
+ 390              	.LVL41:
+  65:Drivers/flash/flash.c **** 			CLEAR_BIT(FLASH->CR, FLASH_CR_PER);							//Çå³ýCR¼Ä´æÆ÷µÄPERÎ»£¬´Ë²Ù×÷Ó¦¸ÃÔÚFLASH_PageErase()ÖÐ
+ 391              		.loc 1 65 4 view .LVU108
+ 392 00a2 4CF25030 		movw	r0, #50000
+ 393 00a6 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 394              	.LVL42:
+  66:Drivers/flash/flash.c **** 																		//µ«ÊÇHAL¿âÀïÃæ²¢Ã»ÓÐ×ö£¬Ó¦¸ÃÊÇHAL¿âbug£¡
+ 395              		.loc 1 66 4 view .LVU109
+ 396 00aa 0E4A     		ldr	r2, .L31+4
+ 397 00ac 1369     		ldr	r3, [r2, #16]
+ 398 00ae 23F00203 		bic	r3, r3, #2
+ 399 00b2 1361     		str	r3, [r2, #16]
+  68:Drivers/flash/flash.c **** 			{
+ 400              		.loc 1 68 4 view .LVU110
+ 401              	.LVL43:
+  68:Drivers/flash/flash.c **** 			{
+ 402              		.loc 1 68 9 is_stmt 0 view .LVU111
+ 403 00b4 0023     		movs	r3, #0
+  68:Drivers/flash/flash.c **** 			{
+ 404              		.loc 1 68 4 view .LVU112
+ 405 00b6 07E0     		b	.L21
+ 406              	.LVL44:
+ 407              	.L22:
+  70:Drivers/flash/flash.c **** 			}
+ 408              		.loc 1 70 5 is_stmt 1 discriminator 3 view .LVU113
+  70:Drivers/flash/flash.c **** 			}
+ 409              		.loc 1 70 19 is_stmt 0 discriminator 3 view .LVU114
+ 410 00b8 5919     		adds	r1, r3, r5
+  70:Drivers/flash/flash.c **** 			}
+ 411              		.loc 1 70 35 discriminator 3 view .LVU115
+ 412 00ba 36F81300 		ldrh	r0, [r6, r3, lsl #1]
+  70:Drivers/flash/flash.c **** 			}
+ 413              		.loc 1 70 27 discriminator 3 view .LVU116
+ 414 00be 084A     		ldr	r2, .L31
+ 415 00c0 22F81100 		strh	r0, [r2, r1, lsl #1]	@ movhi
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 12
+
+
+  68:Drivers/flash/flash.c **** 			{
+ 416              		.loc 1 68 24 is_stmt 1 discriminator 3 view .LVU117
+  68:Drivers/flash/flash.c **** 			{
+ 417              		.loc 1 68 25 is_stmt 0 discriminator 3 view .LVU118
+ 418 00c4 0133     		adds	r3, r3, #1
+ 419              	.LVL45:
+  68:Drivers/flash/flash.c **** 			{
+ 420              		.loc 1 68 25 discriminator 3 view .LVU119
+ 421 00c6 9BB2     		uxth	r3, r3
+ 422              	.LVL46:
+ 423              	.L21:
+  68:Drivers/flash/flash.c **** 			{
+ 424              		.loc 1 68 12 is_stmt 1 discriminator 1 view .LVU120
+  68:Drivers/flash/flash.c **** 			{
+ 425              		.loc 1 68 4 is_stmt 0 discriminator 1 view .LVU121
+ 426 00c8 9C42     		cmp	r4, r3
+ 427 00ca F5D8     		bhi	.L22
+  72:Drivers/flash/flash.c **** 		}else 
+ 428              		.loc 1 72 4 is_stmt 1 view .LVU122
+ 429 00cc 4FF40072 		mov	r2, #512
+ 430 00d0 0349     		ldr	r1, .L31
+ 431 00d2 4046     		mov	r0, r8
+ 432 00d4 FFF7FEFF 		bl	STMFLASH_Write_NoCheck
+ 433              	.LVL47:
+  72:Drivers/flash/flash.c **** 		}else 
+ 434              		.loc 1 72 4 is_stmt 0 view .LVU123
+ 435 00d8 D1E7     		b	.L23
+ 436              	.L24:
+  89:Drivers/flash/flash.c **** 	HAL_FLASH_Lock();		//ÉÏËø
+ 437              		.loc 1 89 3 is_stmt 1 view .LVU124
+  90:Drivers/flash/flash.c **** }
+ 438              		.loc 1 90 2 view .LVU125
+ 439 00da FFF7FEFF 		bl	HAL_FLASH_Lock
+ 440              	.LVL48:
+ 441 00de 96E7     		b	.L13
+ 442              	.L32:
+ 443              		.align	2
+ 444              	.L31:
+ 445 00e0 00000000 		.word	.LANCHOR1
+ 446 00e4 00200240 		.word	1073881088
+ 447              		.cfi_endproc
+ 448              	.LFE67:
+ 450              		.global	STMFLASH_BUF
+ 451              		.global	p_Flash
+ 452              		.section	.bss.STMFLASH_BUF,"aw",%nobits
+ 453              		.align	2
+ 454              		.set	.LANCHOR1,. + 0
+ 457              	STMFLASH_BUF:
+ 458 0000 00000000 		.space	1024
+ 458      00000000 
+ 458      00000000 
+ 458      00000000 
+ 458      00000000 
+ 459              		.section	.bss.p_Flash,"aw",%nobits
+ 460              		.align	3
+ 461              		.set	.LANCHOR0,. + 0
+ 464              	p_Flash:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 13
+
+
+ 465 0000 00000000 		.space	32
+ 465      00000000 
+ 465      00000000 
+ 465      00000000 
+ 465      00000000 
+ 466              		.text
+ 467              	.Letext0:
+ 468              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 469              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 470              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 471              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 472              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h"
+ 473              		.file 7 "Drivers/flash/flash.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 flash.c
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:18     .text.STMFLASH_ReadHalfWord:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:24     .text.STMFLASH_ReadHalfWord:00000000 STMFLASH_ReadHalfWord
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:44     .text.STMFLASH_Write_NoCheck:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:50     .text.STMFLASH_Write_NoCheck:00000000 STMFLASH_Write_NoCheck
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:109    .text.STMFLASH_Read:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:115    .text.STMFLASH_Read:00000000 STMFLASH_Read
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:174    .text.Flash_PageErase:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:180    .text.Flash_PageErase:00000000 Flash_PageErase
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:209    .text.Flash_PageErase:0000001c $d
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:215    .text.STMFLASH_Write:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:221    .text.STMFLASH_Write:00000000 STMFLASH_Write
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:445    .text.STMFLASH_Write:000000e0 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:457    .bss.STMFLASH_BUF:00000000 STMFLASH_BUF
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:464    .bss.p_Flash:00000000 p_Flash
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:453    .bss.STMFLASH_BUF:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccjn0ZcD.s:460    .bss.p_Flash:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_FLASH_Program
+HAL_FLASH_Unlock
+FLASH_WaitForLastOperation
+HAL_FLASH_Lock

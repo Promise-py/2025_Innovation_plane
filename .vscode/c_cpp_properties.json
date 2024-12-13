@@ -8,7 +8,6 @@
                 "${workspaceFolder}/Tools/DSP/Inc",
                 "${workspaceFolder}/Tools/DSP/Lib",
                 "${workspaceFolder}/Tools/DSP/Include"
-
             ],
             "defines": [
                 "_DEBUG",

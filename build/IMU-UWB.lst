@@ -1,0 +1,2129 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"IMU-UWB.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_dmul
+  18              		.global	__aeabi_dadd
+  19              		.global	__aeabi_ddiv
+  20              		.section	.text.normalize_quaternion,"ax",%progbits
+  21              		.align	1
+  22              		.global	normalize_quaternion
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	normalize_quaternion:
+  28              	.LVL0:
+  29              	.LFB3:
+  30              		.file 1 "algorithm/IMU-UWB.c"
+   1:algorithm/IMU-UWB.c **** #include "IMU-UWB.h"
+   2:algorithm/IMU-UWB.c **** #include <stdio.h>
+   3:algorithm/IMU-UWB.c **** #include <stdlib.h>
+   4:algorithm/IMU-UWB.c **** #include <math.h>
+   5:algorithm/IMU-UWB.c **** 
+   6:algorithm/IMU-UWB.c **** // 四元数归一化
+   7:algorithm/IMU-UWB.c **** Quaternion normalize_quaternion(Quaternion q) {
+  31              		.loc 1 7 47 view -0
+  32              		.cfi_startproc
+  33              		@ args = 32, pretend = 8, frame = 16
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		.loc 1 7 47 is_stmt 0 view .LVU1
+  36 0000 82B0     		sub	sp, sp, #8
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39 0002 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 40
+  42              		.cfi_offset 4, -40
+  43              		.cfi_offset 5, -36
+  44              		.cfi_offset 6, -32
+  45              		.cfi_offset 7, -28
+  46              		.cfi_offset 8, -24
+  47              		.cfi_offset 9, -20
+  48              		.cfi_offset 10, -16
+  49              		.cfi_offset 14, -12
+  50 0006 84B0     		sub	sp, sp, #16
+  51              	.LCFI2:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 2
+
+
+  52              		.cfi_def_cfa_offset 56
+  53 0008 8246     		mov	r10, r0
+  54 000a 0CA9     		add	r1, sp, #48
+  55 000c 81E80C00 		stm	r1, {r2, r3}
+   8:algorithm/IMU-UWB.c ****     double norm = sqrt(q.w*q.w + q.x*q.x + q.y*q.y + q.z*q.z);
+  56              		.loc 1 8 5 is_stmt 1 view .LVU2
+  57              		.loc 1 8 25 is_stmt 0 view .LVU3
+  58 0010 DDE90C89 		ldrd	r8, [sp, #48]
+  59              		.loc 1 8 27 view .LVU4
+  60 0014 4246     		mov	r2, r8
+  61 0016 4B46     		mov	r3, r9
+  62 0018 4046     		mov	r0, r8
+  63              	.LVL1:
+  64              		.loc 1 8 27 view .LVU5
+  65 001a 4946     		mov	r1, r9
+  66 001c FFF7FEFF 		bl	__aeabi_dmul
+  67              	.LVL2:
+  68 0020 0446     		mov	r4, r0
+  69 0022 0D46     		mov	r5, r1
+  70              		.loc 1 8 35 view .LVU6
+  71 0024 DDE90E23 		ldrd	r2, [sp, #56]
+  72 0028 1046     		mov	r0, r2
+  73 002a 1946     		mov	r1, r3
+  74              		.loc 1 8 37 view .LVU7
+  75 002c CDE90001 		strd	r0, [sp]
+  76 0030 FFF7FEFF 		bl	__aeabi_dmul
+  77              	.LVL3:
+  78 0034 0246     		mov	r2, r0
+  79 0036 0B46     		mov	r3, r1
+  80              		.loc 1 8 32 view .LVU8
+  81 0038 2046     		mov	r0, r4
+  82 003a 2946     		mov	r1, r5
+  83 003c FFF7FEFF 		bl	__aeabi_dadd
+  84              	.LVL4:
+  85 0040 0446     		mov	r4, r0
+  86 0042 0D46     		mov	r5, r1
+  87              		.loc 1 8 45 view .LVU9
+  88 0044 DDE91012 		ldrd	r1, [sp, #64]
+  89 0048 0E46     		mov	r6, r1
+  90 004a 1746     		mov	r7, r2
+  91              		.loc 1 8 47 view .LVU10
+  92 004c 0A46     		mov	r2, r1
+  93 004e 3B46     		mov	r3, r7
+  94 0050 CDE90267 		strd	r6, [sp, #8]
+  95 0054 3046     		mov	r0, r6
+  96 0056 3946     		mov	r1, r7
+  97 0058 FFF7FEFF 		bl	__aeabi_dmul
+  98              	.LVL5:
+  99 005c 0246     		mov	r2, r0
+ 100 005e 0B46     		mov	r3, r1
+ 101              		.loc 1 8 42 view .LVU11
+ 102 0060 2046     		mov	r0, r4
+ 103 0062 2946     		mov	r1, r5
+ 104 0064 FFF7FEFF 		bl	__aeabi_dadd
+ 105              	.LVL6:
+ 106 0068 0446     		mov	r4, r0
+ 107 006a 0D46     		mov	r5, r1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 3
+
+
+ 108              		.loc 1 8 55 view .LVU12
+ 109 006c DDE91267 		ldrd	r6, [sp, #72]
+ 110              		.loc 1 8 57 view .LVU13
+ 111 0070 3246     		mov	r2, r6
+ 112 0072 3B46     		mov	r3, r7
+ 113 0074 3046     		mov	r0, r6
+ 114 0076 3946     		mov	r1, r7
+ 115 0078 FFF7FEFF 		bl	__aeabi_dmul
+ 116              	.LVL7:
+ 117 007c 0246     		mov	r2, r0
+ 118 007e 0B46     		mov	r3, r1
+ 119              		.loc 1 8 19 view .LVU14
+ 120 0080 2046     		mov	r0, r4
+ 121 0082 2946     		mov	r1, r5
+ 122 0084 FFF7FEFF 		bl	__aeabi_dadd
+ 123              	.LVL8:
+ 124 0088 FFF7FEFF 		bl	sqrt
+ 125              	.LVL9:
+ 126 008c 0446     		mov	r4, r0
+ 127 008e 0D46     		mov	r5, r1
+ 128              	.LVL10:
+   9:algorithm/IMU-UWB.c ****     Quaternion normalized = { q.w / norm, q.x / norm, q.y / norm, q.z / norm };
+ 129              		.loc 1 9 5 is_stmt 1 view .LVU15
+ 130              		.loc 1 9 35 is_stmt 0 view .LVU16
+ 131 0090 0246     		mov	r2, r0
+ 132 0092 0B46     		mov	r3, r1
+ 133 0094 4046     		mov	r0, r8
+ 134 0096 4946     		mov	r1, r9
+ 135 0098 FFF7FEFF 		bl	__aeabi_ddiv
+ 136              	.LVL11:
+ 137              		.loc 1 9 16 view .LVU17
+ 138 009c CAE90001 		strd	r0, [r10]
+ 139              		.loc 1 9 47 view .LVU18
+ 140 00a0 2246     		mov	r2, r4
+ 141 00a2 2B46     		mov	r3, r5
+ 142 00a4 DDE90001 		ldrd	r0, [sp]
+ 143 00a8 FFF7FEFF 		bl	__aeabi_ddiv
+ 144              	.LVL12:
+ 145              		.loc 1 9 16 view .LVU19
+ 146 00ac CAE90201 		strd	r0, [r10, #8]
+ 147              		.loc 1 9 59 view .LVU20
+ 148 00b0 2246     		mov	r2, r4
+ 149 00b2 2B46     		mov	r3, r5
+ 150 00b4 DDE90201 		ldrd	r0, [sp, #8]
+ 151 00b8 FFF7FEFF 		bl	__aeabi_ddiv
+ 152              	.LVL13:
+ 153              		.loc 1 9 16 view .LVU21
+ 154 00bc CAE90401 		strd	r0, [r10, #16]
+ 155              		.loc 1 9 71 view .LVU22
+ 156 00c0 2246     		mov	r2, r4
+ 157 00c2 2B46     		mov	r3, r5
+ 158 00c4 3046     		mov	r0, r6
+ 159 00c6 3946     		mov	r1, r7
+ 160 00c8 FFF7FEFF 		bl	__aeabi_ddiv
+ 161              	.LVL14:
+ 162              		.loc 1 9 16 view .LVU23
+ 163 00cc CAE90601 		strd	r0, [r10, #24]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 4
+
+
+  10:algorithm/IMU-UWB.c ****     return normalized;
+ 164              		.loc 1 10 5 is_stmt 1 view .LVU24
+  11:algorithm/IMU-UWB.c **** }
+ 165              		.loc 1 11 1 is_stmt 0 view .LVU25
+ 166 00d0 5046     		mov	r0, r10
+ 167 00d2 04B0     		add	sp, sp, #16
+ 168              	.LCFI3:
+ 169              		.cfi_def_cfa_offset 40
+ 170              		@ sp needed
+ 171 00d4 BDE8F047 		pop	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 172              	.LCFI4:
+ 173              		.cfi_restore 14
+ 174              		.cfi_restore 10
+ 175              		.cfi_restore 9
+ 176              		.cfi_restore 8
+ 177              		.cfi_restore 7
+ 178              		.cfi_restore 6
+ 179              		.cfi_restore 5
+ 180              		.cfi_restore 4
+ 181              		.cfi_def_cfa_offset 8
+ 182              	.LVL15:
+ 183              		.loc 1 11 1 view .LVU26
+ 184 00d8 02B0     		add	sp, sp, #8
+ 185              	.LCFI5:
+ 186              		.cfi_def_cfa_offset 0
+ 187 00da 7047     		bx	lr
+ 188              		.cfi_endproc
+ 189              	.LFE3:
+ 191              		.global	__aeabi_dsub
+ 192              		.section	.text.multiply_quaternion,"ax",%progbits
+ 193              		.align	1
+ 194              		.global	multiply_quaternion
+ 195              		.syntax unified
+ 196              		.thumb
+ 197              		.thumb_func
+ 199              	multiply_quaternion:
+ 200              	.LVL16:
+ 201              	.LFB4:
+  12:algorithm/IMU-UWB.c **** 
+  13:algorithm/IMU-UWB.c **** // 四元数乘法
+  14:algorithm/IMU-UWB.c **** Quaternion multiply_quaternion(Quaternion q1, Quaternion q2) {
+ 202              		.loc 1 14 62 is_stmt 1 view -0
+ 203              		.cfi_startproc
+ 204              		@ args = 64, pretend = 8, frame = 48
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		.loc 1 14 62 is_stmt 0 view .LVU28
+ 207 0000 82B0     		sub	sp, sp, #8
+ 208              	.LCFI6:
+ 209              		.cfi_def_cfa_offset 8
+ 210 0002 2DE9D04F 		push	{r4, r6, r7, r8, r9, r10, fp, lr}
+ 211              	.LCFI7:
+ 212              		.cfi_def_cfa_offset 40
+ 213              		.cfi_offset 4, -40
+ 214              		.cfi_offset 6, -36
+ 215              		.cfi_offset 7, -32
+ 216              		.cfi_offset 8, -28
+ 217              		.cfi_offset 9, -24
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 5
+
+
+ 218              		.cfi_offset 10, -20
+ 219              		.cfi_offset 11, -16
+ 220              		.cfi_offset 14, -12
+ 221 0006 8CB0     		sub	sp, sp, #48
+ 222              	.LCFI8:
+ 223              		.cfi_def_cfa_offset 88
+ 224 0008 0446     		mov	r4, r0
+ 225 000a 14A9     		add	r1, sp, #80
+ 226 000c 81E80C00 		stm	r1, {r2, r3}
+  15:algorithm/IMU-UWB.c ****     Quaternion result;
+ 227              		.loc 1 15 5 is_stmt 1 view .LVU29
+  16:algorithm/IMU-UWB.c ****     result.w = q1.w*q2.w - q1.x*q2.x - q1.y*q2.y - q1.z*q2.z;
+ 228              		.loc 1 16 5 view .LVU30
+ 229              		.loc 1 16 18 is_stmt 0 view .LVU31
+ 230 0010 DDE91401 		ldrd	r0, [sp, #80]
+ 231              	.LVL17:
+ 232              		.loc 1 16 23 view .LVU32
+ 233 0014 DDE91C23 		ldrd	r2, [sp, #112]
+ 234              		.loc 1 16 20 view .LVU33
+ 235 0018 CDE90223 		strd	r2, [sp, #8]
+ 236 001c CDE90001 		strd	r0, [sp]
+ 237 0020 FFF7FEFF 		bl	__aeabi_dmul
+ 238              	.LVL18:
+ 239 0024 0646     		mov	r6, r0
+ 240 0026 0F46     		mov	r7, r1
+ 241              		.loc 1 16 30 view .LVU34
+ 242 0028 DDE91689 		ldrd	r8, [sp, #88]
+ 243              		.loc 1 16 35 view .LVU35
+ 244 002c DDE91E12 		ldrd	r1, [sp, #120]
+ 245              		.loc 1 16 32 view .LVU36
+ 246 0030 CDE90612 		strd	r1, [sp, #24]
+ 247 0034 1346     		mov	r3, r2
+ 248 0036 0A46     		mov	r2, r1
+ 249 0038 CDE90489 		strd	r8, [sp, #16]
+ 250 003c 4046     		mov	r0, r8
+ 251 003e 4946     		mov	r1, r9
+ 252 0040 FFF7FEFF 		bl	__aeabi_dmul
+ 253              	.LVL19:
+ 254 0044 0246     		mov	r2, r0
+ 255 0046 0B46     		mov	r3, r1
+ 256              		.loc 1 16 26 view .LVU37
+ 257 0048 3046     		mov	r0, r6
+ 258 004a 3946     		mov	r1, r7
+ 259 004c FFF7FEFF 		bl	__aeabi_dsub
+ 260              	.LVL20:
+ 261 0050 0646     		mov	r6, r0
+ 262 0052 0F46     		mov	r7, r1
+ 263              		.loc 1 16 42 view .LVU38
+ 264 0054 DDE9189A 		ldrd	r9, [sp, #96]
+ 265              		.loc 1 16 47 view .LVU39
+ 266 0058 DDE920BC 		ldrd	fp, [sp, #128]
+ 267              		.loc 1 16 44 view .LVU40
+ 268 005c CDE90ABC 		strd	fp, [sp, #40]
+ 269 0060 5A46     		mov	r2, fp
+ 270 0062 6346     		mov	r3, ip
+ 271 0064 CDE9089A 		strd	r9, [sp, #32]
+ 272 0068 4846     		mov	r0, r9
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 6
+
+
+ 273 006a 5146     		mov	r1, r10
+ 274 006c FFF7FEFF 		bl	__aeabi_dmul
+ 275              	.LVL21:
+ 276 0070 0246     		mov	r2, r0
+ 277 0072 0B46     		mov	r3, r1
+ 278              		.loc 1 16 38 view .LVU41
+ 279 0074 3046     		mov	r0, r6
+ 280 0076 3946     		mov	r1, r7
+ 281 0078 FFF7FEFF 		bl	__aeabi_dsub
+ 282              	.LVL22:
+ 283 007c 8046     		mov	r8, r0
+ 284 007e 8946     		mov	r9, r1
+ 285              		.loc 1 16 54 view .LVU42
+ 286 0080 DDE91AAB 		ldrd	r10, [sp, #104]
+ 287              		.loc 1 16 59 view .LVU43
+ 288 0084 DDE92267 		ldrd	r6, [sp, #136]
+ 289              		.loc 1 16 56 view .LVU44
+ 290 0088 3246     		mov	r2, r6
+ 291 008a 3B46     		mov	r3, r7
+ 292 008c 5046     		mov	r0, r10
+ 293 008e 5946     		mov	r1, fp
+ 294 0090 FFF7FEFF 		bl	__aeabi_dmul
+ 295              	.LVL23:
+ 296 0094 0246     		mov	r2, r0
+ 297 0096 0B46     		mov	r3, r1
+ 298              		.loc 1 16 50 view .LVU45
+ 299 0098 4046     		mov	r0, r8
+ 300 009a 4946     		mov	r1, r9
+ 301 009c FFF7FEFF 		bl	__aeabi_dsub
+ 302              	.LVL24:
+ 303              		.loc 1 16 14 view .LVU46
+ 304 00a0 C4E90001 		strd	r0, [r4]
+  17:algorithm/IMU-UWB.c ****     result.x = q1.w*q2.x + q1.x*q2.w + q1.y*q2.z - q1.z*q2.y;
+ 305              		.loc 1 17 5 is_stmt 1 view .LVU47
+ 306              		.loc 1 17 20 is_stmt 0 view .LVU48
+ 307 00a4 DDE90623 		ldrd	r2, [sp, #24]
+ 308 00a8 DDE90001 		ldrd	r0, [sp]
+ 309 00ac FFF7FEFF 		bl	__aeabi_dmul
+ 310              	.LVL25:
+ 311 00b0 8046     		mov	r8, r0
+ 312 00b2 8946     		mov	r9, r1
+ 313              		.loc 1 17 32 view .LVU49
+ 314 00b4 DDE90423 		ldrd	r2, [sp, #16]
+ 315 00b8 DDE90201 		ldrd	r0, [sp, #8]
+ 316 00bc FFF7FEFF 		bl	__aeabi_dmul
+ 317              	.LVL26:
+ 318 00c0 0246     		mov	r2, r0
+ 319 00c2 0B46     		mov	r3, r1
+ 320              		.loc 1 17 26 view .LVU50
+ 321 00c4 4046     		mov	r0, r8
+ 322 00c6 4946     		mov	r1, r9
+ 323 00c8 FFF7FEFF 		bl	__aeabi_dadd
+ 324              	.LVL27:
+ 325 00cc 8046     		mov	r8, r0
+ 326 00ce 8946     		mov	r9, r1
+ 327              		.loc 1 17 44 view .LVU51
+ 328 00d0 3246     		mov	r2, r6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 7
+
+
+ 329 00d2 3B46     		mov	r3, r7
+ 330 00d4 DDE90801 		ldrd	r0, [sp, #32]
+ 331 00d8 FFF7FEFF 		bl	__aeabi_dmul
+ 332              	.LVL28:
+ 333 00dc 0246     		mov	r2, r0
+ 334 00de 0B46     		mov	r3, r1
+ 335              		.loc 1 17 38 view .LVU52
+ 336 00e0 4046     		mov	r0, r8
+ 337 00e2 4946     		mov	r1, r9
+ 338 00e4 FFF7FEFF 		bl	__aeabi_dadd
+ 339              	.LVL29:
+ 340 00e8 8046     		mov	r8, r0
+ 341 00ea 8946     		mov	r9, r1
+ 342              		.loc 1 17 56 view .LVU53
+ 343 00ec 5246     		mov	r2, r10
+ 344 00ee 5B46     		mov	r3, fp
+ 345 00f0 DDE90A01 		ldrd	r0, [sp, #40]
+ 346 00f4 FFF7FEFF 		bl	__aeabi_dmul
+ 347              	.LVL30:
+ 348 00f8 0246     		mov	r2, r0
+ 349 00fa 0B46     		mov	r3, r1
+ 350              		.loc 1 17 50 view .LVU54
+ 351 00fc 4046     		mov	r0, r8
+ 352 00fe 4946     		mov	r1, r9
+ 353 0100 FFF7FEFF 		bl	__aeabi_dsub
+ 354              	.LVL31:
+ 355              		.loc 1 17 14 view .LVU55
+ 356 0104 C4E90201 		strd	r0, [r4, #8]
+  18:algorithm/IMU-UWB.c ****     result.y = q1.w*q2.y - q1.x*q2.z + q1.y*q2.w + q1.z*q2.x;
+ 357              		.loc 1 18 5 is_stmt 1 view .LVU56
+ 358              		.loc 1 18 20 is_stmt 0 view .LVU57
+ 359 0108 DDE90A23 		ldrd	r2, [sp, #40]
+ 360 010c DDE90001 		ldrd	r0, [sp]
+ 361 0110 FFF7FEFF 		bl	__aeabi_dmul
+ 362              	.LVL32:
+ 363 0114 8046     		mov	r8, r0
+ 364 0116 8946     		mov	r9, r1
+ 365              		.loc 1 18 32 view .LVU58
+ 366 0118 3246     		mov	r2, r6
+ 367 011a 3B46     		mov	r3, r7
+ 368 011c DDE90401 		ldrd	r0, [sp, #16]
+ 369 0120 FFF7FEFF 		bl	__aeabi_dmul
+ 370              	.LVL33:
+ 371 0124 0246     		mov	r2, r0
+ 372 0126 0B46     		mov	r3, r1
+ 373              		.loc 1 18 26 view .LVU59
+ 374 0128 4046     		mov	r0, r8
+ 375 012a 4946     		mov	r1, r9
+ 376 012c FFF7FEFF 		bl	__aeabi_dsub
+ 377              	.LVL34:
+ 378 0130 8046     		mov	r8, r0
+ 379 0132 8946     		mov	r9, r1
+ 380              		.loc 1 18 44 view .LVU60
+ 381 0134 DDE90823 		ldrd	r2, [sp, #32]
+ 382 0138 DDE90201 		ldrd	r0, [sp, #8]
+ 383 013c FFF7FEFF 		bl	__aeabi_dmul
+ 384              	.LVL35:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 8
+
+
+ 385 0140 0246     		mov	r2, r0
+ 386 0142 0B46     		mov	r3, r1
+ 387              		.loc 1 18 38 view .LVU61
+ 388 0144 4046     		mov	r0, r8
+ 389 0146 4946     		mov	r1, r9
+ 390 0148 FFF7FEFF 		bl	__aeabi_dadd
+ 391              	.LVL36:
+ 392 014c 8046     		mov	r8, r0
+ 393 014e 8946     		mov	r9, r1
+ 394              		.loc 1 18 56 view .LVU62
+ 395 0150 5246     		mov	r2, r10
+ 396 0152 5B46     		mov	r3, fp
+ 397 0154 DDE90601 		ldrd	r0, [sp, #24]
+ 398 0158 FFF7FEFF 		bl	__aeabi_dmul
+ 399              	.LVL37:
+ 400 015c 0246     		mov	r2, r0
+ 401 015e 0B46     		mov	r3, r1
+ 402              		.loc 1 18 50 view .LVU63
+ 403 0160 4046     		mov	r0, r8
+ 404 0162 4946     		mov	r1, r9
+ 405 0164 FFF7FEFF 		bl	__aeabi_dadd
+ 406              	.LVL38:
+ 407              		.loc 1 18 14 view .LVU64
+ 408 0168 C4E90401 		strd	r0, [r4, #16]
+  19:algorithm/IMU-UWB.c ****     result.z = q1.w*q2.z + q1.x*q2.y - q1.y*q2.x + q1.z*q2.w;
+ 409              		.loc 1 19 5 is_stmt 1 view .LVU65
+ 410              		.loc 1 19 20 is_stmt 0 view .LVU66
+ 411 016c 3246     		mov	r2, r6
+ 412 016e 3B46     		mov	r3, r7
+ 413 0170 DDE90001 		ldrd	r0, [sp]
+ 414 0174 FFF7FEFF 		bl	__aeabi_dmul
+ 415              	.LVL39:
+ 416 0178 0646     		mov	r6, r0
+ 417 017a 0F46     		mov	r7, r1
+ 418              		.loc 1 19 32 view .LVU67
+ 419 017c DDE90A23 		ldrd	r2, [sp, #40]
+ 420 0180 DDE90401 		ldrd	r0, [sp, #16]
+ 421 0184 FFF7FEFF 		bl	__aeabi_dmul
+ 422              	.LVL40:
+ 423 0188 0246     		mov	r2, r0
+ 424 018a 0B46     		mov	r3, r1
+ 425              		.loc 1 19 26 view .LVU68
+ 426 018c 3046     		mov	r0, r6
+ 427 018e 3946     		mov	r1, r7
+ 428 0190 FFF7FEFF 		bl	__aeabi_dadd
+ 429              	.LVL41:
+ 430 0194 0646     		mov	r6, r0
+ 431 0196 0F46     		mov	r7, r1
+ 432              		.loc 1 19 44 view .LVU69
+ 433 0198 DDE90823 		ldrd	r2, [sp, #32]
+ 434 019c DDE90601 		ldrd	r0, [sp, #24]
+ 435 01a0 FFF7FEFF 		bl	__aeabi_dmul
+ 436              	.LVL42:
+ 437 01a4 0246     		mov	r2, r0
+ 438 01a6 0B46     		mov	r3, r1
+ 439              		.loc 1 19 38 view .LVU70
+ 440 01a8 3046     		mov	r0, r6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 9
+
+
+ 441 01aa 3946     		mov	r1, r7
+ 442 01ac FFF7FEFF 		bl	__aeabi_dsub
+ 443              	.LVL43:
+ 444 01b0 0646     		mov	r6, r0
+ 445 01b2 0F46     		mov	r7, r1
+ 446              		.loc 1 19 56 view .LVU71
+ 447 01b4 5246     		mov	r2, r10
+ 448 01b6 5B46     		mov	r3, fp
+ 449 01b8 DDE90201 		ldrd	r0, [sp, #8]
+ 450 01bc FFF7FEFF 		bl	__aeabi_dmul
+ 451              	.LVL44:
+ 452 01c0 0246     		mov	r2, r0
+ 453 01c2 0B46     		mov	r3, r1
+ 454              		.loc 1 19 50 view .LVU72
+ 455 01c4 3046     		mov	r0, r6
+ 456 01c6 3946     		mov	r1, r7
+ 457 01c8 FFF7FEFF 		bl	__aeabi_dadd
+ 458              	.LVL45:
+ 459              		.loc 1 19 14 view .LVU73
+ 460 01cc C4E90601 		strd	r0, [r4, #24]
+  20:algorithm/IMU-UWB.c ****     return result;
+ 461              		.loc 1 20 5 is_stmt 1 view .LVU74
+  21:algorithm/IMU-UWB.c **** }
+ 462              		.loc 1 21 1 is_stmt 0 view .LVU75
+ 463 01d0 2046     		mov	r0, r4
+ 464 01d2 0CB0     		add	sp, sp, #48
+ 465              	.LCFI9:
+ 466              		.cfi_def_cfa_offset 40
+ 467              		@ sp needed
+ 468 01d4 BDE8D04F 		pop	{r4, r6, r7, r8, r9, r10, fp, lr}
+ 469              	.LCFI10:
+ 470              		.cfi_restore 14
+ 471              		.cfi_restore 11
+ 472              		.cfi_restore 10
+ 473              		.cfi_restore 9
+ 474              		.cfi_restore 8
+ 475              		.cfi_restore 7
+ 476              		.cfi_restore 6
+ 477              		.cfi_restore 4
+ 478              		.cfi_def_cfa_offset 8
+ 479              	.LVL46:
+ 480              		.loc 1 21 1 view .LVU76
+ 481 01d8 02B0     		add	sp, sp, #8
+ 482              	.LCFI11:
+ 483              		.cfi_def_cfa_offset 0
+ 484 01da 7047     		bx	lr
+ 485              		.cfi_endproc
+ 486              	.LFE4:
+ 488              		.section	.text.rotate_vector,"ax",%progbits
+ 489              		.align	1
+ 490              		.global	rotate_vector
+ 491              		.syntax unified
+ 492              		.thumb
+ 493              		.thumb_func
+ 495              	rotate_vector:
+ 496              	.LVL47:
+ 497              	.LFB5:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 10
+
+
+  22:algorithm/IMU-UWB.c **** 
+  23:algorithm/IMU-UWB.c **** // 应用四元数旋转向量
+  24:algorithm/IMU-UWB.c **** Vector3 rotate_vector(Quaternion q, Vector3 v) {
+ 498              		.loc 1 24 48 is_stmt 1 view -0
+ 499              		.cfi_startproc
+ 500              		@ args = 56, pretend = 8, frame = 128
+ 501              		@ frame_needed = 0, uses_anonymous_args = 0
+ 502              		.loc 1 24 48 is_stmt 0 view .LVU78
+ 503 0000 82B0     		sub	sp, sp, #8
+ 504              	.LCFI12:
+ 505              		.cfi_def_cfa_offset 8
+ 506 0002 30B5     		push	{r4, r5, lr}
+ 507              	.LCFI13:
+ 508              		.cfi_def_cfa_offset 20
+ 509              		.cfi_offset 4, -20
+ 510              		.cfi_offset 5, -16
+ 511              		.cfi_offset 14, -12
+ 512 0004 AFB0     		sub	sp, sp, #188
+ 513              	.LCFI14:
+ 514              		.cfi_def_cfa_offset 208
+ 515 0006 0446     		mov	r4, r0
+ 516 0008 32A9     		add	r1, sp, #200
+ 517 000a 81E80C00 		stm	r1, {r2, r3}
+  25:algorithm/IMU-UWB.c ****     Quaternion q_v = {0, v.x, v.y, v.z};
+ 518              		.loc 1 25 5 is_stmt 1 view .LVU79
+ 519              		.loc 1 25 16 is_stmt 0 view .LVU80
+ 520 000e 0022     		movs	r2, #0
+ 521 0010 0023     		movs	r3, #0
+ 522 0012 CDE92623 		strd	r2, [sp, #152]
+ 523              		.loc 1 25 27 view .LVU81
+ 524 0016 DDE93A23 		ldrd	r2, [sp, #232]
+ 525              		.loc 1 25 16 view .LVU82
+ 526 001a CDE92823 		strd	r2, [sp, #160]
+ 527              		.loc 1 25 32 view .LVU83
+ 528 001e DDE93C23 		ldrd	r2, [sp, #240]
+ 529              		.loc 1 25 16 view .LVU84
+ 530 0022 CDE92A23 		strd	r2, [sp, #168]
+ 531              		.loc 1 25 37 view .LVU85
+ 532 0026 DDE93E23 		ldrd	r2, [sp, #248]
+ 533              		.loc 1 25 16 view .LVU86
+ 534 002a CDE92C23 		strd	r2, [sp, #176]
+  26:algorithm/IMU-UWB.c ****     Quaternion q_conj = {q.w, -q.x, -q.y, -q.z};
+ 535              		.loc 1 26 5 is_stmt 1 view .LVU87
+ 536              		.loc 1 26 27 is_stmt 0 view .LVU88
+ 537 002e DDE93223 		ldrd	r2, [sp, #200]
+ 538              		.loc 1 26 16 view .LVU89
+ 539 0032 CDE91E23 		strd	r2, [sp, #120]
+ 540 0036 349A     		ldr	r2, [sp, #208]
+ 541 0038 3599     		ldr	r1, [sp, #212]
+ 542 003a 01F10043 		add	r3, r1, #-2147483648
+ 543 003e CDE92023 		strd	r2, [sp, #128]
+ 544 0042 369A     		ldr	r2, [sp, #216]
+ 545 0044 3799     		ldr	r1, [sp, #220]
+ 546 0046 01F10043 		add	r3, r1, #-2147483648
+ 547 004a CDE92223 		strd	r2, [sp, #136]
+ 548 004e 389A     		ldr	r2, [sp, #224]
+ 549 0050 3999     		ldr	r1, [sp, #228]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 11
+
+
+ 550 0052 01F10043 		add	r3, r1, #-2147483648
+ 551 0056 CDE92423 		strd	r2, [sp, #144]
+  27:algorithm/IMU-UWB.c ****     Quaternion q_result = multiply_quaternion(multiply_quaternion(q, q_v), q_conj);
+ 552              		.loc 1 27 5 is_stmt 1 view .LVU90
+ 553              		.loc 1 27 27 is_stmt 0 view .LVU91
+ 554 005a 0EAD     		add	r5, sp, #56
+ 555 005c 0DF1180C 		add	ip, sp, #24
+ 556 0060 0DF1980E 		add	lr, sp, #152
+ 557 0064 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 558              	.LVL48:
+ 559              		.loc 1 27 27 view .LVU92
+ 560 0068 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 561 006c 9EE80F00 		ldm	lr, {r0, r1, r2, r3}
+ 562 0070 8CE80F00 		stm	ip, {r0, r1, r2, r3}
+ 563 0074 EC46     		mov	ip, sp
+ 564 0076 0DF1D00E 		add	lr, sp, #208
+ 565 007a BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 566 007e ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 567 0082 9EE80300 		ldm	lr, {r0, r1}
+ 568 0086 8CE80300 		stm	ip, {r0, r1}
+ 569 008a 32AB     		add	r3, sp, #200
+ 570 008c 0CCB     		ldm	r3, {r2, r3}
+ 571 008e 2846     		mov	r0, r5
+ 572 0090 FFF7FEFF 		bl	multiply_quaternion
+ 573              	.LVL49:
+ 574 0094 0DF1180C 		add	ip, sp, #24
+ 575 0098 0DF1780E 		add	lr, sp, #120
+ 576 009c BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 577 00a0 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 578 00a4 9EE80F00 		ldm	lr, {r0, r1, r2, r3}
+ 579 00a8 8CE80F00 		stm	ip, {r0, r1, r2, r3}
+ 580 00ac EC46     		mov	ip, sp
+ 581 00ae 0DF1400E 		add	lr, sp, #64
+ 582 00b2 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 583 00b6 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 584 00ba 9EE80300 		ldm	lr, {r0, r1}
+ 585 00be 8CE80300 		stm	ip, {r0, r1}
+ 586 00c2 95E80C00 		ldm	r5, {r2, r3}
+ 587 00c6 16A8     		add	r0, sp, #88
+ 588 00c8 FFF7FEFF 		bl	multiply_quaternion
+ 589              	.LVL50:
+  28:algorithm/IMU-UWB.c ****     Vector3 rotated = { q_result.x, q_result.y, q_result.z };
+ 590              		.loc 1 28 5 is_stmt 1 view .LVU93
+ 591              		.loc 1 28 33 is_stmt 0 view .LVU94
+ 592 00cc DDE91823 		ldrd	r2, [sp, #96]
+ 593              		.loc 1 28 13 view .LVU95
+ 594 00d0 C4E90023 		strd	r2, [r4]
+ 595              		.loc 1 28 45 view .LVU96
+ 596 00d4 DDE91A23 		ldrd	r2, [sp, #104]
+ 597              		.loc 1 28 13 view .LVU97
+ 598 00d8 C4E90223 		strd	r2, [r4, #8]
+ 599              		.loc 1 28 57 view .LVU98
+ 600 00dc DDE91C23 		ldrd	r2, [sp, #112]
+ 601              		.loc 1 28 13 view .LVU99
+ 602 00e0 C4E90423 		strd	r2, [r4, #16]
+  29:algorithm/IMU-UWB.c ****     return rotated;
+ 603              		.loc 1 29 5 is_stmt 1 view .LVU100
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 12
+
+
+  30:algorithm/IMU-UWB.c **** }
+ 604              		.loc 1 30 1 is_stmt 0 view .LVU101
+ 605 00e4 2046     		mov	r0, r4
+ 606 00e6 2FB0     		add	sp, sp, #188
+ 607              	.LCFI15:
+ 608              		.cfi_def_cfa_offset 20
+ 609              		@ sp needed
+ 610 00e8 BDE83040 		pop	{r4, r5, lr}
+ 611              	.LCFI16:
+ 612              		.cfi_restore 14
+ 613              		.cfi_restore 5
+ 614              		.cfi_restore 4
+ 615              		.cfi_def_cfa_offset 8
+ 616              	.LVL51:
+ 617              		.loc 1 30 1 view .LVU102
+ 618 00ec 02B0     		add	sp, sp, #8
+ 619              	.LCFI17:
+ 620              		.cfi_def_cfa_offset 0
+ 621 00ee 7047     		bx	lr
+ 622              		.cfi_endproc
+ 623              	.LFE5:
+ 625              		.global	__aeabi_dcmpgt
+ 626              		.global	__aeabi_dcmpeq
+ 627              		.section	.text.update_orientation,"ax",%progbits
+ 628              		.align	1
+ 629              		.global	update_orientation
+ 630              		.syntax unified
+ 631              		.thumb
+ 632              		.thumb_func
+ 634              	update_orientation:
+ 635              	.LVL52:
+ 636              	.LFB6:
+  31:algorithm/IMU-UWB.c **** 
+  32:algorithm/IMU-UWB.c **** // 互补滤波器更新姿态
+  33:algorithm/IMU-UWB.c **** void update_orientation(InertialNavigationSystem *ins, Vector3 gyro, Vector3 accel, double dt) {
+ 637              		.loc 1 33 96 is_stmt 1 view -0
+ 638              		.cfi_startproc
+ 639              		@ args = 56, pretend = 8, frame = 200
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ 641              		.loc 1 33 96 is_stmt 0 view .LVU104
+ 642 0000 82B0     		sub	sp, sp, #8
+ 643              	.LCFI18:
+ 644              		.cfi_def_cfa_offset 8
+ 645 0002 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 646              	.LCFI19:
+ 647              		.cfi_def_cfa_offset 44
+ 648              		.cfi_offset 4, -44
+ 649              		.cfi_offset 5, -40
+ 650              		.cfi_offset 6, -36
+ 651              		.cfi_offset 7, -32
+ 652              		.cfi_offset 8, -28
+ 653              		.cfi_offset 9, -24
+ 654              		.cfi_offset 10, -20
+ 655              		.cfi_offset 11, -16
+ 656              		.cfi_offset 14, -12
+ 657 0006 C1B0     		sub	sp, sp, #260
+ 658              	.LCFI20:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 13
+
+
+ 659              		.cfi_def_cfa_offset 304
+ 660 0008 0F90     		str	r0, [sp, #60]
+ 661 000a 4AA9     		add	r1, sp, #296
+ 662 000c 81E80C00 		stm	r1, {r2, r3}
+  34:algorithm/IMU-UWB.c ****     // 1. 通过陀螺仪数据积分更新姿态
+  35:algorithm/IMU-UWB.c ****     // 将角速度转换为四元数旋转向量
+  36:algorithm/IMU-UWB.c ****     double gyro_mag = sqrt(gyro.x*gyro.x + gyro.y*gyro.y + gyro.z*gyro.z);
+ 663              		.loc 1 36 5 is_stmt 1 view .LVU105
+ 664              		.loc 1 36 32 is_stmt 0 view .LVU106
+ 665 0010 DDE94A89 		ldrd	r8, [sp, #296]
+ 666              		.loc 1 36 34 view .LVU107
+ 667 0014 4246     		mov	r2, r8
+ 668 0016 4B46     		mov	r3, r9
+ 669 0018 4046     		mov	r0, r8
+ 670              	.LVL53:
+ 671              		.loc 1 36 34 view .LVU108
+ 672 001a 4946     		mov	r1, r9
+ 673 001c FFF7FEFF 		bl	__aeabi_dmul
+ 674              	.LVL54:
+ 675 0020 0446     		mov	r4, r0
+ 676 0022 0D46     		mov	r5, r1
+ 677              		.loc 1 36 48 view .LVU109
+ 678 0024 DDE94CAB 		ldrd	r10, [sp, #304]
+ 679              		.loc 1 36 50 view .LVU110
+ 680 0028 5246     		mov	r2, r10
+ 681 002a 5B46     		mov	r3, fp
+ 682 002c 5046     		mov	r0, r10
+ 683 002e 5946     		mov	r1, fp
+ 684 0030 FFF7FEFF 		bl	__aeabi_dmul
+ 685              	.LVL55:
+ 686 0034 0246     		mov	r2, r0
+ 687 0036 0B46     		mov	r3, r1
+ 688              		.loc 1 36 42 view .LVU111
+ 689 0038 2046     		mov	r0, r4
+ 690 003a 2946     		mov	r1, r5
+ 691 003c FFF7FEFF 		bl	__aeabi_dadd
+ 692              	.LVL56:
+ 693 0040 0646     		mov	r6, r0
+ 694 0042 0F46     		mov	r7, r1
+ 695              		.loc 1 36 64 view .LVU112
+ 696 0044 DDE94E45 		ldrd	r4, [sp, #312]
+ 697              		.loc 1 36 66 view .LVU113
+ 698 0048 2246     		mov	r2, r4
+ 699 004a 2B46     		mov	r3, r5
+ 700 004c 2046     		mov	r0, r4
+ 701 004e 2946     		mov	r1, r5
+ 702 0050 FFF7FEFF 		bl	__aeabi_dmul
+ 703              	.LVL57:
+ 704 0054 0246     		mov	r2, r0
+ 705 0056 0B46     		mov	r3, r1
+ 706              		.loc 1 36 23 view .LVU114
+ 707 0058 3046     		mov	r0, r6
+ 708 005a 3946     		mov	r1, r7
+ 709 005c FFF7FEFF 		bl	__aeabi_dadd
+ 710              	.LVL58:
+ 711 0060 FFF7FEFF 		bl	sqrt
+ 712              	.LVL59:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 14
+
+
+ 713 0064 0646     		mov	r6, r0
+ 714 0066 0F46     		mov	r7, r1
+ 715              	.LVL60:
+  37:algorithm/IMU-UWB.c ****     Quaternion delta_q;
+ 716              		.loc 1 37 5 is_stmt 1 view .LVU115
+  38:algorithm/IMU-UWB.c ****     if (gyro_mag * dt / 2.0 > 1e-6) {
+ 717              		.loc 1 38 5 view .LVU116
+ 718              		.loc 1 38 18 is_stmt 0 view .LVU117
+ 719 0068 DDE95623 		ldrd	r2, [sp, #344]
+ 720 006c FFF7FEFF 		bl	__aeabi_dmul
+ 721              	.LVL61:
+ 722              		.loc 1 38 23 view .LVU118
+ 723 0070 0022     		movs	r2, #0
+ 724 0072 C54B     		ldr	r3, .L23+8
+ 725 0074 FFF7FEFF 		bl	__aeabi_dmul
+ 726              	.LVL62:
+ 727 0078 0246     		mov	r2, r0
+ 728 007a 0B46     		mov	r3, r1
+ 729 007c CDE91023 		strd	r2, [sp, #64]
+ 730              		.loc 1 38 8 view .LVU119
+ 731 0080 BFA3     		adr	r3, .L23
+ 732 0082 D3E90023 		ldrd	r2, [r3]
+ 733 0086 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 734              	.LVL63:
+ 735 008a 0028     		cmp	r0, #0
+ 736 008c 00F04C81 		beq	.L19
+ 737              	.LBB2:
+  39:algorithm/IMU-UWB.c ****         double angle = gyro_mag * dt;
+ 738              		.loc 1 39 9 is_stmt 1 view .LVU120
+ 739              	.LVL64:
+  40:algorithm/IMU-UWB.c ****         double sin_half_angle = sin(angle / 2.0) / gyro_mag;
+ 740              		.loc 1 40 9 view .LVU121
+ 741              		.loc 1 40 33 is_stmt 0 view .LVU122
+ 742 0090 DDE91001 		ldrd	r0, [sp, #64]
+ 743 0094 FFF7FEFF 		bl	sin
+ 744              	.LVL65:
+ 745              		.loc 1 40 16 view .LVU123
+ 746 0098 3246     		mov	r2, r6
+ 747 009a 3B46     		mov	r3, r7
+ 748 009c FFF7FEFF 		bl	__aeabi_ddiv
+ 749              	.LVL66:
+ 750 00a0 0646     		mov	r6, r0
+ 751              	.LVL67:
+ 752              		.loc 1 40 16 view .LVU124
+ 753 00a2 0F46     		mov	r7, r1
+ 754              	.LVL68:
+  41:algorithm/IMU-UWB.c ****         delta_q.w = cos(angle / 2.0);
+ 755              		.loc 1 41 9 is_stmt 1 view .LVU125
+ 756              		.loc 1 41 21 is_stmt 0 view .LVU126
+ 757 00a4 DDE91001 		ldrd	r0, [sp, #64]
+ 758 00a8 FFF7FEFF 		bl	cos
+ 759              	.LVL69:
+ 760              		.loc 1 41 19 view .LVU127
+ 761 00ac CDE93801 		strd	r0, [sp, #224]
+  42:algorithm/IMU-UWB.c ****         delta_q.x = gyro.x * sin_half_angle;
+ 762              		.loc 1 42 9 is_stmt 1 view .LVU128
+ 763              		.loc 1 42 28 is_stmt 0 view .LVU129
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 15
+
+
+ 764 00b0 3246     		mov	r2, r6
+ 765 00b2 3B46     		mov	r3, r7
+ 766 00b4 4046     		mov	r0, r8
+ 767 00b6 4946     		mov	r1, r9
+ 768 00b8 FFF7FEFF 		bl	__aeabi_dmul
+ 769              	.LVL70:
+ 770              		.loc 1 42 19 view .LVU130
+ 771 00bc CDE93A01 		strd	r0, [sp, #232]
+  43:algorithm/IMU-UWB.c ****         delta_q.y = gyro.y * sin_half_angle;
+ 772              		.loc 1 43 9 is_stmt 1 view .LVU131
+ 773              		.loc 1 43 28 is_stmt 0 view .LVU132
+ 774 00c0 3246     		mov	r2, r6
+ 775 00c2 3B46     		mov	r3, r7
+ 776 00c4 5046     		mov	r0, r10
+ 777 00c6 5946     		mov	r1, fp
+ 778 00c8 FFF7FEFF 		bl	__aeabi_dmul
+ 779              	.LVL71:
+ 780              		.loc 1 43 19 view .LVU133
+ 781 00cc CDE93C01 		strd	r0, [sp, #240]
+  44:algorithm/IMU-UWB.c ****         delta_q.z = gyro.z * sin_half_angle;
+ 782              		.loc 1 44 9 is_stmt 1 view .LVU134
+ 783              		.loc 1 44 28 is_stmt 0 view .LVU135
+ 784 00d0 3246     		mov	r2, r6
+ 785 00d2 3B46     		mov	r3, r7
+ 786 00d4 2046     		mov	r0, r4
+ 787 00d6 2946     		mov	r1, r5
+ 788 00d8 FFF7FEFF 		bl	__aeabi_dmul
+ 789              	.LVL72:
+ 790              		.loc 1 44 19 view .LVU136
+ 791 00dc CDE93E01 		strd	r0, [sp, #248]
+ 792              	.LVL73:
+ 793              	.L10:
+ 794              		.loc 1 44 19 view .LVU137
+ 795              	.LBE2:
+  45:algorithm/IMU-UWB.c ****     } else {
+  46:algorithm/IMU-UWB.c ****         // 对于小角度，使用近似
+  47:algorithm/IMU-UWB.c ****         delta_q.w = 1.0;
+  48:algorithm/IMU-UWB.c ****         delta_q.x = gyro.x * dt / 2.0;
+  49:algorithm/IMU-UWB.c ****         delta_q.y = gyro.y * dt / 2.0;
+  50:algorithm/IMU-UWB.c ****         delta_q.z = gyro.z * dt / 2.0;
+  51:algorithm/IMU-UWB.c ****     }
+  52:algorithm/IMU-UWB.c **** 
+  53:algorithm/IMU-UWB.c ****     // 更新姿态四元数
+  54:algorithm/IMU-UWB.c ****     ins->orientation = multiply_quaternion(ins->orientation, delta_q);
+ 796              		.loc 1 54 5 is_stmt 1 view .LVU138
+ 797              		.loc 1 54 24 is_stmt 0 view .LVU139
+ 798 00e0 06AC     		add	r4, sp, #24
+ 799 00e2 38AD     		add	r5, sp, #224
+ 800 00e4 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 801 00e6 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 802 00e8 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 803 00ec 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 804 00f0 6C46     		mov	r4, sp
+ 805 00f2 0F9F     		ldr	r7, [sp, #60]
+ 806 00f4 07F13805 		add	r5, r7, #56
+ 807 00f8 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 808 00fa 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 16
+
+
+ 809 00fc 95E80300 		ldm	r5, {r0, r1}
+ 810 0100 84E80300 		stm	r4, {r0, r1}
+ 811 0104 07F13004 		add	r4, r7, #48
+ 812 0108 94E80C00 		ldm	r4, {r2, r3}
+ 813 010c 16A8     		add	r0, sp, #88
+ 814 010e FFF7FEFF 		bl	multiply_quaternion
+ 815              	.LVL74:
+ 816 0112 2546     		mov	r5, r4
+ 817 0114 16AE     		add	r6, sp, #88
+ 818 0116 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 819 0118 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 820 011a 96E80F00 		ldm	r6, {r0, r1, r2, r3}
+ 821 011e 85E80F00 		stm	r5, {r0, r1, r2, r3}
+  55:algorithm/IMU-UWB.c ****     ins->orientation = normalize_quaternion(ins->orientation);
+ 822              		.loc 1 55 5 is_stmt 1 view .LVU140
+ 823              		.loc 1 55 24 is_stmt 0 view .LVU141
+ 824 0122 6D46     		mov	r5, sp
+ 825 0124 07F13806 		add	r6, r7, #56
+ 826 0128 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 827 012a 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 828 012c 96E80300 		ldm	r6, {r0, r1}
+ 829 0130 85E80300 		stm	r5, {r0, r1}
+ 830 0134 94E80C00 		ldm	r4, {r2, r3}
+ 831 0138 16A8     		add	r0, sp, #88
+ 832 013a FFF7FEFF 		bl	normalize_quaternion
+ 833              	.LVL75:
+ 834 013e 16AD     		add	r5, sp, #88
+ 835 0140 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 836 0142 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 837 0144 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 838 0148 84E80F00 		stm	r4, {r0, r1, r2, r3}
+  56:algorithm/IMU-UWB.c **** 
+  57:algorithm/IMU-UWB.c ****     // 2. 通过加速度计估计重力方向
+  58:algorithm/IMU-UWB.c ****     // 假设设备静止或匀速直线运动，加速度计测量的是重力加速度
+  59:algorithm/IMU-UWB.c ****     Vector3 accel_norm;
+ 839              		.loc 1 59 5 is_stmt 1 view .LVU142
+  60:algorithm/IMU-UWB.c ****     double accel_mag = sqrt(accel.x*accel.x + accel.y*accel.y + accel.z*accel.z);
+ 840              		.loc 1 60 5 view .LVU143
+ 841              		.loc 1 60 34 is_stmt 0 view .LVU144
+ 842 014c DDE95089 		ldrd	r8, [sp, #320]
+ 843              		.loc 1 60 36 view .LVU145
+ 844 0150 4246     		mov	r2, r8
+ 845 0152 4B46     		mov	r3, r9
+ 846 0154 4046     		mov	r0, r8
+ 847 0156 4946     		mov	r1, r9
+ 848 0158 FFF7FEFF 		bl	__aeabi_dmul
+ 849              	.LVL76:
+ 850 015c 0446     		mov	r4, r0
+ 851 015e 0D46     		mov	r5, r1
+ 852              		.loc 1 60 52 view .LVU146
+ 853 0160 DDE95267 		ldrd	r6, [sp, #328]
+ 854              		.loc 1 60 54 view .LVU147
+ 855 0164 3246     		mov	r2, r6
+ 856 0166 3B46     		mov	r3, r7
+ 857 0168 3046     		mov	r0, r6
+ 858 016a 3946     		mov	r1, r7
+ 859 016c FFF7FEFF 		bl	__aeabi_dmul
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 17
+
+
+ 860              	.LVL77:
+ 861 0170 0246     		mov	r2, r0
+ 862 0172 0B46     		mov	r3, r1
+ 863              		.loc 1 60 45 view .LVU148
+ 864 0174 2046     		mov	r0, r4
+ 865 0176 2946     		mov	r1, r5
+ 866 0178 FFF7FEFF 		bl	__aeabi_dadd
+ 867              	.LVL78:
+ 868 017c 8246     		mov	r10, r0
+ 869 017e 8B46     		mov	fp, r1
+ 870              		.loc 1 60 70 view .LVU149
+ 871 0180 DDE95445 		ldrd	r4, [sp, #336]
+ 872              		.loc 1 60 72 view .LVU150
+ 873 0184 2246     		mov	r2, r4
+ 874 0186 2B46     		mov	r3, r5
+ 875 0188 2046     		mov	r0, r4
+ 876 018a 2946     		mov	r1, r5
+ 877 018c FFF7FEFF 		bl	__aeabi_dmul
+ 878              	.LVL79:
+ 879 0190 0246     		mov	r2, r0
+ 880 0192 0B46     		mov	r3, r1
+ 881              		.loc 1 60 24 view .LVU151
+ 882 0194 5046     		mov	r0, r10
+ 883 0196 5946     		mov	r1, fp
+ 884 0198 FFF7FEFF 		bl	__aeabi_dadd
+ 885              	.LVL80:
+ 886 019c FFF7FEFF 		bl	sqrt
+ 887              	.LVL81:
+ 888 01a0 8246     		mov	r10, r0
+ 889 01a2 8B46     		mov	fp, r1
+ 890              	.LVL82:
+  61:algorithm/IMU-UWB.c ****     if (accel_mag != 0) {
+ 891              		.loc 1 61 5 is_stmt 1 view .LVU152
+ 892              		.loc 1 61 8 is_stmt 0 view .LVU153
+ 893 01a4 0022     		movs	r2, #0
+ 894 01a6 0023     		movs	r3, #0
+ 895 01a8 FFF7FEFF 		bl	__aeabi_dcmpeq
+ 896              	.LVL83:
+ 897 01ac 0028     		cmp	r0, #0
+ 898 01ae 40F0EF80 		bne	.L20
+  62:algorithm/IMU-UWB.c ****         accel_norm.x = accel.x / accel_mag;
+ 899              		.loc 1 62 9 is_stmt 1 view .LVU154
+ 900              		.loc 1 62 32 is_stmt 0 view .LVU155
+ 901 01b2 5246     		mov	r2, r10
+ 902 01b4 5B46     		mov	r3, fp
+ 903 01b6 4046     		mov	r0, r8
+ 904 01b8 4946     		mov	r1, r9
+ 905 01ba FFF7FEFF 		bl	__aeabi_ddiv
+ 906              	.LVL84:
+ 907              		.loc 1 62 22 view .LVU156
+ 908 01be CDE93201 		strd	r0, [sp, #200]
+  63:algorithm/IMU-UWB.c ****         accel_norm.y = accel.y / accel_mag;
+ 909              		.loc 1 63 9 is_stmt 1 view .LVU157
+ 910              		.loc 1 63 32 is_stmt 0 view .LVU158
+ 911 01c2 5246     		mov	r2, r10
+ 912 01c4 5B46     		mov	r3, fp
+ 913 01c6 3046     		mov	r0, r6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 18
+
+
+ 914 01c8 3946     		mov	r1, r7
+ 915 01ca FFF7FEFF 		bl	__aeabi_ddiv
+ 916              	.LVL85:
+ 917              		.loc 1 63 22 view .LVU159
+ 918 01ce CDE93401 		strd	r0, [sp, #208]
+  64:algorithm/IMU-UWB.c ****         accel_norm.z = accel.z / accel_mag;
+ 919              		.loc 1 64 9 is_stmt 1 view .LVU160
+ 920              		.loc 1 64 32 is_stmt 0 view .LVU161
+ 921 01d2 5246     		mov	r2, r10
+ 922 01d4 5B46     		mov	r3, fp
+ 923 01d6 2046     		mov	r0, r4
+ 924 01d8 2946     		mov	r1, r5
+ 925 01da FFF7FEFF 		bl	__aeabi_ddiv
+ 926              	.LVL86:
+ 927              		.loc 1 64 22 view .LVU162
+ 928 01de CDE93601 		strd	r0, [sp, #216]
+ 929              	.L13:
+  65:algorithm/IMU-UWB.c ****     } else {
+  66:algorithm/IMU-UWB.c ****         accel_norm.x = 0;
+  67:algorithm/IMU-UWB.c ****         accel_norm.y = 0;
+  68:algorithm/IMU-UWB.c ****         accel_norm.z = 0;
+  69:algorithm/IMU-UWB.c ****     }
+  70:algorithm/IMU-UWB.c **** 
+  71:algorithm/IMU-UWB.c ****     // 计算当前重力方向
+  72:algorithm/IMU-UWB.c ****     Vector3 gravity_est = rotate_vector(ins->orientation, ins->gravity);
+ 930              		.loc 1 72 5 is_stmt 1 view .LVU163
+ 931              		.loc 1 72 27 is_stmt 0 view .LVU164
+ 932 01e2 06AC     		add	r4, sp, #24
+ 933 01e4 0F9E     		ldr	r6, [sp, #60]
+ 934 01e6 06F15805 		add	r5, r6, #88
+ 935 01ea 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 936 01ec 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 937 01ee 95E80300 		ldm	r5, {r0, r1}
+ 938 01f2 84E80300 		stm	r4, {r0, r1}
+ 939 01f6 6C46     		mov	r4, sp
+ 940 01f8 06F13805 		add	r5, r6, #56
+ 941 01fc 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 942 01fe 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 943 0200 95E80300 		ldm	r5, {r0, r1}
+ 944 0204 84E80300 		stm	r4, {r0, r1}
+ 945 0208 06F13003 		add	r3, r6, #48
+ 946 020c 0CCB     		ldm	r3, {r2, r3}
+ 947 020e 2CA8     		add	r0, sp, #176
+ 948 0210 FFF7FEFF 		bl	rotate_vector
+ 949              	.LVL87:
+  73:algorithm/IMU-UWB.c ****     // 计算误差（叉乘）
+  74:algorithm/IMU-UWB.c ****     Vector3 error;
+ 950              		.loc 1 74 5 is_stmt 1 view .LVU165
+  75:algorithm/IMU-UWB.c ****     error.x = accel_norm.y * gravity_est.z - accel_norm.z * gravity_est.y;
+ 951              		.loc 1 75 5 view .LVU166
+ 952              		.loc 1 75 25 is_stmt 0 view .LVU167
+ 953 0214 DDE93434 		ldrd	r3, [sp, #208]
+ 954 0218 1846     		mov	r0, r3
+ 955 021a 2146     		mov	r1, r4
+ 956              		.loc 1 75 41 view .LVU168
+ 957 021c DDE93089 		ldrd	r8, [sp, #192]
+ 958              		.loc 1 75 28 view .LVU169
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 19
+
+
+ 959 0220 4246     		mov	r2, r8
+ 960 0222 4B46     		mov	r3, r9
+ 961 0224 CDE91201 		strd	r0, [sp, #72]
+ 962 0228 FFF7FEFF 		bl	__aeabi_dmul
+ 963              	.LVL88:
+ 964 022c 0446     		mov	r4, r0
+ 965 022e 0D46     		mov	r5, r1
+ 966              		.loc 1 75 56 view .LVU170
+ 967 0230 DDE93667 		ldrd	r6, [sp, #216]
+ 968              		.loc 1 75 72 view .LVU171
+ 969 0234 DDE92E23 		ldrd	r2, [sp, #184]
+ 970              		.loc 1 75 59 view .LVU172
+ 971 0238 CDE91423 		strd	r2, [sp, #80]
+ 972 023c 3046     		mov	r0, r6
+ 973 023e 3946     		mov	r1, r7
+ 974 0240 FFF7FEFF 		bl	__aeabi_dmul
+ 975              	.LVL89:
+ 976 0244 0246     		mov	r2, r0
+ 977 0246 0B46     		mov	r3, r1
+ 978              		.loc 1 75 44 view .LVU173
+ 979 0248 2046     		mov	r0, r4
+ 980 024a 2946     		mov	r1, r5
+ 981 024c FFF7FEFF 		bl	__aeabi_dsub
+ 982              	.LVL90:
+ 983 0250 0346     		mov	r3, r0
+ 984 0252 0C46     		mov	r4, r1
+ 985              		.loc 1 75 13 view .LVU174
+ 986 0254 CDE91034 		strd	r3, [sp, #64]
+ 987 0258 CDE92634 		strd	r3, [sp, #152]
+  76:algorithm/IMU-UWB.c ****     error.y = accel_norm.z * gravity_est.x - accel_norm.x * gravity_est.z;
+ 988              		.loc 1 76 5 is_stmt 1 view .LVU175
+ 989              		.loc 1 76 41 is_stmt 0 view .LVU176
+ 990 025c DDE92CAB 		ldrd	r10, [sp, #176]
+ 991              	.LVL91:
+ 992              		.loc 1 76 28 view .LVU177
+ 993 0260 5246     		mov	r2, r10
+ 994 0262 5B46     		mov	r3, fp
+ 995 0264 3046     		mov	r0, r6
+ 996 0266 3946     		mov	r1, r7
+ 997 0268 FFF7FEFF 		bl	__aeabi_dmul
+ 998              	.LVL92:
+ 999 026c 0646     		mov	r6, r0
+ 1000 026e 0F46     		mov	r7, r1
+ 1001              		.loc 1 76 56 view .LVU178
+ 1002 0270 DDE93245 		ldrd	r4, [sp, #200]
+ 1003              		.loc 1 76 59 view .LVU179
+ 1004 0274 2246     		mov	r2, r4
+ 1005 0276 2B46     		mov	r3, r5
+ 1006 0278 4046     		mov	r0, r8
+ 1007 027a 4946     		mov	r1, r9
+ 1008 027c FFF7FEFF 		bl	__aeabi_dmul
+ 1009              	.LVL93:
+ 1010 0280 0246     		mov	r2, r0
+ 1011 0282 0B46     		mov	r3, r1
+ 1012              		.loc 1 76 44 view .LVU180
+ 1013 0284 3046     		mov	r0, r6
+ 1014 0286 3946     		mov	r1, r7
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 20
+
+
+ 1015 0288 FFF7FEFF 		bl	__aeabi_dsub
+ 1016              	.LVL94:
+ 1017 028c 8046     		mov	r8, r0
+ 1018 028e 8946     		mov	r9, r1
+ 1019              		.loc 1 76 13 view .LVU181
+ 1020 0290 CDE92889 		strd	r8, [sp, #160]
+  77:algorithm/IMU-UWB.c ****     error.z = accel_norm.x * gravity_est.y - accel_norm.y * gravity_est.x;
+ 1021              		.loc 1 77 5 is_stmt 1 view .LVU182
+ 1022              		.loc 1 77 28 is_stmt 0 view .LVU183
+ 1023 0294 2246     		mov	r2, r4
+ 1024 0296 2B46     		mov	r3, r5
+ 1025 0298 DDE91401 		ldrd	r0, [sp, #80]
+ 1026 029c FFF7FEFF 		bl	__aeabi_dmul
+ 1027              	.LVL95:
+ 1028 02a0 0446     		mov	r4, r0
+ 1029 02a2 0D46     		mov	r5, r1
+ 1030              		.loc 1 77 59 view .LVU184
+ 1031 02a4 5246     		mov	r2, r10
+ 1032 02a6 5B46     		mov	r3, fp
+ 1033 02a8 DDE91201 		ldrd	r0, [sp, #72]
+ 1034 02ac FFF7FEFF 		bl	__aeabi_dmul
+ 1035              	.LVL96:
+ 1036 02b0 0246     		mov	r2, r0
+ 1037 02b2 0B46     		mov	r3, r1
+ 1038              		.loc 1 77 44 view .LVU185
+ 1039 02b4 2046     		mov	r0, r4
+ 1040 02b6 2946     		mov	r1, r5
+ 1041 02b8 FFF7FEFF 		bl	__aeabi_dsub
+ 1042              	.LVL97:
+ 1043 02bc 0446     		mov	r4, r0
+ 1044 02be 0D46     		mov	r5, r1
+ 1045              		.loc 1 77 13 view .LVU186
+ 1046 02c0 CDE92A45 		strd	r4, [sp, #168]
+  78:algorithm/IMU-UWB.c **** 
+  79:algorithm/IMU-UWB.c ****     // 3. 计算误差旋转并应用互补滤波器
+  80:algorithm/IMU-UWB.c ****     Quaternion error_q;
+ 1047              		.loc 1 80 5 is_stmt 1 view .LVU187
+  81:algorithm/IMU-UWB.c ****     double error_mag = sqrt(error.x*error.x + error.y*error.y + error.z*error.z);
+ 1048              		.loc 1 81 5 view .LVU188
+ 1049              		.loc 1 81 36 is_stmt 0 view .LVU189
+ 1050 02c4 DDE91001 		ldrd	r0, [sp, #64]
+ 1051 02c8 0246     		mov	r2, r0
+ 1052 02ca 0B46     		mov	r3, r1
+ 1053 02cc FFF7FEFF 		bl	__aeabi_dmul
+ 1054              	.LVL98:
+ 1055 02d0 0646     		mov	r6, r0
+ 1056 02d2 0F46     		mov	r7, r1
+ 1057              		.loc 1 81 54 view .LVU190
+ 1058 02d4 4246     		mov	r2, r8
+ 1059 02d6 4B46     		mov	r3, r9
+ 1060 02d8 4046     		mov	r0, r8
+ 1061 02da 4946     		mov	r1, r9
+ 1062 02dc FFF7FEFF 		bl	__aeabi_dmul
+ 1063              	.LVL99:
+ 1064 02e0 0246     		mov	r2, r0
+ 1065 02e2 0B46     		mov	r3, r1
+ 1066              		.loc 1 81 45 view .LVU191
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 21
+
+
+ 1067 02e4 3046     		mov	r0, r6
+ 1068 02e6 3946     		mov	r1, r7
+ 1069 02e8 FFF7FEFF 		bl	__aeabi_dadd
+ 1070              	.LVL100:
+ 1071 02ec 0646     		mov	r6, r0
+ 1072 02ee 0F46     		mov	r7, r1
+ 1073              		.loc 1 81 72 view .LVU192
+ 1074 02f0 2246     		mov	r2, r4
+ 1075 02f2 2B46     		mov	r3, r5
+ 1076 02f4 2046     		mov	r0, r4
+ 1077 02f6 2946     		mov	r1, r5
+ 1078 02f8 FFF7FEFF 		bl	__aeabi_dmul
+ 1079              	.LVL101:
+ 1080 02fc 0246     		mov	r2, r0
+ 1081 02fe 0B46     		mov	r3, r1
+ 1082              		.loc 1 81 24 view .LVU193
+ 1083 0300 3046     		mov	r0, r6
+ 1084 0302 3946     		mov	r1, r7
+ 1085 0304 FFF7FEFF 		bl	__aeabi_dadd
+ 1086              	.LVL102:
+ 1087 0308 FFF7FEFF 		bl	sqrt
+ 1088              	.LVL103:
+ 1089 030c 0646     		mov	r6, r0
+ 1090 030e 0F46     		mov	r7, r1
+ 1091              	.LVL104:
+  82:algorithm/IMU-UWB.c ****     if (error_mag > 1e-6) {
+ 1092              		.loc 1 82 5 is_stmt 1 view .LVU194
+ 1093              		.loc 1 82 8 is_stmt 0 view .LVU195
+ 1094 0310 1BA3     		adr	r3, .L23
+ 1095 0312 D3E90023 		ldrd	r2, [r3]
+ 1096 0316 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 1097              	.LVL105:
+ 1098 031a 0028     		cmp	r0, #0
+ 1099 031c 41D1     		bne	.L22
+ 1100              	.LVL106:
+ 1101              	.L7:
+  83:algorithm/IMU-UWB.c ****         double angle = error_mag * (1.0 - ins->alpha);
+  84:algorithm/IMU-UWB.c ****         double sin_half_angle = sin(angle / 2.0) / error_mag;
+  85:algorithm/IMU-UWB.c ****         error_q.w = cos(angle / 2.0);
+  86:algorithm/IMU-UWB.c ****         error_q.x = error.x * sin_half_angle;
+  87:algorithm/IMU-UWB.c ****         error_q.y = error.y * sin_half_angle;
+  88:algorithm/IMU-UWB.c ****         error_q.z = error.z * sin_half_angle;
+  89:algorithm/IMU-UWB.c ****         // 更新姿态
+  90:algorithm/IMU-UWB.c ****         ins->orientation = multiply_quaternion(error_q, ins->orientation);
+  91:algorithm/IMU-UWB.c ****         ins->orientation = normalize_quaternion(ins->orientation);
+  92:algorithm/IMU-UWB.c ****     }
+  93:algorithm/IMU-UWB.c **** }
+ 1102              		.loc 1 93 1 view .LVU196
+ 1103 031e 41B0     		add	sp, sp, #260
+ 1104              	.LCFI21:
+ 1105              		.cfi_remember_state
+ 1106              		.cfi_def_cfa_offset 44
+ 1107              		@ sp needed
+ 1108 0320 BDE8F04F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1109              	.LCFI22:
+ 1110              		.cfi_restore 14
+ 1111              		.cfi_restore 11
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 22
+
+
+ 1112              		.cfi_restore 10
+ 1113              		.cfi_restore 9
+ 1114              		.cfi_restore 8
+ 1115              		.cfi_restore 7
+ 1116              		.cfi_restore 6
+ 1117              		.cfi_restore 5
+ 1118              		.cfi_restore 4
+ 1119              		.cfi_def_cfa_offset 8
+ 1120 0324 02B0     		add	sp, sp, #8
+ 1121              	.LCFI23:
+ 1122              		.cfi_def_cfa_offset 0
+ 1123 0326 7047     		bx	lr
+ 1124              	.LVL107:
+ 1125              	.L19:
+ 1126              	.LCFI24:
+ 1127              		.cfi_restore_state
+  47:algorithm/IMU-UWB.c ****         delta_q.x = gyro.x * dt / 2.0;
+ 1128              		.loc 1 47 9 is_stmt 1 view .LVU197
+  47:algorithm/IMU-UWB.c ****         delta_q.x = gyro.x * dt / 2.0;
+ 1129              		.loc 1 47 19 is_stmt 0 view .LVU198
+ 1130 0328 0022     		movs	r2, #0
+ 1131 032a 184B     		ldr	r3, .L23+12
+ 1132 032c CDE93823 		strd	r2, [sp, #224]
+  48:algorithm/IMU-UWB.c ****         delta_q.y = gyro.y * dt / 2.0;
+ 1133              		.loc 1 48 9 is_stmt 1 view .LVU199
+  48:algorithm/IMU-UWB.c ****         delta_q.y = gyro.y * dt / 2.0;
+ 1134              		.loc 1 48 28 is_stmt 0 view .LVU200
+ 1135 0330 DDE95623 		ldrd	r2, [sp, #344]
+ 1136 0334 4046     		mov	r0, r8
+ 1137 0336 4946     		mov	r1, r9
+ 1138 0338 FFF7FEFF 		bl	__aeabi_dmul
+ 1139              	.LVL108:
+  48:algorithm/IMU-UWB.c ****         delta_q.y = gyro.y * dt / 2.0;
+ 1140              		.loc 1 48 33 view .LVU201
+ 1141 033c 0022     		movs	r2, #0
+ 1142 033e 124B     		ldr	r3, .L23+8
+ 1143 0340 FFF7FEFF 		bl	__aeabi_dmul
+ 1144              	.LVL109:
+  48:algorithm/IMU-UWB.c ****         delta_q.y = gyro.y * dt / 2.0;
+ 1145              		.loc 1 48 19 view .LVU202
+ 1146 0344 CDE93A01 		strd	r0, [sp, #232]
+  49:algorithm/IMU-UWB.c ****         delta_q.z = gyro.z * dt / 2.0;
+ 1147              		.loc 1 49 9 is_stmt 1 view .LVU203
+  49:algorithm/IMU-UWB.c ****         delta_q.z = gyro.z * dt / 2.0;
+ 1148              		.loc 1 49 28 is_stmt 0 view .LVU204
+ 1149 0348 DDE95623 		ldrd	r2, [sp, #344]
+ 1150 034c 5046     		mov	r0, r10
+ 1151 034e 5946     		mov	r1, fp
+ 1152 0350 FFF7FEFF 		bl	__aeabi_dmul
+ 1153              	.LVL110:
+  49:algorithm/IMU-UWB.c ****         delta_q.z = gyro.z * dt / 2.0;
+ 1154              		.loc 1 49 33 view .LVU205
+ 1155 0354 0022     		movs	r2, #0
+ 1156 0356 0C4B     		ldr	r3, .L23+8
+ 1157 0358 FFF7FEFF 		bl	__aeabi_dmul
+ 1158              	.LVL111:
+  49:algorithm/IMU-UWB.c ****         delta_q.z = gyro.z * dt / 2.0;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 23
+
+
+ 1159              		.loc 1 49 19 view .LVU206
+ 1160 035c CDE93C01 		strd	r0, [sp, #240]
+  50:algorithm/IMU-UWB.c ****     }
+ 1161              		.loc 1 50 9 is_stmt 1 view .LVU207
+  50:algorithm/IMU-UWB.c ****     }
+ 1162              		.loc 1 50 28 is_stmt 0 view .LVU208
+ 1163 0360 DDE95623 		ldrd	r2, [sp, #344]
+ 1164 0364 2046     		mov	r0, r4
+ 1165 0366 2946     		mov	r1, r5
+ 1166 0368 FFF7FEFF 		bl	__aeabi_dmul
+ 1167              	.LVL112:
+  50:algorithm/IMU-UWB.c ****     }
+ 1168              		.loc 1 50 33 view .LVU209
+ 1169 036c 0022     		movs	r2, #0
+ 1170 036e 064B     		ldr	r3, .L23+8
+ 1171 0370 FFF7FEFF 		bl	__aeabi_dmul
+ 1172              	.LVL113:
+  50:algorithm/IMU-UWB.c ****     }
+ 1173              		.loc 1 50 19 view .LVU210
+ 1174 0374 CDE93E01 		strd	r0, [sp, #248]
+ 1175 0378 B2E6     		b	.L10
+ 1176              	.L24:
+ 1177 037a 00BFAFF3 		.align	3
+ 1177      0080
+ 1178              	.L23:
+ 1179 0380 8DEDB5A0 		.word	-1598689907
+ 1180 0384 F7C6B03E 		.word	1051772663
+ 1181 0388 0000E03F 		.word	1071644672
+ 1182 038c 0000F03F 		.word	1072693248
+ 1183              	.LVL114:
+ 1184              	.L20:
+  66:algorithm/IMU-UWB.c ****         accel_norm.y = 0;
+ 1185              		.loc 1 66 9 is_stmt 1 view .LVU211
+  66:algorithm/IMU-UWB.c ****         accel_norm.y = 0;
+ 1186              		.loc 1 66 22 is_stmt 0 view .LVU212
+ 1187 0390 0022     		movs	r2, #0
+ 1188 0392 0023     		movs	r3, #0
+ 1189 0394 CDE93223 		strd	r2, [sp, #200]
+  67:algorithm/IMU-UWB.c ****         accel_norm.z = 0;
+ 1190              		.loc 1 67 9 is_stmt 1 view .LVU213
+  67:algorithm/IMU-UWB.c ****         accel_norm.z = 0;
+ 1191              		.loc 1 67 22 is_stmt 0 view .LVU214
+ 1192 0398 CDE93423 		strd	r2, [sp, #208]
+  68:algorithm/IMU-UWB.c ****     }
+ 1193              		.loc 1 68 9 is_stmt 1 view .LVU215
+  68:algorithm/IMU-UWB.c ****     }
+ 1194              		.loc 1 68 22 is_stmt 0 view .LVU216
+ 1195 039c CDE93623 		strd	r2, [sp, #216]
+ 1196 03a0 1FE7     		b	.L13
+ 1197              	.LVL115:
+ 1198              	.L22:
+ 1199              	.LBB3:
+  83:algorithm/IMU-UWB.c ****         double sin_half_angle = sin(angle / 2.0) / error_mag;
+ 1200              		.loc 1 83 9 is_stmt 1 view .LVU217
+  83:algorithm/IMU-UWB.c ****         double sin_half_angle = sin(angle / 2.0) / error_mag;
+ 1201              		.loc 1 83 41 is_stmt 0 view .LVU218
+ 1202 03a2 0F9B     		ldr	r3, [sp, #60]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 24
+
+
+ 1203 03a4 D3E91423 		ldrd	r2, [r3, #80]
+ 1204 03a8 0020     		movs	r0, #0
+ 1205 03aa 3549     		ldr	r1, .L25
+ 1206 03ac FFF7FEFF 		bl	__aeabi_dsub
+ 1207              	.LVL116:
+  83:algorithm/IMU-UWB.c ****         double sin_half_angle = sin(angle / 2.0) / error_mag;
+ 1208              		.loc 1 83 16 view .LVU219
+ 1209 03b0 3246     		mov	r2, r6
+ 1210 03b2 3B46     		mov	r3, r7
+ 1211 03b4 FFF7FEFF 		bl	__aeabi_dmul
+ 1212              	.LVL117:
+  84:algorithm/IMU-UWB.c ****         error_q.w = cos(angle / 2.0);
+ 1213              		.loc 1 84 9 is_stmt 1 view .LVU220
+  84:algorithm/IMU-UWB.c ****         error_q.w = cos(angle / 2.0);
+ 1214              		.loc 1 84 33 is_stmt 0 view .LVU221
+ 1215 03b8 0022     		movs	r2, #0
+ 1216 03ba 324B     		ldr	r3, .L25+4
+ 1217 03bc FFF7FEFF 		bl	__aeabi_dmul
+ 1218              	.LVL118:
+  84:algorithm/IMU-UWB.c ****         error_q.w = cos(angle / 2.0);
+ 1219              		.loc 1 84 33 view .LVU222
+ 1220 03c0 8246     		mov	r10, r0
+ 1221 03c2 8B46     		mov	fp, r1
+ 1222 03c4 FFF7FEFF 		bl	sin
+ 1223              	.LVL119:
+  84:algorithm/IMU-UWB.c ****         error_q.w = cos(angle / 2.0);
+ 1224              		.loc 1 84 16 view .LVU223
+ 1225 03c8 3246     		mov	r2, r6
+ 1226 03ca 3B46     		mov	r3, r7
+ 1227 03cc FFF7FEFF 		bl	__aeabi_ddiv
+ 1228              	.LVL120:
+ 1229 03d0 0646     		mov	r6, r0
+ 1230              	.LVL121:
+  84:algorithm/IMU-UWB.c ****         error_q.w = cos(angle / 2.0);
+ 1231              		.loc 1 84 16 view .LVU224
+ 1232 03d2 0F46     		mov	r7, r1
+ 1233              	.LVL122:
+  85:algorithm/IMU-UWB.c ****         error_q.x = error.x * sin_half_angle;
+ 1234              		.loc 1 85 9 is_stmt 1 view .LVU225
+  85:algorithm/IMU-UWB.c ****         error_q.x = error.x * sin_half_angle;
+ 1235              		.loc 1 85 21 is_stmt 0 view .LVU226
+ 1236 03d4 5046     		mov	r0, r10
+ 1237 03d6 5946     		mov	r1, fp
+ 1238 03d8 FFF7FEFF 		bl	cos
+ 1239              	.LVL123:
+  85:algorithm/IMU-UWB.c ****         error_q.x = error.x * sin_half_angle;
+ 1240              		.loc 1 85 19 view .LVU227
+ 1241 03dc CDE91E01 		strd	r0, [sp, #120]
+  86:algorithm/IMU-UWB.c ****         error_q.y = error.y * sin_half_angle;
+ 1242              		.loc 1 86 9 is_stmt 1 view .LVU228
+  86:algorithm/IMU-UWB.c ****         error_q.y = error.y * sin_half_angle;
+ 1243              		.loc 1 86 29 is_stmt 0 view .LVU229
+ 1244 03e0 3246     		mov	r2, r6
+ 1245 03e2 3B46     		mov	r3, r7
+ 1246 03e4 DDE91001 		ldrd	r0, [sp, #64]
+ 1247 03e8 FFF7FEFF 		bl	__aeabi_dmul
+ 1248              	.LVL124:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 25
+
+
+  86:algorithm/IMU-UWB.c ****         error_q.y = error.y * sin_half_angle;
+ 1249              		.loc 1 86 19 view .LVU230
+ 1250 03ec CDE92001 		strd	r0, [sp, #128]
+  87:algorithm/IMU-UWB.c ****         error_q.z = error.z * sin_half_angle;
+ 1251              		.loc 1 87 9 is_stmt 1 view .LVU231
+  87:algorithm/IMU-UWB.c ****         error_q.z = error.z * sin_half_angle;
+ 1252              		.loc 1 87 29 is_stmt 0 view .LVU232
+ 1253 03f0 3246     		mov	r2, r6
+ 1254 03f2 3B46     		mov	r3, r7
+ 1255 03f4 4046     		mov	r0, r8
+ 1256 03f6 4946     		mov	r1, r9
+ 1257 03f8 FFF7FEFF 		bl	__aeabi_dmul
+ 1258              	.LVL125:
+  87:algorithm/IMU-UWB.c ****         error_q.z = error.z * sin_half_angle;
+ 1259              		.loc 1 87 19 view .LVU233
+ 1260 03fc CDE92201 		strd	r0, [sp, #136]
+  88:algorithm/IMU-UWB.c ****         // 更新姿态
+ 1261              		.loc 1 88 9 is_stmt 1 view .LVU234
+  88:algorithm/IMU-UWB.c ****         // 更新姿态
+ 1262              		.loc 1 88 29 is_stmt 0 view .LVU235
+ 1263 0400 3246     		mov	r2, r6
+ 1264 0402 3B46     		mov	r3, r7
+ 1265 0404 2046     		mov	r0, r4
+ 1266 0406 2946     		mov	r1, r5
+ 1267 0408 FFF7FEFF 		bl	__aeabi_dmul
+ 1268              	.LVL126:
+  88:algorithm/IMU-UWB.c ****         // 更新姿态
+ 1269              		.loc 1 88 19 view .LVU236
+ 1270 040c CDE92401 		strd	r0, [sp, #144]
+  90:algorithm/IMU-UWB.c ****         ins->orientation = normalize_quaternion(ins->orientation);
+ 1271              		.loc 1 90 9 is_stmt 1 view .LVU237
+  90:algorithm/IMU-UWB.c ****         ins->orientation = normalize_quaternion(ins->orientation);
+ 1272              		.loc 1 90 28 is_stmt 0 view .LVU238
+ 1273 0410 06AC     		add	r4, sp, #24
+ 1274 0412 0F9E     		ldr	r6, [sp, #60]
+ 1275              	.LVL127:
+  90:algorithm/IMU-UWB.c ****         ins->orientation = normalize_quaternion(ins->orientation);
+ 1276              		.loc 1 90 28 view .LVU239
+ 1277 0414 06F13005 		add	r5, r6, #48
+ 1278 0418 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1279 041a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1280 041c 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 1281 0420 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 1282 0424 6C46     		mov	r4, sp
+ 1283 0426 20AD     		add	r5, sp, #128
+ 1284 0428 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1285 042a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1286 042c 95E80300 		ldm	r5, {r0, r1}
+ 1287 0430 84E80300 		stm	r4, {r0, r1}
+ 1288 0434 1EAB     		add	r3, sp, #120
+ 1289 0436 0CCB     		ldm	r3, {r2, r3}
+ 1290 0438 16A8     		add	r0, sp, #88
+ 1291 043a FFF7FEFF 		bl	multiply_quaternion
+ 1292              	.LVL128:
+ 1293 043e 06F13004 		add	r4, r6, #48
+ 1294 0442 16AD     		add	r5, sp, #88
+ 1295 0444 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 26
+
+
+ 1296 0446 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1297 0448 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 1298 044c 84E80F00 		stm	r4, {r0, r1, r2, r3}
+  91:algorithm/IMU-UWB.c ****     }
+ 1299              		.loc 1 91 9 is_stmt 1 view .LVU240
+  91:algorithm/IMU-UWB.c ****     }
+ 1300              		.loc 1 91 28 is_stmt 0 view .LVU241
+ 1301 0450 6C46     		mov	r4, sp
+ 1302 0452 06F13805 		add	r5, r6, #56
+ 1303 0456 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1304 0458 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1305 045a 95E80300 		ldm	r5, {r0, r1}
+ 1306 045e 84E80300 		stm	r4, {r0, r1}
+ 1307 0462 06F13004 		add	r4, r6, #48
+ 1308 0466 94E80C00 		ldm	r4, {r2, r3}
+ 1309 046a 16A8     		add	r0, sp, #88
+ 1310 046c FFF7FEFF 		bl	normalize_quaternion
+ 1311              	.LVL129:
+ 1312 0470 16AD     		add	r5, sp, #88
+ 1313 0472 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1314 0474 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1315 0476 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 1316 047a 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 1317              	.LBE3:
+ 1318              		.loc 1 93 1 view .LVU242
+ 1319 047e 4EE7     		b	.L7
+ 1320              	.L26:
+ 1321              		.align	2
+ 1322              	.L25:
+ 1323 0480 0000F03F 		.word	1072693248
+ 1324 0484 0000E03F 		.word	1071644672
+ 1325              		.cfi_endproc
+ 1326              	.LFE6:
+ 1328              		.section	.text.update_velocity_position,"ax",%progbits
+ 1329              		.align	1
+ 1330              		.global	update_velocity_position
+ 1331              		.syntax unified
+ 1332              		.thumb
+ 1333              		.thumb_func
+ 1335              	update_velocity_position:
+ 1336              	.LVL130:
+ 1337              	.LFB7:
+  94:algorithm/IMU-UWB.c **** 
+  95:algorithm/IMU-UWB.c **** // 更新速度和位置
+  96:algorithm/IMU-UWB.c **** void update_velocity_position(InertialNavigationSystem *ins, Vector3 accel_net, double dt) {
+ 1338              		.loc 1 96 92 is_stmt 1 view -0
+ 1339              		.cfi_startproc
+ 1340              		@ args = 32, pretend = 8, frame = 32
+ 1341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1342              		.loc 1 96 92 is_stmt 0 view .LVU244
+ 1343 0000 82B0     		sub	sp, sp, #8
+ 1344              	.LCFI25:
+ 1345              		.cfi_def_cfa_offset 8
+ 1346 0002 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1347              	.LCFI26:
+ 1348              		.cfi_def_cfa_offset 44
+ 1349              		.cfi_offset 4, -44
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 27
+
+
+ 1350              		.cfi_offset 5, -40
+ 1351              		.cfi_offset 6, -36
+ 1352              		.cfi_offset 7, -32
+ 1353              		.cfi_offset 8, -28
+ 1354              		.cfi_offset 9, -24
+ 1355              		.cfi_offset 10, -20
+ 1356              		.cfi_offset 11, -16
+ 1357              		.cfi_offset 14, -12
+ 1358 0006 89B0     		sub	sp, sp, #36
+ 1359              	.LCFI27:
+ 1360              		.cfi_def_cfa_offset 80
+ 1361 0008 8246     		mov	r10, r0
+ 1362 000a 12A9     		add	r1, sp, #72
+ 1363 000c 81E80C00 		stm	r1, {r2, r3}
+ 1364 0010 DDE91845 		ldrd	r4, [sp, #96]
+  97:algorithm/IMU-UWB.c ****     // 更新速度
+  98:algorithm/IMU-UWB.c ****     ins->velocity.x += accel_net.x * dt;
+ 1365              		.loc 1 98 5 is_stmt 1 view .LVU245
+ 1366              		.loc 1 98 33 is_stmt 0 view .LVU246
+ 1367 0014 DDE91289 		ldrd	r8, [sp, #72]
+ 1368              		.loc 1 98 36 view .LVU247
+ 1369 0018 2246     		mov	r2, r4
+ 1370 001a 2B46     		mov	r3, r5
+ 1371 001c 4046     		mov	r0, r8
+ 1372              	.LVL131:
+ 1373              		.loc 1 98 36 view .LVU248
+ 1374 001e 4946     		mov	r1, r9
+ 1375 0020 FFF7FEFF 		bl	__aeabi_dmul
+ 1376              	.LVL132:
+ 1377              		.loc 1 98 21 view .LVU249
+ 1378 0024 DAE90623 		ldrd	r2, [r10, #24]
+ 1379 0028 FFF7FEFF 		bl	__aeabi_dadd
+ 1380              	.LVL133:
+ 1381 002c 0646     		mov	r6, r0
+ 1382 002e 0F46     		mov	r7, r1
+ 1383 0030 CAE90667 		strd	r6, [r10, #24]
+  99:algorithm/IMU-UWB.c ****     ins->velocity.y += accel_net.y * dt;
+ 1384              		.loc 1 99 5 is_stmt 1 view .LVU250
+ 1385              		.loc 1 99 33 is_stmt 0 view .LVU251
+ 1386 0034 DDE91423 		ldrd	r2, [sp, #80]
+ 1387 0038 1046     		mov	r0, r2
+ 1388 003a 1946     		mov	r1, r3
+ 1389              		.loc 1 99 36 view .LVU252
+ 1390 003c 2246     		mov	r2, r4
+ 1391 003e 2B46     		mov	r3, r5
+ 1392 0040 CDE90001 		strd	r0, [sp]
+ 1393 0044 FFF7FEFF 		bl	__aeabi_dmul
+ 1394              	.LVL134:
+ 1395              		.loc 1 99 21 view .LVU253
+ 1396 0048 DAE90823 		ldrd	r2, [r10, #32]
+ 1397 004c FFF7FEFF 		bl	__aeabi_dadd
+ 1398              	.LVL135:
+ 1399 0050 0A46     		mov	r2, r1
+ 1400 0052 0146     		mov	r1, r0
+ 1401 0054 CDE90412 		strd	r1, [sp, #16]
+ 1402 0058 CAE90812 		strd	r1, [r10, #32]
+ 100:algorithm/IMU-UWB.c ****     ins->velocity.z += accel_net.z * dt;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 28
+
+
+ 1403              		.loc 1 100 5 is_stmt 1 view .LVU254
+ 1404              		.loc 1 100 33 is_stmt 0 view .LVU255
+ 1405 005c DDE91623 		ldrd	r2, [sp, #88]
+ 1406 0060 9346     		mov	fp, r2
+ 1407 0062 9C46     		mov	ip, r3
+ 1408              		.loc 1 100 36 view .LVU256
+ 1409 0064 2246     		mov	r2, r4
+ 1410 0066 2B46     		mov	r3, r5
+ 1411 0068 CDE902BC 		strd	fp, [sp, #8]
+ 1412 006c 5846     		mov	r0, fp
+ 1413 006e 6146     		mov	r1, ip
+ 1414 0070 FFF7FEFF 		bl	__aeabi_dmul
+ 1415              	.LVL136:
+ 1416              		.loc 1 100 21 view .LVU257
+ 1417 0074 DAE90A23 		ldrd	r2, [r10, #40]
+ 1418 0078 FFF7FEFF 		bl	__aeabi_dadd
+ 1419              	.LVL137:
+ 1420 007c 0246     		mov	r2, r0
+ 1421 007e 0B46     		mov	r3, r1
+ 1422 0080 CDE90623 		strd	r2, [sp, #24]
+ 1423 0084 CAE90A23 		strd	r2, [r10, #40]
+ 101:algorithm/IMU-UWB.c **** 
+ 102:algorithm/IMU-UWB.c ****     // 更新位置
+ 103:algorithm/IMU-UWB.c ****     ins->position.x += ins->velocity.x * dt + 0.5 * accel_net.x * dt * dt;
+ 1424              		.loc 1 103 5 is_stmt 1 view .LVU258
+ 1425              		.loc 1 103 40 is_stmt 0 view .LVU259
+ 1426 0088 2246     		mov	r2, r4
+ 1427 008a 2B46     		mov	r3, r5
+ 1428 008c 3046     		mov	r0, r6
+ 1429 008e 3946     		mov	r1, r7
+ 1430 0090 FFF7FEFF 		bl	__aeabi_dmul
+ 1431              	.LVL138:
+ 1432 0094 0646     		mov	r6, r0
+ 1433 0096 0F46     		mov	r7, r1
+ 1434              		.loc 1 103 51 view .LVU260
+ 1435 0098 0022     		movs	r2, #0
+ 1436 009a 344B     		ldr	r3, .L29
+ 1437 009c 4046     		mov	r0, r8
+ 1438 009e 4946     		mov	r1, r9
+ 1439 00a0 FFF7FEFF 		bl	__aeabi_dmul
+ 1440              	.LVL139:
+ 1441              		.loc 1 103 65 view .LVU261
+ 1442 00a4 2246     		mov	r2, r4
+ 1443 00a6 2B46     		mov	r3, r5
+ 1444 00a8 FFF7FEFF 		bl	__aeabi_dmul
+ 1445              	.LVL140:
+ 1446              		.loc 1 103 70 view .LVU262
+ 1447 00ac 2246     		mov	r2, r4
+ 1448 00ae 2B46     		mov	r3, r5
+ 1449 00b0 FFF7FEFF 		bl	__aeabi_dmul
+ 1450              	.LVL141:
+ 1451 00b4 0246     		mov	r2, r0
+ 1452 00b6 0B46     		mov	r3, r1
+ 1453              		.loc 1 103 45 view .LVU263
+ 1454 00b8 3046     		mov	r0, r6
+ 1455 00ba 3946     		mov	r1, r7
+ 1456 00bc FFF7FEFF 		bl	__aeabi_dadd
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 29
+
+
+ 1457              	.LVL142:
+ 1458 00c0 0246     		mov	r2, r0
+ 1459 00c2 0B46     		mov	r3, r1
+ 1460              		.loc 1 103 21 view .LVU264
+ 1461 00c4 DAE90001 		ldrd	r0, [r10]
+ 1462 00c8 FFF7FEFF 		bl	__aeabi_dadd
+ 1463              	.LVL143:
+ 1464 00cc CAE90001 		strd	r0, [r10]
+ 104:algorithm/IMU-UWB.c ****     ins->position.y += ins->velocity.y * dt + 0.5 * accel_net.y * dt * dt;
+ 1465              		.loc 1 104 5 is_stmt 1 view .LVU265
+ 1466              		.loc 1 104 40 is_stmt 0 view .LVU266
+ 1467 00d0 2246     		mov	r2, r4
+ 1468 00d2 2B46     		mov	r3, r5
+ 1469 00d4 DDE90401 		ldrd	r0, [sp, #16]
+ 1470 00d8 FFF7FEFF 		bl	__aeabi_dmul
+ 1471              	.LVL144:
+ 1472 00dc 0646     		mov	r6, r0
+ 1473 00de 0F46     		mov	r7, r1
+ 1474              		.loc 1 104 51 view .LVU267
+ 1475 00e0 0022     		movs	r2, #0
+ 1476 00e2 224B     		ldr	r3, .L29
+ 1477 00e4 DDE90001 		ldrd	r0, [sp]
+ 1478 00e8 FFF7FEFF 		bl	__aeabi_dmul
+ 1479              	.LVL145:
+ 1480              		.loc 1 104 65 view .LVU268
+ 1481 00ec 2246     		mov	r2, r4
+ 1482 00ee 2B46     		mov	r3, r5
+ 1483 00f0 FFF7FEFF 		bl	__aeabi_dmul
+ 1484              	.LVL146:
+ 1485              		.loc 1 104 70 view .LVU269
+ 1486 00f4 2246     		mov	r2, r4
+ 1487 00f6 2B46     		mov	r3, r5
+ 1488 00f8 FFF7FEFF 		bl	__aeabi_dmul
+ 1489              	.LVL147:
+ 1490 00fc 0246     		mov	r2, r0
+ 1491 00fe 0B46     		mov	r3, r1
+ 1492              		.loc 1 104 45 view .LVU270
+ 1493 0100 3046     		mov	r0, r6
+ 1494 0102 3946     		mov	r1, r7
+ 1495 0104 FFF7FEFF 		bl	__aeabi_dadd
+ 1496              	.LVL148:
+ 1497 0108 0246     		mov	r2, r0
+ 1498 010a 0B46     		mov	r3, r1
+ 1499              		.loc 1 104 21 view .LVU271
+ 1500 010c DAE90201 		ldrd	r0, [r10, #8]
+ 1501 0110 FFF7FEFF 		bl	__aeabi_dadd
+ 1502              	.LVL149:
+ 1503 0114 CAE90201 		strd	r0, [r10, #8]
+ 105:algorithm/IMU-UWB.c ****     ins->position.z += ins->velocity.z * dt + 0.5 * accel_net.z * dt * dt;
+ 1504              		.loc 1 105 5 is_stmt 1 view .LVU272
+ 1505              		.loc 1 105 40 is_stmt 0 view .LVU273
+ 1506 0118 2246     		mov	r2, r4
+ 1507 011a 2B46     		mov	r3, r5
+ 1508 011c DDE90601 		ldrd	r0, [sp, #24]
+ 1509 0120 FFF7FEFF 		bl	__aeabi_dmul
+ 1510              	.LVL150:
+ 1511 0124 0646     		mov	r6, r0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 30
+
+
+ 1512 0126 0F46     		mov	r7, r1
+ 1513              		.loc 1 105 51 view .LVU274
+ 1514 0128 0022     		movs	r2, #0
+ 1515 012a 104B     		ldr	r3, .L29
+ 1516 012c DDE90201 		ldrd	r0, [sp, #8]
+ 1517 0130 FFF7FEFF 		bl	__aeabi_dmul
+ 1518              	.LVL151:
+ 1519              		.loc 1 105 65 view .LVU275
+ 1520 0134 2246     		mov	r2, r4
+ 1521 0136 2B46     		mov	r3, r5
+ 1522 0138 FFF7FEFF 		bl	__aeabi_dmul
+ 1523              	.LVL152:
+ 1524              		.loc 1 105 70 view .LVU276
+ 1525 013c 2246     		mov	r2, r4
+ 1526 013e 2B46     		mov	r3, r5
+ 1527 0140 FFF7FEFF 		bl	__aeabi_dmul
+ 1528              	.LVL153:
+ 1529 0144 0246     		mov	r2, r0
+ 1530 0146 0B46     		mov	r3, r1
+ 1531              		.loc 1 105 45 view .LVU277
+ 1532 0148 3046     		mov	r0, r6
+ 1533 014a 3946     		mov	r1, r7
+ 1534 014c FFF7FEFF 		bl	__aeabi_dadd
+ 1535              	.LVL154:
+ 1536 0150 0246     		mov	r2, r0
+ 1537 0152 0B46     		mov	r3, r1
+ 1538              		.loc 1 105 21 view .LVU278
+ 1539 0154 DAE90401 		ldrd	r0, [r10, #16]
+ 1540 0158 FFF7FEFF 		bl	__aeabi_dadd
+ 1541              	.LVL155:
+ 1542 015c CAE90401 		strd	r0, [r10, #16]
+ 106:algorithm/IMU-UWB.c **** }
+ 1543              		.loc 1 106 1 view .LVU279
+ 1544 0160 09B0     		add	sp, sp, #36
+ 1545              	.LCFI28:
+ 1546              		.cfi_def_cfa_offset 44
+ 1547              		@ sp needed
+ 1548 0162 BDE8F04F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1549              	.LCFI29:
+ 1550              		.cfi_restore 14
+ 1551              		.cfi_restore 11
+ 1552              		.cfi_restore 10
+ 1553              		.cfi_restore 9
+ 1554              		.cfi_restore 8
+ 1555              		.cfi_restore 7
+ 1556              		.cfi_restore 6
+ 1557              		.cfi_restore 5
+ 1558              		.cfi_restore 4
+ 1559              		.cfi_def_cfa_offset 8
+ 1560              	.LVL156:
+ 1561              		.loc 1 106 1 view .LVU280
+ 1562 0166 02B0     		add	sp, sp, #8
+ 1563              	.LCFI30:
+ 1564              		.cfi_def_cfa_offset 0
+ 1565 0168 7047     		bx	lr
+ 1566              	.L30:
+ 1567 016a 00BF     		.align	2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 31
+
+
+ 1568              	.L29:
+ 1569 016c 0000E03F 		.word	1071644672
+ 1570              		.cfi_endproc
+ 1571              	.LFE7:
+ 1573              		.section	.text.process_imu,"ax",%progbits
+ 1574              		.align	1
+ 1575              		.global	process_imu
+ 1576              		.syntax unified
+ 1577              		.thumb
+ 1578              		.thumb_func
+ 1580              	process_imu:
+ 1581              	.LVL157:
+ 1582              	.LFB8:
+ 107:algorithm/IMU-UWB.c **** 
+ 108:algorithm/IMU-UWB.c **** // 处理IMU数据
+ 109:algorithm/IMU-UWB.c **** void process_imu(InertialNavigationSystem *ins, Vector3 accel, Vector3 gyro, double dt) {
+ 1583              		.loc 1 109 89 is_stmt 1 view -0
+ 1584              		.cfi_startproc
+ 1585              		@ args = 56, pretend = 8, frame = 48
+ 1586              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1587              		.loc 1 109 89 is_stmt 0 view .LVU282
+ 1588 0000 82B0     		sub	sp, sp, #8
+ 1589              	.LCFI31:
+ 1590              		.cfi_def_cfa_offset 8
+ 1591 0002 D0B5     		push	{r4, r6, r7, lr}
+ 1592              	.LCFI32:
+ 1593              		.cfi_def_cfa_offset 24
+ 1594              		.cfi_offset 4, -24
+ 1595              		.cfi_offset 6, -20
+ 1596              		.cfi_offset 7, -16
+ 1597              		.cfi_offset 14, -12
+ 1598 0004 98B0     		sub	sp, sp, #96
+ 1599              	.LCFI33:
+ 1600              		.cfi_def_cfa_offset 120
+ 1601 0006 0446     		mov	r4, r0
+ 1602 0008 1CA9     		add	r1, sp, #112
+ 1603 000a 81E80C00 		stm	r1, {r2, r3}
+ 1604 000e DDE92867 		ldrd	r6, [sp, #160]
+ 110:algorithm/IMU-UWB.c ****     // 更新姿态
+ 111:algorithm/IMU-UWB.c ****     update_orientation(ins, gyro, accel, dt);
+ 1605              		.loc 1 111 5 is_stmt 1 view .LVU283
+ 1606 0012 CDE90A67 		strd	r6, [sp, #40]
+ 1607 0016 0DF1100C 		add	ip, sp, #16
+ 1608 001a 8E46     		mov	lr, r1
+ 1609 001c BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 1610              	.LVL158:
+ 1611              		.loc 1 111 5 is_stmt 0 view .LVU284
+ 1612 0020 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 1613 0024 9EE80300 		ldm	lr, {r0, r1}
+ 1614 0028 8CE80300 		stm	ip, {r0, r1}
+ 1615 002c 24AB     		add	r3, sp, #144
+ 1616 002e 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1617 0030 8DE80F00 		stm	sp, {r0, r1, r2, r3}
+ 1618 0034 22AB     		add	r3, sp, #136
+ 1619 0036 0CCB     		ldm	r3, {r2, r3}
+ 1620 0038 2046     		mov	r0, r4
+ 1621 003a FFF7FEFF 		bl	update_orientation
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 32
+
+
+ 1622              	.LVL159:
+ 112:algorithm/IMU-UWB.c **** 
+ 113:algorithm/IMU-UWB.c ****     // // 将加速度转换到导航坐标系
+ 114:algorithm/IMU-UWB.c ****     Vector3 accel_nav = rotate_vector(ins->orientation, accel);
+ 1623              		.loc 1 114 5 is_stmt 1 view .LVU285
+ 1624              		.loc 1 114 25 is_stmt 0 view .LVU286
+ 1625 003e 0DF1180C 		add	ip, sp, #24
+ 1626 0042 0DF1700E 		add	lr, sp, #112
+ 1627 0046 BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 1628 004a ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 1629 004e 9EE80300 		ldm	lr, {r0, r1}
+ 1630 0052 8CE80300 		stm	ip, {r0, r1}
+ 1631 0056 EC46     		mov	ip, sp
+ 1632 0058 04F1380E 		add	lr, r4, #56
+ 1633 005c BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 1634 0060 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 1635 0064 9EE80300 		ldm	lr, {r0, r1}
+ 1636 0068 8CE80300 		stm	ip, {r0, r1}
+ 1637 006c 04F13003 		add	r3, r4, #48
+ 1638 0070 0CCB     		ldm	r3, {r2, r3}
+ 1639 0072 12A8     		add	r0, sp, #72
+ 1640 0074 FFF7FEFF 		bl	rotate_vector
+ 1641              	.LVL160:
+ 115:algorithm/IMU-UWB.c **** 
+ 116:algorithm/IMU-UWB.c ****     // 去除重力
+ 117:algorithm/IMU-UWB.c ****     Vector3 accel_net;
+ 1642              		.loc 1 117 5 is_stmt 1 view .LVU287
+ 118:algorithm/IMU-UWB.c ****     accel_net.x = accel_nav.x - ins->gravity.x;
+ 1643              		.loc 1 118 5 view .LVU288
+ 1644              		.loc 1 118 31 is_stmt 0 view .LVU289
+ 1645 0078 D4E91623 		ldrd	r2, [r4, #88]
+ 1646 007c DDE91201 		ldrd	r0, [sp, #72]
+ 1647 0080 FFF7FEFF 		bl	__aeabi_dsub
+ 1648              	.LVL161:
+ 1649              		.loc 1 118 17 view .LVU290
+ 1650 0084 CDE90C01 		strd	r0, [sp, #48]
+ 119:algorithm/IMU-UWB.c ****     accel_net.y = accel_nav.y - ins->gravity.y;
+ 1651              		.loc 1 119 5 is_stmt 1 view .LVU291
+ 1652              		.loc 1 119 31 is_stmt 0 view .LVU292
+ 1653 0088 D4E91823 		ldrd	r2, [r4, #96]
+ 1654 008c DDE91401 		ldrd	r0, [sp, #80]
+ 1655 0090 FFF7FEFF 		bl	__aeabi_dsub
+ 1656              	.LVL162:
+ 1657              		.loc 1 119 17 view .LVU293
+ 1658 0094 CDE90E01 		strd	r0, [sp, #56]
+ 120:algorithm/IMU-UWB.c ****     accel_net.z = accel_nav.z - ins->gravity.z;
+ 1659              		.loc 1 120 5 is_stmt 1 view .LVU294
+ 1660              		.loc 1 120 31 is_stmt 0 view .LVU295
+ 1661 0098 D4E91A23 		ldrd	r2, [r4, #104]
+ 1662 009c DDE91601 		ldrd	r0, [sp, #88]
+ 1663 00a0 FFF7FEFF 		bl	__aeabi_dsub
+ 1664              	.LVL163:
+ 1665              		.loc 1 120 17 view .LVU296
+ 1666 00a4 CDE91001 		strd	r0, [sp, #64]
+ 121:algorithm/IMU-UWB.c **** 
+ 122:algorithm/IMU-UWB.c ****     accel_net.x = accel.x;
+ 1667              		.loc 1 122 5 is_stmt 1 view .LVU297
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 33
+
+
+ 1668              		.loc 1 122 24 is_stmt 0 view .LVU298
+ 1669 00a8 DDE91C23 		ldrd	r2, [sp, #112]
+ 1670              		.loc 1 122 17 view .LVU299
+ 1671 00ac CDE90C23 		strd	r2, [sp, #48]
+ 123:algorithm/IMU-UWB.c ****     accel_net.y = accel.y;
+ 1672              		.loc 1 123 5 is_stmt 1 view .LVU300
+ 1673              		.loc 1 123 24 is_stmt 0 view .LVU301
+ 1674 00b0 DDE91E23 		ldrd	r2, [sp, #120]
+ 1675              		.loc 1 123 17 view .LVU302
+ 1676 00b4 CDE90E23 		strd	r2, [sp, #56]
+ 124:algorithm/IMU-UWB.c ****     accel_net.z = accel.z;
+ 1677              		.loc 1 124 5 is_stmt 1 view .LVU303
+ 1678              		.loc 1 124 24 is_stmt 0 view .LVU304
+ 1679 00b8 DDE92023 		ldrd	r2, [sp, #128]
+ 1680              		.loc 1 124 17 view .LVU305
+ 1681 00bc CDE91023 		strd	r2, [sp, #64]
+ 125:algorithm/IMU-UWB.c **** 
+ 126:algorithm/IMU-UWB.c ****     // 更新速度和位置
+ 127:algorithm/IMU-UWB.c ****     update_velocity_position(ins, accel_net, dt);
+ 1682              		.loc 1 127 5 is_stmt 1 view .LVU306
+ 1683 00c0 CDE90467 		strd	r6, [sp, #16]
+ 1684 00c4 0EAB     		add	r3, sp, #56
+ 1685 00c6 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1686 00c8 8DE80F00 		stm	sp, {r0, r1, r2, r3}
+ 1687 00cc 0CAB     		add	r3, sp, #48
+ 1688 00ce 0CCB     		ldm	r3, {r2, r3}
+ 1689 00d0 2046     		mov	r0, r4
+ 1690 00d2 FFF7FEFF 		bl	update_velocity_position
+ 1691              	.LVL164:
+ 128:algorithm/IMU-UWB.c **** }
+ 1692              		.loc 1 128 1 is_stmt 0 view .LVU307
+ 1693 00d6 18B0     		add	sp, sp, #96
+ 1694              	.LCFI34:
+ 1695              		.cfi_def_cfa_offset 24
+ 1696              		@ sp needed
+ 1697 00d8 BDE8D040 		pop	{r4, r6, r7, lr}
+ 1698              	.LCFI35:
+ 1699              		.cfi_restore 14
+ 1700              		.cfi_restore 7
+ 1701              		.cfi_restore 6
+ 1702              		.cfi_restore 4
+ 1703              		.cfi_def_cfa_offset 8
+ 1704              	.LVL165:
+ 1705              		.loc 1 128 1 view .LVU308
+ 1706 00dc 02B0     		add	sp, sp, #8
+ 1707              	.LCFI36:
+ 1708              		.cfi_def_cfa_offset 0
+ 1709 00de 7047     		bx	lr
+ 1710              		.cfi_endproc
+ 1711              	.LFE8:
+ 1713              		.section	.text.simulate_imu_motion,"ax",%progbits
+ 1714              		.align	1
+ 1715              		.global	simulate_imu_motion
+ 1716              		.syntax unified
+ 1717              		.thumb
+ 1718              		.thumb_func
+ 1720              	simulate_imu_motion:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 34
+
+
+ 1721              	.LVL166:
+ 1722              	.LFB9:
+ 129:algorithm/IMU-UWB.c **** 
+ 130:algorithm/IMU-UWB.c **** // 模拟IMU运动
+ 131:algorithm/IMU-UWB.c **** void simulate_imu_motion(double t_total, double dt, Vector3 *accel_data, Vector3 *gyro_data, int n)
+ 1723              		.loc 1 131 101 is_stmt 1 view -0
+ 1724              		.cfi_startproc
+ 1725              		@ args = 12, pretend = 0, frame = 0
+ 1726              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1727              		@ link register save eliminated.
+ 1728              		.loc 1 131 101 is_stmt 0 view .LVU310
+ 1729 0000 70B4     		push	{r4, r5, r6}
+ 1730              	.LCFI37:
+ 1731              		.cfi_def_cfa_offset 12
+ 1732              		.cfi_offset 4, -12
+ 1733              		.cfi_offset 5, -8
+ 1734              		.cfi_offset 6, -4
+ 1735 0002 039E     		ldr	r6, [sp, #12]
+ 1736 0004 049D     		ldr	r5, [sp, #16]
+ 1737 0006 059C     		ldr	r4, [sp, #20]
+ 132:algorithm/IMU-UWB.c ****     for(int i = 0; i < n; i++) {
+ 1738              		.loc 1 132 5 is_stmt 1 view .LVU311
+ 1739              	.LBB4:
+ 1740              		.loc 1 132 9 view .LVU312
+ 1741              	.LVL167:
+ 1742              		.loc 1 132 13 is_stmt 0 view .LVU313
+ 1743 0008 0022     		movs	r2, #0
+ 1744              	.LVL168:
+ 1745              		.loc 1 132 5 view .LVU314
+ 1746 000a 19E0     		b	.L34
+ 1747              	.LVL169:
+ 1748              	.L35:
+ 133:algorithm/IMU-UWB.c ****         // 示例运动：在x方向以1 m/s²加速，旋转速度为0.1 rad/s绕z轴
+ 134:algorithm/IMU-UWB.c ****         accel_data[i].x = 1.0; // 加速 1 m/s² 在x轴
+ 1749              		.loc 1 134 9 is_stmt 1 discriminator 3 view .LVU315
+ 1750              		.loc 1 134 19 is_stmt 0 discriminator 3 view .LVU316
+ 1751 000c 02EB4201 		add	r1, r2, r2, lsl #1
+ 1752 0010 CB00     		lsls	r3, r1, #3
+ 1753 0012 06EB030C 		add	ip, r6, r3
+ 1754              		.loc 1 134 25 discriminator 3 view .LVU317
+ 1755 0016 0020     		movs	r0, #0
+ 1756 0018 0D49     		ldr	r1, .L37+8
+ 1757 001a CCE90001 		strd	r0, [ip]
+ 135:algorithm/IMU-UWB.c ****         accel_data[i].y = 0.0;
+ 1758              		.loc 1 135 9 is_stmt 1 discriminator 3 view .LVU318
+ 1759              		.loc 1 135 25 is_stmt 0 discriminator 3 view .LVU319
+ 1760 001e 0020     		movs	r0, #0
+ 1761 0020 0021     		movs	r1, #0
+ 1762 0022 CCE90201 		strd	r0, [ip, #8]
+ 136:algorithm/IMU-UWB.c ****         accel_data[i].z = 0.0;
+ 1763              		.loc 1 136 9 is_stmt 1 discriminator 3 view .LVU320
+ 1764              		.loc 1 136 25 is_stmt 0 discriminator 3 view .LVU321
+ 1765 0026 CCE90401 		strd	r0, [ip, #16]
+ 137:algorithm/IMU-UWB.c **** 
+ 138:algorithm/IMU-UWB.c ****         gyro_data[i].x = 0.0;
+ 1766              		.loc 1 138 9 is_stmt 1 discriminator 3 view .LVU322
+ 1767              		.loc 1 138 18 is_stmt 0 discriminator 3 view .LVU323
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 35
+
+
+ 1768 002a 2B44     		add	r3, r3, r5
+ 1769              		.loc 1 138 24 discriminator 3 view .LVU324
+ 1770 002c C3E90001 		strd	r0, [r3]
+ 139:algorithm/IMU-UWB.c ****         gyro_data[i].y = 0.0;
+ 1771              		.loc 1 139 9 is_stmt 1 discriminator 3 view .LVU325
+ 1772              		.loc 1 139 24 is_stmt 0 discriminator 3 view .LVU326
+ 1773 0030 C3E90201 		strd	r0, [r3, #8]
+ 140:algorithm/IMU-UWB.c ****         gyro_data[i].z = 0.1; // 以0.1 rad/s绕z轴旋转
+ 1774              		.loc 1 140 9 is_stmt 1 discriminator 3 view .LVU327
+ 1775              		.loc 1 140 24 is_stmt 0 discriminator 3 view .LVU328
+ 1776 0034 04A1     		adr	r1, .L37
+ 1777 0036 D1E90001 		ldrd	r0, [r1]
+ 1778 003a C3E90401 		strd	r0, [r3, #16]
+ 132:algorithm/IMU-UWB.c ****         // 示例运动：在x方向以1 m/s²加速，旋转速度为0.1 rad/s绕z轴
+ 1779              		.loc 1 132 27 is_stmt 1 discriminator 3 view .LVU329
+ 132:algorithm/IMU-UWB.c ****         // 示例运动：在x方向以1 m/s²加速，旋转速度为0.1 rad/s绕z轴
+ 1780              		.loc 1 132 28 is_stmt 0 discriminator 3 view .LVU330
+ 1781 003e 0132     		adds	r2, r2, #1
+ 1782              	.LVL170:
+ 1783              	.L34:
+ 132:algorithm/IMU-UWB.c ****         // 示例运动：在x方向以1 m/s²加速，旋转速度为0.1 rad/s绕z轴
+ 1784              		.loc 1 132 20 is_stmt 1 discriminator 1 view .LVU331
+ 132:algorithm/IMU-UWB.c ****         // 示例运动：在x方向以1 m/s²加速，旋转速度为0.1 rad/s绕z轴
+ 1785              		.loc 1 132 5 is_stmt 0 discriminator 1 view .LVU332
+ 1786 0040 A242     		cmp	r2, r4
+ 1787 0042 E3DB     		blt	.L35
+ 1788              	.LBE4:
+ 141:algorithm/IMU-UWB.c ****     }
+ 142:algorithm/IMU-UWB.c **** }
+ 1789              		.loc 1 142 1 view .LVU333
+ 1790 0044 70BC     		pop	{r4, r5, r6}
+ 1791              	.LCFI38:
+ 1792              		.cfi_restore 6
+ 1793              		.cfi_restore 5
+ 1794              		.cfi_restore 4
+ 1795              		.cfi_def_cfa_offset 0
+ 1796              	.LVL171:
+ 1797              		.loc 1 142 1 view .LVU334
+ 1798 0046 7047     		bx	lr
+ 1799              	.L38:
+ 1800              		.align	3
+ 1801              	.L37:
+ 1802 0048 9A999999 		.word	-1717986918
+ 1803 004c 9999B93F 		.word	1069128089
+ 1804 0050 0000F03F 		.word	1072693248
+ 1805              		.cfi_endproc
+ 1806              	.LFE9:
+ 1808              		.text
+ 1809              	.Letext0:
+ 1810              		.file 2 "algorithm/IMU-UWB.h"
+ 1811              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\math.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s 			page 36
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 IMU-UWB.c
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:21     .text.normalize_quaternion:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:27     .text.normalize_quaternion:00000000 normalize_quaternion
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:193    .text.multiply_quaternion:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:199    .text.multiply_quaternion:00000000 multiply_quaternion
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:489    .text.rotate_vector:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:495    .text.rotate_vector:00000000 rotate_vector
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:628    .text.update_orientation:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:634    .text.update_orientation:00000000 update_orientation
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1179   .text.update_orientation:00000380 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1187   .text.update_orientation:00000390 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1323   .text.update_orientation:00000480 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1329   .text.update_velocity_position:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1335   .text.update_velocity_position:00000000 update_velocity_position
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1569   .text.update_velocity_position:0000016c $d
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1574   .text.process_imu:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1580   .text.process_imu:00000000 process_imu
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1714   .text.simulate_imu_motion:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1720   .text.simulate_imu_motion:00000000 simulate_imu_motion
+C:\Users\Lenovo\AppData\Local\Temp\ccIQQftn.s:1802   .text.simulate_imu_motion:00000048 $d
+
+UNDEFINED SYMBOLS
+__aeabi_dmul
+__aeabi_dadd
+__aeabi_ddiv
+sqrt
+__aeabi_dsub
+__aeabi_dcmpgt
+__aeabi_dcmpeq
+sin
+cos

@@ -124,7 +124,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    // osThreadTerminate(defaultTaskHandle);
+    osThreadTerminate(defaultTaskHandle);
 
     osDelay(100);
   }

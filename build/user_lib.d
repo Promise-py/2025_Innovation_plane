@@ -22,6 +22,7 @@ build/user_lib.o: algorithm/user_lib.c algorithm/user_lib.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  algorithm/arm_math.h Tools/DSP/Include/arm_math_types.h \
  Drivers/CMSIS/Include/cmsis_compiler.h \
  Tools/DSP/Include/arm_math_memory.h Tools/DSP/Include/arm_math_types.h \
@@ -69,6 +70,7 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 algorithm/arm_math.h:
 Tools/DSP/Include/arm_math_types.h:
 Drivers/CMSIS/Include/cmsis_compiler.h:

@@ -1,0 +1,203 @@
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"deca_mutex.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.decamutexon,"ax",%progbits
+  18              		.align	1
+  19              		.global	decamutexon
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	decamutexon:
+  25              	.LFB68:
+  26              		.file 1 "Drivers/platform/deca_mutex.c"
+   1:Drivers/platform/deca_mutex.c **** /*! ----------------------------------------------------------------------------
+   2:Drivers/platform/deca_mutex.c ****  * @file	deca_mutex.c
+   3:Drivers/platform/deca_mutex.c ****  * @brief	IRQ interface / mutex implementation
+   4:Drivers/platform/deca_mutex.c ****  *
+   5:Drivers/platform/deca_mutex.c ****  * @attention
+   6:Drivers/platform/deca_mutex.c ****  *
+   7:Drivers/platform/deca_mutex.c ****  * Copyright 2015 (c) DecaWave Ltd, Dublin, Ireland.
+   8:Drivers/platform/deca_mutex.c ****  *
+   9:Drivers/platform/deca_mutex.c ****  * All rights reserved.
+  10:Drivers/platform/deca_mutex.c ****  *
+  11:Drivers/platform/deca_mutex.c ****  */
+  12:Drivers/platform/deca_mutex.c **** 
+  13:Drivers/platform/deca_mutex.c **** #include "deca_device_api.h"
+  14:Drivers/platform/deca_mutex.c **** #include "DWMport.h"
+  15:Drivers/platform/deca_mutex.c **** // ---------------------------------------------------------------------------
+  16:Drivers/platform/deca_mutex.c **** //
+  17:Drivers/platform/deca_mutex.c **** // NB: The purpose of this file is to provide for microprocessor interrupt enable/disable, this is 
+  18:Drivers/platform/deca_mutex.c **** //     controlling mutual exclusion from critical sections in the code where interrupts and backgro
+  19:Drivers/platform/deca_mutex.c **** //     processing may interact.  The code using this is kept to a minimum and the disabling time is
+  20:Drivers/platform/deca_mutex.c **** //     kept to a minimum, so blanket interrupt disable may be the easiest way to provide this.  But
+  21:Drivers/platform/deca_mutex.c **** //     minimum those interrupts coming from the decawave device should be disabled/re-enabled by th
+  22:Drivers/platform/deca_mutex.c **** //
+  23:Drivers/platform/deca_mutex.c **** //     In porting this to a particular microprocessor, the implementer may choose to use #defines i
+  24:Drivers/platform/deca_mutex.c **** //     deca_irq.h include file to map these calls transparently to the target system.  Alternativel
+  25:Drivers/platform/deca_mutex.c **** //     appropriate code may be embedded in the functions provided below.
+  26:Drivers/platform/deca_mutex.c **** //
+  27:Drivers/platform/deca_mutex.c **** //     This mutex dependent on HW port.
+  28:Drivers/platform/deca_mutex.c **** //	   If HW port uses EXT_IRQ line to receive ready/busy status from DW1000 then mutex should use t
+  29:Drivers/platform/deca_mutex.c **** //     If HW port not use EXT_IRQ line (i.e. SW polling) then no necessary for decamutex(on/off)
+  30:Drivers/platform/deca_mutex.c **** //
+  31:Drivers/platform/deca_mutex.c **** //	   For critical section use this mutex instead
+  32:Drivers/platform/deca_mutex.c **** //	   __save_intstate()
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s 			page 2
+
+
+  33:Drivers/platform/deca_mutex.c **** //     __restore_intstate()
+  34:Drivers/platform/deca_mutex.c **** // ---------------------------------------------------------------------------
+  35:Drivers/platform/deca_mutex.c **** 
+  36:Drivers/platform/deca_mutex.c **** 
+  37:Drivers/platform/deca_mutex.c **** /*! -----------------------------------------------------------------------------------------------
+  38:Drivers/platform/deca_mutex.c ****  * Function: decamutexon()
+  39:Drivers/platform/deca_mutex.c ****  *
+  40:Drivers/platform/deca_mutex.c ****  * Description: This function should disable interrupts. This is called at the start of a critical 
+  41:Drivers/platform/deca_mutex.c ****  * It returns the irq state before disable, this value is used to re-enable in decamutexoff call
+  42:Drivers/platform/deca_mutex.c ****  *
+  43:Drivers/platform/deca_mutex.c ****  * Note: The body of this function is defined in deca_mutex.c and is platform specific
+  44:Drivers/platform/deca_mutex.c ****  *
+  45:Drivers/platform/deca_mutex.c ****  * input parameters:	
+  46:Drivers/platform/deca_mutex.c ****  *
+  47:Drivers/platform/deca_mutex.c ****  * output parameters
+  48:Drivers/platform/deca_mutex.c ****  *
+  49:Drivers/platform/deca_mutex.c ****  * returns the state of the DW1000 interrupt
+  50:Drivers/platform/deca_mutex.c ****  */
+  51:Drivers/platform/deca_mutex.c **** decaIrqStatus_t decamutexon(void)           
+  52:Drivers/platform/deca_mutex.c **** {
+  27              		.loc 1 52 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  53:Drivers/platform/deca_mutex.c **** 	decaIrqStatus_t s = port_GetEXT_IRQStatus();
+  36              		.loc 1 53 2 view .LVU1
+  37              		.loc 1 53 22 is_stmt 0 view .LVU2
+  38 0002 FFF7FEFF 		bl	port_GetEXT_IRQStatus
+  39              	.LVL0:
+  54:Drivers/platform/deca_mutex.c **** 
+  55:Drivers/platform/deca_mutex.c **** 	if(s) {
+  40              		.loc 1 55 2 is_stmt 1 view .LVU3
+  41              		.loc 1 55 4 is_stmt 0 view .LVU4
+  42 0006 0446     		mov	r4, r0
+  43 0008 08B9     		cbnz	r0, .L4
+  44              	.LVL1:
+  45              	.L1:
+  56:Drivers/platform/deca_mutex.c **** 		port_DisableEXT_IRQ(); //disable the external interrupt line
+  57:Drivers/platform/deca_mutex.c **** 	}
+  58:Drivers/platform/deca_mutex.c **** 	return s ;   // return state before disable, value is used to re-enable in decamutexoff call
+  59:Drivers/platform/deca_mutex.c **** }
+  46              		.loc 1 59 1 view .LVU5
+  47 000a 2046     		mov	r0, r4
+  48 000c 10BD     		pop	{r4, pc}
+  49              	.LVL2:
+  50              	.L4:
+  56:Drivers/platform/deca_mutex.c **** 		port_DisableEXT_IRQ(); //disable the external interrupt line
+  51              		.loc 1 56 3 is_stmt 1 view .LVU6
+  52 000e FFF7FEFF 		bl	port_DisableEXT_IRQ
+  53              	.LVL3:
+  58:Drivers/platform/deca_mutex.c **** }
+  54              		.loc 1 58 2 view .LVU7
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s 			page 3
+
+
+  58:Drivers/platform/deca_mutex.c **** }
+  55              		.loc 1 58 9 is_stmt 0 view .LVU8
+  56 0012 FAE7     		b	.L1
+  57              		.cfi_endproc
+  58              	.LFE68:
+  60              		.section	.text.decamutexoff,"ax",%progbits
+  61              		.align	1
+  62              		.global	decamutexoff
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  67              	decamutexoff:
+  68              	.LVL4:
+  69              	.LFB69:
+  60:Drivers/platform/deca_mutex.c **** 
+  61:Drivers/platform/deca_mutex.c **** /*! -----------------------------------------------------------------------------------------------
+  62:Drivers/platform/deca_mutex.c ****  * Function: decamutexoff()
+  63:Drivers/platform/deca_mutex.c ****  *
+  64:Drivers/platform/deca_mutex.c ****  * Description: This function should re-enable interrupts, or at least restore their state as retur
+  65:Drivers/platform/deca_mutex.c ****  * This is called at the end of a critical section
+  66:Drivers/platform/deca_mutex.c ****  *
+  67:Drivers/platform/deca_mutex.c ****  * Note: The body of this function is defined in deca_mutex.c and is platform specific
+  68:Drivers/platform/deca_mutex.c ****  *
+  69:Drivers/platform/deca_mutex.c ****  * input parameters:	
+  70:Drivers/platform/deca_mutex.c ****  * @param s - the state of the DW1000 interrupt as returned by decamutexon
+  71:Drivers/platform/deca_mutex.c ****  *
+  72:Drivers/platform/deca_mutex.c ****  * output parameters
+  73:Drivers/platform/deca_mutex.c ****  *
+  74:Drivers/platform/deca_mutex.c ****  * returns the state of the DW1000 interrupt
+  75:Drivers/platform/deca_mutex.c ****  */
+  76:Drivers/platform/deca_mutex.c **** void decamutexoff(decaIrqStatus_t s)        // put a function here that re-enables the interrupt at
+  77:Drivers/platform/deca_mutex.c **** {
+  70              		.loc 1 77 1 is_stmt 1 view -0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  78:Drivers/platform/deca_mutex.c **** 	if(s) { //need to check the port state as we can't use level sensitive interrupt on the STM ARM
+  74              		.loc 1 78 2 view .LVU10
+  75              		.loc 1 78 4 is_stmt 0 view .LVU11
+  76 0000 00B9     		cbnz	r0, .L11
+  77 0002 7047     		bx	lr
+  78              	.L11:
+  77:Drivers/platform/deca_mutex.c **** 	if(s) { //need to check the port state as we can't use level sensitive interrupt on the STM ARM
+  79              		.loc 1 77 1 view .LVU12
+  80 0004 08B5     		push	{r3, lr}
+  81              	.LCFI1:
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 3, -8
+  84              		.cfi_offset 14, -4
+  79:Drivers/platform/deca_mutex.c **** 		port_EnableEXT_IRQ();
+  85              		.loc 1 79 3 is_stmt 1 view .LVU13
+  86 0006 FFF7FEFF 		bl	port_EnableEXT_IRQ
+  87              	.LVL5:
+  80:Drivers/platform/deca_mutex.c **** 	}
+  81:Drivers/platform/deca_mutex.c **** }
+  88              		.loc 1 81 1 is_stmt 0 view .LVU14
+  89 000a 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s 			page 4
+
+
+  90              		.cfi_endproc
+  91              	.LFE69:
+  93              		.text
+  94              	.Letext0:
+  95              		.file 2 "Drivers/platform/DWMport.h"
+  96              		.file 3 "Drivers/decadriver/deca_device_api.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 deca_mutex.c
+C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s:18     .text.decamutexon:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s:24     .text.decamutexon:00000000 decamutexon
+C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s:61     .text.decamutexoff:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccTJSpbb.s:67     .text.decamutexoff:00000000 decamutexoff
+
+UNDEFINED SYMBOLS
+port_GetEXT_IRQStatus
+port_DisableEXT_IRQ
+port_EnableEXT_IRQ

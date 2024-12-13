@@ -22,6 +22,7 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Core/Inc/FreeRTOSConfig.h \
@@ -39,9 +40,9 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/timers.h Core/Inc/dma.h \
- Core/Inc/main.h Core/Inc/spi.h Core/Inc/tim.h Core/Inc/gpio.h \
- BMI088/Inc/BMI088driver.h BMI088/Inc/struct_typedef.h \
- application/plane.h
+ Core/Inc/main.h Core/Inc/spi.h Core/Inc/tim.h Core/Inc/usart.h \
+ Core/Inc/gpio.h BMI088/Inc/BMI088driver.h BMI088/Inc/struct_typedef.h \
+ application/plane.h DWM1000/Inc/ex_05a_main.h
 Core/Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Core/Inc/stm32f1xx_hal_conf.h:
@@ -68,6 +69,7 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
@@ -89,7 +91,9 @@ Core/Inc/dma.h:
 Core/Inc/main.h:
 Core/Inc/spi.h:
 Core/Inc/tim.h:
+Core/Inc/usart.h:
 Core/Inc/gpio.h:
 BMI088/Inc/BMI088driver.h:
 BMI088/Inc/struct_typedef.h:
 application/plane.h:
+DWM1000/Inc/ex_05a_main.h:

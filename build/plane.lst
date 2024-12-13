@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,21 +17,25 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
   14              		.section	.rodata.str1.4,"aMS",%progbits,1
   15              		.align	2
   16              	.LC0:
-  17 0000 696E7374 		.ascii	"instask\000"
+  17 0000 75776274 		.ascii	"uwbtask\000"
   17      61736B00 
-  18              		.text
-  19              	.Ltext0:
-  20              		.cfi_sections	.debug_frame
-  21              		.section	.text.StartINSTASK,"ax",%progbits
-  22              		.align	1
-  23              		.global	StartINSTASK
-  24              		.syntax unified
-  25              		.thumb
-  26              		.thumb_func
-  28              	StartINSTASK:
-  29              	.LVL0:
-  30              	.LFB127:
-  31              		.file 1 "application/plane_task.h"
+  18              		.align	2
+  19              	.LC2:
+  20 0008 666C7974 		.ascii	"flytask\000"
+  20      61736B00 
+  21              		.text
+  22              	.Ltext0:
+  23              		.cfi_sections	.debug_frame
+  24              		.section	.text.StartUWBTask,"ax",%progbits
+  25              		.align	1
+  26              		.global	StartUWBTask
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  31              	StartUWBTask:
+  32              	.LVL0:
+  33              	.LFB131:
+  34              		.file 1 "application/plane_task.h"
    1:application/plane_task.h **** #pragma once
    2:application/plane_task.h **** 
    3:application/plane_task.h **** #include "FreeRTOS.h"
@@ -39,161 +43,264 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
    5:application/plane_task.h **** #include "cmsis_os.h"
    6:application/plane_task.h **** #include "ins_task.h"
    7:application/plane_task.h **** #include "tim.h"
-   8:application/plane_task.h **** 
-   9:application/plane_task.h **** /*任务节点创建区*/
-  10:application/plane_task.h **** osThreadId insTaskHandle;
-  11:application/plane_task.h **** 
-  12:application/plane_task.h **** /*任务函数声明*/
-  13:application/plane_task.h **** void StartINSTASK(void const *argument);
+   8:application/plane_task.h **** #include "ex_05a_main.h"
+   9:application/plane_task.h **** #include "data_pool.h"
+  10:application/plane_task.h **** #include "usart.h"
+  11:application/plane_task.h **** #include <math.h>
+  12:application/plane_task.h **** #include "Movebase.h"
+  13:application/plane_task.h **** #include "measure.h"
   14:application/plane_task.h **** 
-  15:application/plane_task.h **** /**
-  16:application/plane_task.h ****  * @name    oSTASKInit
-  17:application/plane_task.h ****  * @brief   任务初始化，所有运行的任务都在此初始化
-  18:application/plane_task.h ****  */
-  19:application/plane_task.h **** void OSTASKInit(void)
-  20:application/plane_task.h **** {
-  21:application/plane_task.h ****     osThreadDef(instask,StartINSTASK,osPriorityAboveNormal,0,1024);
-  22:application/plane_task.h ****     insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
-  23:application/plane_task.h **** }
-  24:application/plane_task.h **** 
-  25:application/plane_task.h **** int a;
-  26:application/plane_task.h **** void StartINSTASK(void const *argument)
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 2
+  15:application/plane_task.h **** 
+  16:application/plane_task.h **** /*任务节点创建区*/
+  17:application/plane_task.h **** osThreadId insTaskHandle;
+  18:application/plane_task.h **** osThreadId uwbTaskHandle;
+  19:application/plane_task.h **** osThreadId SendTaskHandle;
+  20:application/plane_task.h **** osThreadId FlyTaskHandle;
+  21:application/plane_task.h **** 
+  22:application/plane_task.h **** /*任务函数声明*/
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 2
 
 
-  27:application/plane_task.h **** {
-  32              		.loc 1 27 1 view -0
-  33              		.cfi_startproc
-  34              		@ Volatile: function does not return.
-  35              		@ args = 0, pretend = 0, frame = 0
-  36              		@ frame_needed = 0, uses_anonymous_args = 0
-  37              		.loc 1 27 1 is_stmt 0 view .LVU1
-  38 0000 08B5     		push	{r3, lr}
-  39              	.LCFI0:
-  40              		.cfi_def_cfa_offset 8
-  41              		.cfi_offset 3, -8
-  42              		.cfi_offset 14, -4
-  28:application/plane_task.h ****     static float ins_start;
-  43              		.loc 1 28 5 is_stmt 1 view .LVU2
-  29:application/plane_task.h ****     static float ins_dt;
-  44              		.loc 1 29 5 view .LVU3
-  30:application/plane_task.h ****     INS_Init();
-  45              		.loc 1 30 5 view .LVU4
-  46 0002 FFF7FEFF 		bl	INS_Init
-  47              	.LVL1:
-  48              	.L2:
-  31:application/plane_task.h ****     for (;;)
-  49              		.loc 1 31 5 discriminator 1 view .LVU5
-  32:application/plane_task.h ****     {
-  33:application/plane_task.h ****         // 1kHz
-  34:application/plane_task.h ****         INS_Task();
-  50              		.loc 1 34 9 discriminator 1 view .LVU6
-  51 0006 FFF7FEFF 		bl	INS_Task
-  52              	.LVL2:
-  35:application/plane_task.h ****         osDelay(1);
-  53              		.loc 1 35 9 discriminator 1 view .LVU7
-  54 000a 0120     		movs	r0, #1
-  55 000c FFF7FEFF 		bl	osDelay
+  23:application/plane_task.h **** void StartINSTASK(void const *argument);
+  24:application/plane_task.h **** void StartUWBTask(void const *argument);
+  25:application/plane_task.h **** void SendCommandTask(void const *argument);
+  26:application/plane_task.h **** void FlyTask(void const *argument);
+  27:application/plane_task.h **** /**
+  28:application/plane_task.h ****  * @name    oSTASKInit
+  29:application/plane_task.h ****  * @brief   任务初始化，所有运行的任务都在此初始化
+  30:application/plane_task.h ****  */
+  31:application/plane_task.h **** void OSTASKInit(void)
+  32:application/plane_task.h **** {
+  33:application/plane_task.h ****     // osThreadDef(instask,StartINSTASK,osPriorityNormal,0,512);
+  34:application/plane_task.h ****     // insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
+  35:application/plane_task.h **** 
+  36:application/plane_task.h ****     osThreadDef(uwbtask,StartUWBTask,osPriorityNormal,0,1024);
+  37:application/plane_task.h ****     uwbTaskHandle = osThreadCreate(osThread(uwbtask),NULL);
+  38:application/plane_task.h **** 
+  39:application/plane_task.h ****     osThreadDef(flytask,FlyTask,osPriorityAboveNormal,0,512);
+  40:application/plane_task.h ****     FlyTaskHandle = osThreadCreate(osThread(flytask),NULL);
+  41:application/plane_task.h **** }
+  42:application/plane_task.h **** 
+  43:application/plane_task.h **** 
+  44:application/plane_task.h **** /*bmi088数据获取处理 */
+  45:application/plane_task.h **** void StartINSTASK(void const *argument)
+  46:application/plane_task.h **** {
+  47:application/plane_task.h ****     static float ins_start;
+  48:application/plane_task.h ****     static float ins_dt;
+  49:application/plane_task.h ****     // INS_Init();
+  50:application/plane_task.h ****     for (;;)
+  51:application/plane_task.h ****     {
+  52:application/plane_task.h ****         // 1kHz
+  53:application/plane_task.h ****         // INS_Task();
+  54:application/plane_task.h ****         // HCSR04_GetData();
+  55:application/plane_task.h ****         osDelay(10);
+  56:application/plane_task.h ****     }
+  57:application/plane_task.h **** }
+  58:application/plane_task.h **** 
+  59:application/plane_task.h **** 
+  60:application/plane_task.h **** /*UWB数据接收函数*/
+  61:application/plane_task.h **** void StartUWBTask(void const *argument)
+  62:application/plane_task.h **** {
+  35              		.loc 1 62 1 view -0
+  36              		.cfi_startproc
+  37              		@ Volatile: function does not return.
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              		.loc 1 62 1 is_stmt 0 view .LVU1
+  41 0000 08B5     		push	{r3, lr}
+  42              	.LCFI0:
+  43              		.cfi_def_cfa_offset 8
+  44              		.cfi_offset 3, -8
+  45              		.cfi_offset 14, -4
+  63:application/plane_task.h ****     dw_init();
+  46              		.loc 1 63 5 is_stmt 1 view .LVU2
+  47 0002 FFF7FEFF 		bl	dw_init
+  48              	.LVL1:
+  49              	.L2:
+  64:application/plane_task.h ****     for (;;)
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 3
+
+
+  50              		.loc 1 64 5 discriminator 1 view .LVU3
+  65:application/plane_task.h ****     {
+  66:application/plane_task.h ****         // 1kHz
+  67:application/plane_task.h ****         dw_Receive();
+  51              		.loc 1 67 9 discriminator 1 view .LVU4
+  52 0006 FFF7FEFF 		bl	dw_Receive
+  53              	.LVL2:
+  68:application/plane_task.h ****         HCSR04_GetData();
+  54              		.loc 1 68 9 discriminator 1 view .LVU5
+  55 000a FFF7FEFF 		bl	HCSR04_GetData
   56              	.LVL3:
-  31:application/plane_task.h ****     for (;;)
-  57              		.loc 1 31 11 discriminator 1 view .LVU8
-  58 0010 F9E7     		b	.L2
-  59              		.cfi_endproc
-  60              	.LFE127:
-  62              		.section	.text.OSTASKInit,"ax",%progbits
-  63              		.align	1
-  64              		.global	OSTASKInit
-  65              		.syntax unified
-  66              		.thumb
-  67              		.thumb_func
-  69              	OSTASKInit:
-  70              	.LFB126:
-  20:application/plane_task.h ****     osThreadDef(instask,StartINSTASK,osPriorityAboveNormal,0,1024);
-  71              		.loc 1 20 1 view -0
-  72              		.cfi_startproc
-  73              		@ args = 0, pretend = 0, frame = 32
-  74              		@ frame_needed = 0, uses_anonymous_args = 0
-  75 0000 10B5     		push	{r4, lr}
-  76              	.LCFI1:
-  77              		.cfi_def_cfa_offset 8
-  78              		.cfi_offset 4, -8
-  79              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 3
+  69:application/plane_task.h ****         osDelay(1);
+  57              		.loc 1 69 9 discriminator 1 view .LVU6
+  58 000e 0120     		movs	r0, #1
+  59 0010 FFF7FEFF 		bl	osDelay
+  60              	.LVL4:
+  64:application/plane_task.h ****     {
+  61              		.loc 1 64 11 discriminator 1 view .LVU7
+  62 0014 F7E7     		b	.L2
+  63              		.cfi_endproc
+  64              	.LFE131:
+  66              		.section	.text.OSTASKInit,"ax",%progbits
+  67              		.align	1
+  68              		.global	OSTASKInit
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  73              	OSTASKInit:
+  74              	.LFB129:
+  32:application/plane_task.h ****     // osThreadDef(instask,StartINSTASK,osPriorityNormal,0,512);
+  75              		.loc 1 32 1 view -0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 56
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79 0000 10B5     		push	{r4, lr}
+  80              	.LCFI1:
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 4, -8
+  83              		.cfi_offset 14, -4
+  84 0002 8EB0     		sub	sp, sp, #56
+  85              	.LCFI2:
+  86              		.cfi_def_cfa_offset 64
+  36:application/plane_task.h ****     uwbTaskHandle = osThreadCreate(osThread(uwbtask),NULL);
+  87              		.loc 1 36 5 view .LVU9
+  88 0004 124C     		ldr	r4, .L6
+  89 0006 0DF11C0C 		add	ip, sp, #28
+  90 000a A646     		mov	lr, r4
+  91 000c BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+  92 0010 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+  93 0014 9EE80700 		ldm	lr, {r0, r1, r2}
+  94 0018 8CE80700 		stm	ip, {r0, r1, r2}
+  37:application/plane_task.h **** 
+  95              		.loc 1 37 5 view .LVU10
+  37:application/plane_task.h **** 
+  96              		.loc 1 37 21 is_stmt 0 view .LVU11
+  97 001c 0021     		movs	r1, #0
+  98 001e 07A8     		add	r0, sp, #28
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 4
 
 
-  80 0002 88B0     		sub	sp, sp, #32
-  81              	.LCFI2:
-  82              		.cfi_def_cfa_offset 40
-  21:application/plane_task.h ****     insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
-  83              		.loc 1 21 5 view .LVU10
-  84 0004 0DF1040C 		add	ip, sp, #4
-  85 0008 074C     		ldr	r4, .L6
-  86 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
-  87 000c ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
-  88 0010 94E80700 		ldm	r4, {r0, r1, r2}
-  89 0014 8CE80700 		stm	ip, {r0, r1, r2}
-  22:application/plane_task.h **** }
-  90              		.loc 1 22 5 view .LVU11
-  22:application/plane_task.h **** }
-  91              		.loc 1 22 21 is_stmt 0 view .LVU12
-  92 0018 0021     		movs	r1, #0
-  93 001a 01A8     		add	r0, sp, #4
-  94 001c FFF7FEFF 		bl	osThreadCreate
-  95              	.LVL4:
-  22:application/plane_task.h **** }
-  96              		.loc 1 22 19 view .LVU13
-  97 0020 024B     		ldr	r3, .L6+4
-  98 0022 1860     		str	r0, [r3]
-  23:application/plane_task.h **** 
-  99              		.loc 1 23 1 view .LVU14
- 100 0024 08B0     		add	sp, sp, #32
- 101              	.LCFI3:
- 102              		.cfi_def_cfa_offset 8
- 103              		@ sp needed
- 104 0026 10BD     		pop	{r4, pc}
- 105              	.L7:
- 106              		.align	2
- 107              	.L6:
- 108 0028 00000000 		.word	.LANCHOR0
- 109 002c 00000000 		.word	.LANCHOR1
- 110              		.cfi_endproc
- 111              	.LFE126:
- 113              		.section	.text.PlaneInit,"ax",%progbits
- 114              		.align	1
- 115              		.global	PlaneInit
- 116              		.syntax unified
- 117              		.thumb
- 118              		.thumb_func
- 120              	PlaneInit:
- 121              	.LFB128:
- 122              		.file 2 "application/plane.c"
+  99 0020 FFF7FEFF 		bl	osThreadCreate
+ 100              	.LVL5:
+  37:application/plane_task.h **** 
+ 101              		.loc 1 37 19 view .LVU12
+ 102 0024 0B4B     		ldr	r3, .L6+4
+ 103 0026 1860     		str	r0, [r3]
+  39:application/plane_task.h ****     FlyTaskHandle = osThreadCreate(osThread(flytask),NULL);
+ 104              		.loc 1 39 5 is_stmt 1 view .LVU13
+ 105 0028 EE46     		mov	lr, sp
+ 106 002a 04F11C0C 		add	ip, r4, #28
+ 107 002e BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 108 0032 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 109 0036 9CE80700 		ldm	ip, {r0, r1, r2}
+ 110 003a 8EE80700 		stm	lr, {r0, r1, r2}
+  40:application/plane_task.h **** }
+ 111              		.loc 1 40 5 view .LVU14
+  40:application/plane_task.h **** }
+ 112              		.loc 1 40 21 is_stmt 0 view .LVU15
+ 113 003e 0021     		movs	r1, #0
+ 114 0040 6846     		mov	r0, sp
+ 115 0042 FFF7FEFF 		bl	osThreadCreate
+ 116              	.LVL6:
+  40:application/plane_task.h **** }
+ 117              		.loc 1 40 19 view .LVU16
+ 118 0046 044B     		ldr	r3, .L6+8
+ 119 0048 1860     		str	r0, [r3]
+  41:application/plane_task.h **** 
+ 120              		.loc 1 41 1 view .LVU17
+ 121 004a 0EB0     		add	sp, sp, #56
+ 122              	.LCFI3:
+ 123              		.cfi_def_cfa_offset 8
+ 124              		@ sp needed
+ 125 004c 10BD     		pop	{r4, pc}
+ 126              	.L7:
+ 127 004e 00BF     		.align	2
+ 128              	.L6:
+ 129 0050 00000000 		.word	.LANCHOR0
+ 130 0054 00000000 		.word	.LANCHOR1
+ 131 0058 00000000 		.word	.LANCHOR2
+ 132              		.cfi_endproc
+ 133              	.LFE129:
+ 135              		.section	.text.StartINSTASK,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	StartINSTASK
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 142              	StartINSTASK:
+ 143              	.LFB130:
+  46:application/plane_task.h ****     static float ins_start;
+ 144              		.loc 1 46 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ Volatile: function does not return.
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              	.LVL7:
+  46:application/plane_task.h ****     static float ins_start;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 5
+
+
+ 150              		.loc 1 46 1 is_stmt 0 view .LVU19
+ 151 0000 08B5     		push	{r3, lr}
+ 152              	.LCFI4:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 3, -8
+ 155              		.cfi_offset 14, -4
+ 156              	.LVL8:
+ 157              	.L9:
+  47:application/plane_task.h ****     static float ins_dt;
+ 158              		.loc 1 47 5 is_stmt 1 discriminator 1 view .LVU20
+  48:application/plane_task.h ****     // INS_Init();
+ 159              		.loc 1 48 5 discriminator 1 view .LVU21
+  50:application/plane_task.h ****     {
+ 160              		.loc 1 50 5 discriminator 1 view .LVU22
+  55:application/plane_task.h ****     }
+ 161              		.loc 1 55 9 discriminator 1 view .LVU23
+ 162 0002 0A20     		movs	r0, #10
+ 163 0004 FFF7FEFF 		bl	osDelay
+ 164              	.LVL9:
+  50:application/plane_task.h ****     {
+ 165              		.loc 1 50 11 discriminator 1 view .LVU24
+ 166 0008 FBE7     		b	.L9
+ 167              		.cfi_endproc
+ 168              	.LFE130:
+ 170              		.section	.text.PlaneInit,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	PlaneInit
+ 173              		.syntax unified
+ 174              		.thumb
+ 175              		.thumb_func
+ 177              	PlaneInit:
+ 178              	.LFB133:
+ 179              		.file 2 "application/plane.c"
    1:application/plane.c **** #include "plane_task.h"
    2:application/plane.c **** 
    3:application/plane.c **** 
    4:application/plane.c **** void PlaneInit(void)
    5:application/plane.c **** {
- 123              		.loc 2 5 1 is_stmt 1 view -0
- 124              		.cfi_startproc
- 125              		@ args = 0, pretend = 0, frame = 0
- 126              		@ frame_needed = 0, uses_anonymous_args = 0
- 127 0000 08B5     		push	{r3, lr}
- 128              	.LCFI4:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 4
-
-
- 129              		.cfi_def_cfa_offset 8
- 130              		.cfi_offset 3, -8
- 131              		.cfi_offset 14, -4
+ 180              		.loc 2 5 1 view -0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184 0000 08B5     		push	{r3, lr}
+ 185              	.LCFI5:
+ 186              		.cfi_def_cfa_offset 8
+ 187              		.cfi_offset 3, -8
+ 188              		.cfi_offset 14, -4
    6:application/plane.c ****     __disable_irq();
- 132              		.loc 2 6 5 view .LVU16
- 133              	.LBB6:
- 134              	.LBI6:
- 135              		.file 3 "Drivers/CMSIS/Include/cmsis_gcc.h"
+ 189              		.loc 2 6 5 view .LVU26
+ 190              	.LBB6:
+ 191              	.LBI6:
+ 192              		.file 3 "Drivers/CMSIS/Include/cmsis_gcc.h"
    1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
    2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
    4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
    5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 6
+
+
    6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
    7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
    8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
@@ -238,9 +345,6 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
   47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
   48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 5
-
-
   50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
   51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
   52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
@@ -254,6 +358,9 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
   60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
   62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 7
+
+
   63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
   65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
@@ -298,9 +405,6 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
  104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
  105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
  106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 6
-
-
  107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
  108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
  109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -314,6 +418,9 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
  117:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
  119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 8
+
+
  120:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
  121:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
  122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -335,103 +442,328 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 1
  138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
  139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
- 136              		.loc 3 140 27 view .LVU17
- 137              	.LBB7:
+ 193              		.loc 3 140 27 view .LVU27
+ 194              	.LBB7:
  141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
- 138              		.loc 3 142 3 view .LVU18
- 139              		.syntax unified
- 140              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 141 0002 72B6     		cpsid i
- 142              	@ 0 "" 2
- 143              		.thumb
- 144              		.syntax unified
- 145              	.LBE7:
- 146              	.LBE6:
-   7:application/plane.c **** 
-   8:application/plane.c ****     OSTASKInit();
- 147              		.loc 2 8 5 view .LVU19
- 148 0004 FFF7FEFF 		bl	OSTASKInit
- 149              	.LVL5:
-   9:application/plane.c **** 
-  10:application/plane.c ****     __enable_irq();
- 150              		.loc 2 10 5 view .LVU20
- 151              	.LBB8:
- 152              	.LBI8:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 7
-
-
+ 195              		.loc 3 142 3 view .LVU28
+ 196              		.syntax unified
+ 197              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 198 0002 72B6     		cpsid i
+ 199              	@ 0 "" 2
+ 200              		.thumb
+ 201              		.syntax unified
+ 202              	.LBE7:
+ 203              	.LBE6:
+   7:application/plane.c ****     
+   8:application/plane.c ****     Fly_init();
+ 204              		.loc 2 8 5 view .LVU29
+ 205 0004 FFF7FEFF 		bl	Fly_init
+ 206              	.LVL10:
+   9:application/plane.c ****     DataPool_Init();
+ 207              		.loc 2 9 5 view .LVU30
+ 208 0008 FFF7FEFF 		bl	DataPool_Init
+ 209              	.LVL11:
+  10:application/plane.c ****     
+  11:application/plane.c ****     OSTASKInit();
+ 210              		.loc 2 11 5 view .LVU31
+ 211 000c FFF7FEFF 		bl	OSTASKInit
+ 212              	.LVL12:
+  12:application/plane.c **** 
+  13:application/plane.c **** 
+  14:application/plane.c ****     __enable_irq();
+ 213              		.loc 2 14 5 view .LVU32
+ 214              	.LBB8:
+ 215              	.LBI8:
  129:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 153              		.loc 3 129 27 view .LVU21
- 154              	.LBB9:
+ 216              		.loc 3 129 27 view .LVU33
+ 217              	.LBB9:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 9
+
+
  131:Drivers/CMSIS/Include/cmsis_gcc.h **** }
- 155              		.loc 3 131 3 view .LVU22
- 156              		.syntax unified
- 157              	@ 131 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 158 0008 62B6     		cpsie i
- 159              	@ 0 "" 2
- 160              		.thumb
- 161              		.syntax unified
- 162              	.LBE9:
- 163              	.LBE8:
-  11:application/plane.c **** }
- 164              		.loc 2 11 1 is_stmt 0 view .LVU23
- 165 000a 08BD     		pop	{r3, pc}
- 166              		.cfi_endproc
- 167              	.LFE128:
- 169              		.global	a
- 170              		.global	insTaskHandle
- 171              		.section	.rodata
- 172              		.align	2
- 173              		.set	.LANCHOR0,. + 0
- 174              	.LC2:
- 175 0000 00000000 		.word	.LC0
- 176 0004 00000000 		.word	StartINSTASK
- 177 0008 0100     		.short	1
- 178 000a 0000     		.space	2
- 179 000c 00000000 		.word	0
- 180 0010 00040000 		.word	1024
- 181 0014 00000000 		.word	0
- 182 0018 00000000 		.word	0
- 183              		.section	.bss.a,"aw",%nobits
- 184              		.align	2
- 187              	a:
- 188 0000 00000000 		.space	4
- 189              		.section	.bss.insTaskHandle,"aw",%nobits
- 190              		.align	2
- 191              		.set	.LANCHOR1,. + 0
- 194              	insTaskHandle:
- 195 0000 00000000 		.space	4
- 196              		.text
- 197              	.Letext0:
- 198              		.file 4 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
- 199              		.file 5 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 200              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
- 201              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
- 202              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
- 203              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 204              		.file 10 "BMI088/Inc/ins_task.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s 			page 8
+ 218              		.loc 3 131 3 view .LVU34
+ 219              		.syntax unified
+ 220              	@ 131 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 221 0010 62B6     		cpsie i
+ 222              	@ 0 "" 2
+ 223              		.thumb
+ 224              		.syntax unified
+ 225              	.LBE9:
+ 226              	.LBE8:
+  15:application/plane.c **** }
+ 227              		.loc 2 15 1 is_stmt 0 view .LVU35
+ 228 0012 08BD     		pop	{r3, pc}
+ 229              		.cfi_endproc
+ 230              	.LFE133:
+ 232              		.section	.text.FSM_Plane,"ax",%progbits
+ 233              		.align	1
+ 234              		.global	FSM_Plane
+ 235              		.syntax unified
+ 236              		.thumb
+ 237              		.thumb_func
+ 239              	FSM_Plane:
+ 240              	.LFB134:
+  16:application/plane.c ****  
+  17:application/plane.c **** uint8_t finish=0;//致敬九期天路机器人
+  18:application/plane.c **** void FSM_Plane(void)
+  19:application/plane.c **** {
+ 241              		.loc 2 19 1 is_stmt 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245 0000 08B5     		push	{r3, lr}
+ 246              	.LCFI6:
+ 247              		.cfi_def_cfa_offset 8
+ 248              		.cfi_offset 3, -8
+ 249              		.cfi_offset 14, -4
+  20:application/plane.c ****     switch(finish)
+ 250              		.loc 2 20 5 view .LVU37
+ 251 0002 094B     		ldr	r3, .L18
+ 252 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 253 0006 13B1     		cbz	r3, .L14
+ 254 0008 012B     		cmp	r3, #1
+ 255 000a 09D0     		beq	.L15
+ 256              	.L13:
+  21:application/plane.c ****     {
+  22:application/plane.c ****         case 0:
+  23:application/plane.c ****             if(StartFly())finish++;
+  24:application/plane.c ****         break;
+  25:application/plane.c **** 
+  26:application/plane.c ****         case 1:
+  27:application/plane.c ****             if(Fly_KEEP(1000));
+  28:application/plane.c ****         break;
+  29:application/plane.c ****         case 2:
+  30:application/plane.c ****             // LockZ();
+  31:application/plane.c ****         break;
+  32:application/plane.c ****         case 3:
+  33:application/plane.c **** 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 10
+
+
+  34:application/plane.c ****         break;
+  35:application/plane.c ****     }
+  36:application/plane.c **** }
+ 257              		.loc 2 36 1 is_stmt 0 view .LVU38
+ 258 000c 08BD     		pop	{r3, pc}
+ 259              	.L14:
+  23:application/plane.c ****         break;
+ 260              		.loc 2 23 13 is_stmt 1 view .LVU39
+  23:application/plane.c ****         break;
+ 261              		.loc 2 23 16 is_stmt 0 view .LVU40
+ 262 000e FFF7FEFF 		bl	StartFly
+ 263              	.LVL13:
+  23:application/plane.c ****         break;
+ 264              		.loc 2 23 15 view .LVU41
+ 265 0012 0028     		cmp	r0, #0
+ 266 0014 FAD0     		beq	.L13
+  23:application/plane.c ****         break;
+ 267              		.loc 2 23 27 is_stmt 1 discriminator 1 view .LVU42
+  23:application/plane.c ****         break;
+ 268              		.loc 2 23 33 is_stmt 0 discriminator 1 view .LVU43
+ 269 0016 044A     		ldr	r2, .L18
+ 270 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 271 001a 0133     		adds	r3, r3, #1
+ 272 001c 1370     		strb	r3, [r2]
+ 273 001e F5E7     		b	.L13
+ 274              	.L15:
+  27:application/plane.c ****         break;
+ 275              		.loc 2 27 13 is_stmt 1 view .LVU44
+  27:application/plane.c ****         break;
+ 276              		.loc 2 27 16 is_stmt 0 view .LVU45
+ 277 0020 0248     		ldr	r0, .L18+4
+ 278 0022 FFF7FEFF 		bl	Fly_KEEP
+ 279              	.LVL14:
+  28:application/plane.c ****         case 2:
+ 280              		.loc 2 28 9 is_stmt 1 view .LVU46
+ 281              		.loc 2 36 1 is_stmt 0 view .LVU47
+ 282 0026 F1E7     		b	.L13
+ 283              	.L19:
+ 284              		.align	2
+ 285              	.L18:
+ 286 0028 00000000 		.word	.LANCHOR3
+ 287 002c 00007A44 		.word	1148846080
+ 288              		.cfi_endproc
+ 289              	.LFE134:
+ 291              		.section	.text.FlyTask,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	FlyTask
+ 294              		.syntax unified
+ 295              		.thumb
+ 296              		.thumb_func
+ 298              	FlyTask:
+ 299              	.LFB132:
+  70:application/plane_task.h ****     }
+  71:application/plane_task.h **** }
+  72:application/plane_task.h **** 
+  73:application/plane_task.h **** 
+  74:application/plane_task.h **** // int a=0;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 11
+
+
+  75:application/plane_task.h **** // /*命令发送函数*/
+  76:application/plane_task.h **** // void SendCommandTask(void const *argument)
+  77:application/plane_task.h **** // {
+  78:application/plane_task.h **** //     unsigned char command[8];
+  79:application/plane_task.h **** //     for (;;)
+  80:application/plane_task.h **** //     {
+  81:application/plane_task.h **** //         if(xQueueReceive(UART_TxPort, command, 0) == pdPASS)
+  82:application/plane_task.h **** //         {
+  83:application/plane_task.h **** //             a++;
+  84:application/plane_task.h **** //             HAL_UART_Transmit(&huart3, command, 8, 1000);
+  85:application/plane_task.h **** //         }
+  86:application/plane_task.h **** //         osDelay(1);
+  87:application/plane_task.h **** //     }
+  88:application/plane_task.h **** // }
+  89:application/plane_task.h **** 
+  90:application/plane_task.h **** 
+  91:application/plane_task.h **** /*飞行执行任务*/
+  92:application/plane_task.h **** void FlyTask(void const *argument)
+  93:application/plane_task.h **** {
+ 300              		.loc 1 93 1 is_stmt 1 view -0
+ 301              		.cfi_startproc
+ 302              		@ Volatile: function does not return.
+ 303              		@ args = 0, pretend = 0, frame = 0
+ 304              		@ frame_needed = 0, uses_anonymous_args = 0
+ 305              	.LVL15:
+ 306              		.loc 1 93 1 is_stmt 0 view .LVU49
+ 307 0000 08B5     		push	{r3, lr}
+ 308              	.LCFI7:
+ 309              		.cfi_def_cfa_offset 8
+ 310              		.cfi_offset 3, -8
+ 311              		.cfi_offset 14, -4
+ 312              	.LVL16:
+ 313              	.L21:
+  94:application/plane_task.h ****     for (;;)
+ 314              		.loc 1 94 5 is_stmt 1 discriminator 1 view .LVU50
+ 315              	.LBB10:
+  95:application/plane_task.h ****     {
+  96:application/plane_task.h ****         // 100Hz
+  97:application/plane_task.h ****         // PointTrace(1,1,1,1);
+  98:application/plane_task.h ****         // HAL_UART_Transmit(&huart3, Height, 8, 1000);
+  99:application/plane_task.h ****         // xQueueSendFromISR(UART_TxPort, Height, 0);
+ 100:application/plane_task.h ****         // HAL_Delay(10);
+ 101:application/plane_task.h ****         FSM_Plane();
+ 316              		.loc 1 101 9 discriminator 1 view .LVU51
+ 317 0002 FFF7FEFF 		bl	FSM_Plane
+ 318              	.LVL17:
+ 102:application/plane_task.h ****         osDelay(10);
+ 319              		.loc 1 102 9 discriminator 1 view .LVU52
+ 320 0006 0A20     		movs	r0, #10
+ 321 0008 FFF7FEFF 		bl	osDelay
+ 322              	.LVL18:
+ 323              	.LBE10:
+  94:application/plane_task.h ****     for (;;)
+ 324              		.loc 1 94 11 discriminator 1 view .LVU53
+ 325 000c F9E7     		b	.L21
+ 326              		.cfi_endproc
+ 327              	.LFE132:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 12
+
+
+ 329              		.global	finish
+ 330              		.global	FlyTaskHandle
+ 331              		.global	SendTaskHandle
+ 332              		.global	uwbTaskHandle
+ 333              		.global	insTaskHandle
+ 334              		.section	.rodata
+ 335              		.align	2
+ 336              		.set	.LANCHOR0,. + 0
+ 337              	.LC4:
+ 338 0000 00000000 		.word	.LC0
+ 339 0004 00000000 		.word	StartUWBTask
+ 340 0008 0000     		.short	0
+ 341 000a 0000     		.space	2
+ 342 000c 00000000 		.word	0
+ 343 0010 00040000 		.word	1024
+ 344 0014 00000000 		.word	0
+ 345 0018 00000000 		.word	0
+ 346              	.LC5:
+ 347 001c 08000000 		.word	.LC2
+ 348 0020 00000000 		.word	FlyTask
+ 349 0024 0100     		.short	1
+ 350 0026 0000     		.space	2
+ 351 0028 00000000 		.word	0
+ 352 002c 00020000 		.word	512
+ 353 0030 00000000 		.word	0
+ 354 0034 00000000 		.word	0
+ 355              		.section	.bss.FlyTaskHandle,"aw",%nobits
+ 356              		.align	2
+ 357              		.set	.LANCHOR2,. + 0
+ 360              	FlyTaskHandle:
+ 361 0000 00000000 		.space	4
+ 362              		.section	.bss.SendTaskHandle,"aw",%nobits
+ 363              		.align	2
+ 366              	SendTaskHandle:
+ 367 0000 00000000 		.space	4
+ 368              		.section	.bss.finish,"aw",%nobits
+ 369              		.set	.LANCHOR3,. + 0
+ 372              	finish:
+ 373 0000 00       		.space	1
+ 374              		.section	.bss.insTaskHandle,"aw",%nobits
+ 375              		.align	2
+ 378              	insTaskHandle:
+ 379 0000 00000000 		.space	4
+ 380              		.section	.bss.uwbTaskHandle,"aw",%nobits
+ 381              		.align	2
+ 382              		.set	.LANCHOR1,. + 0
+ 385              	uwbTaskHandle:
+ 386 0000 00000000 		.space	4
+ 387              		.text
+ 388              	.Letext0:
+ 389              		.file 4 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 390              		.file 5 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 391              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 392              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 393              		.file 8 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 394              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 395              		.file 10 "application/plane.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 13
+
+
+ 396              		.file 11 "move/Inc/Movebase.h"
+ 397              		.file 12 "application/data_pool.h"
+ 398              		.file 13 "DWM1000/Inc/ex_05a_main.h"
+ 399              		.file 14 "wave/measure.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 plane.c
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:15     .rodata.str1.4:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:22     .text.StartINSTASK:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:28     .text.StartINSTASK:00000000 StartINSTASK
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:63     .text.OSTASKInit:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:69     .text.OSTASKInit:00000000 OSTASKInit
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:108    .text.OSTASKInit:00000028 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:114    .text.PlaneInit:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:120    .text.PlaneInit:00000000 PlaneInit
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:187    .bss.a:00000000 a
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:194    .bss.insTaskHandle:00000000 insTaskHandle
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:172    .rodata:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:184    .bss.a:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccfJI64u.s:190    .bss.insTaskHandle:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:15     .rodata.str1.4:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:25     .text.StartUWBTask:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:31     .text.StartUWBTask:00000000 StartUWBTask
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:67     .text.OSTASKInit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:73     .text.OSTASKInit:00000000 OSTASKInit
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:129    .text.OSTASKInit:00000050 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:136    .text.StartINSTASK:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:142    .text.StartINSTASK:00000000 StartINSTASK
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:171    .text.PlaneInit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:177    .text.PlaneInit:00000000 PlaneInit
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:233    .text.FSM_Plane:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:239    .text.FSM_Plane:00000000 FSM_Plane
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:286    .text.FSM_Plane:00000028 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:292    .text.FlyTask:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:298    .text.FlyTask:00000000 FlyTask
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:372    .bss.finish:00000000 finish
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:360    .bss.FlyTaskHandle:00000000 FlyTaskHandle
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:366    .bss.SendTaskHandle:00000000 SendTaskHandle
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:385    .bss.uwbTaskHandle:00000000 uwbTaskHandle
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:378    .bss.insTaskHandle:00000000 insTaskHandle
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:335    .rodata:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:356    .bss.FlyTaskHandle:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:363    .bss.SendTaskHandle:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:373    .bss.finish:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:375    .bss.insTaskHandle:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc0g6ZWO.s:381    .bss.uwbTaskHandle:00000000 $d
 
 UNDEFINED SYMBOLS
-INS_Init
-INS_Task
+dw_init
+dw_Receive
+HCSR04_GetData
 osDelay
 osThreadCreate
+Fly_init
+DataPool_Init
+StartFly
+Fly_KEEP

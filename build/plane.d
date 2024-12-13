@@ -29,6 +29,7 @@ build/plane.o: application/plane.c application/plane_task.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
@@ -61,7 +62,10 @@ build/plane.o: application/plane.c application/plane_task.h \
  Tools/DSP/Include/dsp/transform_functions.h \
  Tools/DSP/Include/dsp/filtering_functions.h \
  Tools/DSP/Include/dsp/quaternion_math_functions.h \
- Tools/DSP/Include/dsp/window_functions.h Core/Inc/tim.h Core/Inc/main.h
+ Tools/DSP/Include/dsp/window_functions.h Core/Inc/tim.h Core/Inc/main.h \
+ DWM1000/Inc/ex_05a_main.h application/data_pool.h \
+ DWM1000/Inc/trilateration.h Core/Inc/usart.h move/Inc/Movebase.h \
+ wave/measure.h application/data_pool.h application/plane.h
 application/plane_task.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
@@ -96,6 +100,7 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
@@ -136,3 +141,11 @@ Tools/DSP/Include/dsp/quaternion_math_functions.h:
 Tools/DSP/Include/dsp/window_functions.h:
 Core/Inc/tim.h:
 Core/Inc/main.h:
+DWM1000/Inc/ex_05a_main.h:
+application/data_pool.h:
+DWM1000/Inc/trilateration.h:
+Core/Inc/usart.h:
+move/Inc/Movebase.h:
+wave/measure.h:
+application/data_pool.h:
+application/plane.h:

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
   30:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****  * Portions Copyright (c) 2013 ARM LIMITED
   31:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****  * All rights reserved.
   32:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****  * Redistribution and use in source and binary forms, with or without
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 2
 
 
   33:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****  * modification, are permitted provided that the following conditions are met:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
   87:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   #ifndef   __ASM
   88:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     #define __ASM                     __asm
   89:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   #endif
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 3
 
 
   90:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   #ifndef   __INLINE
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
   58              		.thumb_func
   60              	makeCmsisPriority:
   61              	.LVL4:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 4
 
 
   62              	.LFB50:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  129:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** /* Determine whether we are in thread mode or handler mode. */
  130:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** static int inHandlerMode (void)
  131:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** {
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 5
 
 
  101              		.loc 1 131 1 is_stmt 1 view -0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
   45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
   47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 6
 
 
   48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
  103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
  104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 7
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 7
 
 
  105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  159:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  160:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
  161:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 8
 
 
  162:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Control Register (non-secure)
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  116 0000 EFF30580 		MRS r0, ipsr
  117              	@ 0 "" 2
  118              	.LVL9:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 9
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 9
 
 
  210:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  153:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  154:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   return osOK;
  154              		.loc 1 154 3 view .LVU31
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 10
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 10
 
 
  155:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** }
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  190 000c 08BD     		pop	{r3, pc}
  191              	.L14:
  169:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     return 0;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 11
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 11
 
 
  192              		.loc 1 169 12 view .LVU39
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  230              		.loc 1 190 5 is_stmt 1 view .LVU47
  190:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
  231              		.loc 1 190 12 is_stmt 0 view .LVU48
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 12
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 12
 
 
  232 000e FFF7FEFF 		bl	xTaskGetTickCount
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  273 000c BDB1     		cbz	r5, .L20
  274              		.loc 1 207 49 discriminator 1 view .LVU55
  275 000e 8669     		ldr	r6, [r0, #24]
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 13
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 13
 
 
  276              		.loc 1 207 35 discriminator 1 view .LVU56
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  305              	.L19:
  233:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** }
  306              		.loc 1 233 1 view .LVU66
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 14
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 14
 
 
  307 0038 07B0     		add	sp, sp, #28
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  353              		.thumb
  354              		.thumb_func
  356              	osThreadGetId:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 15
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 15
 
 
  357              	.LFB56:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  390              		.loc 1 256 1 is_stmt 0 view .LVU81
  391 0000 08B5     		push	{r3, lr}
  392              	.LCFI8:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 16
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 16
 
 
  393              		.cfi_def_cfa_offset 8
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  433              		.loc 1 272 14 view .LVU89
  273:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  274:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   return osOK;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 17
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 17
 
 
  434              		.loc 1 274 3 view .LVU90
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  289:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #else
  290:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   return osErrorOS;
  291:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #endif
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 18
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 18
 
 
  292:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** }
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  306:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
  307:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else
  308:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   {  
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 19
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 19
 
 
  309:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     return makeCmsisPriority(uxTaskPriorityGet(thread_id));
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  326:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  327:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   vTaskDelay(ticks ? ticks : 1);          /* Minimum delay = 1 tick */
  555              		.loc 1 327 3 view .LVU113
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 20
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 20
 
 
  556 0002 00B9     		cbnz	r0, .L37
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  581              		.cfi_startproc
  582              		@ args = 0, pretend = 0, frame = 0
  583              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 21
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 21
 
 
  584              		@ link register save eliminated.
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  603              	.LFB63:
  396:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 
  397:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** /**
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 22
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 22
 
 
  398:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** * @brief  Start or restart a timer.
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  621              		.align	1
  622              		.global	osTimerStop
  623              		.syntax unified
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 23
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 23
 
 
  624              		.thumb
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  651              		.thumb_func
  653              	osTimerDelete:
  654              	.LVL47:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 24
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 24
 
 
  655              	.LFB65:
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  494:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** /***************************  Signal Management ********************************/
  495:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** /**
  496:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** * @brief  Set the specified Signal Flags of an active thread.
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 25
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 25
 
 
  497:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** * @param  thread_id     thread ID obtained by \ref osThreadCreate or \ref osThreadGetId.
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  722 0024 0128     		cmp	r0, #1
  723 0026 17D1     		bne	.L48
  511:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       return 0x80000000;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 26
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 26
 
 
  512:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  764              		.cfi_def_cfa_offset 12
  765              		@ sp needed
  766 0056 30BD     		pop	{r4, r5, pc}
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 27
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 27
 
 
  767              	.LVL53:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  802              		.cfi_offset 14, -4
  803 0002 84B0     		sub	sp, sp, #16
  804              	.LCFI17:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 28
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 28
 
 
  805              		.cfi_def_cfa_offset 32
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  575:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     {
  576:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       ret.status =  osErrorValue;     
  577:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 29
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 29
 
 
  578:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     else  ret.status =  osEventSignal;
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  865              	.L55:
  572:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
  866              		.loc 1 572 13 is_stmt 1 view .LVU186
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 30
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 30
 
 
  572:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  905              		@ frame_needed = 0, uses_anonymous_args = 0
  906              		.loc 1 598 1 is_stmt 0 view .LVU196
  907 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 31
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 31
 
 
  908              	.LCFI20:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  941              		.align	1
  942              		.global	osMutexWait
  943              		.syntax unified
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 32
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 32
 
 
  944              		.thumb
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  640:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else if (millisec != 0) {
  641:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     ticks = millisec / portTICK_PERIOD_MS;
  642:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     if (ticks == 0) {
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 33
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 33
 
 
  643:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       ticks = 1;
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1015              		.loc 1 653 8 is_stmt 1 view .LVU227
  653:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     return osErrorOS;
  1016              		.loc 1 653 12 is_stmt 0 view .LVU228
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 34
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 34
 
 
  1017 003e 2146     		mov	r1, r4
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1065              		.thumb_func
  1067              	osMutexRelease:
  1068              	.LVL74:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 35
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 35
 
 
  1069              	.LFB70:
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1106 001c 019B     		ldr	r3, [sp, #4]
  1107 001e D3B1     		cbz	r3, .L75
  1108              		.loc 1 675 5 discriminator 1 view .LVU249
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 36
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 36
 
 
  1109 0020 4FF0E023 		mov	r3, #-536813568
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1154 004e 0020     		movs	r0, #0
  1155 0050 FBE7     		b	.L71
  1156              	.L74:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 37
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 37
 
 
  673:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1197              	.LVL83:
  697:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 
  698:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   return osOK;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 38
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 38
 
 
  1198              		.loc 1 698 3 view .LVU267
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1235              		.loc 1 716 3 is_stmt 1 view .LVU273
  717:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  718:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   if (semaphore_def->controlblock != NULL){
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 39
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 39
 
 
  1236              		.loc 1 718 3 view .LVU274
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  760:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     return sema;
  761:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
  762:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else {
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 40
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 40
 
 
  763:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #if (configUSE_COUNTING_SEMAPHORES == 1 )	
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1287              		.loc 1 732 7 is_stmt 0 view .LVU288
  1288 0030 0120     		movs	r0, #1
  1289              	.LVL93:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 41
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 41
 
 
  732:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       return sema;
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1330              		.cfi_offset 6, -8
  1331              		.cfi_offset 14, -4
  1332 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 42
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 42
 
 
  1333              	.LCFI35:
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  803:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
  804:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 	portEND_SWITCHING_ISR(taskWoken);
  1365              		.loc 1 804 2 is_stmt 1 view .LVU310
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 43
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 43
 
 
  1366 0024 019D     		ldr	r5, [sp, #4]
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  786:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
  1410              		.loc 1 786 12 view .LVU319
  1411 0052 8025     		movs	r5, #128
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 44
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 44
 
 
  1412 0054 FAE7     		b	.L90
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  823:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  824:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  825:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   if (inHandlerMode()) {
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 45
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 45
 
 
  1455              		.loc 1 825 3 is_stmt 1 view .LVU327
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1501 0044 0128     		cmp	r0, #1
  1502 0046 02D0     		beq	.L105
  833:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       result = osErrorOS;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 46
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 46
 
 
  1503              		.loc 1 833 14 view .LVU341
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1542              		.loc 1 847 1 is_stmt 1 view -0
  1543              		.cfi_startproc
  1544              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 47
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 47
 
 
  1545              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  861:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #if (defined (osFeature_Pool)  &&  (osFeature_Pool != 0)) 
  862:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 
  863:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** //TODO
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 48
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 48
 
 
  864:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** //This is a primitive and inefficient wrapper around the existing FreeRTOS memory management.
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1613              		.loc 1 891 12 is_stmt 0 view .LVU365
  1614 000c 1420     		movs	r0, #20
  1615              	.LVL117:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 49
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 49
 
 
  1616              		.loc 1 891 12 view .LVU366
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1657              		.loc 1 904 20 view .LVU385
  1658 0038 2860     		str	r0, [r5]
  905:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 50
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 50
 
 
  906:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       if (thePool->pool) {
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  928:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** }
  1686              		.loc 1 928 1 view .LVU397
  1687 004e 2846     		mov	r0, r5
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 51
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 51
 
 
  1688 0050 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  935:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** */
  936:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** void *osPoolAlloc (osPoolId pool_id)
  937:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** {
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 52
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 52
 
 
  1729              		.loc 1 937 1 is_stmt 1 view -0
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
   20:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   21:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  *
   22:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * http://www.FreeRTOS.org
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 53
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 53
 
 
   23:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h ****  * http://aws.amazon.com/freertos
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
   77:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
   78:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /* Scheduler utilities. */
   79:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** #define portYIELD() 															\
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 54
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 54
 
 
   80:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {																				\
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  134:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
  135:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 		return ucReturn;
  136:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 	}
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 55
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 55
 
 
  137:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  191:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
  192:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** 
  193:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** portFORCE_INLINE static void vPortRaiseBASEPRI( void )
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 56
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 56
 
 
  194:Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h **** {
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  946:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else {
  947:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     vPortEnterCritical();
  948:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 57
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 57
 
 
  949:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1825 004a 0270     		strb	r2, [r0]
  955:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       p = (void *)((uint32_t)(pool_id->pool) + (index * pool_id->item_sz));
  1826              		.loc 1 955 7 is_stmt 1 view .LVU442
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 58
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 58
 
 
  1827              		.loc 1 955 38 is_stmt 0 view .LVU443
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1867              	.LBE13:
  1868              	.LBE12:
  963:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 59
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 59
 
 
  964:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else {
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1906              	.LVL150:
  980:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
  981:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   if (p != NULL)
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 60
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 60
 
 
  1907              		.loc 1 981 3 is_stmt 1 view .LVU465
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  1940              		.loc 1 1004 3 is_stmt 1 view .LVU474
  1941              		.loc 1 1004 6 is_stmt 0 view .LVU475
  1942 0004 A1B1     		cbz	r1, .L137
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 61
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 61
 
 
 1005:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     return osErrorParameter;
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1022:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
 1023:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   return osOK;
  1980              		.loc 1 1023 3 is_stmt 1 view .LVU494
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 62
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 62
 
 
  1981              		.loc 1 1023 10 is_stmt 0 view .LVU495
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1026:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 
 1027:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #endif   /* Use Memory Pool Management */
 1028:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 63
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 63
 
 
 1029:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** /*******************   Message Queue Management Functions  *********************/
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2062              	.LVL167:
  2063              	.L142:
 1048:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 64
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 64
 
 
 1049:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else {
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2100 0000 30B5     		push	{r4, r5, lr}
  2101              	.LCFI49:
  2102              		.cfi_def_cfa_offset 12
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 65
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 65
 
 
  2103              		.cfi_offset 4, -12
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2144 0028 039B     		ldr	r3, [sp, #12]
  2145 002a C3B1     		cbz	r3, .L151
  2146              		.loc 1 1081 5 discriminator 1 view .LVU538
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 66
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 66
 
 
  2147 002c 4FF0E023 		mov	r3, #-536813568
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2189              		.cfi_restore_state
 1079:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
  2190              		.loc 1 1079 14 view .LVU547
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 67
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 67
 
 
  2191 005a FF20     		movs	r0, #255
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2232              		.loc 1 1103 3 view .LVU554
 1104:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
 1105:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   event.def.message_id = queue_id;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 68
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 68
 
 
  2233              		.loc 1 1105 3 view .LVU555
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2265              		.loc 1 1127 8 view .LVU570
  2266 0026 0128     		cmp	r0, #1
  2267 0028 16D0     		beq	.L166
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 69
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 69
 
 
 1128:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****       /* We have mail */
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1129:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
  2309              		.loc 1 1129 20 is_stmt 0 view .LVU583
  2310 0058 1023     		movs	r3, #16
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 70
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 70
 
 
  2311 005a 0093     		str	r3, [sp]
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1139:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
  2352              		.loc 1 1139 7 is_stmt 1 view .LVU593
 1139:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****     }
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 71
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 71
 
 
  2353              		.loc 1 1139 20 is_stmt 0 view .LVU594
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1171:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   (void) thread_id;
  2386              		.loc 1 1171 3 is_stmt 1 view .LVU597
 1172:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 72
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 72
 
 
 1173:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   osPoolDef_t pool_def = {queue_def->queue_sz, queue_def->item_sz, NULL};
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2428 002e FFF7FEFF 		bl	xQueueGenericCreate
  2429              	.LVL192:
  2430              		.loc 1 1185 30 view .LVU618
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 73
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 73
 
 
  2431 0032 6860     		str	r0, [r5, #4]
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2465              		@ sp needed
  2466 0050 70BD     		pop	{r4, r5, r6, pc}
  2467              	.LVL195:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 74
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 74
 
 
  2468              	.L172:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2508              		.cfi_def_cfa_offset 8
  2509              		.cfi_offset 3, -8
  2510              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 75
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 75
 
 
 1216:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   (void) millisec;
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2545 0000 10B5     		push	{r4, lr}
  2546              	.LCFI62:
  2547              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 76
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 76
 
 
  2548              		.cfi_offset 4, -8
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2585 001e 0846     		mov	r0, r1
  2586              	.LVL207:
  2587              		.loc 1 1248 1 view .LVU667
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 77
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 77
 
 
  2588 0020 10BD     		pop	{r4, pc}
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1267:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   
 1268:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   if (inHandlerMode()) {
  2626              		.loc 1 1268 3 is_stmt 1 view .LVU676
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 78
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 78
 
 
  2627              		.loc 1 1268 7 is_stmt 0 view .LVU677
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2667 0040 0023     		movs	r3, #0
  2668 0042 1A46     		mov	r2, r3
  2669 0044 01A9     		add	r1, sp, #4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 79
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 79
 
 
  2670 0046 6068     		ldr	r0, [r4, #4]
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2719              	osMailGet:
  2720              	.LVL216:
  2721              	.LFB87:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 80
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 80
 
 
 1282:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** 
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1305:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   ticks = 0;
  2753              		.loc 1 1305 3 is_stmt 1 view .LVU708
  2754              	.LVL217:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 81
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 81
 
 
 1306:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   if (millisec == osWaitForever) {
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2790              	@ 1324 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c" 1
  2791 003e BFF36F8F 		isb
  2792              	@ 0 "" 2
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 82
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 82
 
 
  2793              		.thumb
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2832              	.LVL224:
  2833              	.L200:
  2834              		.loc 1 1332 20 discriminator 4 view .LVU734
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 83
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 83
 
 
  2835 006c 0096     		str	r6, [sp]
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2874              		.loc 1 1347 1 is_stmt 1 view -0
  2875              		.cfi_startproc
  2876              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 84
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 84
 
 
  2877              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1360:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** * @retval none.
 1361:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** */
 1362:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** void osSystickHandler(void)
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 85
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 85
 
 
 1363:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** {
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1380:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** */
 1381:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** osThreadState osThreadGetState(osThreadId thread_id)
 1382:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** {
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 86
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 86
 
 
 1383:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   eTaskState ThreadState;
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  2960              		@ frame_needed = 0, uses_anonymous_args = 0
  2961              		.loc 1 1433 1 is_stmt 0 view .LVU758
  2962 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 87
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 87
 
 
  2963              	.LCFI74:
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3001              	.LVL237:
  3002              		.loc 1 1451 5 view .LVU766
  3003 0008 78B1     		cbz	r0, .L220
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 88
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 88
 
 
 1452:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   {
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3044              		.align	1
  3045              		.global	osThreadSuspendAll
  3046              		.syntax unified
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 89
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 89
 
 
  3047              		.thumb
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3086              		.cfi_def_cfa_offset 8
  3087              		.cfi_offset 3, -8
  3088              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 90
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 90
 
 
 1485:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   if (xTaskResumeAll() == pdTRUE)
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1506:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   return osOK;
 1507:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #else
 1508:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   (void) millisec;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 91
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 91
 
 
  3123              		.loc 1 1508 3 view .LVU790
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3155 0002 7047     		bx	lr
  3156              		.cfi_endproc
  3157              	.LFE95:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 92
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 92
 
 
  3159              		.section	.text.osThreadList,"ax",%progbits
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1556:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** {
  3193              		.loc 1 1556 1 is_stmt 1 view -0
  3194              		.cfi_startproc
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 93
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 93
 
 
  3195              		@ args = 0, pretend = 0, frame = 16
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3227              		.loc 1 1578 7 view .LVU817
  3228 0010 FFF7FEFF 		bl	xQueuePeek
  3229              	.LVL252:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 94
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 94
 
 
  3230              		.loc 1 1578 6 view .LVU818
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3269              	.LVL256:
 1564:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
  3270              		.loc 1 1564 12 view .LVU829
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 95
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 95
 
 
  3271 0038 84E80700 		stm	r4, {r0, r1, r2}
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3315              	.L243:
 1600:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   }
 1601:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   else
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 96
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 96
 
 
 1602:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ****   {
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3356              	.LFE99:
  3358              		.section	.text.osMessageDelete,"ax",%progbits
  3359              		.align	1
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 97
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 97
 
 
  3360              		.global	osMessageDelete
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3398 0014 8220     		movs	r0, #130
  3399 0016 FCE7     		b	.L249
  3400              		.cfi_endproc
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 98
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 98
 
 
  3401              	.LFE100:
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3432              		.thumb_func
  3434              	osRecursiveMutexRelease:
  3435              	.LVL271:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 99
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 99
 
 
  3436              	.LFB102:
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3463              		@ args = 0, pretend = 0, frame = 0
  3464              		@ frame_needed = 0, uses_anonymous_args = 0
  3465              		@ link register save eliminated.
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 100
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 100
 
 
 1687:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** #if (configUSE_RECURSIVE_MUTEXES == 1)
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
 1724:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** uint32_t osSemaphoreGetCount(osSemaphoreId semaphore_id)
 1725:Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c **** {
  3485              		.loc 1 1725 1 is_stmt 1 view -0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 101
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 101
 
 
  3486              		.cfi_startproc
@@ -6032,127 +6032,127 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 1
  3513              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h"
  3514              		.file 12 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
  3515              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/include/portable.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 102
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 102
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 cmsis_os.c
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:18     .text.makeFreeRtosPriority:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:23     .text.makeFreeRtosPriority:00000000 makeFreeRtosPriority
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:55     .text.makeCmsisPriority:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:60     .text.makeCmsisPriority:00000000 makeCmsisPriority
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:94     .text.inHandlerMode:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:99     .text.inHandlerMode:00000000 inHandlerMode
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:134    .text.osKernelStart:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:140    .text.osKernelStart:00000000 osKernelStart
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:162    .text.osKernelRunning:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:168    .text.osKernelRunning:00000000 osKernelRunning
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:199    .text.osKernelSysTick:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:205    .text.osKernelSysTick:00000000 osKernelSysTick
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:239    .text.osThreadCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:245    .text.osThreadCreate:00000000 osThreadCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:350    .text.osThreadGetId:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:356    .text.osThreadGetId:00000000 osThreadGetId
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:377    .text.osThreadTerminate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:383    .text.osThreadTerminate:00000000 osThreadTerminate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:407    .text.osThreadYield:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:413    .text.osThreadYield:00000000 osThreadYield
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:444    .text.osThreadSetPriority:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:450    .text.osThreadSetPriority:00000000 osThreadSetPriority
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:484    .text.osThreadGetPriority:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:490    .text.osThreadGetPriority:00000000 osThreadGetPriority
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:534    .text.osDelay:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:540    .text.osDelay:00000000 osDelay
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:571    .text.osTimerCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:577    .text.osTimerCreate:00000000 osTimerCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:595    .text.osTimerStart:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:601    .text.osTimerStart:00000000 osTimerStart
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:621    .text.osTimerStop:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:627    .text.osTimerStop:00000000 osTimerStop
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:647    .text.osTimerDelete:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:653    .text.osTimerDelete:00000000 osTimerDelete
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:673    .text.osSignalSet:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:679    .text.osSignalSet:00000000 osSignalSet
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:782    .text.osSignalWait:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:788    .text.osSignalWait:00000000 osSignalWait
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:893    .text.osMutexCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:899    .text.osMutexCreate:00000000 osMutexCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:941    .text.osMutexWait:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:947    .text.osMutexWait:00000000 osMutexWait
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1061   .text.osMutexRelease:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1067   .text.osMutexRelease:00000000 osMutexRelease
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1168   .text.osMutexDelete:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1174   .text.osMutexDelete:00000000 osMutexDelete
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1213   .text.osSemaphoreCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1219   .text.osSemaphoreCreate:00000000 osSemaphoreCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1311   .text.osSemaphoreWait:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1317   .text.osSemaphoreWait:00000000 osSemaphoreWait
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1426   .text.osSemaphoreRelease:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1432   .text.osSemaphoreRelease:00000000 osSemaphoreRelease
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1533   .text.osSemaphoreDelete:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1539   .text.osSemaphoreDelete:00000000 osSemaphoreDelete
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1578   .text.osPoolCreate:00000000 $t
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 103
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:18     .text.makeFreeRtosPriority:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:23     .text.makeFreeRtosPriority:00000000 makeFreeRtosPriority
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:55     .text.makeCmsisPriority:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:60     .text.makeCmsisPriority:00000000 makeCmsisPriority
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:94     .text.inHandlerMode:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:99     .text.inHandlerMode:00000000 inHandlerMode
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:134    .text.osKernelStart:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:140    .text.osKernelStart:00000000 osKernelStart
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:162    .text.osKernelRunning:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:168    .text.osKernelRunning:00000000 osKernelRunning
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:199    .text.osKernelSysTick:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:205    .text.osKernelSysTick:00000000 osKernelSysTick
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:239    .text.osThreadCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:245    .text.osThreadCreate:00000000 osThreadCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:350    .text.osThreadGetId:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:356    .text.osThreadGetId:00000000 osThreadGetId
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:377    .text.osThreadTerminate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:383    .text.osThreadTerminate:00000000 osThreadTerminate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:407    .text.osThreadYield:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:413    .text.osThreadYield:00000000 osThreadYield
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:444    .text.osThreadSetPriority:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:450    .text.osThreadSetPriority:00000000 osThreadSetPriority
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:484    .text.osThreadGetPriority:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:490    .text.osThreadGetPriority:00000000 osThreadGetPriority
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:534    .text.osDelay:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:540    .text.osDelay:00000000 osDelay
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:571    .text.osTimerCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:577    .text.osTimerCreate:00000000 osTimerCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:595    .text.osTimerStart:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:601    .text.osTimerStart:00000000 osTimerStart
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:621    .text.osTimerStop:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:627    .text.osTimerStop:00000000 osTimerStop
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:647    .text.osTimerDelete:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:653    .text.osTimerDelete:00000000 osTimerDelete
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:673    .text.osSignalSet:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:679    .text.osSignalSet:00000000 osSignalSet
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:782    .text.osSignalWait:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:788    .text.osSignalWait:00000000 osSignalWait
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:893    .text.osMutexCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:899    .text.osMutexCreate:00000000 osMutexCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:941    .text.osMutexWait:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:947    .text.osMutexWait:00000000 osMutexWait
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1061   .text.osMutexRelease:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1067   .text.osMutexRelease:00000000 osMutexRelease
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1168   .text.osMutexDelete:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1174   .text.osMutexDelete:00000000 osMutexDelete
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1213   .text.osSemaphoreCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1219   .text.osSemaphoreCreate:00000000 osSemaphoreCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1311   .text.osSemaphoreWait:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1317   .text.osSemaphoreWait:00000000 osSemaphoreWait
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1426   .text.osSemaphoreRelease:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1432   .text.osSemaphoreRelease:00000000 osSemaphoreRelease
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1533   .text.osSemaphoreDelete:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1539   .text.osSemaphoreDelete:00000000 osSemaphoreDelete
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1578   .text.osPoolCreate:00000000 $t
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 103
 
 
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1584   .text.osPoolCreate:00000000 osPoolCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1720   .text.osPoolAlloc:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1726   .text.osPoolAlloc:00000000 osPoolAlloc
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1884   .text.osPoolCAlloc:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1890   .text.osPoolCAlloc:00000000 osPoolCAlloc
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1921   .text.osPoolFree:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:1927   .text.osPoolFree:00000000 osPoolFree
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2018   .text.osMessageCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2024   .text.osMessageCreate:00000000 osMessageCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2086   .text.osMessagePut:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2092   .text.osMessagePut:00000000 osMessagePut
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2205   .text.osMessageGet:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2211   .text.osMessageGet:00000000 osMessageGet
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2361   .text.osMailCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2367   .text.osMailCreate:00000000 osMailCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2492   .text.osMailAlloc:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2498   .text.osMailAlloc:00000000 osMailAlloc
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2531   .text.osMailCAlloc:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2537   .text.osMailCAlloc:00000000 osMailCAlloc
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2594   .text.osMailPut:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2600   .text.osMailPut:00000000 osMailPut
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2713   .text.osMailGet:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2719   .text.osMailGet:00000000 osMailGet
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2865   .text.osMailFree:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2871   .text.osMailFree:00000000 osMailFree
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2911   .text.osSystickHandler:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2917   .text.osSystickHandler:00000000 osSystickHandler
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2948   .text.osThreadSuspend:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2954   .text.osThreadSuspend:00000000 osThreadSuspend
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2978   .text.osThreadResume:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:2984   .text.osThreadResume:00000000 osThreadResume
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3044   .text.osThreadSuspendAll:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3050   .text.osThreadSuspendAll:00000000 osThreadSuspendAll
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3072   .text.osThreadResumeAll:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3078   .text.osThreadResumeAll:00000000 osThreadResumeAll
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3109   .text.osDelayUntil:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3115   .text.osDelayUntil:00000000 osDelayUntil
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3135   .text.osAbortDelay:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3141   .text.osAbortDelay:00000000 osAbortDelay
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3160   .text.osThreadList:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3166   .text.osThreadList:00000000 osThreadList
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3184   .text.osMessagePeek:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3190   .text.osMessagePeek:00000000 osMessagePeek
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3284   .text.osMessageWaiting:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3290   .text.osMessageWaiting:00000000 osMessageWaiting
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3330   .text.osMessageAvailableSpace:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3336   .text.osMessageAvailableSpace:00000000 osMessageAvailableSpace
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3359   .text.osMessageDelete:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3365   .text.osMessageDelete:00000000 osMessageDelete
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3404   .text.osRecursiveMutexCreate:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3410   .text.osRecursiveMutexCreate:00000000 osRecursiveMutexCreate
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3428   .text.osRecursiveMutexRelease:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3434   .text.osRecursiveMutexRelease:00000000 osRecursiveMutexRelease
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3452   .text.osRecursiveMutexWait:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3458   .text.osRecursiveMutexWait:00000000 osRecursiveMutexWait
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3476   .text.osSemaphoreGetCount:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s:3482   .text.osSemaphoreGetCount:00000000 osSemaphoreGetCount
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccrcDUB0.s 			page 104
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1584   .text.osPoolCreate:00000000 osPoolCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1720   .text.osPoolAlloc:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1726   .text.osPoolAlloc:00000000 osPoolAlloc
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1884   .text.osPoolCAlloc:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1890   .text.osPoolCAlloc:00000000 osPoolCAlloc
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1921   .text.osPoolFree:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:1927   .text.osPoolFree:00000000 osPoolFree
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2018   .text.osMessageCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2024   .text.osMessageCreate:00000000 osMessageCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2086   .text.osMessagePut:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2092   .text.osMessagePut:00000000 osMessagePut
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2205   .text.osMessageGet:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2211   .text.osMessageGet:00000000 osMessageGet
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2361   .text.osMailCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2367   .text.osMailCreate:00000000 osMailCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2492   .text.osMailAlloc:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2498   .text.osMailAlloc:00000000 osMailAlloc
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2531   .text.osMailCAlloc:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2537   .text.osMailCAlloc:00000000 osMailCAlloc
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2594   .text.osMailPut:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2600   .text.osMailPut:00000000 osMailPut
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2713   .text.osMailGet:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2719   .text.osMailGet:00000000 osMailGet
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2865   .text.osMailFree:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2871   .text.osMailFree:00000000 osMailFree
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2911   .text.osSystickHandler:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2917   .text.osSystickHandler:00000000 osSystickHandler
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2948   .text.osThreadSuspend:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2954   .text.osThreadSuspend:00000000 osThreadSuspend
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2978   .text.osThreadResume:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:2984   .text.osThreadResume:00000000 osThreadResume
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3044   .text.osThreadSuspendAll:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3050   .text.osThreadSuspendAll:00000000 osThreadSuspendAll
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3072   .text.osThreadResumeAll:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3078   .text.osThreadResumeAll:00000000 osThreadResumeAll
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3109   .text.osDelayUntil:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3115   .text.osDelayUntil:00000000 osDelayUntil
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3135   .text.osAbortDelay:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3141   .text.osAbortDelay:00000000 osAbortDelay
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3160   .text.osThreadList:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3166   .text.osThreadList:00000000 osThreadList
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3184   .text.osMessagePeek:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3190   .text.osMessagePeek:00000000 osMessagePeek
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3284   .text.osMessageWaiting:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3290   .text.osMessageWaiting:00000000 osMessageWaiting
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3330   .text.osMessageAvailableSpace:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3336   .text.osMessageAvailableSpace:00000000 osMessageAvailableSpace
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3359   .text.osMessageDelete:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3365   .text.osMessageDelete:00000000 osMessageDelete
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3404   .text.osRecursiveMutexCreate:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3410   .text.osRecursiveMutexCreate:00000000 osRecursiveMutexCreate
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3428   .text.osRecursiveMutexRelease:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3434   .text.osRecursiveMutexRelease:00000000 osRecursiveMutexRelease
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3452   .text.osRecursiveMutexWait:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3458   .text.osRecursiveMutexWait:00000000 osRecursiveMutexWait
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3476   .text.osSemaphoreGetCount:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s:3482   .text.osSemaphoreGetCount:00000000 osSemaphoreGetCount
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccIgyNW2.s 			page 104
 
 
 

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
   30:Core/Src/spi.c **** DMA_HandleTypeDef hdma_spi2_tx;
   31:Core/Src/spi.c **** 
   32:Core/Src/spi.c **** /* SPI1 init function */
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 2
 
 
   33:Core/Src/spi.c **** void MX_SPI1_Init(void)
@@ -83,8 +83,8 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
   43:Core/Src/spi.c ****   hspi1.Instance = SPI1;
   36              		.loc 1 43 3 view .LVU1
   37              		.loc 1 43 18 is_stmt 0 view .LVU2
-  38 0002 0D48     		ldr	r0, .L5
-  39 0004 0D4B     		ldr	r3, .L5+4
+  38 0002 0E48     		ldr	r0, .L5
+  39 0004 0E4B     		ldr	r3, .L5+4
   40 0006 0360     		str	r3, [r0]
   44:Core/Src/spi.c ****   hspi1.Init.Mode = SPI_MODE_MASTER;
   41              		.loc 1 44 3 is_stmt 1 view .LVU3
@@ -113,38 +113,39 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
   59              		.loc 1 49 18 is_stmt 0 view .LVU14
   60 0018 4FF40072 		mov	r2, #512
   61 001c 8261     		str	r2, [r0, #24]
-  50:Core/Src/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  50:Core/Src/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
   62              		.loc 1 50 3 is_stmt 1 view .LVU15
   63              		.loc 1 50 32 is_stmt 0 view .LVU16
-  64 001e C361     		str	r3, [r0, #28]
+  64 001e 2022     		movs	r2, #32
+  65 0020 C261     		str	r2, [r0, #28]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 3
+
+
   51:Core/Src/spi.c ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 3
-
-
-  65              		.loc 1 51 3 is_stmt 1 view .LVU17
-  66              		.loc 1 51 23 is_stmt 0 view .LVU18
-  67 0020 0362     		str	r3, [r0, #32]
+  66              		.loc 1 51 3 is_stmt 1 view .LVU17
+  67              		.loc 1 51 23 is_stmt 0 view .LVU18
+  68 0022 0362     		str	r3, [r0, #32]
   52:Core/Src/spi.c ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
-  68              		.loc 1 52 3 is_stmt 1 view .LVU19
-  69              		.loc 1 52 21 is_stmt 0 view .LVU20
-  70 0022 4362     		str	r3, [r0, #36]
+  69              		.loc 1 52 3 is_stmt 1 view .LVU19
+  70              		.loc 1 52 21 is_stmt 0 view .LVU20
+  71 0024 4362     		str	r3, [r0, #36]
   53:Core/Src/spi.c ****   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  71              		.loc 1 53 3 is_stmt 1 view .LVU21
-  72              		.loc 1 53 29 is_stmt 0 view .LVU22
-  73 0024 8362     		str	r3, [r0, #40]
+  72              		.loc 1 53 3 is_stmt 1 view .LVU21
+  73              		.loc 1 53 29 is_stmt 0 view .LVU22
+  74 0026 8362     		str	r3, [r0, #40]
   54:Core/Src/spi.c ****   hspi1.Init.CRCPolynomial = 10;
-  74              		.loc 1 54 3 is_stmt 1 view .LVU23
-  75              		.loc 1 54 28 is_stmt 0 view .LVU24
-  76 0026 0A23     		movs	r3, #10
-  77 0028 C362     		str	r3, [r0, #44]
+  75              		.loc 1 54 3 is_stmt 1 view .LVU23
+  76              		.loc 1 54 28 is_stmt 0 view .LVU24
+  77 0028 0A23     		movs	r3, #10
+  78 002a C362     		str	r3, [r0, #44]
   55:Core/Src/spi.c ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
-  78              		.loc 1 55 3 is_stmt 1 view .LVU25
-  79              		.loc 1 55 7 is_stmt 0 view .LVU26
-  80 002a FFF7FEFF 		bl	HAL_SPI_Init
-  81              	.LVL0:
-  82              		.loc 1 55 6 view .LVU27
-  83 002e 00B9     		cbnz	r0, .L4
-  84              	.L1:
+  79              		.loc 1 55 3 is_stmt 1 view .LVU25
+  80              		.loc 1 55 7 is_stmt 0 view .LVU26
+  81 002c FFF7FEFF 		bl	HAL_SPI_Init
+  82              	.LVL0:
+  83              		.loc 1 55 6 view .LVU27
+  84 0030 00B9     		cbnz	r0, .L4
+  85              	.L1:
   56:Core/Src/spi.c ****   {
   57:Core/Src/spi.c ****     Error_Handler();
   58:Core/Src/spi.c ****   }
@@ -153,45 +154,45 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
   61:Core/Src/spi.c ****   /* USER CODE END SPI1_Init 2 */
   62:Core/Src/spi.c **** 
   63:Core/Src/spi.c **** }
-  85              		.loc 1 63 1 view .LVU28
-  86 0030 08BD     		pop	{r3, pc}
-  87              	.L4:
+  86              		.loc 1 63 1 view .LVU28
+  87 0032 08BD     		pop	{r3, pc}
+  88              	.L4:
   57:Core/Src/spi.c ****   }
-  88              		.loc 1 57 5 is_stmt 1 view .LVU29
-  89 0032 FFF7FEFF 		bl	Error_Handler
-  90              	.LVL1:
-  91              		.loc 1 63 1 is_stmt 0 view .LVU30
-  92 0036 FBE7     		b	.L1
-  93              	.L6:
-  94              		.align	2
-  95              	.L5:
-  96 0038 00000000 		.word	.LANCHOR0
-  97 003c 00300140 		.word	1073819648
-  98              		.cfi_endproc
-  99              	.LFE65:
- 101              		.section	.text.MX_SPI2_Init,"ax",%progbits
- 102              		.align	1
- 103              		.global	MX_SPI2_Init
- 104              		.syntax unified
- 105              		.thumb
- 106              		.thumb_func
- 108              	MX_SPI2_Init:
- 109              	.LFB66:
+  89              		.loc 1 57 5 is_stmt 1 view .LVU29
+  90 0034 FFF7FEFF 		bl	Error_Handler
+  91              	.LVL1:
+  92              		.loc 1 63 1 is_stmt 0 view .LVU30
+  93 0038 FBE7     		b	.L1
+  94              	.L6:
+  95 003a 00BF     		.align	2
+  96              	.L5:
+  97 003c 00000000 		.word	.LANCHOR0
+  98 0040 00300140 		.word	1073819648
+  99              		.cfi_endproc
+ 100              	.LFE65:
+ 102              		.section	.text.MX_SPI2_Init,"ax",%progbits
+ 103              		.align	1
+ 104              		.global	MX_SPI2_Init
+ 105              		.syntax unified
+ 106              		.thumb
+ 107              		.thumb_func
+ 109              	MX_SPI2_Init:
+ 110              	.LFB66:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 4
+
+
   64:Core/Src/spi.c **** /* SPI2 init function */
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 4
-
-
   65:Core/Src/spi.c **** void MX_SPI2_Init(void)
   66:Core/Src/spi.c **** {
- 110              		.loc 1 66 1 is_stmt 1 view -0
- 111              		.cfi_startproc
- 112              		@ args = 0, pretend = 0, frame = 0
- 113              		@ frame_needed = 0, uses_anonymous_args = 0
- 114 0000 08B5     		push	{r3, lr}
- 115              	.LCFI1:
- 116              		.cfi_def_cfa_offset 8
- 117              		.cfi_offset 3, -8
- 118              		.cfi_offset 14, -4
+ 111              		.loc 1 66 1 is_stmt 1 view -0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115 0000 08B5     		push	{r3, lr}
+ 116              	.LCFI1:
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 3, -8
+ 119              		.cfi_offset 14, -4
   67:Core/Src/spi.c **** 
   68:Core/Src/spi.c ****   /* USER CODE BEGIN SPI2_Init 0 */
   69:Core/Src/spi.c **** 
@@ -201,73 +202,73 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
   73:Core/Src/spi.c **** 
   74:Core/Src/spi.c ****   /* USER CODE END SPI2_Init 1 */
   75:Core/Src/spi.c ****   hspi2.Instance = SPI2;
- 119              		.loc 1 75 3 view .LVU32
- 120              		.loc 1 75 18 is_stmt 0 view .LVU33
- 121 0002 0F48     		ldr	r0, .L11
- 122 0004 0F4B     		ldr	r3, .L11+4
- 123 0006 0360     		str	r3, [r0]
+ 120              		.loc 1 75 3 view .LVU32
+ 121              		.loc 1 75 18 is_stmt 0 view .LVU33
+ 122 0002 0F48     		ldr	r0, .L11
+ 123 0004 0F4B     		ldr	r3, .L11+4
+ 124 0006 0360     		str	r3, [r0]
   76:Core/Src/spi.c ****   hspi2.Init.Mode = SPI_MODE_MASTER;
- 124              		.loc 1 76 3 is_stmt 1 view .LVU34
- 125              		.loc 1 76 19 is_stmt 0 view .LVU35
- 126 0008 4FF48273 		mov	r3, #260
- 127 000c 4360     		str	r3, [r0, #4]
+ 125              		.loc 1 76 3 is_stmt 1 view .LVU34
+ 126              		.loc 1 76 19 is_stmt 0 view .LVU35
+ 127 0008 4FF48273 		mov	r3, #260
+ 128 000c 4360     		str	r3, [r0, #4]
   77:Core/Src/spi.c ****   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
- 128              		.loc 1 77 3 is_stmt 1 view .LVU36
- 129              		.loc 1 77 24 is_stmt 0 view .LVU37
- 130 000e 0023     		movs	r3, #0
- 131 0010 8360     		str	r3, [r0, #8]
+ 129              		.loc 1 77 3 is_stmt 1 view .LVU36
+ 130              		.loc 1 77 24 is_stmt 0 view .LVU37
+ 131 000e 0023     		movs	r3, #0
+ 132 0010 8360     		str	r3, [r0, #8]
   78:Core/Src/spi.c ****   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
- 132              		.loc 1 78 3 is_stmt 1 view .LVU38
- 133              		.loc 1 78 23 is_stmt 0 view .LVU39
- 134 0012 C360     		str	r3, [r0, #12]
+ 133              		.loc 1 78 3 is_stmt 1 view .LVU38
+ 134              		.loc 1 78 23 is_stmt 0 view .LVU39
+ 135 0012 C360     		str	r3, [r0, #12]
   79:Core/Src/spi.c ****   hspi2.Init.CLKPolarity = SPI_POLARITY_HIGH;
- 135              		.loc 1 79 3 is_stmt 1 view .LVU40
- 136              		.loc 1 79 26 is_stmt 0 view .LVU41
- 137 0014 0222     		movs	r2, #2
- 138 0016 0261     		str	r2, [r0, #16]
+ 136              		.loc 1 79 3 is_stmt 1 view .LVU40
+ 137              		.loc 1 79 26 is_stmt 0 view .LVU41
+ 138 0014 0222     		movs	r2, #2
+ 139 0016 0261     		str	r2, [r0, #16]
   80:Core/Src/spi.c ****   hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
- 139              		.loc 1 80 3 is_stmt 1 view .LVU42
- 140              		.loc 1 80 23 is_stmt 0 view .LVU43
- 141 0018 0122     		movs	r2, #1
- 142 001a 4261     		str	r2, [r0, #20]
+ 140              		.loc 1 80 3 is_stmt 1 view .LVU42
+ 141              		.loc 1 80 23 is_stmt 0 view .LVU43
+ 142 0018 0122     		movs	r2, #1
+ 143 001a 4261     		str	r2, [r0, #20]
   81:Core/Src/spi.c ****   hspi2.Init.NSS = SPI_NSS_SOFT;
- 143              		.loc 1 81 3 is_stmt 1 view .LVU44
- 144              		.loc 1 81 18 is_stmt 0 view .LVU45
- 145 001c 4FF40072 		mov	r2, #512
- 146 0020 8261     		str	r2, [r0, #24]
+ 144              		.loc 1 81 3 is_stmt 1 view .LVU44
+ 145              		.loc 1 81 18 is_stmt 0 view .LVU45
+ 146 001c 4FF40072 		mov	r2, #512
+ 147 0020 8261     		str	r2, [r0, #24]
   82:Core/Src/spi.c ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
- 147              		.loc 1 82 3 is_stmt 1 view .LVU46
- 148              		.loc 1 82 32 is_stmt 0 view .LVU47
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 5
+ 148              		.loc 1 82 3 is_stmt 1 view .LVU46
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 5
 
 
- 149 0022 2822     		movs	r2, #40
- 150 0024 C261     		str	r2, [r0, #28]
+ 149              		.loc 1 82 32 is_stmt 0 view .LVU47
+ 150 0022 2822     		movs	r2, #40
+ 151 0024 C261     		str	r2, [r0, #28]
   83:Core/Src/spi.c ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
- 151              		.loc 1 83 3 is_stmt 1 view .LVU48
- 152              		.loc 1 83 23 is_stmt 0 view .LVU49
- 153 0026 0362     		str	r3, [r0, #32]
+ 152              		.loc 1 83 3 is_stmt 1 view .LVU48
+ 153              		.loc 1 83 23 is_stmt 0 view .LVU49
+ 154 0026 0362     		str	r3, [r0, #32]
   84:Core/Src/spi.c ****   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
- 154              		.loc 1 84 3 is_stmt 1 view .LVU50
- 155              		.loc 1 84 21 is_stmt 0 view .LVU51
- 156 0028 4362     		str	r3, [r0, #36]
+ 155              		.loc 1 84 3 is_stmt 1 view .LVU50
+ 156              		.loc 1 84 21 is_stmt 0 view .LVU51
+ 157 0028 4362     		str	r3, [r0, #36]
   85:Core/Src/spi.c ****   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
- 157              		.loc 1 85 3 is_stmt 1 view .LVU52
- 158              		.loc 1 85 29 is_stmt 0 view .LVU53
- 159 002a 8362     		str	r3, [r0, #40]
+ 158              		.loc 1 85 3 is_stmt 1 view .LVU52
+ 159              		.loc 1 85 29 is_stmt 0 view .LVU53
+ 160 002a 8362     		str	r3, [r0, #40]
   86:Core/Src/spi.c ****   hspi2.Init.CRCPolynomial = 10;
- 160              		.loc 1 86 3 is_stmt 1 view .LVU54
- 161              		.loc 1 86 28 is_stmt 0 view .LVU55
- 162 002c 0A23     		movs	r3, #10
- 163 002e C362     		str	r3, [r0, #44]
+ 161              		.loc 1 86 3 is_stmt 1 view .LVU54
+ 162              		.loc 1 86 28 is_stmt 0 view .LVU55
+ 163 002c 0A23     		movs	r3, #10
+ 164 002e C362     		str	r3, [r0, #44]
   87:Core/Src/spi.c ****   if (HAL_SPI_Init(&hspi2) != HAL_OK)
- 164              		.loc 1 87 3 is_stmt 1 view .LVU56
- 165              		.loc 1 87 7 is_stmt 0 view .LVU57
- 166 0030 FFF7FEFF 		bl	HAL_SPI_Init
- 167              	.LVL2:
- 168              		.loc 1 87 6 view .LVU58
- 169 0034 00B9     		cbnz	r0, .L10
- 170              	.L7:
+ 165              		.loc 1 87 3 is_stmt 1 view .LVU56
+ 166              		.loc 1 87 7 is_stmt 0 view .LVU57
+ 167 0030 FFF7FEFF 		bl	HAL_SPI_Init
+ 168              	.LVL2:
+ 169              		.loc 1 87 6 view .LVU58
+ 170 0034 00B9     		cbnz	r0, .L10
+ 171              	.L7:
   88:Core/Src/spi.c ****   {
   89:Core/Src/spi.c ****     Error_Handler();
   90:Core/Src/spi.c ****   }
@@ -276,70 +277,70 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
   93:Core/Src/spi.c ****   /* USER CODE END SPI2_Init 2 */
   94:Core/Src/spi.c **** 
   95:Core/Src/spi.c **** }
- 171              		.loc 1 95 1 view .LVU59
- 172 0036 08BD     		pop	{r3, pc}
- 173              	.L10:
+ 172              		.loc 1 95 1 view .LVU59
+ 173 0036 08BD     		pop	{r3, pc}
+ 174              	.L10:
   89:Core/Src/spi.c ****   }
- 174              		.loc 1 89 5 is_stmt 1 view .LVU60
- 175 0038 FFF7FEFF 		bl	Error_Handler
- 176              	.LVL3:
- 177              		.loc 1 95 1 is_stmt 0 view .LVU61
- 178 003c FBE7     		b	.L7
- 179              	.L12:
- 180 003e 00BF     		.align	2
- 181              	.L11:
- 182 0040 00000000 		.word	.LANCHOR1
- 183 0044 00380040 		.word	1073756160
- 184              		.cfi_endproc
- 185              	.LFE66:
- 187              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
- 188              		.align	1
- 189              		.global	HAL_SPI_MspInit
- 190              		.syntax unified
- 191              		.thumb
- 192              		.thumb_func
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 6
+ 175              		.loc 1 89 5 is_stmt 1 view .LVU60
+ 176 0038 FFF7FEFF 		bl	Error_Handler
+ 177              	.LVL3:
+ 178              		.loc 1 95 1 is_stmt 0 view .LVU61
+ 179 003c FBE7     		b	.L7
+ 180              	.L12:
+ 181 003e 00BF     		.align	2
+ 182              	.L11:
+ 183 0040 00000000 		.word	.LANCHOR1
+ 184 0044 00380040 		.word	1073756160
+ 185              		.cfi_endproc
+ 186              	.LFE66:
+ 188              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	HAL_SPI_MspInit
+ 191              		.syntax unified
+ 192              		.thumb
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 6
 
 
- 194              	HAL_SPI_MspInit:
- 195              	.LVL4:
- 196              	.LFB67:
+ 193              		.thumb_func
+ 195              	HAL_SPI_MspInit:
+ 196              	.LVL4:
+ 197              	.LFB67:
   96:Core/Src/spi.c **** 
   97:Core/Src/spi.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
   98:Core/Src/spi.c **** {
- 197              		.loc 1 98 1 is_stmt 1 view -0
- 198              		.cfi_startproc
- 199              		@ args = 0, pretend = 0, frame = 32
- 200              		@ frame_needed = 0, uses_anonymous_args = 0
- 201              		.loc 1 98 1 is_stmt 0 view .LVU63
- 202 0000 70B5     		push	{r4, r5, r6, lr}
- 203              	.LCFI2:
- 204              		.cfi_def_cfa_offset 16
- 205              		.cfi_offset 4, -16
- 206              		.cfi_offset 5, -12
- 207              		.cfi_offset 6, -8
- 208              		.cfi_offset 14, -4
- 209 0002 88B0     		sub	sp, sp, #32
- 210              	.LCFI3:
- 211              		.cfi_def_cfa_offset 48
+ 198              		.loc 1 98 1 is_stmt 1 view -0
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 32
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              		.loc 1 98 1 is_stmt 0 view .LVU63
+ 203 0000 70B5     		push	{r4, r5, r6, lr}
+ 204              	.LCFI2:
+ 205              		.cfi_def_cfa_offset 16
+ 206              		.cfi_offset 4, -16
+ 207              		.cfi_offset 5, -12
+ 208              		.cfi_offset 6, -8
+ 209              		.cfi_offset 14, -4
+ 210 0002 88B0     		sub	sp, sp, #32
+ 211              	.LCFI3:
+ 212              		.cfi_def_cfa_offset 48
   99:Core/Src/spi.c **** 
  100:Core/Src/spi.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 212              		.loc 1 100 3 is_stmt 1 view .LVU64
- 213              		.loc 1 100 20 is_stmt 0 view .LVU65
- 214 0004 0023     		movs	r3, #0
- 215 0006 0493     		str	r3, [sp, #16]
- 216 0008 0593     		str	r3, [sp, #20]
- 217 000a 0693     		str	r3, [sp, #24]
- 218 000c 0793     		str	r3, [sp, #28]
+ 213              		.loc 1 100 3 is_stmt 1 view .LVU64
+ 214              		.loc 1 100 20 is_stmt 0 view .LVU65
+ 215 0004 0023     		movs	r3, #0
+ 216 0006 0493     		str	r3, [sp, #16]
+ 217 0008 0593     		str	r3, [sp, #20]
+ 218 000a 0693     		str	r3, [sp, #24]
+ 219 000c 0793     		str	r3, [sp, #28]
  101:Core/Src/spi.c ****   if(spiHandle->Instance==SPI1)
- 219              		.loc 1 101 3 is_stmt 1 view .LVU66
- 220              		.loc 1 101 15 is_stmt 0 view .LVU67
- 221 000e 0368     		ldr	r3, [r0]
- 222              		.loc 1 101 5 view .LVU68
- 223 0010 444A     		ldr	r2, .L23
- 224 0012 9342     		cmp	r3, r2
- 225 0014 05D0     		beq	.L19
- 226 0016 0446     		mov	r4, r0
+ 220              		.loc 1 101 3 is_stmt 1 view .LVU66
+ 221              		.loc 1 101 15 is_stmt 0 view .LVU67
+ 222 000e 0368     		ldr	r3, [r0]
+ 223              		.loc 1 101 5 view .LVU68
+ 224 0010 444A     		ldr	r2, .L23
+ 225 0012 9342     		cmp	r3, r2
+ 226 0014 05D0     		beq	.L19
+ 227 0016 0446     		mov	r4, r0
  102:Core/Src/spi.c ****   {
  103:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 0 */
  104:Core/Src/spi.c **** 
@@ -357,10 +358,10 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  116:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  117:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
  118:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 7
+
+
  119:Core/Src/spi.c **** 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 7
-
-
  120:Core/Src/spi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_6;
  121:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
  122:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -371,13 +372,13 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  127:Core/Src/spi.c ****   /* USER CODE END SPI1_MspInit 1 */
  128:Core/Src/spi.c ****   }
  129:Core/Src/spi.c ****   else if(spiHandle->Instance==SPI2)
- 227              		.loc 1 129 8 is_stmt 1 view .LVU69
- 228              		.loc 1 129 10 is_stmt 0 view .LVU70
- 229 0018 434A     		ldr	r2, .L23+4
- 230 001a 9342     		cmp	r3, r2
- 231 001c 29D0     		beq	.L20
- 232              	.LVL5:
- 233              	.L13:
+ 228              		.loc 1 129 8 is_stmt 1 view .LVU69
+ 229              		.loc 1 129 10 is_stmt 0 view .LVU70
+ 230 0018 434A     		ldr	r2, .L23+4
+ 231 001a 9342     		cmp	r3, r2
+ 232 001c 29D0     		beq	.L20
+ 233              	.LVL5:
+ 234              	.L13:
  130:Core/Src/spi.c ****   {
  131:Core/Src/spi.c ****   /* USER CODE BEGIN SPI2_MspInit 0 */
  132:Core/Src/spi.c **** 
@@ -417,10 +418,10 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  166:Core/Src/spi.c ****     }
  167:Core/Src/spi.c **** 
  168:Core/Src/spi.c ****     __HAL_LINKDMA(spiHandle,hdmarx,hdma_spi2_rx);
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 8
+
+
  169:Core/Src/spi.c **** 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 8
-
-
  170:Core/Src/spi.c ****     /* SPI2_TX Init */
  171:Core/Src/spi.c ****     hdma_spi2_tx.Instance = DMA1_Channel5;
  172:Core/Src/spi.c ****     hdma_spi2_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
@@ -442,421 +443,421 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  188:Core/Src/spi.c ****   /* USER CODE END SPI2_MspInit 1 */
  189:Core/Src/spi.c ****   }
  190:Core/Src/spi.c **** }
- 234              		.loc 1 190 1 view .LVU71
- 235 001e 08B0     		add	sp, sp, #32
- 236              	.LCFI4:
- 237              		.cfi_remember_state
- 238              		.cfi_def_cfa_offset 16
- 239              		@ sp needed
- 240 0020 70BD     		pop	{r4, r5, r6, pc}
- 241              	.LVL6:
- 242              	.L19:
- 243              	.LCFI5:
- 244              		.cfi_restore_state
+ 235              		.loc 1 190 1 view .LVU71
+ 236 001e 08B0     		add	sp, sp, #32
+ 237              	.LCFI4:
+ 238              		.cfi_remember_state
+ 239              		.cfi_def_cfa_offset 16
+ 240              		@ sp needed
+ 241 0020 70BD     		pop	{r4, r5, r6, pc}
+ 242              	.LVL6:
+ 243              	.L19:
+ 244              	.LCFI5:
+ 245              		.cfi_restore_state
  107:Core/Src/spi.c **** 
- 245              		.loc 1 107 5 is_stmt 1 view .LVU72
- 246              	.LBB2:
+ 246              		.loc 1 107 5 is_stmt 1 view .LVU72
+ 247              	.LBB2:
  107:Core/Src/spi.c **** 
- 247              		.loc 1 107 5 view .LVU73
+ 248              		.loc 1 107 5 view .LVU73
  107:Core/Src/spi.c **** 
- 248              		.loc 1 107 5 view .LVU74
- 249 0022 424B     		ldr	r3, .L23+8
- 250 0024 9A69     		ldr	r2, [r3, #24]
- 251 0026 42F48052 		orr	r2, r2, #4096
- 252 002a 9A61     		str	r2, [r3, #24]
+ 249              		.loc 1 107 5 view .LVU74
+ 250 0022 424B     		ldr	r3, .L23+8
+ 251 0024 9A69     		ldr	r2, [r3, #24]
+ 252 0026 42F48052 		orr	r2, r2, #4096
+ 253 002a 9A61     		str	r2, [r3, #24]
  107:Core/Src/spi.c **** 
- 253              		.loc 1 107 5 view .LVU75
- 254 002c 9A69     		ldr	r2, [r3, #24]
- 255 002e 02F48052 		and	r2, r2, #4096
- 256 0032 0092     		str	r2, [sp]
+ 254              		.loc 1 107 5 view .LVU75
+ 255 002c 9A69     		ldr	r2, [r3, #24]
+ 256 002e 02F48052 		and	r2, r2, #4096
+ 257 0032 0092     		str	r2, [sp]
  107:Core/Src/spi.c **** 
- 257              		.loc 1 107 5 view .LVU76
- 258 0034 009A     		ldr	r2, [sp]
- 259              	.LBE2:
+ 258              		.loc 1 107 5 view .LVU76
+ 259 0034 009A     		ldr	r2, [sp]
+ 260              	.LBE2:
  107:Core/Src/spi.c **** 
- 260              		.loc 1 107 5 view .LVU77
+ 261              		.loc 1 107 5 view .LVU77
  109:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
- 261              		.loc 1 109 5 view .LVU78
- 262              	.LBB3:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 9
+ 262              		.loc 1 109 5 view .LVU78
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 9
 
 
+ 263              	.LBB3:
  109:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
- 263              		.loc 1 109 5 view .LVU79
+ 264              		.loc 1 109 5 view .LVU79
  109:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
- 264              		.loc 1 109 5 view .LVU80
- 265 0036 9A69     		ldr	r2, [r3, #24]
- 266 0038 42F00402 		orr	r2, r2, #4
- 267 003c 9A61     		str	r2, [r3, #24]
+ 265              		.loc 1 109 5 view .LVU80
+ 266 0036 9A69     		ldr	r2, [r3, #24]
+ 267 0038 42F00402 		orr	r2, r2, #4
+ 268 003c 9A61     		str	r2, [r3, #24]
  109:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
- 268              		.loc 1 109 5 view .LVU81
- 269 003e 9B69     		ldr	r3, [r3, #24]
- 270 0040 03F00403 		and	r3, r3, #4
- 271 0044 0193     		str	r3, [sp, #4]
+ 269              		.loc 1 109 5 view .LVU81
+ 270 003e 9B69     		ldr	r3, [r3, #24]
+ 271 0040 03F00403 		and	r3, r3, #4
+ 272 0044 0193     		str	r3, [sp, #4]
  109:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
- 272              		.loc 1 109 5 view .LVU82
- 273 0046 019B     		ldr	r3, [sp, #4]
- 274              	.LBE3:
+ 273              		.loc 1 109 5 view .LVU82
+ 274 0046 019B     		ldr	r3, [sp, #4]
+ 275              	.LBE3:
  109:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
- 275              		.loc 1 109 5 view .LVU83
+ 276              		.loc 1 109 5 view .LVU83
  115:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 276              		.loc 1 115 5 view .LVU84
+ 277              		.loc 1 115 5 view .LVU84
  115:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 277              		.loc 1 115 25 is_stmt 0 view .LVU85
- 278 0048 A023     		movs	r3, #160
- 279 004a 0493     		str	r3, [sp, #16]
+ 278              		.loc 1 115 25 is_stmt 0 view .LVU85
+ 279 0048 A023     		movs	r3, #160
+ 280 004a 0493     		str	r3, [sp, #16]
  116:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
- 280              		.loc 1 116 5 is_stmt 1 view .LVU86
+ 281              		.loc 1 116 5 is_stmt 1 view .LVU86
  116:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
- 281              		.loc 1 116 26 is_stmt 0 view .LVU87
- 282 004c 0223     		movs	r3, #2
- 283 004e 0593     		str	r3, [sp, #20]
+ 282              		.loc 1 116 26 is_stmt 0 view .LVU87
+ 283 004c 0223     		movs	r3, #2
+ 284 004e 0593     		str	r3, [sp, #20]
  117:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 284              		.loc 1 117 5 is_stmt 1 view .LVU88
+ 285              		.loc 1 117 5 is_stmt 1 view .LVU88
  117:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 285              		.loc 1 117 27 is_stmt 0 view .LVU89
- 286 0050 0323     		movs	r3, #3
- 287 0052 0793     		str	r3, [sp, #28]
+ 286              		.loc 1 117 27 is_stmt 0 view .LVU89
+ 287 0050 0323     		movs	r3, #3
+ 288 0052 0793     		str	r3, [sp, #28]
  118:Core/Src/spi.c **** 
- 288              		.loc 1 118 5 is_stmt 1 view .LVU90
- 289 0054 364C     		ldr	r4, .L23+12
- 290 0056 04A9     		add	r1, sp, #16
- 291 0058 2046     		mov	r0, r4
- 292              	.LVL7:
+ 289              		.loc 1 118 5 is_stmt 1 view .LVU90
+ 290 0054 364C     		ldr	r4, .L23+12
+ 291 0056 04A9     		add	r1, sp, #16
+ 292 0058 2046     		mov	r0, r4
+ 293              	.LVL7:
  118:Core/Src/spi.c **** 
- 293              		.loc 1 118 5 is_stmt 0 view .LVU91
- 294 005a FFF7FEFF 		bl	HAL_GPIO_Init
- 295              	.LVL8:
+ 294              		.loc 1 118 5 is_stmt 0 view .LVU91
+ 295 005a FFF7FEFF 		bl	HAL_GPIO_Init
+ 296              	.LVL8:
  120:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 296              		.loc 1 120 5 is_stmt 1 view .LVU92
+ 297              		.loc 1 120 5 is_stmt 1 view .LVU92
  120:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 297              		.loc 1 120 25 is_stmt 0 view .LVU93
- 298 005e 4023     		movs	r3, #64
- 299 0060 0493     		str	r3, [sp, #16]
+ 298              		.loc 1 120 25 is_stmt 0 view .LVU93
+ 299 005e 4023     		movs	r3, #64
+ 300 0060 0493     		str	r3, [sp, #16]
  121:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 300              		.loc 1 121 5 is_stmt 1 view .LVU94
+ 301              		.loc 1 121 5 is_stmt 1 view .LVU94
  121:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 301              		.loc 1 121 26 is_stmt 0 view .LVU95
- 302 0062 0023     		movs	r3, #0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 10
+ 302              		.loc 1 121 26 is_stmt 0 view .LVU95
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 10
 
 
- 303 0064 0593     		str	r3, [sp, #20]
+ 303 0062 0023     		movs	r3, #0
+ 304 0064 0593     		str	r3, [sp, #20]
  122:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 304              		.loc 1 122 5 is_stmt 1 view .LVU96
+ 305              		.loc 1 122 5 is_stmt 1 view .LVU96
  122:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 305              		.loc 1 122 26 is_stmt 0 view .LVU97
- 306 0066 0693     		str	r3, [sp, #24]
+ 306              		.loc 1 122 26 is_stmt 0 view .LVU97
+ 307 0066 0693     		str	r3, [sp, #24]
  123:Core/Src/spi.c **** 
- 307              		.loc 1 123 5 is_stmt 1 view .LVU98
- 308 0068 04A9     		add	r1, sp, #16
- 309 006a 2046     		mov	r0, r4
- 310 006c FFF7FEFF 		bl	HAL_GPIO_Init
- 311              	.LVL9:
- 312 0070 D5E7     		b	.L13
- 313              	.LVL10:
- 314              	.L20:
+ 308              		.loc 1 123 5 is_stmt 1 view .LVU98
+ 309 0068 04A9     		add	r1, sp, #16
+ 310 006a 2046     		mov	r0, r4
+ 311 006c FFF7FEFF 		bl	HAL_GPIO_Init
+ 312              	.LVL9:
+ 313 0070 D5E7     		b	.L13
+ 314              	.LVL10:
+ 315              	.L20:
  135:Core/Src/spi.c **** 
- 315              		.loc 1 135 5 view .LVU99
- 316              	.LBB4:
+ 316              		.loc 1 135 5 view .LVU99
+ 317              	.LBB4:
  135:Core/Src/spi.c **** 
- 317              		.loc 1 135 5 view .LVU100
+ 318              		.loc 1 135 5 view .LVU100
  135:Core/Src/spi.c **** 
- 318              		.loc 1 135 5 view .LVU101
- 319 0072 2E4B     		ldr	r3, .L23+8
- 320 0074 DA69     		ldr	r2, [r3, #28]
- 321 0076 42F48042 		orr	r2, r2, #16384
- 322 007a DA61     		str	r2, [r3, #28]
+ 319              		.loc 1 135 5 view .LVU101
+ 320 0072 2E4B     		ldr	r3, .L23+8
+ 321 0074 DA69     		ldr	r2, [r3, #28]
+ 322 0076 42F48042 		orr	r2, r2, #16384
+ 323 007a DA61     		str	r2, [r3, #28]
  135:Core/Src/spi.c **** 
- 323              		.loc 1 135 5 view .LVU102
- 324 007c DA69     		ldr	r2, [r3, #28]
- 325 007e 02F48042 		and	r2, r2, #16384
- 326 0082 0292     		str	r2, [sp, #8]
+ 324              		.loc 1 135 5 view .LVU102
+ 325 007c DA69     		ldr	r2, [r3, #28]
+ 326 007e 02F48042 		and	r2, r2, #16384
+ 327 0082 0292     		str	r2, [sp, #8]
  135:Core/Src/spi.c **** 
- 327              		.loc 1 135 5 view .LVU103
- 328 0084 029A     		ldr	r2, [sp, #8]
- 329              	.LBE4:
+ 328              		.loc 1 135 5 view .LVU103
+ 329 0084 029A     		ldr	r2, [sp, #8]
+ 330              	.LBE4:
  135:Core/Src/spi.c **** 
- 330              		.loc 1 135 5 view .LVU104
+ 331              		.loc 1 135 5 view .LVU104
  137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
- 331              		.loc 1 137 5 view .LVU105
- 332              	.LBB5:
+ 332              		.loc 1 137 5 view .LVU105
+ 333              	.LBB5:
  137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
- 333              		.loc 1 137 5 view .LVU106
+ 334              		.loc 1 137 5 view .LVU106
  137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
- 334              		.loc 1 137 5 view .LVU107
- 335 0086 9A69     		ldr	r2, [r3, #24]
- 336 0088 42F00802 		orr	r2, r2, #8
- 337 008c 9A61     		str	r2, [r3, #24]
+ 335              		.loc 1 137 5 view .LVU107
+ 336 0086 9A69     		ldr	r2, [r3, #24]
+ 337 0088 42F00802 		orr	r2, r2, #8
+ 338 008c 9A61     		str	r2, [r3, #24]
  137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
- 338              		.loc 1 137 5 view .LVU108
- 339 008e 9B69     		ldr	r3, [r3, #24]
- 340 0090 03F00803 		and	r3, r3, #8
- 341 0094 0393     		str	r3, [sp, #12]
+ 339              		.loc 1 137 5 view .LVU108
+ 340 008e 9B69     		ldr	r3, [r3, #24]
+ 341 0090 03F00803 		and	r3, r3, #8
+ 342 0094 0393     		str	r3, [sp, #12]
  137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
- 342              		.loc 1 137 5 view .LVU109
- 343 0096 039B     		ldr	r3, [sp, #12]
- 344              	.LBE5:
- 137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 11
+ 343              		.loc 1 137 5 view .LVU109
+ 344 0096 039B     		ldr	r3, [sp, #12]
+ 345              	.LBE5:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 11
 
 
- 345              		.loc 1 137 5 view .LVU110
+ 137:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
+ 346              		.loc 1 137 5 view .LVU110
  143:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 346              		.loc 1 143 5 view .LVU111
+ 347              		.loc 1 143 5 view .LVU111
  143:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 347              		.loc 1 143 25 is_stmt 0 view .LVU112
- 348 0098 4FF42043 		mov	r3, #40960
- 349 009c 0493     		str	r3, [sp, #16]
+ 348              		.loc 1 143 25 is_stmt 0 view .LVU112
+ 349 0098 4FF42043 		mov	r3, #40960
+ 350 009c 0493     		str	r3, [sp, #16]
  144:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
- 350              		.loc 1 144 5 is_stmt 1 view .LVU113
+ 351              		.loc 1 144 5 is_stmt 1 view .LVU113
  144:Core/Src/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
- 351              		.loc 1 144 26 is_stmt 0 view .LVU114
- 352 009e 0223     		movs	r3, #2
- 353 00a0 0593     		str	r3, [sp, #20]
+ 352              		.loc 1 144 26 is_stmt 0 view .LVU114
+ 353 009e 0223     		movs	r3, #2
+ 354 00a0 0593     		str	r3, [sp, #20]
  145:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 354              		.loc 1 145 5 is_stmt 1 view .LVU115
+ 355              		.loc 1 145 5 is_stmt 1 view .LVU115
  145:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 355              		.loc 1 145 27 is_stmt 0 view .LVU116
- 356 00a2 0323     		movs	r3, #3
- 357 00a4 0793     		str	r3, [sp, #28]
+ 356              		.loc 1 145 27 is_stmt 0 view .LVU116
+ 357 00a2 0323     		movs	r3, #3
+ 358 00a4 0793     		str	r3, [sp, #28]
  146:Core/Src/spi.c **** 
- 358              		.loc 1 146 5 is_stmt 1 view .LVU117
- 359 00a6 234E     		ldr	r6, .L23+16
- 360 00a8 04A9     		add	r1, sp, #16
- 361 00aa 3046     		mov	r0, r6
- 362              	.LVL11:
+ 359              		.loc 1 146 5 is_stmt 1 view .LVU117
+ 360 00a6 234E     		ldr	r6, .L23+16
+ 361 00a8 04A9     		add	r1, sp, #16
+ 362 00aa 3046     		mov	r0, r6
+ 363              	.LVL11:
  146:Core/Src/spi.c **** 
- 363              		.loc 1 146 5 is_stmt 0 view .LVU118
- 364 00ac FFF7FEFF 		bl	HAL_GPIO_Init
- 365              	.LVL12:
+ 364              		.loc 1 146 5 is_stmt 0 view .LVU118
+ 365 00ac FFF7FEFF 		bl	HAL_GPIO_Init
+ 366              	.LVL12:
  148:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 366              		.loc 1 148 5 is_stmt 1 view .LVU119
+ 367              		.loc 1 148 5 is_stmt 1 view .LVU119
  148:Core/Src/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 367              		.loc 1 148 25 is_stmt 0 view .LVU120
- 368 00b0 4FF48043 		mov	r3, #16384
- 369 00b4 0493     		str	r3, [sp, #16]
+ 368              		.loc 1 148 25 is_stmt 0 view .LVU120
+ 369 00b0 4FF48043 		mov	r3, #16384
+ 370 00b4 0493     		str	r3, [sp, #16]
  149:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 370              		.loc 1 149 5 is_stmt 1 view .LVU121
+ 371              		.loc 1 149 5 is_stmt 1 view .LVU121
  149:Core/Src/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 371              		.loc 1 149 26 is_stmt 0 view .LVU122
- 372 00b6 0025     		movs	r5, #0
- 373 00b8 0595     		str	r5, [sp, #20]
+ 372              		.loc 1 149 26 is_stmt 0 view .LVU122
+ 373 00b6 0025     		movs	r5, #0
+ 374 00b8 0595     		str	r5, [sp, #20]
  150:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 374              		.loc 1 150 5 is_stmt 1 view .LVU123
+ 375              		.loc 1 150 5 is_stmt 1 view .LVU123
  150:Core/Src/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 375              		.loc 1 150 26 is_stmt 0 view .LVU124
- 376 00ba 0695     		str	r5, [sp, #24]
+ 376              		.loc 1 150 26 is_stmt 0 view .LVU124
+ 377 00ba 0695     		str	r5, [sp, #24]
  151:Core/Src/spi.c **** 
- 377              		.loc 1 151 5 is_stmt 1 view .LVU125
- 378 00bc 04A9     		add	r1, sp, #16
- 379 00be 3046     		mov	r0, r6
- 380 00c0 FFF7FEFF 		bl	HAL_GPIO_Init
- 381              	.LVL13:
+ 378              		.loc 1 151 5 is_stmt 1 view .LVU125
+ 379 00bc 04A9     		add	r1, sp, #16
+ 380 00be 3046     		mov	r0, r6
+ 381 00c0 FFF7FEFF 		bl	HAL_GPIO_Init
+ 382              	.LVL13:
  155:Core/Src/spi.c ****     hdma_spi2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 382              		.loc 1 155 5 view .LVU126
+ 383              		.loc 1 155 5 view .LVU126
  155:Core/Src/spi.c ****     hdma_spi2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 383              		.loc 1 155 27 is_stmt 0 view .LVU127
- 384 00c4 1C48     		ldr	r0, .L23+20
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 12
+ 384              		.loc 1 155 27 is_stmt 0 view .LVU127
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 12
 
 
- 385 00c6 1D4B     		ldr	r3, .L23+24
- 386 00c8 0360     		str	r3, [r0]
+ 385 00c4 1C48     		ldr	r0, .L23+20
+ 386 00c6 1D4B     		ldr	r3, .L23+24
+ 387 00c8 0360     		str	r3, [r0]
  156:Core/Src/spi.c ****     hdma_spi2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 387              		.loc 1 156 5 is_stmt 1 view .LVU128
+ 388              		.loc 1 156 5 is_stmt 1 view .LVU128
  156:Core/Src/spi.c ****     hdma_spi2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 388              		.loc 1 156 33 is_stmt 0 view .LVU129
- 389 00ca 4560     		str	r5, [r0, #4]
+ 389              		.loc 1 156 33 is_stmt 0 view .LVU129
+ 390 00ca 4560     		str	r5, [r0, #4]
  157:Core/Src/spi.c ****     hdma_spi2_rx.Init.MemInc = DMA_MINC_ENABLE;
- 390              		.loc 1 157 5 is_stmt 1 view .LVU130
+ 391              		.loc 1 157 5 is_stmt 1 view .LVU130
  157:Core/Src/spi.c ****     hdma_spi2_rx.Init.MemInc = DMA_MINC_ENABLE;
- 391              		.loc 1 157 33 is_stmt 0 view .LVU131
- 392 00cc 8560     		str	r5, [r0, #8]
+ 392              		.loc 1 157 33 is_stmt 0 view .LVU131
+ 393 00cc 8560     		str	r5, [r0, #8]
  158:Core/Src/spi.c ****     hdma_spi2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 393              		.loc 1 158 5 is_stmt 1 view .LVU132
+ 394              		.loc 1 158 5 is_stmt 1 view .LVU132
  158:Core/Src/spi.c ****     hdma_spi2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 394              		.loc 1 158 30 is_stmt 0 view .LVU133
- 395 00ce 8023     		movs	r3, #128
- 396 00d0 C360     		str	r3, [r0, #12]
+ 395              		.loc 1 158 30 is_stmt 0 view .LVU133
+ 396 00ce 8023     		movs	r3, #128
+ 397 00d0 C360     		str	r3, [r0, #12]
  159:Core/Src/spi.c ****     hdma_spi2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 397              		.loc 1 159 5 is_stmt 1 view .LVU134
+ 398              		.loc 1 159 5 is_stmt 1 view .LVU134
  159:Core/Src/spi.c ****     hdma_spi2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 398              		.loc 1 159 43 is_stmt 0 view .LVU135
- 399 00d2 0561     		str	r5, [r0, #16]
+ 399              		.loc 1 159 43 is_stmt 0 view .LVU135
+ 400 00d2 0561     		str	r5, [r0, #16]
  160:Core/Src/spi.c ****     hdma_spi2_rx.Init.Mode = DMA_NORMAL;
- 400              		.loc 1 160 5 is_stmt 1 view .LVU136
+ 401              		.loc 1 160 5 is_stmt 1 view .LVU136
  160:Core/Src/spi.c ****     hdma_spi2_rx.Init.Mode = DMA_NORMAL;
- 401              		.loc 1 160 40 is_stmt 0 view .LVU137
- 402 00d4 4561     		str	r5, [r0, #20]
+ 402              		.loc 1 160 40 is_stmt 0 view .LVU137
+ 403 00d4 4561     		str	r5, [r0, #20]
  161:Core/Src/spi.c ****     hdma_spi2_rx.Init.Priority = DMA_PRIORITY_VERY_HIGH;
- 403              		.loc 1 161 5 is_stmt 1 view .LVU138
+ 404              		.loc 1 161 5 is_stmt 1 view .LVU138
  161:Core/Src/spi.c ****     hdma_spi2_rx.Init.Priority = DMA_PRIORITY_VERY_HIGH;
- 404              		.loc 1 161 28 is_stmt 0 view .LVU139
- 405 00d6 8561     		str	r5, [r0, #24]
+ 405              		.loc 1 161 28 is_stmt 0 view .LVU139
+ 406 00d6 8561     		str	r5, [r0, #24]
  162:Core/Src/spi.c ****     if (HAL_DMA_Init(&hdma_spi2_rx) != HAL_OK)
- 406              		.loc 1 162 5 is_stmt 1 view .LVU140
+ 407              		.loc 1 162 5 is_stmt 1 view .LVU140
  162:Core/Src/spi.c ****     if (HAL_DMA_Init(&hdma_spi2_rx) != HAL_OK)
- 407              		.loc 1 162 32 is_stmt 0 view .LVU141
- 408 00d8 4FF44053 		mov	r3, #12288
- 409 00dc C361     		str	r3, [r0, #28]
+ 408              		.loc 1 162 32 is_stmt 0 view .LVU141
+ 409 00d8 4FF44053 		mov	r3, #12288
+ 410 00dc C361     		str	r3, [r0, #28]
  163:Core/Src/spi.c ****     {
- 410              		.loc 1 163 5 is_stmt 1 view .LVU142
+ 411              		.loc 1 163 5 is_stmt 1 view .LVU142
  163:Core/Src/spi.c ****     {
- 411              		.loc 1 163 9 is_stmt 0 view .LVU143
- 412 00de FFF7FEFF 		bl	HAL_DMA_Init
- 413              	.LVL14:
+ 412              		.loc 1 163 9 is_stmt 0 view .LVU143
+ 413 00de FFF7FEFF 		bl	HAL_DMA_Init
+ 414              	.LVL14:
  163:Core/Src/spi.c ****     {
- 414              		.loc 1 163 8 view .LVU144
- 415 00e2 C0B9     		cbnz	r0, .L21
- 416              	.L16:
+ 415              		.loc 1 163 8 view .LVU144
+ 416 00e2 C0B9     		cbnz	r0, .L21
+ 417              	.L16:
  168:Core/Src/spi.c **** 
- 417              		.loc 1 168 5 is_stmt 1 view .LVU145
+ 418              		.loc 1 168 5 is_stmt 1 view .LVU145
  168:Core/Src/spi.c **** 
- 418              		.loc 1 168 5 view .LVU146
- 419 00e4 144B     		ldr	r3, .L23+20
- 420 00e6 E364     		str	r3, [r4, #76]
+ 419              		.loc 1 168 5 view .LVU146
+ 420 00e4 144B     		ldr	r3, .L23+20
+ 421 00e6 E364     		str	r3, [r4, #76]
  168:Core/Src/spi.c **** 
- 421              		.loc 1 168 5 view .LVU147
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 13
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 13
 
 
- 422 00e8 5C62     		str	r4, [r3, #36]
+ 422              		.loc 1 168 5 view .LVU147
+ 423 00e8 5C62     		str	r4, [r3, #36]
  168:Core/Src/spi.c **** 
- 423              		.loc 1 168 5 view .LVU148
+ 424              		.loc 1 168 5 view .LVU148
  171:Core/Src/spi.c ****     hdma_spi2_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
- 424              		.loc 1 171 5 view .LVU149
+ 425              		.loc 1 171 5 view .LVU149
  171:Core/Src/spi.c ****     hdma_spi2_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
- 425              		.loc 1 171 27 is_stmt 0 view .LVU150
- 426 00ea 1548     		ldr	r0, .L23+28
- 427 00ec 154B     		ldr	r3, .L23+32
- 428 00ee 0360     		str	r3, [r0]
+ 426              		.loc 1 171 27 is_stmt 0 view .LVU150
+ 427 00ea 1548     		ldr	r0, .L23+28
+ 428 00ec 154B     		ldr	r3, .L23+32
+ 429 00ee 0360     		str	r3, [r0]
  172:Core/Src/spi.c ****     hdma_spi2_tx.Init.PeriphInc = DMA_PINC_DISABLE;
- 429              		.loc 1 172 5 is_stmt 1 view .LVU151
+ 430              		.loc 1 172 5 is_stmt 1 view .LVU151
  172:Core/Src/spi.c ****     hdma_spi2_tx.Init.PeriphInc = DMA_PINC_DISABLE;
- 430              		.loc 1 172 33 is_stmt 0 view .LVU152
- 431 00f0 1023     		movs	r3, #16
- 432 00f2 4360     		str	r3, [r0, #4]
+ 431              		.loc 1 172 33 is_stmt 0 view .LVU152
+ 432 00f0 1023     		movs	r3, #16
+ 433 00f2 4360     		str	r3, [r0, #4]
  173:Core/Src/spi.c ****     hdma_spi2_tx.Init.MemInc = DMA_MINC_ENABLE;
- 433              		.loc 1 173 5 is_stmt 1 view .LVU153
+ 434              		.loc 1 173 5 is_stmt 1 view .LVU153
  173:Core/Src/spi.c ****     hdma_spi2_tx.Init.MemInc = DMA_MINC_ENABLE;
- 434              		.loc 1 173 33 is_stmt 0 view .LVU154
- 435 00f4 0023     		movs	r3, #0
- 436 00f6 8360     		str	r3, [r0, #8]
+ 435              		.loc 1 173 33 is_stmt 0 view .LVU154
+ 436 00f4 0023     		movs	r3, #0
+ 437 00f6 8360     		str	r3, [r0, #8]
  174:Core/Src/spi.c ****     hdma_spi2_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 437              		.loc 1 174 5 is_stmt 1 view .LVU155
+ 438              		.loc 1 174 5 is_stmt 1 view .LVU155
  174:Core/Src/spi.c ****     hdma_spi2_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 438              		.loc 1 174 30 is_stmt 0 view .LVU156
- 439 00f8 8022     		movs	r2, #128
- 440 00fa C260     		str	r2, [r0, #12]
+ 439              		.loc 1 174 30 is_stmt 0 view .LVU156
+ 440 00f8 8022     		movs	r2, #128
+ 441 00fa C260     		str	r2, [r0, #12]
  175:Core/Src/spi.c ****     hdma_spi2_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 441              		.loc 1 175 5 is_stmt 1 view .LVU157
+ 442              		.loc 1 175 5 is_stmt 1 view .LVU157
  175:Core/Src/spi.c ****     hdma_spi2_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 442              		.loc 1 175 43 is_stmt 0 view .LVU158
- 443 00fc 0361     		str	r3, [r0, #16]
+ 443              		.loc 1 175 43 is_stmt 0 view .LVU158
+ 444 00fc 0361     		str	r3, [r0, #16]
  176:Core/Src/spi.c ****     hdma_spi2_tx.Init.Mode = DMA_NORMAL;
- 444              		.loc 1 176 5 is_stmt 1 view .LVU159
+ 445              		.loc 1 176 5 is_stmt 1 view .LVU159
  176:Core/Src/spi.c ****     hdma_spi2_tx.Init.Mode = DMA_NORMAL;
- 445              		.loc 1 176 40 is_stmt 0 view .LVU160
- 446 00fe 4361     		str	r3, [r0, #20]
+ 446              		.loc 1 176 40 is_stmt 0 view .LVU160
+ 447 00fe 4361     		str	r3, [r0, #20]
  177:Core/Src/spi.c ****     hdma_spi2_tx.Init.Priority = DMA_PRIORITY_HIGH;
- 447              		.loc 1 177 5 is_stmt 1 view .LVU161
+ 448              		.loc 1 177 5 is_stmt 1 view .LVU161
  177:Core/Src/spi.c ****     hdma_spi2_tx.Init.Priority = DMA_PRIORITY_HIGH;
- 448              		.loc 1 177 28 is_stmt 0 view .LVU162
- 449 0100 8361     		str	r3, [r0, #24]
+ 449              		.loc 1 177 28 is_stmt 0 view .LVU162
+ 450 0100 8361     		str	r3, [r0, #24]
  178:Core/Src/spi.c ****     if (HAL_DMA_Init(&hdma_spi2_tx) != HAL_OK)
- 450              		.loc 1 178 5 is_stmt 1 view .LVU163
+ 451              		.loc 1 178 5 is_stmt 1 view .LVU163
  178:Core/Src/spi.c ****     if (HAL_DMA_Init(&hdma_spi2_tx) != HAL_OK)
- 451              		.loc 1 178 32 is_stmt 0 view .LVU164
- 452 0102 4FF40053 		mov	r3, #8192
- 453 0106 C361     		str	r3, [r0, #28]
+ 452              		.loc 1 178 32 is_stmt 0 view .LVU164
+ 453 0102 4FF40053 		mov	r3, #8192
+ 454 0106 C361     		str	r3, [r0, #28]
  179:Core/Src/spi.c ****     {
- 454              		.loc 1 179 5 is_stmt 1 view .LVU165
+ 455              		.loc 1 179 5 is_stmt 1 view .LVU165
  179:Core/Src/spi.c ****     {
- 455              		.loc 1 179 9 is_stmt 0 view .LVU166
- 456 0108 FFF7FEFF 		bl	HAL_DMA_Init
- 457              	.LVL15:
+ 456              		.loc 1 179 9 is_stmt 0 view .LVU166
+ 457 0108 FFF7FEFF 		bl	HAL_DMA_Init
+ 458              	.LVL15:
  179:Core/Src/spi.c ****     {
- 458              		.loc 1 179 8 view .LVU167
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 14
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 14
 
 
- 459 010c 30B9     		cbnz	r0, .L22
- 460              	.L17:
+ 459              		.loc 1 179 8 view .LVU167
+ 460 010c 30B9     		cbnz	r0, .L22
+ 461              	.L17:
  184:Core/Src/spi.c **** 
- 461              		.loc 1 184 5 is_stmt 1 view .LVU168
+ 462              		.loc 1 184 5 is_stmt 1 view .LVU168
  184:Core/Src/spi.c **** 
- 462              		.loc 1 184 5 view .LVU169
- 463 010e 0C4B     		ldr	r3, .L23+28
- 464 0110 A364     		str	r3, [r4, #72]
+ 463              		.loc 1 184 5 view .LVU169
+ 464 010e 0C4B     		ldr	r3, .L23+28
+ 465 0110 A364     		str	r3, [r4, #72]
  184:Core/Src/spi.c **** 
- 465              		.loc 1 184 5 view .LVU170
- 466 0112 5C62     		str	r4, [r3, #36]
+ 466              		.loc 1 184 5 view .LVU170
+ 467 0112 5C62     		str	r4, [r3, #36]
  184:Core/Src/spi.c **** 
- 467              		.loc 1 184 5 view .LVU171
- 468              		.loc 1 190 1 is_stmt 0 view .LVU172
- 469 0114 83E7     		b	.L13
- 470              	.L21:
+ 468              		.loc 1 184 5 view .LVU171
+ 469              		.loc 1 190 1 is_stmt 0 view .LVU172
+ 470 0114 83E7     		b	.L13
+ 471              	.L21:
  165:Core/Src/spi.c ****     }
- 471              		.loc 1 165 7 is_stmt 1 view .LVU173
- 472 0116 FFF7FEFF 		bl	Error_Handler
- 473              	.LVL16:
- 474 011a E3E7     		b	.L16
- 475              	.L22:
+ 472              		.loc 1 165 7 is_stmt 1 view .LVU173
+ 473 0116 FFF7FEFF 		bl	Error_Handler
+ 474              	.LVL16:
+ 475 011a E3E7     		b	.L16
+ 476              	.L22:
  181:Core/Src/spi.c ****     }
- 476              		.loc 1 181 7 view .LVU174
- 477 011c FFF7FEFF 		bl	Error_Handler
- 478              	.LVL17:
- 479 0120 F5E7     		b	.L17
- 480              	.L24:
- 481 0122 00BF     		.align	2
- 482              	.L23:
- 483 0124 00300140 		.word	1073819648
- 484 0128 00380040 		.word	1073756160
- 485 012c 00100240 		.word	1073876992
- 486 0130 00080140 		.word	1073809408
- 487 0134 000C0140 		.word	1073810432
- 488 0138 00000000 		.word	.LANCHOR2
- 489 013c 44000240 		.word	1073872964
- 490 0140 00000000 		.word	.LANCHOR3
- 491 0144 58000240 		.word	1073872984
- 492              		.cfi_endproc
- 493              	.LFE67:
- 495              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
- 496              		.align	1
- 497              		.global	HAL_SPI_MspDeInit
- 498              		.syntax unified
- 499              		.thumb
- 500              		.thumb_func
- 502              	HAL_SPI_MspDeInit:
- 503              	.LVL18:
- 504              	.LFB68:
+ 477              		.loc 1 181 7 view .LVU174
+ 478 011c FFF7FEFF 		bl	Error_Handler
+ 479              	.LVL17:
+ 480 0120 F5E7     		b	.L17
+ 481              	.L24:
+ 482 0122 00BF     		.align	2
+ 483              	.L23:
+ 484 0124 00300140 		.word	1073819648
+ 485 0128 00380040 		.word	1073756160
+ 486 012c 00100240 		.word	1073876992
+ 487 0130 00080140 		.word	1073809408
+ 488 0134 000C0140 		.word	1073810432
+ 489 0138 00000000 		.word	.LANCHOR2
+ 490 013c 44000240 		.word	1073872964
+ 491 0140 00000000 		.word	.LANCHOR3
+ 492 0144 58000240 		.word	1073872984
+ 493              		.cfi_endproc
+ 494              	.LFE67:
+ 496              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 497              		.align	1
+ 498              		.global	HAL_SPI_MspDeInit
+ 499              		.syntax unified
+ 500              		.thumb
+ 501              		.thumb_func
+ 503              	HAL_SPI_MspDeInit:
+ 504              	.LVL18:
+ 505              	.LFB68:
  191:Core/Src/spi.c **** 
  192:Core/Src/spi.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
  193:Core/Src/spi.c **** {
- 505              		.loc 1 193 1 view -0
- 506              		.cfi_startproc
- 507              		@ args = 0, pretend = 0, frame = 0
- 508              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 15
+ 506              		.loc 1 193 1 view -0
+ 507              		.cfi_startproc
+ 508              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 15
 
 
- 509              		.loc 1 193 1 is_stmt 0 view .LVU176
- 510 0000 10B5     		push	{r4, lr}
- 511              	.LCFI6:
- 512              		.cfi_def_cfa_offset 8
- 513              		.cfi_offset 4, -8
- 514              		.cfi_offset 14, -4
+ 509              		@ frame_needed = 0, uses_anonymous_args = 0
+ 510              		.loc 1 193 1 is_stmt 0 view .LVU176
+ 511 0000 10B5     		push	{r4, lr}
+ 512              	.LCFI6:
+ 513              		.cfi_def_cfa_offset 8
+ 514              		.cfi_offset 4, -8
+ 515              		.cfi_offset 14, -4
  194:Core/Src/spi.c **** 
  195:Core/Src/spi.c ****   if(spiHandle->Instance==SPI1)
- 515              		.loc 1 195 3 is_stmt 1 view .LVU177
- 516              		.loc 1 195 15 is_stmt 0 view .LVU178
- 517 0002 0368     		ldr	r3, [r0]
- 518              		.loc 1 195 5 view .LVU179
- 519 0004 124A     		ldr	r2, .L31
- 520 0006 9342     		cmp	r3, r2
- 521 0008 04D0     		beq	.L29
- 522 000a 0446     		mov	r4, r0
+ 516              		.loc 1 195 3 is_stmt 1 view .LVU177
+ 517              		.loc 1 195 15 is_stmt 0 view .LVU178
+ 518 0002 0368     		ldr	r3, [r0]
+ 519              		.loc 1 195 5 view .LVU179
+ 520 0004 124A     		ldr	r2, .L31
+ 521 0006 9342     		cmp	r3, r2
+ 522 0008 04D0     		beq	.L29
+ 523 000a 0446     		mov	r4, r0
  196:Core/Src/spi.c ****   {
  197:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspDeInit 0 */
  198:Core/Src/spi.c **** 
@@ -876,13 +877,13 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  212:Core/Src/spi.c ****   /* USER CODE END SPI1_MspDeInit 1 */
  213:Core/Src/spi.c ****   }
  214:Core/Src/spi.c ****   else if(spiHandle->Instance==SPI2)
- 523              		.loc 1 214 8 is_stmt 1 view .LVU180
- 524              		.loc 1 214 10 is_stmt 0 view .LVU181
- 525 000c 114A     		ldr	r2, .L31+4
- 526 000e 9342     		cmp	r3, r2
- 527 0010 0BD0     		beq	.L30
- 528              	.LVL19:
- 529              	.L25:
+ 524              		.loc 1 214 8 is_stmt 1 view .LVU180
+ 525              		.loc 1 214 10 is_stmt 0 view .LVU181
+ 526 000c 114A     		ldr	r2, .L31+4
+ 527 000e 9342     		cmp	r3, r2
+ 528 0010 0BD0     		beq	.L30
+ 529              	.LVL19:
+ 530              	.L25:
  215:Core/Src/spi.c ****   {
  216:Core/Src/spi.c ****   /* USER CODE BEGIN SPI2_MspDeInit 0 */
  217:Core/Src/spi.c **** 
@@ -897,10 +898,10 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  226:Core/Src/spi.c ****     */
  227:Core/Src/spi.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
  228:Core/Src/spi.c **** 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 16
+
+
  229:Core/Src/spi.c ****     /* SPI2 DMA DeInit */
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 16
-
-
  230:Core/Src/spi.c ****     HAL_DMA_DeInit(spiHandle->hdmarx);
  231:Core/Src/spi.c ****     HAL_DMA_DeInit(spiHandle->hdmatx);
  232:Core/Src/spi.c ****   /* USER CODE BEGIN SPI2_MspDeInit 1 */
@@ -908,146 +909,146 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 1
  234:Core/Src/spi.c ****   /* USER CODE END SPI2_MspDeInit 1 */
  235:Core/Src/spi.c ****   }
  236:Core/Src/spi.c **** }
- 530              		.loc 1 236 1 view .LVU182
- 531 0012 10BD     		pop	{r4, pc}
- 532              	.LVL20:
- 533              	.L29:
+ 531              		.loc 1 236 1 view .LVU182
+ 532 0012 10BD     		pop	{r4, pc}
+ 533              	.LVL20:
+ 534              	.L29:
  201:Core/Src/spi.c **** 
- 534              		.loc 1 201 5 is_stmt 1 view .LVU183
- 535 0014 02F56042 		add	r2, r2, #57344
- 536 0018 9369     		ldr	r3, [r2, #24]
- 537 001a 23F48053 		bic	r3, r3, #4096
- 538 001e 9361     		str	r3, [r2, #24]
+ 535              		.loc 1 201 5 is_stmt 1 view .LVU183
+ 536 0014 02F56042 		add	r2, r2, #57344
+ 537 0018 9369     		ldr	r3, [r2, #24]
+ 538 001a 23F48053 		bic	r3, r3, #4096
+ 539 001e 9361     		str	r3, [r2, #24]
  208:Core/Src/spi.c **** 
- 539              		.loc 1 208 5 view .LVU184
- 540 0020 E021     		movs	r1, #224
- 541 0022 0D48     		ldr	r0, .L31+8
- 542              	.LVL21:
+ 540              		.loc 1 208 5 view .LVU184
+ 541 0020 E021     		movs	r1, #224
+ 542 0022 0D48     		ldr	r0, .L31+8
+ 543              	.LVL21:
  208:Core/Src/spi.c **** 
- 543              		.loc 1 208 5 is_stmt 0 view .LVU185
- 544 0024 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 545              	.LVL22:
- 546 0028 F3E7     		b	.L25
- 547              	.LVL23:
- 548              	.L30:
+ 544              		.loc 1 208 5 is_stmt 0 view .LVU185
+ 545 0024 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 546              	.LVL22:
+ 547 0028 F3E7     		b	.L25
+ 548              	.LVL23:
+ 549              	.L30:
  220:Core/Src/spi.c **** 
- 549              		.loc 1 220 5 is_stmt 1 view .LVU186
- 550 002a 02F5EC32 		add	r2, r2, #120832
- 551 002e D369     		ldr	r3, [r2, #28]
- 552 0030 23F48043 		bic	r3, r3, #16384
- 553 0034 D361     		str	r3, [r2, #28]
+ 550              		.loc 1 220 5 is_stmt 1 view .LVU186
+ 551 002a 02F5EC32 		add	r2, r2, #120832
+ 552 002e D369     		ldr	r3, [r2, #28]
+ 553 0030 23F48043 		bic	r3, r3, #16384
+ 554 0034 D361     		str	r3, [r2, #28]
  227:Core/Src/spi.c **** 
- 554              		.loc 1 227 5 view .LVU187
- 555 0036 4FF46041 		mov	r1, #57344
- 556 003a 0848     		ldr	r0, .L31+12
- 557              	.LVL24:
+ 555              		.loc 1 227 5 view .LVU187
+ 556 0036 4FF46041 		mov	r1, #57344
+ 557 003a 0848     		ldr	r0, .L31+12
+ 558              	.LVL24:
  227:Core/Src/spi.c **** 
- 558              		.loc 1 227 5 is_stmt 0 view .LVU188
- 559 003c FFF7FEFF 		bl	HAL_GPIO_DeInit
- 560              	.LVL25:
+ 559              		.loc 1 227 5 is_stmt 0 view .LVU188
+ 560 003c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 561              	.LVL25:
  230:Core/Src/spi.c ****     HAL_DMA_DeInit(spiHandle->hdmatx);
- 561              		.loc 1 230 5 is_stmt 1 view .LVU189
- 562 0040 E06C     		ldr	r0, [r4, #76]
- 563 0042 FFF7FEFF 		bl	HAL_DMA_DeInit
- 564              	.LVL26:
+ 562              		.loc 1 230 5 is_stmt 1 view .LVU189
+ 563 0040 E06C     		ldr	r0, [r4, #76]
+ 564 0042 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 565              	.LVL26:
  231:Core/Src/spi.c ****   /* USER CODE BEGIN SPI2_MspDeInit 1 */
- 565              		.loc 1 231 5 view .LVU190
- 566 0046 A06C     		ldr	r0, [r4, #72]
- 567 0048 FFF7FEFF 		bl	HAL_DMA_DeInit
- 568              	.LVL27:
- 569              		.loc 1 236 1 is_stmt 0 view .LVU191
- 570 004c E1E7     		b	.L25
- 571              	.L32:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 17
+ 566              		.loc 1 231 5 view .LVU190
+ 567 0046 A06C     		ldr	r0, [r4, #72]
+ 568 0048 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 569              	.LVL27:
+ 570              		.loc 1 236 1 is_stmt 0 view .LVU191
+ 571 004c E1E7     		b	.L25
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 17
 
 
- 572 004e 00BF     		.align	2
- 573              	.L31:
- 574 0050 00300140 		.word	1073819648
- 575 0054 00380040 		.word	1073756160
- 576 0058 00080140 		.word	1073809408
- 577 005c 000C0140 		.word	1073810432
- 578              		.cfi_endproc
- 579              	.LFE68:
- 581              		.global	hdma_spi2_tx
- 582              		.global	hdma_spi2_rx
- 583              		.global	hspi2
- 584              		.global	hspi1
- 585              		.section	.bss.hdma_spi2_rx,"aw",%nobits
- 586              		.align	2
- 587              		.set	.LANCHOR2,. + 0
- 590              	hdma_spi2_rx:
- 591 0000 00000000 		.space	68
- 591      00000000 
- 591      00000000 
- 591      00000000 
- 591      00000000 
- 592              		.section	.bss.hdma_spi2_tx,"aw",%nobits
- 593              		.align	2
- 594              		.set	.LANCHOR3,. + 0
- 597              	hdma_spi2_tx:
- 598 0000 00000000 		.space	68
- 598      00000000 
- 598      00000000 
- 598      00000000 
- 598      00000000 
- 599              		.section	.bss.hspi1,"aw",%nobits
- 600              		.align	2
- 601              		.set	.LANCHOR0,. + 0
- 604              	hspi1:
- 605 0000 00000000 		.space	88
- 605      00000000 
- 605      00000000 
- 605      00000000 
- 605      00000000 
- 606              		.section	.bss.hspi2,"aw",%nobits
- 607              		.align	2
- 608              		.set	.LANCHOR1,. + 0
- 611              	hspi2:
- 612 0000 00000000 		.space	88
- 612      00000000 
- 612      00000000 
- 612      00000000 
- 612      00000000 
- 613              		.text
- 614              	.Letext0:
- 615              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
- 616              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 617              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 618              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 619              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 620              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 621              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 18
+ 572              	.L32:
+ 573 004e 00BF     		.align	2
+ 574              	.L31:
+ 575 0050 00300140 		.word	1073819648
+ 576 0054 00380040 		.word	1073756160
+ 577 0058 00080140 		.word	1073809408
+ 578 005c 000C0140 		.word	1073810432
+ 579              		.cfi_endproc
+ 580              	.LFE68:
+ 582              		.global	hdma_spi2_tx
+ 583              		.global	hdma_spi2_rx
+ 584              		.global	hspi2
+ 585              		.global	hspi1
+ 586              		.section	.bss.hdma_spi2_rx,"aw",%nobits
+ 587              		.align	2
+ 588              		.set	.LANCHOR2,. + 0
+ 591              	hdma_spi2_rx:
+ 592 0000 00000000 		.space	68
+ 592      00000000 
+ 592      00000000 
+ 592      00000000 
+ 592      00000000 
+ 593              		.section	.bss.hdma_spi2_tx,"aw",%nobits
+ 594              		.align	2
+ 595              		.set	.LANCHOR3,. + 0
+ 598              	hdma_spi2_tx:
+ 599 0000 00000000 		.space	68
+ 599      00000000 
+ 599      00000000 
+ 599      00000000 
+ 599      00000000 
+ 600              		.section	.bss.hspi1,"aw",%nobits
+ 601              		.align	2
+ 602              		.set	.LANCHOR0,. + 0
+ 605              	hspi1:
+ 606 0000 00000000 		.space	88
+ 606      00000000 
+ 606      00000000 
+ 606      00000000 
+ 606      00000000 
+ 607              		.section	.bss.hspi2,"aw",%nobits
+ 608              		.align	2
+ 609              		.set	.LANCHOR1,. + 0
+ 612              	hspi2:
+ 613 0000 00000000 		.space	88
+ 613      00000000 
+ 613      00000000 
+ 613      00000000 
+ 613      00000000 
+ 614              		.text
+ 615              	.Letext0:
+ 616              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 617              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 618              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 619              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 620              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 621              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 18
 
 
- 622              		.file 9 "Core/Inc/spi.h"
- 623              		.file 10 "Core/Inc/main.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s 			page 19
+ 622              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
+ 623              		.file 9 "Core/Inc/spi.h"
+ 624              		.file 10 "Core/Inc/main.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:18     .text.MX_SPI1_Init:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:24     .text.MX_SPI1_Init:00000000 MX_SPI1_Init
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:96     .text.MX_SPI1_Init:00000038 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:102    .text.MX_SPI2_Init:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:108    .text.MX_SPI2_Init:00000000 MX_SPI2_Init
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:182    .text.MX_SPI2_Init:00000040 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:188    .text.HAL_SPI_MspInit:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:194    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:483    .text.HAL_SPI_MspInit:00000124 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:496    .text.HAL_SPI_MspDeInit:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:502    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:574    .text.HAL_SPI_MspDeInit:00000050 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:597    .bss.hdma_spi2_tx:00000000 hdma_spi2_tx
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:590    .bss.hdma_spi2_rx:00000000 hdma_spi2_rx
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:611    .bss.hspi2:00000000 hspi2
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:604    .bss.hspi1:00000000 hspi1
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:586    .bss.hdma_spi2_rx:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:593    .bss.hdma_spi2_tx:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:600    .bss.hspi1:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2fBlOG.s:607    .bss.hspi2:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:18     .text.MX_SPI1_Init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:24     .text.MX_SPI1_Init:00000000 MX_SPI1_Init
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:97     .text.MX_SPI1_Init:0000003c $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:103    .text.MX_SPI2_Init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:109    .text.MX_SPI2_Init:00000000 MX_SPI2_Init
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:183    .text.MX_SPI2_Init:00000040 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:189    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:195    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:484    .text.HAL_SPI_MspInit:00000124 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:497    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:503    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:575    .text.HAL_SPI_MspDeInit:00000050 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:598    .bss.hdma_spi2_tx:00000000 hdma_spi2_tx
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:591    .bss.hdma_spi2_rx:00000000 hdma_spi2_rx
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:612    .bss.hspi2:00000000 hspi2
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:605    .bss.hspi1:00000000 hspi1
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:587    .bss.hdma_spi2_rx:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:594    .bss.hdma_spi2_tx:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:601    .bss.hspi1:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc82VIOh.s:608    .bss.hspi2:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_SPI_Init

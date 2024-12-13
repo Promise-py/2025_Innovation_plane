@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
   46              		.loc 1 12 1 view -0
   47              		.cfi_startproc
   48              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 2
 
 
   49              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
   84 0002 4FF0E023 		mov	r3, #-536813568
   85 0006 5C69     		ldr	r4, [r3, #20]
   86              	.LVL2:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 3
 
 
   34:BMI088/Src/BMI088Middleware.c ****     ticks = us * 168;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
   36:BMI088/Src/BMI088Middleware.c ****     {
  122              		.loc 1 36 5 is_stmt 1 view .LVU26
   38:BMI088/Src/BMI088Middleware.c ****         if (tnow != told)
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 4
 
 
  123              		.loc 1 38 9 view .LVU27
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
  161              		.thumb
  162              		.thumb_func
  164              	BMI088_delay_ms:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 5
 
 
  165              	.LVL15:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
  209              		.thumb_func
  211              	BMI088_ACCEL_NS_L:
  212              	.LFB69:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 6
 
 
   59:BMI088/Src/BMI088Middleware.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
  258 0008 0148     		ldr	r0, .L20
  259 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
  260              	.LVL21:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 7
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 7
 
 
   70:BMI088/Src/BMI088Middleware.c **** }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
   77:BMI088/Src/BMI088Middleware.c **** {
  312              		.loc 1 77 1 is_stmt 1 view -0
  313              		.cfi_startproc
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 8
 
 
  314              		@ args = 0, pretend = 0, frame = 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
  363 000e 0123     		movs	r3, #1
  364 0010 0DF11702 		add	r2, sp, #23
  365 0014 0DF10F01 		add	r1, sp, #15
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 9
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 9
 
 
  366 0018 0348     		ldr	r0, .L32
@@ -512,34 +512,34 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 1
  393              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  394              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
  395              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s 			page 10
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 BMI088Middleware.c
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:18     .text.BMI088_GPIO_init:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:24     .text.BMI088_GPIO_init:00000000 BMI088_GPIO_init
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:38     .text.BMI088_com_init:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:44     .text.BMI088_com_init:00000000 BMI088_com_init
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:57     .text.BMI088_delay_us:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:63     .text.BMI088_delay_us:00000000 BMI088_delay_us
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:158    .text.BMI088_delay_ms:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:164    .text.BMI088_delay_ms:00000000 BMI088_delay_ms
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:205    .text.BMI088_ACCEL_NS_L:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:211    .text.BMI088_ACCEL_NS_L:00000000 BMI088_ACCEL_NS_L
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:233    .text.BMI088_ACCEL_NS_L:00000010 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:238    .text.BMI088_ACCEL_NS_H:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:244    .text.BMI088_ACCEL_NS_H:00000000 BMI088_ACCEL_NS_H
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:266    .text.BMI088_ACCEL_NS_H:00000010 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:271    .text.BMI088_GYRO_NS_L:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:277    .text.BMI088_GYRO_NS_L:00000000 BMI088_GYRO_NS_L
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:299    .text.BMI088_GYRO_NS_L:00000010 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:304    .text.BMI088_GYRO_NS_H:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:310    .text.BMI088_GYRO_NS_H:00000000 BMI088_GYRO_NS_H
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:332    .text.BMI088_GYRO_NS_H:00000010 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:337    .text.BMI088_read_write_byte:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:343    .text.BMI088_read_write_byte:00000000 BMI088_read_write_byte
-C:\Users\Lenovo\AppData\Local\Temp\ccFxINsf.s:382    .text.BMI088_read_write_byte:00000028 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:18     .text.BMI088_GPIO_init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:24     .text.BMI088_GPIO_init:00000000 BMI088_GPIO_init
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:38     .text.BMI088_com_init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:44     .text.BMI088_com_init:00000000 BMI088_com_init
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:57     .text.BMI088_delay_us:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:63     .text.BMI088_delay_us:00000000 BMI088_delay_us
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:158    .text.BMI088_delay_ms:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:164    .text.BMI088_delay_ms:00000000 BMI088_delay_ms
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:205    .text.BMI088_ACCEL_NS_L:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:211    .text.BMI088_ACCEL_NS_L:00000000 BMI088_ACCEL_NS_L
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:233    .text.BMI088_ACCEL_NS_L:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:238    .text.BMI088_ACCEL_NS_H:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:244    .text.BMI088_ACCEL_NS_H:00000000 BMI088_ACCEL_NS_H
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:266    .text.BMI088_ACCEL_NS_H:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:271    .text.BMI088_GYRO_NS_L:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:277    .text.BMI088_GYRO_NS_L:00000000 BMI088_GYRO_NS_L
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:299    .text.BMI088_GYRO_NS_L:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:304    .text.BMI088_GYRO_NS_H:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:310    .text.BMI088_GYRO_NS_H:00000000 BMI088_GYRO_NS_H
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:332    .text.BMI088_GYRO_NS_H:00000010 $d
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:337    .text.BMI088_read_write_byte:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:343    .text.BMI088_read_write_byte:00000000 BMI088_read_write_byte
+C:\Users\Lenovo\AppData\Local\Temp\ccriLSP7.s:382    .text.BMI088_read_write_byte:00000028 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

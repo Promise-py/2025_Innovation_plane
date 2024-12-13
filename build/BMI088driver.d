@@ -23,6 +23,7 @@ build/BMI088driver.o: BMI088/Src/BMI088driver.c BMI088/Inc/BMI088driver.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  BMI088/Inc/BMI088reg.h BMI088/Inc/BMI088Middleware.h
 BMI088/Inc/BMI088driver.h:
 BMI088/Inc/struct_typedef.h:
@@ -52,5 +53,6 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 BMI088/Inc/BMI088reg.h:
 BMI088/Inc/BMI088Middleware.h:
