@@ -4,7 +4,7 @@
 float distance;      //测量距离
 float last_distance;  //上一次测量距离
 uint8_t count_10;   //计数器
-uint8_t second;   //秒计数器
+// uint8_t second;   //秒计数器
 
 uint32_t Buf[3] = {0};   //存放定时器计数值的数组
 uint8_t  Cnt = 0;    //状态标志位
@@ -51,9 +51,8 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 		count_10++;
 	}
 
-  // if(htim==&htim2)
-  // {
-    // if(finish==1)second++;
-    // if(second==3)finish=2;
-  // }
+  if(htim==&htim2)
+  {
+    
+  }
 }

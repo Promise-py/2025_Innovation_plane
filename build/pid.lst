@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
   48 000a 00B1     		cbz	r0, .L2
    9:algorithm/pid.c ****         a = ABS_MAX;
   49              		.loc 1 9 11 view .LVU5
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 2
 
 
   50 000c 2546     		mov	r5, r4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
   20:algorithm/pid.c ****     pp->Proportion = Kp;
   96              		.loc 1 20 5 is_stmt 1 view .LVU16
   97              		.loc 1 20 20 is_stmt 0 view .LVU17
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 3
 
 
   98 0010 0160     		str	r1, [r0]	@ float
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
  148              	.LVL8:
  149              	.LFB67:
   27:algorithm/pid.c **** 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 4
 
 
   28:algorithm/pid.c **** // 位置式PID,直接传入误差
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
  191              		.loc 1 40 25 is_stmt 0 view .LVU48
  192 001e 2169     		ldr	r1, [r4, #16]	@ float
  193 0020 2846     		mov	r0, r5
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 5
 
 
  194 0022 FFF7FEFF 		bl	__aeabi_fsub
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
  239              	.LVL19:
  240 006a 00B1     		cbz	r0, .L9
  241              		.loc 1 46 35 is_stmt 1 discriminator 1 view .LVU60
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 6
 
 
  242              		.loc 1 46 46 is_stmt 0 discriminator 1 view .LVU61
@@ -342,8 +342,10 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
  274 0090 6362     		str	r3, [r4, #36]	@ float
  275              	.L7:
   53:algorithm/pid.c **** 	}
-  54:algorithm/pid.c **** }
- 276              		.loc 1 54 1 view .LVU74
+  54:algorithm/pid.c **** 
+  55:algorithm/pid.c **** 	// last_out=pp->output;
+  56:algorithm/pid.c **** }
+ 276              		.loc 1 56 1 view .LVU74
  277 0092 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
  278              	.LVL23:
  279              	.L19:
@@ -356,11 +358,11 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
  283              		.loc 1 34 3 is_stmt 1 view .LVU77
   34:algorithm/pid.c **** 		pp->first_flag = 0;
  284              		.loc 1 34 17 is_stmt 0 view .LVU78
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 7
+
+
  285 0098 E160     		str	r1, [r4, #12]	@ float
   35:algorithm/pid.c **** 	}	
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 7
-
-
  286              		.loc 1 35 3 is_stmt 1 view .LVU79
   35:algorithm/pid.c **** 	}	
  287              		.loc 1 35 18 is_stmt 0 view .LVU80
@@ -375,17 +377,17 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 1
  297              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
  298              		.file 4 "algorithm/pid.h"
  299              		.file 5 "move/Inc/Movebase.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s 			page 8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 pid.c
-C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s:19     .text.PID_abs_limit:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s:25     .text.PID_abs_limit:00000000 PID_abs_limit
-C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s:74     .text.PID_parameter_init:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s:80     .text.PID_parameter_init:00000000 PID_parameter_init
-C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s:141    .text.PID_position_PID_calculation_by_error:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccSgZA6Z.s:147    .text.PID_position_PID_calculation_by_error:00000000 PID_position_PID_calculation_by_error
+C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s:19     .text.PID_abs_limit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s:25     .text.PID_abs_limit:00000000 PID_abs_limit
+C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s:74     .text.PID_parameter_init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s:80     .text.PID_parameter_init:00000000 PID_parameter_init
+C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s:141    .text.PID_position_PID_calculation_by_error:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc90KSaB.s:147    .text.PID_position_PID_calculation_by_error:00000000 PID_position_PID_calculation_by_error
 
 UNDEFINED SYMBOLS
 __aeabi_fcmpgt

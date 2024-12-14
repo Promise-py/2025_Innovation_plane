@@ -24,6 +24,30 @@ float yy;
 float zz;
 
 UWB_Data uwb_data;
+KalmanFilter uwbkx, uwbky;
+
+void KalmanFilter_Init(KalmanFilter *EKF)
+{
+    EKF->LastP=0.02;
+    EKF->NewP=0;
+    EKF->Out=0;
+    EKF->Kg=1;
+    EKF->Q=0.01;
+    EKF->R=5;
+}
+
+void kalmanfiter(KalmanFilter *EKF,float input)
+{
+    EKF->LastP = 0.02;
+    EKF->Q = 0.01;
+    EKF->R = 5;
+    EKF->NewP = 0;
+    EKF->Kg = 0;
+	EKF->NewP = EKF->LastP + EKF->Q;
+	EKF->Kg = EKF->NewP / (EKF->NewP + EKF->R);
+	EKF->Out = EKF->Out + EKF->Kg * (input - EKF->Out);
+	EKF->LastP = (1 - EKF->Kg) * EKF->NewP;
+}
 
 /* 返回两个向量的差值 （vector1 - vector2）。*/
 vec3d vdiff(const vec3d vector1, const vec3d vector2)
@@ -779,10 +803,15 @@ uint8_t Trilateration(int distance1, int distance2, int distance3, int distance4
 //  result = GetLocation(&report, 1, &anchorArray[0], &Range_deca[0]);
     result = GetLocation(&report, 1, &anchorArray[0], &Range_deca[0]);
     
-	uwb_data.x = (float)report.x;
-	uwb_data.y = (float)report.y;
-	uwb_data.z = (float)report.z;
-	
+	uwb_data.x = (float)report.x*1000;
+	uwb_data.y = (float)report.y*1000;
+	uwb_data.z = (float)report.z*1000;
+
+	// kalmanfiter(&uwbkx,report.x*1000);
+    // kalmanfiter(&uwbky,report.y*1000);
+
+    // uwb_data.x = uwbkx.Out;
+    // uwb_data.y = uwbky.Out;
     
 	xx = uwb_data.x;//方便调试
 	yy = uwb_data.y;

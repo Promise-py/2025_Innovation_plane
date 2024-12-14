@@ -17,6 +17,7 @@
 #include "spi.h"
 #include "main.h"
 #include "tim.h"
+#include "data_pool.h"
 
 static INS_t INS;
 static IMU_Param_t IMU_Param;
@@ -149,6 +150,7 @@ void INS_Task(void)
         INS.Pitch = QEKF_INS.Pitch;
         INS.Roll = QEKF_INS.Roll;
         INS.YawTotalAngle = QEKF_INS.YawTotalAngle;
+        xQueueSendFromISR(IMU_RxPort, &INS, 0);
     }
 
     if ((count++ % 1000) == 0)

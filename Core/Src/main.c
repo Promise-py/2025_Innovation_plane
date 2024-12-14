@@ -57,7 +57,7 @@
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
+uint8_t second;   //秒计数器
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -184,8 +184,38 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM4) {
     HAL_IncTick();
   }
-  /* USER CODE BEGIN Callback 1 */
 
+  /* 逐步推进状态机 */
+  if(htim->Instance == TIM2)
+  {
+    if(finish==1)second++;
+    if(second==2&&finish==1)
+    {
+      second=0;
+      finish=2;
+    }
+
+    if(finish==2)second++;
+    if(second==5&&finish==2)
+    {
+      second=0;
+      finish=3;
+    }
+
+    if(finish==3)second++; //越过圆环之后前进时间
+    if(second==2&&finish==3)
+    {
+      second=0;
+      finish=4;
+    }
+
+    if(finish==4)second++;
+    if(second==2&&finish==4)
+    {
+      second=0;
+      finish=5;
+    }
+  }
   /* USER CODE END Callback 1 */
 }
 

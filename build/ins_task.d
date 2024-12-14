@@ -45,7 +45,25 @@ build/ins_task.o: BMI088/Src/ins_task.c BMI088/Inc/ins_task.h \
  Tools/DSP/Include/dsp/filtering_functions.h \
  Tools/DSP/Include/dsp/quaternion_math_functions.h \
  Tools/DSP/Include/dsp/window_functions.h algorithm/user_lib.h \
- Core/Inc/spi.h Core/Inc/main.h Core/Inc/tim.h
+ Core/Inc/spi.h Core/Inc/main.h Core/Inc/tim.h application/data_pool.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ Core/Inc/FreeRTOSConfig.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ DWM1000/Inc/trilateration.h
 BMI088/Inc/ins_task.h:
 BMI088/Inc/BMI088driver.h:
 BMI088/Inc/struct_typedef.h:
@@ -105,3 +123,22 @@ algorithm/user_lib.h:
 Core/Inc/spi.h:
 Core/Inc/main.h:
 Core/Inc/tim.h:
+application/data_pool.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+Core/Inc/FreeRTOSConfig.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+DWM1000/Inc/trilateration.h:

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -37,1178 +37,1853 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 1
    7:move/Src/Movebase.c **** #include "usart.h"
    8:move/Src/Movebase.c **** #include "measure.h"
    9:move/Src/Movebase.c **** 
-  10:move/Src/Movebase.c **** 
-  11:move/Src/Movebase.c **** UWB_Data data;
+  10:move/Src/Movebase.c **** UWB_Data data;
+  11:move/Src/Movebase.c **** INS_t imu_data;
   12:move/Src/Movebase.c **** pid point_pid;
   13:move/Src/Movebase.c **** pid height_pid;
-  14:move/Src/Movebase.c **** 
-  15:move/Src/Movebase.c **** float Plane_V[3] = {0,0,0};
-  16:move/Src/Movebase.c **** uint8_t command[8] = {0x66,0x80,0x80,0x80,0x80,0x00,0x00,0x99};
-  17:move/Src/Movebase.c **** 
-  18:move/Src/Movebase.c **** float ABS(float a)
-  19:move/Src/Movebase.c **** {
-  29              		.loc 1 19 1 view -0
+  14:move/Src/Movebase.c **** pid roll_pid;
+  15:move/Src/Movebase.c **** pid pitch_pid;
+  16:move/Src/Movebase.c **** 
+  17:move/Src/Movebase.c **** float Plane_V[3] = {0,0,0};
+  18:move/Src/Movebase.c **** uint8_t command[8] = {0x66,0x80,0x80,0x80,0x80,0x00,0x00,0x99};
+  19:move/Src/Movebase.c **** 
+  20:move/Src/Movebase.c **** float ABS(float a)
+  21:move/Src/Movebase.c **** {
+  29              		.loc 1 21 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33              		.loc 1 19 1 is_stmt 0 view .LVU1
+  33              		.loc 1 21 1 is_stmt 0 view .LVU1
   34 0000 10B5     		push	{r4, lr}
   35              	.LCFI0:
   36              		.cfi_def_cfa_offset 8
   37              		.cfi_offset 4, -8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 2
+
+
   38              		.cfi_offset 14, -4
   39 0002 0446     		mov	r4, r0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 2
-
-
-  20:move/Src/Movebase.c ****     if(a < 0)
-  40              		.loc 1 20 5 is_stmt 1 view .LVU2
-  41              		.loc 1 20 7 is_stmt 0 view .LVU3
+  22:move/Src/Movebase.c ****     if(a < 0)
+  40              		.loc 1 22 5 is_stmt 1 view .LVU2
+  41              		.loc 1 22 7 is_stmt 0 view .LVU3
   42 0004 0021     		movs	r1, #0
   43 0006 FFF7FEFF 		bl	__aeabi_fcmplt
   44              	.LVL1:
-  45              		.loc 1 20 7 view .LVU4
+  45              		.loc 1 22 7 view .LVU4
   46 000a 08B9     		cbnz	r0, .L6
   47              	.LVL2:
   48              	.L2:
-  21:move/Src/Movebase.c ****         return -a;
-  22:move/Src/Movebase.c ****     else
-  23:move/Src/Movebase.c ****         return a;
-  24:move/Src/Movebase.c **** }
-  49              		.loc 1 24 1 view .LVU5
+  23:move/Src/Movebase.c ****         return -a;
+  24:move/Src/Movebase.c ****     else
+  25:move/Src/Movebase.c ****         return a;
+  26:move/Src/Movebase.c **** }
+  49              		.loc 1 26 1 view .LVU5
   50 000c 2046     		mov	r0, r4
   51 000e 10BD     		pop	{r4, pc}
   52              	.LVL3:
   53              	.L6:
-  21:move/Src/Movebase.c ****         return -a;
-  54              		.loc 1 21 9 is_stmt 1 view .LVU6
-  21:move/Src/Movebase.c ****         return -a;
-  55              		.loc 1 21 16 is_stmt 0 view .LVU7
+  23:move/Src/Movebase.c ****         return -a;
+  54              		.loc 1 23 9 is_stmt 1 view .LVU6
+  23:move/Src/Movebase.c ****         return -a;
+  55              		.loc 1 23 16 is_stmt 0 view .LVU7
   56 0010 04F10044 		add	r4, r4, #-2147483648
   57              	.LVL4:
-  21:move/Src/Movebase.c ****         return -a;
-  58              		.loc 1 21 16 view .LVU8
+  23:move/Src/Movebase.c ****         return -a;
+  58              		.loc 1 23 16 view .LVU8
   59 0014 FAE7     		b	.L2
   60              		.cfi_endproc
   61              	.LFE129:
-  63              		.section	.text.Fly_init,"ax",%progbits
-  64              		.align	1
-  65              		.global	Fly_init
-  66              		.syntax unified
-  67              		.thumb
-  68              		.thumb_func
-  70              	Fly_init:
-  71              	.LFB130:
-  25:move/Src/Movebase.c **** 
-  26:move/Src/Movebase.c **** void Fly_init(void)
-  27:move/Src/Movebase.c **** {
-  72              		.loc 1 27 1 is_stmt 1 view -0
-  73              		.cfi_startproc
-  74              		@ args = 0, pretend = 0, frame = 0
-  75              		@ frame_needed = 0, uses_anonymous_args = 0
-  76 0000 10B5     		push	{r4, lr}
-  77              	.LCFI1:
-  78              		.cfi_def_cfa_offset 8
-  79              		.cfi_offset 4, -8
-  80              		.cfi_offset 14, -4
-  81 0002 84B0     		sub	sp, sp, #16
-  82              	.LCFI2:
-  83              		.cfi_def_cfa_offset 24
-  28:move/Src/Movebase.c ****     PID_parameter_init(&point_pid,1.0f,0.3f, 0.5f, 128, 0, 0.005);
-  84              		.loc 1 28 5 view .LVU10
-  85 0004 0D4B     		ldr	r3, .L9
-  86 0006 0293     		str	r3, [sp, #8]	@ float
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 3
+  63              		.global	__aeabi_fcmpgt
+  64              		.global	__aeabi_fsub
+  65              		.global	__aeabi_fadd
+  66              		.section	.text.AngleLimit,"ax",%progbits
+  67              		.align	1
+  68              		.global	AngleLimit
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  73              	AngleLimit:
+  74              	.LVL5:
+  75              	.LFB130:
+  27:move/Src/Movebase.c **** 
+  28:move/Src/Movebase.c **** /*将角度限制在-180°到180°
+  29:move/Src/Movebase.c **** * @param  angle:要限制的值
+  30:move/Src/Movebase.c **** * @retval 
+  31:move/Src/Movebase.c **** */
+  32:move/Src/Movebase.c **** void AngleLimit(float *angle)
+  33:move/Src/Movebase.c **** {
+  76              		.loc 1 33 1 is_stmt 1 view -0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		.loc 1 33 1 is_stmt 0 view .LVU10
+  81 0000 38B5     		push	{r3, r4, r5, lr}
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 3
 
 
-  87 0008 0024     		movs	r4, #0
-  88 000a 0194     		str	r4, [sp, #4]	@ float
-  89 000c 4FF08643 		mov	r3, #1124073472
-  90 0010 0093     		str	r3, [sp]	@ float
-  91 0012 4FF07C53 		mov	r3, #1056964608
-  92 0016 0A4A     		ldr	r2, .L9+4
-  93 0018 4FF07E51 		mov	r1, #1065353216
-  94 001c 0948     		ldr	r0, .L9+8
-  95 001e FFF7FEFF 		bl	PID_parameter_init
-  96              	.LVL5:
-  29:move/Src/Movebase.c **** 
-  30:move/Src/Movebase.c ****     PID_parameter_init(&height_pid,6.0f,0.1f, 0.2f, 90, 0, 50);
-  97              		.loc 1 30 5 view .LVU11
-  98 0022 094B     		ldr	r3, .L9+12
-  99 0024 0293     		str	r3, [sp, #8]	@ float
- 100 0026 0194     		str	r4, [sp, #4]	@ float
- 101 0028 084B     		ldr	r3, .L9+16
- 102 002a 0093     		str	r3, [sp]	@ float
- 103 002c 084B     		ldr	r3, .L9+20
- 104 002e 094A     		ldr	r2, .L9+24
- 105 0030 0949     		ldr	r1, .L9+28
- 106 0032 0A48     		ldr	r0, .L9+32
- 107 0034 FFF7FEFF 		bl	PID_parameter_init
- 108              	.LVL6:
-  31:move/Src/Movebase.c **** }
- 109              		.loc 1 31 1 is_stmt 0 view .LVU12
- 110 0038 04B0     		add	sp, sp, #16
- 111              	.LCFI3:
- 112              		.cfi_def_cfa_offset 8
- 113              		@ sp needed
- 114 003a 10BD     		pop	{r4, pc}
- 115              	.L10:
- 116              		.align	2
- 117              	.L9:
- 118 003c 0AD7A33B 		.word	1000593162
- 119 0040 9A99993E 		.word	1050253722
- 120 0044 00000000 		.word	.LANCHOR0
- 121 0048 00004842 		.word	1112014848
- 122 004c 0000B442 		.word	1119092736
- 123 0050 CDCC4C3E 		.word	1045220557
- 124 0054 CDCCCC3D 		.word	1036831949
- 125 0058 0000C040 		.word	1086324736
- 126 005c 00000000 		.word	.LANCHOR1
- 127              		.cfi_endproc
- 128              	.LFE130:
- 130              		.section	.text.StartFly,"ax",%progbits
- 131              		.align	1
- 132              		.global	StartFly
- 133              		.syntax unified
- 134              		.thumb
- 135              		.thumb_func
- 137              	StartFly:
- 138              	.LFB133:
-  32:move/Src/Movebase.c **** 
-  33:move/Src/Movebase.c **** 
-  34:move/Src/Movebase.c **** int q;
-  35:move/Src/Movebase.c **** 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 4
+  82              	.LCFI1:
+  83              		.cfi_def_cfa_offset 16
+  84              		.cfi_offset 3, -16
+  85              		.cfi_offset 4, -12
+  86              		.cfi_offset 5, -8
+  87              		.cfi_offset 14, -4
+  34:move/Src/Movebase.c **** 	static uint8_t recursiveTimes = 0;
+  88              		.loc 1 34 2 is_stmt 1 view .LVU11
+  35:move/Src/Movebase.c **** 	
+  36:move/Src/Movebase.c **** 	recursiveTimes++;
+  89              		.loc 1 36 2 view .LVU12
+  90              		.loc 1 36 16 is_stmt 0 view .LVU13
+  91 0002 154A     		ldr	r2, .L18
+  92 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  93 0006 0133     		adds	r3, r3, #1
+  94 0008 DBB2     		uxtb	r3, r3
+  95 000a 1370     		strb	r3, [r2]
+  37:move/Src/Movebase.c **** 	
+  38:move/Src/Movebase.c **** 	if(recursiveTimes<100)
+  96              		.loc 1 38 2 is_stmt 1 view .LVU14
+  97              		.loc 1 38 4 is_stmt 0 view .LVU15
+  98 000c 632B     		cmp	r3, #99
+  99 000e 0BD8     		bhi	.L8
+ 100 0010 0446     		mov	r4, r0
+  39:move/Src/Movebase.c **** 	{
+  40:move/Src/Movebase.c **** 		if(*angle>180.0f)
+ 101              		.loc 1 40 3 is_stmt 1 view .LVU16
+ 102              		.loc 1 40 6 is_stmt 0 view .LVU17
+ 103 0012 0568     		ldr	r5, [r0]	@ float
+ 104              		.loc 1 40 5 view .LVU18
+ 105 0014 1149     		ldr	r1, .L18+4
+ 106 0016 2846     		mov	r0, r5
+ 107              	.LVL6:
+ 108              		.loc 1 40 5 view .LVU19
+ 109 0018 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 110              	.LVL7:
+ 111 001c 48B9     		cbnz	r0, .L16
+  41:move/Src/Movebase.c **** 		{
+  42:move/Src/Movebase.c **** 			*angle-=360.0f;
+  43:move/Src/Movebase.c **** 			AngleLimit(angle);
+  44:move/Src/Movebase.c **** 		}
+  45:move/Src/Movebase.c **** 		else if(*angle<-180.0f)
+ 112              		.loc 1 45 8 is_stmt 1 view .LVU20
+ 113              		.loc 1 45 10 is_stmt 0 view .LVU21
+ 114 001e 1049     		ldr	r1, .L18+8
+ 115 0020 2846     		mov	r0, r5
+ 116 0022 FFF7FEFF 		bl	__aeabi_fcmplt
+ 117              	.LVL8:
+ 118 0026 68B9     		cbnz	r0, .L17
+ 119              	.LVL9:
+ 120              	.L8:
+  46:move/Src/Movebase.c **** 		{
+  47:move/Src/Movebase.c **** 			*angle+=360.0f;
+  48:move/Src/Movebase.c **** 			AngleLimit(angle);
+  49:move/Src/Movebase.c **** 		}
+  50:move/Src/Movebase.c **** 	}
+  51:move/Src/Movebase.c **** 	
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 4
 
 
-  36:move/Src/Movebase.c **** uint8_t LockZ(void)
-  37:move/Src/Movebase.c **** {
-  38:move/Src/Movebase.c ****     command[3]= (uint8_t)(160);
-  39:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
-  40:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
-  41:move/Src/Movebase.c **** }
-  42:move/Src/Movebase.c **** 
-  43:move/Src/Movebase.c **** uint8_t Fly_KEEP(float height)
-  44:move/Src/Movebase.c **** {
-  45:move/Src/Movebase.c ****     float pos_z;
-  46:move/Src/Movebase.c ****     if(xQueueReceiveFromISR(HIGH_RxPort, &pos_z, 0) == pdPASS)
-  47:move/Src/Movebase.c ****     {
-  48:move/Src/Movebase.c ****         // q++;
-  49:move/Src/Movebase.c ****         float height_error = 0;
-  50:move/Src/Movebase.c ****         height_error=height-pos_z;
-  51:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&height_pid, height_error);
-  52:move/Src/Movebase.c ****         command[4] = 128;//不转动
-  53:move/Src/Movebase.c ****         command[3]= (uint8_t)(height_pid.output+165);
-  54:move/Src/Movebase.c ****         command[6] = calculate_xor_checksum(command+1, 5);
-  55:move/Src/Movebase.c ****         HAL_UART_Transmit(&huart3, command, 8, 1000);
-  56:move/Src/Movebase.c ****         // command[3]= (uint8_t)(180);
-  57:move/Src/Movebase.c ****         // command[3]= (uint8_t)(255);
-  58:move/Src/Movebase.c ****        
-  59:move/Src/Movebase.c ****     }
-  60:move/Src/Movebase.c **** 
-  61:move/Src/Movebase.c ****     // command[3]=0xFF;
-  62:move/Src/Movebase.c ****     // command[6] = calculate_xor_checksum(command+1, 5);
-  63:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, command, 8, 1000);
+  52:move/Src/Movebase.c **** 	recursiveTimes--;
+ 121              		.loc 1 52 2 is_stmt 1 view .LVU22
+ 122              		.loc 1 52 16 is_stmt 0 view .LVU23
+ 123 0028 0B4A     		ldr	r2, .L18
+ 124 002a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 125 002c 013B     		subs	r3, r3, #1
+ 126 002e 1370     		strb	r3, [r2]
+  53:move/Src/Movebase.c **** }
+ 127              		.loc 1 53 1 view .LVU24
+ 128 0030 38BD     		pop	{r3, r4, r5, pc}
+ 129              	.LVL10:
+ 130              	.L16:
+  42:move/Src/Movebase.c **** 			AngleLimit(angle);
+ 131              		.loc 1 42 4 is_stmt 1 view .LVU25
+  42:move/Src/Movebase.c **** 			AngleLimit(angle);
+ 132              		.loc 1 42 10 is_stmt 0 view .LVU26
+ 133 0032 0C49     		ldr	r1, .L18+12
+ 134 0034 2846     		mov	r0, r5
+ 135 0036 FFF7FEFF 		bl	__aeabi_fsub
+ 136              	.LVL11:
+ 137 003a 2060     		str	r0, [r4]	@ float
+  43:move/Src/Movebase.c **** 		}
+ 138              		.loc 1 43 4 is_stmt 1 view .LVU27
+ 139 003c 2046     		mov	r0, r4
+ 140 003e FFF7FEFF 		bl	AngleLimit
+ 141              	.LVL12:
+ 142 0042 F1E7     		b	.L8
+ 143              	.L17:
+  47:move/Src/Movebase.c **** 			AngleLimit(angle);
+ 144              		.loc 1 47 4 view .LVU28
+  47:move/Src/Movebase.c **** 			AngleLimit(angle);
+ 145              		.loc 1 47 10 is_stmt 0 view .LVU29
+ 146 0044 0749     		ldr	r1, .L18+12
+ 147 0046 2846     		mov	r0, r5
+ 148 0048 FFF7FEFF 		bl	__aeabi_fadd
+ 149              	.LVL13:
+ 150 004c 2060     		str	r0, [r4]	@ float
+  48:move/Src/Movebase.c **** 		}
+ 151              		.loc 1 48 4 is_stmt 1 view .LVU30
+ 152 004e 2046     		mov	r0, r4
+ 153 0050 FFF7FEFF 		bl	AngleLimit
+ 154              	.LVL14:
+ 155 0054 E8E7     		b	.L8
+ 156              	.L19:
+ 157 0056 00BF     		.align	2
+ 158              	.L18:
+ 159 0058 00000000 		.word	.LANCHOR0
+ 160 005c 00003443 		.word	1127481344
+ 161 0060 000034C3 		.word	-1020002304
+ 162 0064 0000B443 		.word	1135869952
+ 163              		.cfi_endproc
+ 164              	.LFE130:
+ 166              		.section	.text.Fly_init,"ax",%progbits
+ 167              		.align	1
+ 168              		.global	Fly_init
+ 169              		.syntax unified
+ 170              		.thumb
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 5
+
+
+ 171              		.thumb_func
+ 173              	Fly_init:
+ 174              	.LFB131:
+  54:move/Src/Movebase.c **** 
+  55:move/Src/Movebase.c **** void Fly_init(void)
+  56:move/Src/Movebase.c **** {
+ 175              		.loc 1 56 1 view -0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 180              	.LCFI2:
+ 181              		.cfi_def_cfa_offset 28
+ 182              		.cfi_offset 4, -28
+ 183              		.cfi_offset 5, -24
+ 184              		.cfi_offset 6, -20
+ 185              		.cfi_offset 7, -16
+ 186              		.cfi_offset 8, -12
+ 187              		.cfi_offset 9, -8
+ 188              		.cfi_offset 14, -4
+ 189 0004 85B0     		sub	sp, sp, #20
+ 190              	.LCFI3:
+ 191              		.cfi_def_cfa_offset 48
+  57:move/Src/Movebase.c ****     PID_parameter_init(&point_pid,1.0f,0.3f, 0.5f, 127, 0, 50);
+ 192              		.loc 1 57 5 view .LVU32
+ 193 0006 1C4B     		ldr	r3, .L22
+ 194 0008 0293     		str	r3, [sp, #8]	@ float
+ 195 000a 0025     		movs	r5, #0
+ 196 000c 0195     		str	r5, [sp, #4]	@ float
+ 197 000e 1B4E     		ldr	r6, .L22+4
+ 198 0010 0096     		str	r6, [sp]	@ float
+ 199 0012 4FF07C53 		mov	r3, #1056964608
+ 200 0016 1A4A     		ldr	r2, .L22+8
+ 201 0018 4FF07E51 		mov	r1, #1065353216
+ 202 001c 1948     		ldr	r0, .L22+12
+ 203 001e FFF7FEFF 		bl	PID_parameter_init
+ 204              	.LVL15:
+  58:move/Src/Movebase.c ****     PID_parameter_init(&height_pid,6.0f,0.1f, 0.2f, 127, 0, 25);
+ 205              		.loc 1 58 5 view .LVU33
+ 206 0022 194C     		ldr	r4, .L22+16
+ 207 0024 194F     		ldr	r7, .L22+20
+ 208 0026 1A4B     		ldr	r3, .L22+24
+ 209 0028 0293     		str	r3, [sp, #8]	@ float
+ 210 002a 0195     		str	r5, [sp, #4]	@ float
+ 211 002c 0096     		str	r6, [sp]	@ float
+ 212 002e 2346     		mov	r3, r4
+ 213 0030 3A46     		mov	r2, r7
+ 214 0032 1849     		ldr	r1, .L22+28
+ 215 0034 1848     		ldr	r0, .L22+32
+ 216 0036 FFF7FEFF 		bl	PID_parameter_init
+ 217              	.LVL16:
+  59:move/Src/Movebase.c **** 
+  60:move/Src/Movebase.c ****     PID_parameter_init(&roll_pid,3.0f,0.2f, 0.2f, 30, 0, 1.5);
+ 218              		.loc 1 60 5 view .LVU34
+ 219 003a 184E     		ldr	r6, .L22+36
+ 220 003c 4FF07F59 		mov	r9, #1069547520
+ 221 0040 CDF80890 		str	r9, [sp, #8]	@ float
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 6
+
+
+ 222 0044 0195     		str	r5, [sp, #4]	@ float
+ 223 0046 DFF85880 		ldr	r8, .L22+40
+ 224 004a CDF80080 		str	r8, [sp]	@ float
+ 225 004e 2346     		mov	r3, r4
+ 226 0050 2246     		mov	r2, r4
+ 227 0052 3146     		mov	r1, r6
+ 228 0054 1348     		ldr	r0, .L22+44
+ 229 0056 FFF7FEFF 		bl	PID_parameter_init
+ 230              	.LVL17:
+  61:move/Src/Movebase.c ****     PID_parameter_init(&pitch_pid,3.0f,0.1f, 0.2f, 30, 0, 1.5);
+ 231              		.loc 1 61 5 view .LVU35
+ 232 005a CDF80890 		str	r9, [sp, #8]	@ float
+ 233 005e 0195     		str	r5, [sp, #4]	@ float
+ 234 0060 CDF80080 		str	r8, [sp]	@ float
+ 235 0064 2346     		mov	r3, r4
+ 236 0066 3A46     		mov	r2, r7
+ 237 0068 3146     		mov	r1, r6
+ 238 006a 0F48     		ldr	r0, .L22+48
+ 239 006c FFF7FEFF 		bl	PID_parameter_init
+ 240              	.LVL18:
+  62:move/Src/Movebase.c **** }
+ 241              		.loc 1 62 1 is_stmt 0 view .LVU36
+ 242 0070 05B0     		add	sp, sp, #20
+ 243              	.LCFI4:
+ 244              		.cfi_def_cfa_offset 28
+ 245              		@ sp needed
+ 246 0072 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 247              	.L23:
+ 248 0076 00BF     		.align	2
+ 249              	.L22:
+ 250 0078 00004842 		.word	1112014848
+ 251 007c 0000FE42 		.word	1123942400
+ 252 0080 9A99993E 		.word	1050253722
+ 253 0084 00000000 		.word	.LANCHOR1
+ 254 0088 CDCC4C3E 		.word	1045220557
+ 255 008c CDCCCC3D 		.word	1036831949
+ 256 0090 0000C841 		.word	1103626240
+ 257 0094 0000C040 		.word	1086324736
+ 258 0098 00000000 		.word	.LANCHOR2
+ 259 009c 00004040 		.word	1077936128
+ 260 00a0 0000F041 		.word	1106247680
+ 261 00a4 00000000 		.word	.LANCHOR3
+ 262 00a8 00000000 		.word	.LANCHOR4
+ 263              		.cfi_endproc
+ 264              	.LFE131:
+ 266              		.global	__aeabi_fmul
+ 267              		.global	__aeabi_fcmpge
+ 268              		.global	__aeabi_fcmple
+ 269              		.global	__aeabi_f2uiz
+ 270              		.section	.text.Angle_adjust,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	Angle_adjust
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 277              	Angle_adjust:
+ 278              	.LVL19:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 7
+
+
+ 279              	.LFB132:
+  63:move/Src/Movebase.c **** 
   64:move/Src/Movebase.c **** 
-  65:move/Src/Movebase.c ****     // HAL_Delay(3000);
+  65:move/Src/Movebase.c **** int q;
   66:move/Src/Movebase.c **** 
-  67:move/Src/Movebase.c ****     // command[3]=0x80;
-  68:move/Src/Movebase.c ****     // command[6] = calculate_xor_checksum(command+1, 5);
-  69:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, command, 8, 1000);
-  70:move/Src/Movebase.c **** 
-  71:move/Src/Movebase.c ****     // command[4] = 0x80;//不转动
-  72:move/Src/Movebase.c ****     // command[3]= (uint8_t)(165);
-  73:move/Src/Movebase.c ****     // command[6] = calculate_xor_checksum(command+1, 5);
-  74:move/Src/Movebase.c ****     // // uint8_t up[8] = {0x66, 0x80 ,0x80 ,0xFF ,0x80 ,0x00 ,0x7F ,0x99};
-  75:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, command, 8, 1000);
-  76:move/Src/Movebase.c ****     return 1;
-  77:move/Src/Movebase.c **** }
-  78:move/Src/Movebase.c **** 
-  79:move/Src/Movebase.c **** 
-  80:move/Src/Movebase.c **** 
-  81:move/Src/Movebase.c **** uint8_t  StartFly(void)
-  82:move/Src/Movebase.c **** {
- 139              		.loc 1 82 1 is_stmt 1 view -0
- 140              		.cfi_startproc
- 141              		@ args = 0, pretend = 0, frame = 24
- 142              		@ frame_needed = 0, uses_anonymous_args = 0
- 143 0000 70B5     		push	{r4, r5, r6, lr}
- 144              	.LCFI4:
- 145              		.cfi_def_cfa_offset 16
- 146              		.cfi_offset 4, -16
- 147              		.cfi_offset 5, -12
- 148              		.cfi_offset 6, -8
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 5
+  67:move/Src/Movebase.c **** 
+  68:move/Src/Movebase.c **** uint8_t Angle_adjust(uint8_t *com,float roll,float pitch)
+  69:move/Src/Movebase.c **** {
+ 280              		.loc 1 69 1 is_stmt 1 view -0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 8
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		.loc 1 69 1 is_stmt 0 view .LVU38
+ 285 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 286              	.LCFI5:
+ 287              		.cfi_def_cfa_offset 24
+ 288              		.cfi_offset 4, -24
+ 289              		.cfi_offset 5, -20
+ 290              		.cfi_offset 6, -16
+ 291              		.cfi_offset 7, -12
+ 292              		.cfi_offset 8, -8
+ 293              		.cfi_offset 14, -4
+ 294 0004 82B0     		sub	sp, sp, #8
+ 295              	.LCFI6:
+ 296              		.cfi_def_cfa_offset 32
+ 297 0006 0646     		mov	r6, r0
+ 298 0008 0D46     		mov	r5, r1
+ 299 000a 1446     		mov	r4, r2
+  70:move/Src/Movebase.c ****     if(xQueueReceiveFromISR(IMU_RxPort, &imu_data, 0) == pdPASS)
+ 300              		.loc 1 70 5 is_stmt 1 view .LVU39
+ 301              		.loc 1 70 8 is_stmt 0 view .LVU40
+ 302 000c 0022     		movs	r2, #0
+ 303              	.LVL20:
+ 304              		.loc 1 70 8 view .LVU41
+ 305 000e 3D49     		ldr	r1, .L46
+ 306              	.LVL21:
+ 307              		.loc 1 70 8 view .LVU42
+ 308 0010 3D4B     		ldr	r3, .L46+4
+ 309 0012 1868     		ldr	r0, [r3]
+ 310              	.LVL22:
+ 311              		.loc 1 70 8 view .LVU43
+ 312 0014 FFF7FEFF 		bl	xQueueReceiveFromISR
+ 313              	.LVL23:
+ 314              		.loc 1 70 7 view .LVU44
+ 315 0018 0128     		cmp	r0, #1
+ 316 001a 02D0     		beq	.L45
+ 317              	.LVL24:
+ 318              	.L25:
+  71:move/Src/Movebase.c ****     {
+  72:move/Src/Movebase.c ****         float roll_error = 0;
+  73:move/Src/Movebase.c ****         float pitch_error = 0;
+  74:move/Src/Movebase.c **** 	 // 计算误差
+  75:move/Src/Movebase.c ****         if(imu_data.Roll*roll >= 0)
+  76:move/Src/Movebase.c ****         {
+  77:move/Src/Movebase.c ****             roll_error = roll - imu_data.Roll;
+  78:move/Src/Movebase.c ****         }
+  79:move/Src/Movebase.c ****    
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 8
 
 
- 149              		.cfi_offset 14, -4
- 150 0002 86B0     		sub	sp, sp, #24
- 151              	.LCFI5:
- 152              		.cfi_def_cfa_offset 40
-  83:move/Src/Movebase.c ****     uint8_t Height[8] = {0x66, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x99};
- 153              		.loc 1 83 5 view .LVU14
- 154              		.loc 1 83 13 is_stmt 0 view .LVU15
- 155 0004 1D4B     		ldr	r3, .L13
- 156 0006 04AE     		add	r6, sp, #16
- 157 0008 93E80300 		ldm	r3, {r0, r1}
- 158 000c 86E80300 		stm	r6, {r0, r1}
-  84:move/Src/Movebase.c ****     uint8_t up[8] = {0x66, 0x80 ,0x80 ,0xFF ,0x80 ,0x00 ,0x7F ,0x99};
- 159              		.loc 1 84 5 is_stmt 1 view .LVU16
- 160              		.loc 1 84 13 is_stmt 0 view .LVU17
- 161 0010 02AD     		add	r5, sp, #8
- 162 0012 03F10802 		add	r2, r3, #8
- 163 0016 92E80300 		ldm	r2, {r0, r1}
- 164 001a 85E80300 		stm	r5, {r0, r1}
-  85:move/Src/Movebase.c ****     uint8_t down[8] = {0x66, 0x80 ,0x80 ,0x00 ,0x80 ,0x00 ,0x80 ,0x99};
- 165              		.loc 1 85 5 is_stmt 1 view .LVU18
- 166              		.loc 1 85 13 is_stmt 0 view .LVU19
- 167 001e 6A46     		mov	r2, sp
- 168 0020 1033     		adds	r3, r3, #16
- 169 0022 93E80300 		ldm	r3, {r0, r1}
- 170 0026 82E80300 		stm	r2, {r0, r1}
-  86:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, Height, 8, 1000);
- 171              		.loc 1 86 5 is_stmt 1 view .LVU20
- 172 002a 154C     		ldr	r4, .L13+4
- 173 002c 4FF47A73 		mov	r3, #1000
- 174 0030 0822     		movs	r2, #8
- 175 0032 3146     		mov	r1, r6
- 176 0034 2046     		mov	r0, r4
- 177 0036 FFF7FEFF 		bl	HAL_UART_Transmit
- 178              	.LVL7:
-  87:move/Src/Movebase.c ****     HAL_Delay(10);
- 179              		.loc 1 87 5 view .LVU21
- 180 003a 0A20     		movs	r0, #10
- 181 003c FFF7FEFF 		bl	HAL_Delay
- 182              	.LVL8:
-  88:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, up, 8, 1000);
- 183              		.loc 1 88 5 view .LVU22
- 184 0040 4FF47A73 		mov	r3, #1000
- 185 0044 0822     		movs	r2, #8
- 186 0046 2946     		mov	r1, r5
- 187 0048 2046     		mov	r0, r4
- 188 004a FFF7FEFF 		bl	HAL_UART_Transmit
- 189              	.LVL9:
-  89:move/Src/Movebase.c ****     HAL_Delay(10);
- 190              		.loc 1 89 5 view .LVU23
- 191 004e 0A20     		movs	r0, #10
- 192 0050 FFF7FEFF 		bl	HAL_Delay
- 193              	.LVL10:
-  90:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, Height, 8, 1000);
- 194              		.loc 1 90 5 view .LVU24
- 195 0054 4FF47A73 		mov	r3, #1000
- 196 0058 0822     		movs	r2, #8
- 197 005a 3146     		mov	r1, r6
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 6
+  80:move/Src/Movebase.c ****         else
+  81:move/Src/Movebase.c ****         {
+  82:move/Src/Movebase.c ****             if(ABS(imu_data.Roll)+ABS(roll) <= 180) roll_error = roll - imu_data.Roll;
+  83:move/Src/Movebase.c ****             else 
+  84:move/Src/Movebase.c ****             {
+  85:move/Src/Movebase.c ****                 AngleLimit(&roll_error);
+  86:move/Src/Movebase.c ****             }
+  87:move/Src/Movebase.c ****         }
+  88:move/Src/Movebase.c ****         
+  89:move/Src/Movebase.c ****         if(imu_data.Pitch*pitch >= 0)
+  90:move/Src/Movebase.c ****         {
+  91:move/Src/Movebase.c ****             pitch_error = pitch - imu_data.Pitch;
+  92:move/Src/Movebase.c ****         }
+  93:move/Src/Movebase.c ****         else
+  94:move/Src/Movebase.c ****         {
+  95:move/Src/Movebase.c ****             if(ABS(imu_data.Pitch)+ABS(pitch) <= 180) pitch_error = pitch - imu_data.Pitch;
+  96:move/Src/Movebase.c ****             else 
+  97:move/Src/Movebase.c ****             {
+  98:move/Src/Movebase.c ****                 AngleLimit(&pitch_error);
+  99:move/Src/Movebase.c ****             }
+ 100:move/Src/Movebase.c ****         }
+ 101:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&roll_pid, roll_error);
+ 102:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&pitch_pid, pitch_error);
+ 103:move/Src/Movebase.c ****         *(com+1)=roll_pid.output+135;
+ 104:move/Src/Movebase.c ****         *(com+2)=pitch_pid.output+128;
+ 105:move/Src/Movebase.c ****     }
+ 106:move/Src/Movebase.c **** }
+ 319              		.loc 1 106 1 view .LVU45
+ 320 001c 02B0     		add	sp, sp, #8
+ 321              	.LCFI7:
+ 322              		.cfi_remember_state
+ 323              		.cfi_def_cfa_offset 24
+ 324              		@ sp needed
+ 325 001e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 326              	.LVL25:
+ 327              	.L45:
+ 328              	.LCFI8:
+ 329              		.cfi_restore_state
+ 330              	.LBB2:
+  72:move/Src/Movebase.c ****         float pitch_error = 0;
+ 331              		.loc 1 72 9 is_stmt 1 view .LVU46
+  72:move/Src/Movebase.c ****         float pitch_error = 0;
+ 332              		.loc 1 72 15 is_stmt 0 view .LVU47
+ 333 0022 0027     		movs	r7, #0
+ 334 0024 0097     		str	r7, [sp]	@ float
+  73:move/Src/Movebase.c **** 	 // 计算误差
+ 335              		.loc 1 73 9 is_stmt 1 view .LVU48
+  73:move/Src/Movebase.c **** 	 // 计算误差
+ 336              		.loc 1 73 15 is_stmt 0 view .LVU49
+ 337 0026 0197     		str	r7, [sp, #4]	@ float
+  75:move/Src/Movebase.c ****         {
+ 338              		.loc 1 75 9 is_stmt 1 view .LVU50
+  75:move/Src/Movebase.c ****         {
+ 339              		.loc 1 75 20 is_stmt 0 view .LVU51
+ 340 0028 364B     		ldr	r3, .L46
+ 341 002a D3F86880 		ldr	r8, [r3, #104]	@ float
+  75:move/Src/Movebase.c ****         {
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 9
 
 
- 198 005c 2046     		mov	r0, r4
- 199 005e FFF7FEFF 		bl	HAL_UART_Transmit
- 200              	.LVL11:
-  91:move/Src/Movebase.c ****     HAL_Delay(10);
- 201              		.loc 1 91 5 view .LVU25
- 202 0062 0A20     		movs	r0, #10
- 203 0064 FFF7FEFF 		bl	HAL_Delay
- 204              	.LVL12:
-  92:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, up, 8, 1000);
- 205              		.loc 1 92 5 view .LVU26
- 206 0068 4FF47A73 		mov	r3, #1000
- 207 006c 0822     		movs	r2, #8
- 208 006e 2946     		mov	r1, r5
- 209 0070 2046     		mov	r0, r4
- 210 0072 FFF7FEFF 		bl	HAL_UART_Transmit
- 211              	.LVL13:
-  93:move/Src/Movebase.c ****     // HAL_Delay(10);
-  94:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, down, 8, 1000);
-  95:move/Src/Movebase.c ****     return 1;
- 212              		.loc 1 95 5 view .LVU27
-  96:move/Src/Movebase.c **** }
- 213              		.loc 1 96 1 is_stmt 0 view .LVU28
- 214 0076 0120     		movs	r0, #1
- 215 0078 06B0     		add	sp, sp, #24
- 216              	.LCFI6:
- 217              		.cfi_def_cfa_offset 16
- 218              		@ sp needed
- 219 007a 70BD     		pop	{r4, r5, r6, pc}
- 220              	.L14:
- 221              		.align	2
- 222              	.L13:
- 223 007c 00000000 		.word	.LANCHOR2
- 224 0080 00000000 		.word	huart3
- 225              		.cfi_endproc
- 226              	.LFE133:
- 228              		.section	.text.calculate_xor_checksum,"ax",%progbits
- 229              		.align	1
- 230              		.global	calculate_xor_checksum
- 231              		.syntax unified
- 232              		.thumb
- 233              		.thumb_func
- 235              	calculate_xor_checksum:
- 236              	.LVL14:
- 237              	.LFB135:
-  97:move/Src/Movebase.c **** 
-  98:move/Src/Movebase.c **** 
-  99:move/Src/Movebase.c **** float error;
- 100:move/Src/Movebase.c **** 
- 101:move/Src/Movebase.c **** /**
- 102:move/Src/Movebase.c ****  * @function: PointTrace
- 103:move/Src/Movebase.c ****  * @brief: ָ立体点追踪
- 104:move/Src/Movebase.c ****  * @param: x,y,z
- 105:move/Src/Movebase.c ****  * @param: yaw 锁航向角度
- 106:move/Src/Movebase.c ****  * @param: priority xyz坐标追踪顺序
- 107:move/Src/Movebase.c ****  * @retval: 0:ing 1:finfish
- 108:move/Src/Movebase.c ****  */
- 109:move/Src/Movebase.c **** uint8_t PointTrace(float POS_X,float POS_Y,float POS_Z)
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 7
+ 342              		.loc 1 75 25 view .LVU52
+ 343 002e 2946     		mov	r1, r5
+ 344 0030 4046     		mov	r0, r8
+ 345 0032 FFF7FEFF 		bl	__aeabi_fmul
+ 346              	.LVL26:
+  75:move/Src/Movebase.c ****         {
+ 347              		.loc 1 75 11 view .LVU53
+ 348 0036 3946     		mov	r1, r7
+ 349 0038 FFF7FEFF 		bl	__aeabi_fcmpge
+ 350              	.LVL27:
+ 351 003c 0028     		cmp	r0, #0
+ 352 003e 2ED0     		beq	.L40
+  77:move/Src/Movebase.c ****         }
+ 353              		.loc 1 77 13 is_stmt 1 view .LVU54
+  77:move/Src/Movebase.c ****         }
+ 354              		.loc 1 77 31 is_stmt 0 view .LVU55
+ 355 0040 4146     		mov	r1, r8
+ 356 0042 2846     		mov	r0, r5
+ 357 0044 FFF7FEFF 		bl	__aeabi_fsub
+ 358              	.LVL28:
+  77:move/Src/Movebase.c ****         }
+ 359              		.loc 1 77 24 view .LVU56
+ 360 0048 0090     		str	r0, [sp]	@ float
+ 361              	.L28:
+  89:move/Src/Movebase.c ****         {
+ 362              		.loc 1 89 9 is_stmt 1 view .LVU57
+  89:move/Src/Movebase.c ****         {
+ 363              		.loc 1 89 20 is_stmt 0 view .LVU58
+ 364 004a 2E4B     		ldr	r3, .L46
+ 365 004c DD6E     		ldr	r5, [r3, #108]	@ float
+ 366              	.LVL29:
+  89:move/Src/Movebase.c ****         {
+ 367              		.loc 1 89 26 view .LVU59
+ 368 004e 2146     		mov	r1, r4
+ 369 0050 2846     		mov	r0, r5
+ 370 0052 FFF7FEFF 		bl	__aeabi_fmul
+ 371              	.LVL30:
+  89:move/Src/Movebase.c ****         {
+ 372              		.loc 1 89 11 view .LVU60
+ 373 0056 0021     		movs	r1, #0
+ 374 0058 FFF7FEFF 		bl	__aeabi_fcmpge
+ 375              	.LVL31:
+ 376 005c 0028     		cmp	r0, #0
+ 377 005e 37D0     		beq	.L42
+  91:move/Src/Movebase.c ****         }
+ 378              		.loc 1 91 13 is_stmt 1 view .LVU61
+  91:move/Src/Movebase.c ****         }
+ 379              		.loc 1 91 33 is_stmt 0 view .LVU62
+ 380 0060 2946     		mov	r1, r5
+ 381 0062 2046     		mov	r0, r4
+ 382 0064 FFF7FEFF 		bl	__aeabi_fsub
+ 383              	.LVL32:
+  91:move/Src/Movebase.c ****         }
+ 384              		.loc 1 91 25 view .LVU63
+ 385 0068 0190     		str	r0, [sp, #4]	@ float
+ 386              	.L33:
+ 101:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&pitch_pid, pitch_error);
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 10
 
 
- 110:move/Src/Movebase.c **** {
- 111:move/Src/Movebase.c ****     // YawAdjust(POS_YAW);
- 112:move/Src/Movebase.c ****     Fly_KEEP(POS_Z);
- 113:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
- 114:move/Src/Movebase.c ****     {
- 115:move/Src/Movebase.c ****         //计算误差
- 116:move/Src/Movebase.c ****         error = sqrt((data.x - POS_X) * (data.x - POS_X) + (data.y - POS_Y) * (data.y - POS_Y));  /
- 117:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 118:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&point_pid, error);
- 119:move/Src/Movebase.c **** 
- 120:move/Src/Movebase.c ****         Plane_V[0] =-(float)(point_pid.output * 10.0f*(data.x - POS_X) /error);//x轴
- 121:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 122:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 123:move/Src/Movebase.c **** 
- 124:move/Src/Movebase.c ****         if(ABS(data.x - POS_X)<50 && ABS(data.y- POS_Y)<50)
- 125:move/Src/Movebase.c ****         {
- 126:move/Src/Movebase.c ****             return 1;
- 127:move/Src/Movebase.c ****         }
- 128:move/Src/Movebase.c ****         else
- 129:move/Src/Movebase.c ****         {
- 130:move/Src/Movebase.c ****             Plane_V[0] = 100;
- 131:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
- 132:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
- 133:move/Src/Movebase.c ****             command[1] = (uint8_t)(Plane_V[0]);
- 134:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
- 135:move/Src/Movebase.c **** 
- 136:move/Src/Movebase.c ****             command[4] = 128;//不转动
- 137:move/Src/Movebase.c ****             
- 138:move/Src/Movebase.c ****             return 0;
- 139:move/Src/Movebase.c ****         }
- 140:move/Src/Movebase.c ****     }
- 141:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
- 142:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 143:move/Src/Movebase.c **** 
- 144:move/Src/Movebase.c **** 
- 145:move/Src/Movebase.c **** 
- 146:move/Src/Movebase.c **** }
- 147:move/Src/Movebase.c **** 
- 148:move/Src/Movebase.c **** 
- 149:move/Src/Movebase.c **** unsigned char calculate_xor_checksum(const unsigned char* data, uint8_t length) 
- 150:move/Src/Movebase.c **** {
- 238              		.loc 1 150 1 is_stmt 1 view -0
- 239              		.cfi_startproc
- 240              		@ args = 0, pretend = 0, frame = 0
- 241              		@ frame_needed = 0, uses_anonymous_args = 0
- 242              		@ link register save eliminated.
- 243              		.loc 1 150 1 is_stmt 0 view .LVU30
- 244 0000 8446     		mov	ip, r0
- 151:move/Src/Movebase.c ****     unsigned char checksum = 0;
- 245              		.loc 1 151 5 is_stmt 1 view .LVU31
- 246              	.LVL15:
- 152:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
- 247              		.loc 1 152 5 view .LVU32
- 248              	.LBB2:
- 249              		.loc 1 152 10 view .LVU33
- 250              		.loc 1 152 18 is_stmt 0 view .LVU34
- 251 0002 0023     		movs	r3, #0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 8
+ 387              		.loc 1 101 9 is_stmt 1 view .LVU64
+ 388 006a 284D     		ldr	r5, .L46+8
+ 389 006c 0099     		ldr	r1, [sp]	@ float
+ 390 006e 2846     		mov	r0, r5
+ 391 0070 FFF7FEFF 		bl	PID_position_PID_calculation_by_error
+ 392              	.LVL33:
+ 102:move/Src/Movebase.c ****         *(com+1)=roll_pid.output+135;
+ 393              		.loc 1 102 9 view .LVU65
+ 394 0074 264C     		ldr	r4, .L46+12
+ 395              	.LVL34:
+ 102:move/Src/Movebase.c ****         *(com+1)=roll_pid.output+135;
+ 396              		.loc 1 102 9 is_stmt 0 view .LVU66
+ 397 0076 0199     		ldr	r1, [sp, #4]	@ float
+ 398 0078 2046     		mov	r0, r4
+ 399 007a FFF7FEFF 		bl	PID_position_PID_calculation_by_error
+ 400              	.LVL35:
+ 103:move/Src/Movebase.c ****         *(com+2)=pitch_pid.output+128;
+ 401              		.loc 1 103 9 is_stmt 1 view .LVU67
+ 103:move/Src/Movebase.c ****         *(com+2)=pitch_pid.output+128;
+ 402              		.loc 1 103 33 is_stmt 0 view .LVU68
+ 403 007e 2549     		ldr	r1, .L46+16
+ 404 0080 686A     		ldr	r0, [r5, #36]	@ float
+ 405 0082 FFF7FEFF 		bl	__aeabi_fadd
+ 406              	.LVL36:
+ 103:move/Src/Movebase.c ****         *(com+2)=pitch_pid.output+128;
+ 407              		.loc 1 103 17 view .LVU69
+ 408 0086 FFF7FEFF 		bl	__aeabi_f2uiz
+ 409              	.LVL37:
+ 410 008a 7070     		strb	r0, [r6, #1]
+ 104:move/Src/Movebase.c ****     }
+ 411              		.loc 1 104 9 is_stmt 1 view .LVU70
+ 104:move/Src/Movebase.c ****     }
+ 412              		.loc 1 104 34 is_stmt 0 view .LVU71
+ 413 008c 4FF08641 		mov	r1, #1124073472
+ 414 0090 606A     		ldr	r0, [r4, #36]	@ float
+ 415 0092 FFF7FEFF 		bl	__aeabi_fadd
+ 416              	.LVL38:
+ 104:move/Src/Movebase.c ****     }
+ 417              		.loc 1 104 17 view .LVU72
+ 418 0096 FFF7FEFF 		bl	__aeabi_f2uiz
+ 419              	.LVL39:
+ 420 009a B070     		strb	r0, [r6, #2]
+ 421 009c BEE7     		b	.L25
+ 422              	.LVL40:
+ 423              	.L40:
+  82:move/Src/Movebase.c ****             else 
+ 424              		.loc 1 82 13 is_stmt 1 view .LVU73
+  82:move/Src/Movebase.c ****             else 
+ 425              		.loc 1 82 16 is_stmt 0 view .LVU74
+ 426 009e 4046     		mov	r0, r8
+ 427 00a0 FFF7FEFF 		bl	ABS
+ 428              	.LVL41:
+ 429 00a4 0746     		mov	r7, r0
+  82:move/Src/Movebase.c ****             else 
+ 430              		.loc 1 82 35 view .LVU75
+ 431 00a6 2846     		mov	r0, r5
+ 432 00a8 FFF7FEFF 		bl	ABS
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 11
 
 
- 252              	.LBE2:
- 151:move/Src/Movebase.c ****     unsigned char checksum = 0;
- 253              		.loc 1 151 19 view .LVU35
- 254 0004 1846     		mov	r0, r3
- 255              	.LVL16:
- 256              	.LBB3:
- 257              		.loc 1 152 5 view .LVU36
- 258 0006 04E0     		b	.L16
- 259              	.LVL17:
- 260              	.L17:
- 153:move/Src/Movebase.c ****     {
- 154:move/Src/Movebase.c ****         checksum ^= data[i];
- 261              		.loc 1 154 9 is_stmt 1 discriminator 3 view .LVU37
- 262              		.loc 1 154 25 is_stmt 0 discriminator 3 view .LVU38
- 263 0008 1CF80320 		ldrb	r2, [ip, r3]	@ zero_extendqisi2
- 264              		.loc 1 154 18 discriminator 3 view .LVU39
- 265 000c 5040     		eors	r0, r0, r2
- 266              	.LVL18:
- 152:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
- 267              		.loc 1 152 37 is_stmt 1 discriminator 3 view .LVU40
- 152:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
- 268              		.loc 1 152 38 is_stmt 0 discriminator 3 view .LVU41
- 269 000e 0133     		adds	r3, r3, #1
- 270              	.LVL19:
- 152:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
- 271              		.loc 1 152 38 discriminator 3 view .LVU42
- 272 0010 DBB2     		uxtb	r3, r3
- 273              	.LVL20:
- 274              	.L16:
- 152:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
- 275              		.loc 1 152 25 is_stmt 1 discriminator 1 view .LVU43
- 152:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
- 276              		.loc 1 152 5 is_stmt 0 discriminator 1 view .LVU44
- 277 0012 8B42     		cmp	r3, r1
- 278 0014 F8D3     		bcc	.L17
- 279              	.LBE3:
- 155:move/Src/Movebase.c ****     }
- 156:move/Src/Movebase.c ****     return checksum;
- 280              		.loc 1 156 5 is_stmt 1 view .LVU45
- 157:move/Src/Movebase.c **** }
- 281              		.loc 1 157 1 is_stmt 0 view .LVU46
- 282 0016 7047     		bx	lr
- 283              		.cfi_endproc
- 284              	.LFE135:
- 286              		.section	.text.LockZ,"ax",%progbits
- 287              		.align	1
- 288              		.global	LockZ
- 289              		.syntax unified
- 290              		.thumb
- 291              		.thumb_func
- 293              	LockZ:
- 294              	.LFB131:
-  37:move/Src/Movebase.c ****     command[3]= (uint8_t)(160);
- 295              		.loc 1 37 1 is_stmt 1 view -0
- 296              		.cfi_startproc
- 297              		@ args = 0, pretend = 0, frame = 0
- 298              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 9
+ 433              	.LVL42:
+ 434 00ac 0146     		mov	r1, r0
+  82:move/Src/Movebase.c ****             else 
+ 435              		.loc 1 82 34 view .LVU76
+ 436 00ae 3846     		mov	r0, r7
+ 437 00b0 FFF7FEFF 		bl	__aeabi_fadd
+ 438              	.LVL43:
+  82:move/Src/Movebase.c ****             else 
+ 439              		.loc 1 82 15 view .LVU77
+ 440 00b4 1849     		ldr	r1, .L46+20
+ 441 00b6 FFF7FEFF 		bl	__aeabi_fcmple
+ 442              	.LVL44:
+ 443 00ba 28B1     		cbz	r0, .L41
+  82:move/Src/Movebase.c ****             else 
+ 444              		.loc 1 82 53 is_stmt 1 discriminator 1 view .LVU78
+  82:move/Src/Movebase.c ****             else 
+ 445              		.loc 1 82 71 is_stmt 0 discriminator 1 view .LVU79
+ 446 00bc 4146     		mov	r1, r8
+ 447 00be 2846     		mov	r0, r5
+ 448 00c0 FFF7FEFF 		bl	__aeabi_fsub
+ 449              	.LVL45:
+  82:move/Src/Movebase.c ****             else 
+ 450              		.loc 1 82 64 discriminator 1 view .LVU80
+ 451 00c4 0090     		str	r0, [sp]	@ float
+ 452 00c6 C0E7     		b	.L28
+ 453              	.L41:
+  85:move/Src/Movebase.c ****             }
+ 454              		.loc 1 85 17 is_stmt 1 view .LVU81
+ 455 00c8 6846     		mov	r0, sp
+ 456 00ca FFF7FEFF 		bl	AngleLimit
+ 457              	.LVL46:
+ 458 00ce BCE7     		b	.L28
+ 459              	.LVL47:
+ 460              	.L42:
+  95:move/Src/Movebase.c ****             else 
+ 461              		.loc 1 95 13 view .LVU82
+  95:move/Src/Movebase.c ****             else 
+ 462              		.loc 1 95 16 is_stmt 0 view .LVU83
+ 463 00d0 2846     		mov	r0, r5
+ 464 00d2 FFF7FEFF 		bl	ABS
+ 465              	.LVL48:
+ 466 00d6 0746     		mov	r7, r0
+  95:move/Src/Movebase.c ****             else 
+ 467              		.loc 1 95 36 view .LVU84
+ 468 00d8 2046     		mov	r0, r4
+ 469 00da FFF7FEFF 		bl	ABS
+ 470              	.LVL49:
+ 471 00de 0146     		mov	r1, r0
+  95:move/Src/Movebase.c ****             else 
+ 472              		.loc 1 95 35 view .LVU85
+ 473 00e0 3846     		mov	r0, r7
+ 474 00e2 FFF7FEFF 		bl	__aeabi_fadd
+ 475              	.LVL50:
+  95:move/Src/Movebase.c ****             else 
+ 476              		.loc 1 95 15 view .LVU86
+ 477 00e6 0C49     		ldr	r1, .L46+20
+ 478 00e8 FFF7FEFF 		bl	__aeabi_fcmple
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 12
 
 
- 299 0000 10B5     		push	{r4, lr}
- 300              	.LCFI7:
- 301              		.cfi_def_cfa_offset 8
- 302              		.cfi_offset 4, -8
- 303              		.cfi_offset 14, -4
-  38:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
- 304              		.loc 1 38 5 view .LVU48
-  38:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
- 305              		.loc 1 38 15 is_stmt 0 view .LVU49
- 306 0002 084C     		ldr	r4, .L20
- 307 0004 A023     		movs	r3, #160
- 308 0006 E370     		strb	r3, [r4, #3]
-  39:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 309              		.loc 1 39 5 is_stmt 1 view .LVU50
-  39:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 310              		.loc 1 39 18 is_stmt 0 view .LVU51
- 311 0008 0521     		movs	r1, #5
- 312 000a 601C     		adds	r0, r4, #1
- 313 000c FFF7FEFF 		bl	calculate_xor_checksum
- 314              	.LVL21:
-  39:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 315              		.loc 1 39 16 view .LVU52
- 316 0010 A071     		strb	r0, [r4, #6]
-  40:move/Src/Movebase.c **** }
- 317              		.loc 1 40 5 is_stmt 1 view .LVU53
- 318 0012 4FF47A73 		mov	r3, #1000
- 319 0016 0822     		movs	r2, #8
- 320 0018 2146     		mov	r1, r4
- 321 001a 0348     		ldr	r0, .L20+4
- 322 001c FFF7FEFF 		bl	HAL_UART_Transmit
- 323              	.LVL22:
-  41:move/Src/Movebase.c **** 
- 324              		.loc 1 41 1 is_stmt 0 view .LVU54
- 325 0020 10BD     		pop	{r4, pc}
- 326              	.L21:
- 327 0022 00BF     		.align	2
- 328              	.L20:
- 329 0024 00000000 		.word	.LANCHOR3
- 330 0028 00000000 		.word	huart3
- 331              		.cfi_endproc
- 332              	.LFE131:
- 334              		.global	__aeabi_fsub
- 335              		.global	__aeabi_fadd
- 336              		.global	__aeabi_f2uiz
- 337              		.section	.text.Fly_KEEP,"ax",%progbits
- 338              		.align	1
- 339              		.global	Fly_KEEP
- 340              		.syntax unified
- 341              		.thumb
- 342              		.thumb_func
- 344              	Fly_KEEP:
- 345              	.LVL23:
- 346              	.LFB132:
-  44:move/Src/Movebase.c ****     float pos_z;
- 347              		.loc 1 44 1 is_stmt 1 view -0
- 348              		.cfi_startproc
- 349              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 10
+ 479              	.LVL51:
+ 480 00ec 28B1     		cbz	r0, .L43
+  95:move/Src/Movebase.c ****             else 
+ 481              		.loc 1 95 55 is_stmt 1 discriminator 1 view .LVU87
+  95:move/Src/Movebase.c ****             else 
+ 482              		.loc 1 95 75 is_stmt 0 discriminator 1 view .LVU88
+ 483 00ee 2946     		mov	r1, r5
+ 484 00f0 2046     		mov	r0, r4
+ 485 00f2 FFF7FEFF 		bl	__aeabi_fsub
+ 486              	.LVL52:
+  95:move/Src/Movebase.c ****             else 
+ 487              		.loc 1 95 67 discriminator 1 view .LVU89
+ 488 00f6 0190     		str	r0, [sp, #4]	@ float
+ 489 00f8 B7E7     		b	.L33
+ 490              	.L43:
+  98:move/Src/Movebase.c ****             }
+ 491              		.loc 1 98 17 is_stmt 1 view .LVU90
+ 492 00fa 01A8     		add	r0, sp, #4
+ 493 00fc FFF7FEFF 		bl	AngleLimit
+ 494              	.LVL53:
+ 495 0100 B3E7     		b	.L33
+ 496              	.L47:
+ 497 0102 00BF     		.align	2
+ 498              	.L46:
+ 499 0104 00000000 		.word	.LANCHOR5
+ 500 0108 00000000 		.word	IMU_RxPort
+ 501 010c 00000000 		.word	.LANCHOR3
+ 502 0110 00000000 		.word	.LANCHOR4
+ 503 0114 00000743 		.word	1124532224
+ 504 0118 00003443 		.word	1127481344
+ 505              	.LBE2:
+ 506              		.cfi_endproc
+ 507              	.LFE132:
+ 509              		.section	.text.StartFly,"ax",%progbits
+ 510              		.align	1
+ 511              		.global	StartFly
+ 512              		.syntax unified
+ 513              		.thumb
+ 514              		.thumb_func
+ 516              	StartFly:
+ 517              	.LFB135:
+ 107:move/Src/Movebase.c **** 
+ 108:move/Src/Movebase.c **** uint8_t LockZ(void)
+ 109:move/Src/Movebase.c **** {
+ 110:move/Src/Movebase.c ****     command[3]= (uint8_t)(160);
+ 111:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
+ 112:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 113:move/Src/Movebase.c **** }
+ 114:move/Src/Movebase.c **** 
+ 115:move/Src/Movebase.c **** uint8_t Fly_FSM(float height)
+ 116:move/Src/Movebase.c **** {
+ 117:move/Src/Movebase.c ****     float pos_z;
+ 118:move/Src/Movebase.c ****     // HCSR04_GetData();
+ 119:move/Src/Movebase.c ****     // if(xQueueReceiveFromISR(HIGH_RxPort, &pos_z, 0) == pdPASS)
+ 120:move/Src/Movebase.c ****     // {
+ 121:move/Src/Movebase.c ****     //     // q++;
+ 122:move/Src/Movebase.c ****     //     float height_error = 0;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 13
 
 
- 350              		@ frame_needed = 0, uses_anonymous_args = 0
-  44:move/Src/Movebase.c ****     float pos_z;
- 351              		.loc 1 44 1 is_stmt 0 view .LVU56
- 352 0000 30B5     		push	{r4, r5, lr}
- 353              	.LCFI8:
- 354              		.cfi_def_cfa_offset 12
- 355              		.cfi_offset 4, -12
- 356              		.cfi_offset 5, -8
- 357              		.cfi_offset 14, -4
- 358 0002 83B0     		sub	sp, sp, #12
- 359              	.LCFI9:
- 360              		.cfi_def_cfa_offset 24
- 361 0004 0446     		mov	r4, r0
-  45:move/Src/Movebase.c ****     if(xQueueReceiveFromISR(HIGH_RxPort, &pos_z, 0) == pdPASS)
- 362              		.loc 1 45 5 is_stmt 1 view .LVU57
-  46:move/Src/Movebase.c ****     {
- 363              		.loc 1 46 5 view .LVU58
-  46:move/Src/Movebase.c ****     {
- 364              		.loc 1 46 8 is_stmt 0 view .LVU59
- 365 0006 0022     		movs	r2, #0
- 366 0008 01A9     		add	r1, sp, #4
- 367 000a 144B     		ldr	r3, .L26
- 368 000c 1868     		ldr	r0, [r3]
- 369              	.LVL24:
-  46:move/Src/Movebase.c ****     {
- 370              		.loc 1 46 8 view .LVU60
- 371 000e FFF7FEFF 		bl	xQueueReceiveFromISR
- 372              	.LVL25:
-  46:move/Src/Movebase.c ****     {
- 373              		.loc 1 46 7 view .LVU61
- 374 0012 0128     		cmp	r0, #1
- 375 0014 02D0     		beq	.L25
- 376              	.LVL26:
- 377              	.L23:
-  76:move/Src/Movebase.c **** }
- 378              		.loc 1 76 5 is_stmt 1 view .LVU62
-  77:move/Src/Movebase.c **** 
- 379              		.loc 1 77 1 is_stmt 0 view .LVU63
- 380 0016 0120     		movs	r0, #1
- 381 0018 03B0     		add	sp, sp, #12
- 382              	.LCFI10:
- 383              		.cfi_remember_state
- 384              		.cfi_def_cfa_offset 12
- 385              		@ sp needed
- 386 001a 30BD     		pop	{r4, r5, pc}
- 387              	.LVL27:
- 388              	.L25:
- 389              	.LCFI11:
- 390              		.cfi_restore_state
- 391              	.LBB4:
-  49:move/Src/Movebase.c ****         height_error=height-pos_z;
- 392              		.loc 1 49 9 is_stmt 1 view .LVU64
-  50:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&height_pid, height_error);
- 393              		.loc 1 50 9 view .LVU65
-  50:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&height_pid, height_error);
- 394              		.loc 1 50 21 is_stmt 0 view .LVU66
- 395 001c 0199     		ldr	r1, [sp, #4]	@ float
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 11
-
-
- 396 001e 2046     		mov	r0, r4
- 397 0020 FFF7FEFF 		bl	__aeabi_fsub
- 398              	.LVL28:
- 399 0024 0146     		mov	r1, r0
- 400              	.LVL29:
-  51:move/Src/Movebase.c ****         command[4] = 128;//不转动
- 401              		.loc 1 51 9 is_stmt 1 view .LVU67
- 402 0026 0E4D     		ldr	r5, .L26+4
- 403 0028 2846     		mov	r0, r5
- 404              	.LVL30:
-  51:move/Src/Movebase.c ****         command[4] = 128;//不转动
- 405              		.loc 1 51 9 is_stmt 0 view .LVU68
- 406 002a FFF7FEFF 		bl	PID_position_PID_calculation_by_error
- 407              	.LVL31:
-  52:move/Src/Movebase.c ****         command[3]= (uint8_t)(height_pid.output+165);
- 408              		.loc 1 52 9 is_stmt 1 view .LVU69
-  52:move/Src/Movebase.c ****         command[3]= (uint8_t)(height_pid.output+165);
- 409              		.loc 1 52 20 is_stmt 0 view .LVU70
- 410 002e 0D4C     		ldr	r4, .L26+8
- 411              	.LVL32:
-  52:move/Src/Movebase.c ****         command[3]= (uint8_t)(height_pid.output+165);
- 412              		.loc 1 52 20 view .LVU71
- 413 0030 8023     		movs	r3, #128
- 414 0032 2371     		strb	r3, [r4, #4]
-  53:move/Src/Movebase.c ****         command[6] = calculate_xor_checksum(command+1, 5);
- 415              		.loc 1 53 9 is_stmt 1 view .LVU72
-  53:move/Src/Movebase.c ****         command[6] = calculate_xor_checksum(command+1, 5);
- 416              		.loc 1 53 48 is_stmt 0 view .LVU73
- 417 0034 0C49     		ldr	r1, .L26+12
- 418 0036 686A     		ldr	r0, [r5, #36]	@ float
- 419 0038 FFF7FEFF 		bl	__aeabi_fadd
- 420              	.LVL33:
-  53:move/Src/Movebase.c ****         command[6] = calculate_xor_checksum(command+1, 5);
- 421              		.loc 1 53 21 view .LVU74
- 422 003c FFF7FEFF 		bl	__aeabi_f2uiz
- 423              	.LVL34:
-  53:move/Src/Movebase.c ****         command[6] = calculate_xor_checksum(command+1, 5);
- 424              		.loc 1 53 19 view .LVU75
- 425 0040 E070     		strb	r0, [r4, #3]
-  54:move/Src/Movebase.c ****         HAL_UART_Transmit(&huart3, command, 8, 1000);
- 426              		.loc 1 54 9 is_stmt 1 view .LVU76
-  54:move/Src/Movebase.c ****         HAL_UART_Transmit(&huart3, command, 8, 1000);
- 427              		.loc 1 54 22 is_stmt 0 view .LVU77
- 428 0042 0521     		movs	r1, #5
- 429 0044 601C     		adds	r0, r4, #1
- 430 0046 FFF7FEFF 		bl	calculate_xor_checksum
- 431              	.LVL35:
-  54:move/Src/Movebase.c ****         HAL_UART_Transmit(&huart3, command, 8, 1000);
- 432              		.loc 1 54 20 view .LVU78
- 433 004a A071     		strb	r0, [r4, #6]
-  55:move/Src/Movebase.c ****         // command[3]= (uint8_t)(180);
- 434              		.loc 1 55 9 is_stmt 1 view .LVU79
- 435 004c 4FF47A73 		mov	r3, #1000
- 436 0050 0822     		movs	r2, #8
- 437 0052 2146     		mov	r1, r4
- 438 0054 0548     		ldr	r0, .L26+16
- 439 0056 FFF7FEFF 		bl	HAL_UART_Transmit
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 12
-
-
- 440              	.LVL36:
- 441 005a DCE7     		b	.L23
- 442              	.L27:
- 443              		.align	2
- 444              	.L26:
- 445 005c 00000000 		.word	HIGH_RxPort
- 446 0060 00000000 		.word	.LANCHOR1
- 447 0064 00000000 		.word	.LANCHOR3
- 448 0068 00002543 		.word	1126498304
- 449 006c 00000000 		.word	huart3
- 450              	.LBE4:
- 451              		.cfi_endproc
- 452              	.LFE132:
- 454              		.global	__aeabi_f2d
- 455              		.global	__aeabi_dsub
- 456              		.global	__aeabi_dmul
- 457              		.global	__aeabi_dadd
- 458              		.global	__aeabi_d2f
- 459              		.global	__aeabi_fmul
- 460              		.global	__aeabi_ddiv
- 461              		.section	.text.PointTrace,"ax",%progbits
- 462              		.align	1
- 463              		.global	PointTrace
- 464              		.syntax unified
- 465              		.thumb
- 466              		.thumb_func
- 468              	PointTrace:
- 469              	.LVL37:
- 470              	.LFB134:
- 110:move/Src/Movebase.c ****     // YawAdjust(POS_YAW);
- 471              		.loc 1 110 1 view -0
- 472              		.cfi_startproc
- 473              		@ args = 0, pretend = 0, frame = 16
- 474              		@ frame_needed = 0, uses_anonymous_args = 0
- 110:move/Src/Movebase.c ****     // YawAdjust(POS_YAW);
- 475              		.loc 1 110 1 is_stmt 0 view .LVU81
- 476 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
- 477              	.LCFI12:
- 478              		.cfi_def_cfa_offset 36
- 479              		.cfi_offset 4, -36
- 480              		.cfi_offset 5, -32
- 481              		.cfi_offset 6, -28
- 482              		.cfi_offset 7, -24
- 483              		.cfi_offset 8, -20
- 484              		.cfi_offset 9, -16
- 485              		.cfi_offset 10, -12
- 486              		.cfi_offset 11, -8
- 487              		.cfi_offset 14, -4
- 488 0004 85B0     		sub	sp, sp, #20
- 489              	.LCFI13:
- 490              		.cfi_def_cfa_offset 56
- 491 0006 0646     		mov	r6, r0
- 492 0008 0C46     		mov	r4, r1
- 112:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
- 493              		.loc 1 112 5 is_stmt 1 view .LVU82
- 494 000a 1046     		mov	r0, r2
- 495              	.LVL38:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 13
-
-
- 112:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
- 496              		.loc 1 112 5 is_stmt 0 view .LVU83
- 497 000c FFF7FEFF 		bl	Fly_KEEP
- 498              	.LVL39:
- 113:move/Src/Movebase.c ****     {
- 499              		.loc 1 113 5 is_stmt 1 view .LVU84
- 113:move/Src/Movebase.c ****     {
- 500              		.loc 1 113 8 is_stmt 0 view .LVU85
- 501 0010 0022     		movs	r2, #0
- 502 0012 5D49     		ldr	r1, .L37
- 503 0014 5D4B     		ldr	r3, .L37+4
- 504 0016 1868     		ldr	r0, [r3]
- 505 0018 FFF7FEFF 		bl	xQueueReceive
- 506              	.LVL40:
- 113:move/Src/Movebase.c ****     {
- 507              		.loc 1 113 7 view .LVU86
- 508 001c 0128     		cmp	r0, #1
- 509 001e 0FD0     		beq	.L36
- 141:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 510              		.loc 1 141 5 is_stmt 1 view .LVU87
- 141:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 511              		.loc 1 141 18 is_stmt 0 view .LVU88
- 512 0020 5B4C     		ldr	r4, .L37+8
- 513              	.LVL41:
- 141:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 514              		.loc 1 141 18 view .LVU89
- 515 0022 0521     		movs	r1, #5
- 516 0024 601C     		adds	r0, r4, #1
- 517 0026 FFF7FEFF 		bl	calculate_xor_checksum
- 518              	.LVL42:
- 141:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
- 519              		.loc 1 141 16 view .LVU90
- 520 002a A071     		strb	r0, [r4, #6]
- 142:move/Src/Movebase.c **** 
- 521              		.loc 1 142 5 is_stmt 1 view .LVU91
- 522 002c 4FF47A73 		mov	r3, #1000
- 523 0030 0822     		movs	r2, #8
- 524 0032 2146     		mov	r1, r4
- 525 0034 5748     		ldr	r0, .L37+12
- 526 0036 FFF7FEFF 		bl	HAL_UART_Transmit
- 527              	.LVL43:
- 528              	.LVL44:
- 529              	.L28:
- 146:move/Src/Movebase.c **** 
- 530              		.loc 1 146 1 is_stmt 0 view .LVU92
- 531 003a 05B0     		add	sp, sp, #20
- 532              	.LCFI14:
- 533              		.cfi_remember_state
- 534              		.cfi_def_cfa_offset 36
- 535              		@ sp needed
- 536 003c BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 537              	.LVL45:
- 538              	.L36:
- 539              	.LCFI15:
- 540              		.cfi_restore_state
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 541              		.loc 1 116 9 is_stmt 1 view .LVU93
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 14
-
-
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 542              		.loc 1 116 27 is_stmt 0 view .LVU94
- 543 0040 514D     		ldr	r5, .L37
- 544 0042 D5E90089 		ldrd	r8, [r5]
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 545              		.loc 1 116 30 view .LVU95
- 546 0046 3046     		mov	r0, r6
- 547 0048 FFF7FEFF 		bl	__aeabi_f2d
- 548              	.LVL46:
- 549 004c 0646     		mov	r6, r0
- 550              	.LVL47:
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 551              		.loc 1 116 30 view .LVU96
- 552 004e 0F46     		mov	r7, r1
- 553 0050 0246     		mov	r2, r0
- 554 0052 0B46     		mov	r3, r1
- 555 0054 4046     		mov	r0, r8
- 556 0056 4946     		mov	r1, r9
- 557 0058 FFF7FEFF 		bl	__aeabi_dsub
- 558              	.LVL48:
- 559 005c 0246     		mov	r2, r0
- 560 005e 0B46     		mov	r3, r1
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 561              		.loc 1 116 39 view .LVU97
- 562 0060 FFF7FEFF 		bl	__aeabi_dmul
- 563              	.LVL49:
- 564 0064 8246     		mov	r10, r0
- 565 0066 8B46     		mov	fp, r1
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 566              		.loc 1 116 65 view .LVU98
- 567 0068 D5E90289 		ldrd	r8, [r5, #8]
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 568              		.loc 1 116 68 view .LVU99
- 569 006c 2046     		mov	r0, r4
- 570 006e FFF7FEFF 		bl	__aeabi_f2d
- 571              	.LVL50:
- 572 0072 CDE90001 		strd	r0, [sp]
- 573 0076 0246     		mov	r2, r0
- 574 0078 0B46     		mov	r3, r1
- 575 007a 4046     		mov	r0, r8
- 576 007c 4946     		mov	r1, r9
- 577 007e FFF7FEFF 		bl	__aeabi_dsub
- 578              	.LVL51:
- 579 0082 0246     		mov	r2, r0
- 580 0084 0B46     		mov	r3, r1
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 581              		.loc 1 116 77 view .LVU100
- 582 0086 FFF7FEFF 		bl	__aeabi_dmul
- 583              	.LVL52:
- 584 008a 0246     		mov	r2, r0
- 585 008c 0B46     		mov	r3, r1
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 586              		.loc 1 116 17 view .LVU101
- 587 008e 5046     		mov	r0, r10
- 588 0090 5946     		mov	r1, fp
- 589 0092 FFF7FEFF 		bl	__aeabi_dadd
- 590              	.LVL53:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 15
-
-
- 591 0096 FFF7FEFF 		bl	sqrt
- 592              	.LVL54:
- 593 009a FFF7FEFF 		bl	__aeabi_d2f
- 594              	.LVL55:
- 595 009e 0146     		mov	r1, r0
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 596              		.loc 1 116 15 view .LVU102
- 597 00a0 3D4C     		ldr	r4, .L37+16
- 598              	.LVL56:
- 116:move/Src/Movebase.c ****         point_pid.outputmax = 127;
- 599              		.loc 1 116 15 view .LVU103
- 600 00a2 2060     		str	r0, [r4]	@ float
- 117:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&point_pid, error);
- 601              		.loc 1 117 9 is_stmt 1 view .LVU104
- 117:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&point_pid, error);
- 602              		.loc 1 117 29 is_stmt 0 view .LVU105
- 603 00a4 DFF8F480 		ldr	r8, .L37+20
- 604 00a8 3D4B     		ldr	r3, .L37+24
- 605 00aa C8F82830 		str	r3, [r8, #40]	@ float
- 118:move/Src/Movebase.c **** 
- 606              		.loc 1 118 9 is_stmt 1 view .LVU106
- 607 00ae 4046     		mov	r0, r8
- 608 00b0 FFF7FEFF 		bl	PID_position_PID_calculation_by_error
- 609              	.LVL57:
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 610              		.loc 1 120 9 view .LVU107
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 611              		.loc 1 120 47 is_stmt 0 view .LVU108
- 612 00b4 3B49     		ldr	r1, .L37+28
- 613 00b6 D8F82400 		ldr	r0, [r8, #36]	@ float
- 614 00ba FFF7FEFF 		bl	__aeabi_fmul
- 615              	.LVL58:
- 616 00be FFF7FEFF 		bl	__aeabi_f2d
- 617              	.LVL59:
- 618 00c2 8046     		mov	r8, r0
- 619 00c4 8946     		mov	r9, r1
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 620              		.loc 1 120 63 view .LVU109
- 621 00c6 3246     		mov	r2, r6
- 622 00c8 3B46     		mov	r3, r7
- 623 00ca D5E90001 		ldrd	r0, [r5]
- 624 00ce FFF7FEFF 		bl	__aeabi_dsub
- 625              	.LVL60:
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 626              		.loc 1 120 54 view .LVU110
- 627 00d2 CDE90201 		strd	r0, [sp, #8]
- 628 00d6 0246     		mov	r2, r0
- 629 00d8 0B46     		mov	r3, r1
- 630 00da 4046     		mov	r0, r8
- 631 00dc 4946     		mov	r1, r9
- 632 00de FFF7FEFF 		bl	__aeabi_dmul
- 633              	.LVL61:
- 634 00e2 0646     		mov	r6, r0
- 635 00e4 0F46     		mov	r7, r1
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 636              		.loc 1 120 72 view .LVU111
- 637 00e6 2068     		ldr	r0, [r4]	@ float
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 16
-
-
- 638 00e8 FFF7FEFF 		bl	__aeabi_f2d
- 639              	.LVL62:
- 640 00ec 8246     		mov	r10, r0
- 641 00ee 8B46     		mov	fp, r1
- 642 00f0 0246     		mov	r2, r0
- 643 00f2 0B46     		mov	r3, r1
- 644 00f4 3046     		mov	r0, r6
- 645 00f6 3946     		mov	r1, r7
- 646 00f8 FFF7FEFF 		bl	__aeabi_ddiv
- 647              	.LVL63:
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 648              		.loc 1 120 22 view .LVU112
- 649 00fc FFF7FEFF 		bl	__aeabi_d2f
- 650              	.LVL64:
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 651              		.loc 1 120 21 view .LVU113
- 652 0100 00F10040 		add	r0, r0, #-2147483648
- 120:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 10.0f*(data.y - POS_Y) /error);//y轴
- 653              		.loc 1 120 20 view .LVU114
- 654 0104 284E     		ldr	r6, .L37+32
- 655 0106 3060     		str	r0, [r6]	@ float
- 121:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 656              		.loc 1 121 9 is_stmt 1 view .LVU115
- 121:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 657              		.loc 1 121 63 is_stmt 0 view .LVU116
- 658 0108 DDE90023 		ldrd	r2, [sp]
- 659 010c D5E90201 		ldrd	r0, [r5, #8]
- 660 0110 FFF7FEFF 		bl	__aeabi_dsub
- 661              	.LVL65:
- 662 0114 0446     		mov	r4, r0
- 663 0116 0D46     		mov	r5, r1
- 121:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 664              		.loc 1 121 54 view .LVU117
- 665 0118 0246     		mov	r2, r0
- 666 011a 0B46     		mov	r3, r1
- 667 011c 4046     		mov	r0, r8
- 668 011e 4946     		mov	r1, r9
- 669 0120 FFF7FEFF 		bl	__aeabi_dmul
- 670              	.LVL66:
- 121:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 671              		.loc 1 121 72 view .LVU118
- 672 0124 5246     		mov	r2, r10
- 673 0126 5B46     		mov	r3, fp
- 674 0128 FFF7FEFF 		bl	__aeabi_ddiv
- 675              	.LVL67:
- 121:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 676              		.loc 1 121 22 view .LVU119
- 677 012c FFF7FEFF 		bl	__aeabi_d2f
- 678              	.LVL68:
- 679 0130 0746     		mov	r7, r0
- 121:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
- 680              		.loc 1 121 20 view .LVU120
- 681 0132 7060     		str	r0, [r6, #4]	@ float
- 124:move/Src/Movebase.c ****         {
- 682              		.loc 1 124 9 is_stmt 1 view .LVU121
- 124:move/Src/Movebase.c ****         {
- 683              		.loc 1 124 12 is_stmt 0 view .LVU122
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 17
-
-
- 684 0134 DDE90201 		ldrd	r0, [sp, #8]
- 685 0138 FFF7FEFF 		bl	__aeabi_d2f
- 686              	.LVL69:
- 687 013c FFF7FEFF 		bl	ABS
- 688              	.LVL70:
- 124:move/Src/Movebase.c ****         {
- 689              		.loc 1 124 11 view .LVU123
- 690 0140 1A49     		ldr	r1, .L37+36
- 691 0142 FFF7FEFF 		bl	__aeabi_fcmplt
- 692              	.LVL71:
- 693 0146 48B1     		cbz	r0, .L30
- 124:move/Src/Movebase.c ****         {
- 694              		.loc 1 124 38 discriminator 1 view .LVU124
- 695 0148 2046     		mov	r0, r4
- 696 014a 2946     		mov	r1, r5
- 697 014c FFF7FEFF 		bl	__aeabi_d2f
- 698              	.LVL72:
- 699 0150 FFF7FEFF 		bl	ABS
- 700              	.LVL73:
- 124:move/Src/Movebase.c ****         {
- 701              		.loc 1 124 35 discriminator 1 view .LVU125
- 702 0154 1549     		ldr	r1, .L37+36
- 703 0156 FFF7FEFF 		bl	__aeabi_fcmplt
- 704              	.LVL74:
- 705 015a 90B9     		cbnz	r0, .L33
- 706              	.L30:
- 130:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
- 707              		.loc 1 130 13 is_stmt 1 view .LVU126
- 130:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
- 708              		.loc 1 130 24 is_stmt 0 view .LVU127
- 709 015c 124C     		ldr	r4, .L37+32
- 710 015e 144B     		ldr	r3, .L37+40
- 711 0160 2360     		str	r3, [r4]	@ float
- 131:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
- 712              		.loc 1 131 13 is_stmt 1 view .LVU128
- 131:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
- 713              		.loc 1 131 29 is_stmt 0 view .LVU129
- 714 0162 4FF08641 		mov	r1, #1124073472
- 715 0166 3846     		mov	r0, r7
- 716 0168 FFF7FEFF 		bl	__aeabi_fadd
- 717              	.LVL75:
- 131:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
- 718              		.loc 1 131 24 view .LVU130
- 719 016c 6060     		str	r0, [r4, #4]	@ float
- 133:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
- 720              		.loc 1 133 13 is_stmt 1 view .LVU131
- 133:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
- 721              		.loc 1 133 24 is_stmt 0 view .LVU132
- 722 016e 084C     		ldr	r4, .L37+8
- 723 0170 6423     		movs	r3, #100
- 724 0172 6370     		strb	r3, [r4, #1]
+ 123:move/Src/Movebase.c ****     //     height_error=height-pos_z;
+ 124:move/Src/Movebase.c ****     //     PID_position_PID_calculation_by_error(&height_pid, height_error);
+ 125:move/Src/Movebase.c **** 
+ 126:move/Src/Movebase.c ****     //     command[4] = 128;//不转动
+ 127:move/Src/Movebase.c ****     //     command[3]= (uint8_t)(height_pid.output+128);
+ 128:move/Src/Movebase.c ****     //     command[6] = calculate_xor_checksum(command+1, 5);
+ 129:move/Src/Movebase.c ****     //     // command[3]= (uint8_t)(180);
+ 130:move/Src/Movebase.c ****     //     // command[3]= (uint8_t)(255);
+ 131:move/Src/Movebase.c ****     // // HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 132:move/Src/Movebase.c ****     // }
+ 133:move/Src/Movebase.c ****     command[4] = 128;//不转动
  134:move/Src/Movebase.c **** 
- 725              		.loc 1 134 13 is_stmt 1 view .LVU133
- 134:move/Src/Movebase.c **** 
- 726              		.loc 1 134 26 is_stmt 0 view .LVU134
- 727 0174 FFF7FEFF 		bl	__aeabi_f2uiz
- 728              	.LVL76:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 18
+ 135:move/Src/Movebase.c ****     if(finish== 1)
+ 136:move/Src/Movebase.c ****     {    
+ 137:move/Src/Movebase.c ****         command[3]= (uint8_t)(190);
+ 138:move/Src/Movebase.c ****         
+ 139:move/Src/Movebase.c ****     }
+ 140:move/Src/Movebase.c ****     else if(finish==2)
+ 141:move/Src/Movebase.c ****     {
+ 142:move/Src/Movebase.c ****         command[3]= (uint8_t)(128);
+ 143:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 144:move/Src/Movebase.c ****     }
+ 145:move/Src/Movebase.c ****     else if(finish==3)//
+ 146:move/Src/Movebase.c ****     {
+ 147:move/Src/Movebase.c ****         command[3]= (uint8_t)(128);
+ 148:move/Src/Movebase.c ****         Angle_adjust(command, -5, 0);
+ 149:move/Src/Movebase.c ****     }
+ 150:move/Src/Movebase.c ****     else if(finish==4)//
+ 151:move/Src/Movebase.c ****     {
+ 152:move/Src/Movebase.c ****         command[3]= (uint8_t)(128);
+ 153:move/Src/Movebase.c ****         Angle_adjust(command, 0, 10);
+ 154:move/Src/Movebase.c ****     }
+ 155:move/Src/Movebase.c ****     else if(finish==5)//
+ 156:move/Src/Movebase.c ****     {
+ 157:move/Src/Movebase.c ****         command[3]= (uint8_t)(128);
+ 158:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 159:move/Src/Movebase.c ****     }
+ 160:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
+ 161:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 162:move/Src/Movebase.c ****     // command[3]=0xFF;
+ 163:move/Src/Movebase.c ****     // command[6] = calculate_xor_checksum(command+1, 5);
+ 164:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 165:move/Src/Movebase.c **** 
+ 166:move/Src/Movebase.c ****     // HAL_Delay(3000);
+ 167:move/Src/Movebase.c **** 
+ 168:move/Src/Movebase.c ****     // command[3]=0x80;
+ 169:move/Src/Movebase.c ****     // command[6] = calculate_xor_checksum(command+1, 5);
+ 170:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 171:move/Src/Movebase.c **** 
+ 172:move/Src/Movebase.c ****     // command[4] = 0x80;//不转动
+ 173:move/Src/Movebase.c ****     // command[3]= (uint8_t)(165);
+ 174:move/Src/Movebase.c ****     // command[6] = calculate_xor_checksum(command+1, 5);
+ 175:move/Src/Movebase.c ****     // // uint8_t up[8] = {0x66, 0x80 ,0x80 ,0xFF ,0x80 ,0x00 ,0x7F ,0x99};
+ 176:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 177:move/Src/Movebase.c ****     return 1;
+ 178:move/Src/Movebase.c **** }
+ 179:move/Src/Movebase.c **** 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 14
 
 
- 134:move/Src/Movebase.c **** 
- 729              		.loc 1 134 24 view .LVU135
- 730 0178 A070     		strb	r0, [r4, #2]
- 136:move/Src/Movebase.c ****             
- 731              		.loc 1 136 13 is_stmt 1 view .LVU136
- 136:move/Src/Movebase.c ****             
- 732              		.loc 1 136 24 is_stmt 0 view .LVU137
- 733 017a 8023     		movs	r3, #128
- 734 017c 2371     		strb	r3, [r4, #4]
- 138:move/Src/Movebase.c ****         }
- 735              		.loc 1 138 13 is_stmt 1 view .LVU138
- 138:move/Src/Movebase.c ****         }
- 736              		.loc 1 138 20 is_stmt 0 view .LVU139
- 737 017e 0020     		movs	r0, #0
- 738 0180 5BE7     		b	.L28
- 739              	.L33:
- 126:move/Src/Movebase.c ****         }
- 740              		.loc 1 126 20 view .LVU140
- 741 0182 0120     		movs	r0, #1
- 742 0184 59E7     		b	.L28
- 743              	.L38:
- 744 0186 00BF     		.align	2
- 745              	.L37:
- 746 0188 00000000 		.word	.LANCHOR4
- 747 018c 00000000 		.word	UWB_RxPort
- 748 0190 00000000 		.word	.LANCHOR3
- 749 0194 00000000 		.word	huart3
- 750 0198 00000000 		.word	.LANCHOR5
- 751 019c 00000000 		.word	.LANCHOR0
- 752 01a0 0000FE42 		.word	1123942400
- 753 01a4 00002041 		.word	1092616192
- 754 01a8 00000000 		.word	.LANCHOR6
- 755 01ac 00004842 		.word	1112014848
- 756 01b0 0000C842 		.word	1120403456
- 757              		.cfi_endproc
- 758              	.LFE134:
- 760              		.global	error
- 761              		.global	q
- 762              		.global	command
- 763              		.global	Plane_V
- 764              		.global	height_pid
- 765              		.global	point_pid
- 766              		.global	data
- 767              		.section	.rodata
- 768              		.align	2
- 769              		.set	.LANCHOR2,. + 0
- 770              	.LC0:
- 771 0000 66808080 		.ascii	"f\200\200\200\200\000\000\231"
- 771      80000099 
- 772              	.LC1:
- 773 0008 668080FF 		.ascii	"f\200\200\377\200\000\177\231"
- 773      80007F99 
- 774              	.LC2:
- 775 0010 66808000 		.ascii	"f\200\200\000\200\000\200\231"
- 775      80008099 
- 776              		.section	.bss.Plane_V,"aw",%nobits
- 777              		.align	2
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 19
+ 180:move/Src/Movebase.c **** 
+ 181:move/Src/Movebase.c **** 
+ 182:move/Src/Movebase.c **** uint8_t  StartFly(void)
+ 183:move/Src/Movebase.c **** {
+ 518              		.loc 1 183 1 view -0
+ 519              		.cfi_startproc
+ 520              		@ args = 0, pretend = 0, frame = 24
+ 521              		@ frame_needed = 0, uses_anonymous_args = 0
+ 522 0000 70B5     		push	{r4, r5, r6, lr}
+ 523              	.LCFI9:
+ 524              		.cfi_def_cfa_offset 16
+ 525              		.cfi_offset 4, -16
+ 526              		.cfi_offset 5, -12
+ 527              		.cfi_offset 6, -8
+ 528              		.cfi_offset 14, -4
+ 529 0002 86B0     		sub	sp, sp, #24
+ 530              	.LCFI10:
+ 531              		.cfi_def_cfa_offset 40
+ 184:move/Src/Movebase.c ****     uint8_t Height[8] = {0x66, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x99};
+ 532              		.loc 1 184 5 view .LVU92
+ 533              		.loc 1 184 13 is_stmt 0 view .LVU93
+ 534 0004 1F4B     		ldr	r3, .L50
+ 535 0006 04AE     		add	r6, sp, #16
+ 536 0008 93E80300 		ldm	r3, {r0, r1}
+ 537 000c 86E80300 		stm	r6, {r0, r1}
+ 185:move/Src/Movebase.c ****     uint8_t up[8] = {0x66, 0x80 ,0x80 ,0xFF ,0x80 ,0x00 ,0x7F ,0x99};
+ 538              		.loc 1 185 5 is_stmt 1 view .LVU94
+ 539              		.loc 1 185 13 is_stmt 0 view .LVU95
+ 540 0010 02AD     		add	r5, sp, #8
+ 541 0012 03F10802 		add	r2, r3, #8
+ 542 0016 92E80300 		ldm	r2, {r0, r1}
+ 543 001a 85E80300 		stm	r5, {r0, r1}
+ 186:move/Src/Movebase.c ****     uint8_t down[8] = {0x66, 0x80 ,0x80 ,0x00 ,0x80 ,0x00 ,0x80 ,0x99};
+ 544              		.loc 1 186 5 is_stmt 1 view .LVU96
+ 545              		.loc 1 186 13 is_stmt 0 view .LVU97
+ 546 001e 6A46     		mov	r2, sp
+ 547 0020 1033     		adds	r3, r3, #16
+ 548 0022 93E80300 		ldm	r3, {r0, r1}
+ 549 0026 82E80300 		stm	r2, {r0, r1}
+ 187:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, Height, 8, 1000);
+ 550              		.loc 1 187 5 is_stmt 1 view .LVU98
+ 551 002a 174C     		ldr	r4, .L50+4
+ 552 002c 4FF47A73 		mov	r3, #1000
+ 553 0030 0822     		movs	r2, #8
+ 554 0032 3146     		mov	r1, r6
+ 555 0034 2046     		mov	r0, r4
+ 556 0036 FFF7FEFF 		bl	HAL_UART_Transmit
+ 557              	.LVL54:
+ 188:move/Src/Movebase.c ****     HAL_Delay(10);
+ 558              		.loc 1 188 5 view .LVU99
+ 559 003a 0A20     		movs	r0, #10
+ 560 003c FFF7FEFF 		bl	HAL_Delay
+ 561              	.LVL55:
+ 189:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, up, 8, 1000);
+ 562              		.loc 1 189 5 view .LVU100
+ 563 0040 4FF47A73 		mov	r3, #1000
+ 564 0044 0822     		movs	r2, #8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 15
 
 
- 778              		.set	.LANCHOR6,. + 0
- 781              	Plane_V:
- 782 0000 00000000 		.space	12
- 782      00000000 
- 782      00000000 
- 783              		.section	.bss.data,"aw",%nobits
- 784              		.align	3
- 785              		.set	.LANCHOR4,. + 0
- 788              	data:
- 789 0000 00000000 		.space	24
- 789      00000000 
- 789      00000000 
- 789      00000000 
- 789      00000000 
- 790              		.section	.bss.error,"aw",%nobits
- 791              		.align	2
- 792              		.set	.LANCHOR5,. + 0
- 795              	error:
- 796 0000 00000000 		.space	4
- 797              		.section	.bss.height_pid,"aw",%nobits
- 798              		.align	2
- 799              		.set	.LANCHOR1,. + 0
- 802              	height_pid:
- 803 0000 00000000 		.space	56
- 803      00000000 
- 803      00000000 
- 803      00000000 
- 803      00000000 
- 804              		.section	.bss.point_pid,"aw",%nobits
- 805              		.align	2
- 806              		.set	.LANCHOR0,. + 0
- 809              	point_pid:
- 810 0000 00000000 		.space	56
- 810      00000000 
- 810      00000000 
- 810      00000000 
- 810      00000000 
- 811              		.section	.bss.q,"aw",%nobits
- 812              		.align	2
- 815              	q:
- 816 0000 00000000 		.space	4
- 817              		.section	.data.command,"aw"
- 818              		.align	2
- 819              		.set	.LANCHOR3,. + 0
- 822              	command:
- 823 0000 66808080 		.ascii	"f\200\200\200\200\000\000\231"
- 823      80000099 
- 824              		.text
- 825              	.Letext0:
- 826              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
- 827              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 828              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 829              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 830              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 831              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 832              		.file 8 "DWM1000/Inc/trilateration.h"
- 833              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 20
+ 565 0046 2946     		mov	r1, r5
+ 566 0048 2046     		mov	r0, r4
+ 567 004a FFF7FEFF 		bl	HAL_UART_Transmit
+ 568              	.LVL56:
+ 190:move/Src/Movebase.c ****     HAL_Delay(10);
+ 569              		.loc 1 190 5 view .LVU101
+ 570 004e 0A20     		movs	r0, #10
+ 571 0050 FFF7FEFF 		bl	HAL_Delay
+ 572              	.LVL57:
+ 191:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, Height, 8, 1000);
+ 573              		.loc 1 191 5 view .LVU102
+ 574 0054 4FF47A73 		mov	r3, #1000
+ 575 0058 0822     		movs	r2, #8
+ 576 005a 3146     		mov	r1, r6
+ 577 005c 2046     		mov	r0, r4
+ 578 005e FFF7FEFF 		bl	HAL_UART_Transmit
+ 579              	.LVL58:
+ 192:move/Src/Movebase.c ****     HAL_Delay(10);
+ 580              		.loc 1 192 5 view .LVU103
+ 581 0062 0A20     		movs	r0, #10
+ 582 0064 FFF7FEFF 		bl	HAL_Delay
+ 583              	.LVL59:
+ 193:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, up, 8, 1000);
+ 584              		.loc 1 193 5 view .LVU104
+ 585 0068 4FF47A73 		mov	r3, #1000
+ 586 006c 0822     		movs	r2, #8
+ 587 006e 2946     		mov	r1, r5
+ 588 0070 2046     		mov	r0, r4
+ 589 0072 FFF7FEFF 		bl	HAL_UART_Transmit
+ 590              	.LVL60:
+ 194:move/Src/Movebase.c ****     __HAL_TIM_SetCounter(&htim2, 0);
+ 591              		.loc 1 194 5 view .LVU105
+ 592 0076 054B     		ldr	r3, .L50+8
+ 593 0078 1B68     		ldr	r3, [r3]
+ 594 007a 0022     		movs	r2, #0
+ 595 007c 5A62     		str	r2, [r3, #36]
+ 195:move/Src/Movebase.c ****     // HAL_Delay(10);
+ 196:move/Src/Movebase.c ****     // HAL_UART_Transmit(&huart3, down, 8, 1000);
+ 197:move/Src/Movebase.c ****     return 1;
+ 596              		.loc 1 197 5 view .LVU106
+ 198:move/Src/Movebase.c **** }
+ 597              		.loc 1 198 1 is_stmt 0 view .LVU107
+ 598 007e 0120     		movs	r0, #1
+ 599 0080 06B0     		add	sp, sp, #24
+ 600              	.LCFI11:
+ 601              		.cfi_def_cfa_offset 16
+ 602              		@ sp needed
+ 603 0082 70BD     		pop	{r4, r5, r6, pc}
+ 604              	.L51:
+ 605              		.align	2
+ 606              	.L50:
+ 607 0084 00000000 		.word	.LANCHOR6
+ 608 0088 00000000 		.word	huart3
+ 609 008c 00000000 		.word	htim2
+ 610              		.cfi_endproc
+ 611              	.LFE135:
+ 613              		.section	.text.calculate_xor_checksum,"ax",%progbits
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 16
 
 
- 834              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
- 835              		.file 11 "application/data_pool.h"
- 836              		.file 12 "algorithm/pid.h"
- 837              		.file 13 "Core/Inc/usart.h"
- 838              		.file 14 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\math.h"
- 839              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 21
+ 614              		.align	1
+ 615              		.global	calculate_xor_checksum
+ 616              		.syntax unified
+ 617              		.thumb
+ 618              		.thumb_func
+ 620              	calculate_xor_checksum:
+ 621              	.LVL61:
+ 622              	.LFB137:
+ 199:move/Src/Movebase.c **** 
+ 200:move/Src/Movebase.c **** 
+ 201:move/Src/Movebase.c **** float error;
+ 202:move/Src/Movebase.c **** 
+ 203:move/Src/Movebase.c **** /**
+ 204:move/Src/Movebase.c ****  * @function: PointTrace
+ 205:move/Src/Movebase.c ****  * @brief: ָ立体点追踪
+ 206:move/Src/Movebase.c ****  * @param: x,y,z
+ 207:move/Src/Movebase.c ****  * @param: yaw 锁航向角度
+ 208:move/Src/Movebase.c ****  * @param: priority xyz坐标追踪顺序
+ 209:move/Src/Movebase.c ****  * @retval: 0:ing 1:finfish
+ 210:move/Src/Movebase.c ****  */
+ 211:move/Src/Movebase.c **** uint8_t PointTrace(float POS_X,float POS_Y,float POS_Z)
+ 212:move/Src/Movebase.c **** {
+ 213:move/Src/Movebase.c ****     // YawAdjust(POS_YAW);
+ 214:move/Src/Movebase.c ****     Fly_KEEP(POS_Z);
+ 215:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
+ 216:move/Src/Movebase.c ****     {
+ 217:move/Src/Movebase.c ****         //计算误差
+ 218:move/Src/Movebase.c ****         error = sqrt((data.x - POS_X) * (data.x - POS_X) + (data.y - POS_Y) * (data.y - POS_Y));  /
+ 219:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 220:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&point_pid, error);
+ 221:move/Src/Movebase.c **** 
+ 222:move/Src/Movebase.c ****         Plane_V[0] =-(float)(point_pid.output * 1.0f*(data.x - POS_X) /error);//x轴
+ 223:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 224:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 225:move/Src/Movebase.c **** 
+ 226:move/Src/Movebase.c ****         if(ABS(data.x - POS_X)<50 && ABS(data.y- POS_Y)<50)
+ 227:move/Src/Movebase.c ****         {
+ 228:move/Src/Movebase.c ****             return 1;
+ 229:move/Src/Movebase.c ****         }
+ 230:move/Src/Movebase.c ****         else
+ 231:move/Src/Movebase.c ****         {
+ 232:move/Src/Movebase.c ****             Plane_V[0] = 128+Plane_V[0];
+ 233:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
+ 234:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
+ 235:move/Src/Movebase.c ****             command[1] = (uint8_t)(Plane_V[0]);
+ 236:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
+ 237:move/Src/Movebase.c **** 
+ 238:move/Src/Movebase.c ****             command[4] = 128;//不转动
+ 239:move/Src/Movebase.c ****             
+ 240:move/Src/Movebase.c ****             return 0;
+ 241:move/Src/Movebase.c ****         }
+ 242:move/Src/Movebase.c ****     }
+ 243:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
+ 244:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 245:move/Src/Movebase.c **** 
+ 246:move/Src/Movebase.c **** }
+ 247:move/Src/Movebase.c **** 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 17
+
+
+ 248:move/Src/Movebase.c **** 
+ 249:move/Src/Movebase.c **** unsigned char calculate_xor_checksum(const unsigned char* data, uint8_t length) 
+ 250:move/Src/Movebase.c **** {
+ 623              		.loc 1 250 1 is_stmt 1 view -0
+ 624              		.cfi_startproc
+ 625              		@ args = 0, pretend = 0, frame = 0
+ 626              		@ frame_needed = 0, uses_anonymous_args = 0
+ 627              		@ link register save eliminated.
+ 628              		.loc 1 250 1 is_stmt 0 view .LVU109
+ 629 0000 8446     		mov	ip, r0
+ 251:move/Src/Movebase.c ****     unsigned char checksum = 0;
+ 630              		.loc 1 251 5 is_stmt 1 view .LVU110
+ 631              	.LVL62:
+ 252:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
+ 632              		.loc 1 252 5 view .LVU111
+ 633              	.LBB3:
+ 634              		.loc 1 252 10 view .LVU112
+ 635              		.loc 1 252 18 is_stmt 0 view .LVU113
+ 636 0002 0023     		movs	r3, #0
+ 637              	.LBE3:
+ 251:move/Src/Movebase.c ****     unsigned char checksum = 0;
+ 638              		.loc 1 251 19 view .LVU114
+ 639 0004 1846     		mov	r0, r3
+ 640              	.LVL63:
+ 641              	.LBB4:
+ 642              		.loc 1 252 5 view .LVU115
+ 643 0006 04E0     		b	.L53
+ 644              	.LVL64:
+ 645              	.L54:
+ 253:move/Src/Movebase.c ****     {
+ 254:move/Src/Movebase.c ****         checksum ^= data[i];
+ 646              		.loc 1 254 9 is_stmt 1 discriminator 3 view .LVU116
+ 647              		.loc 1 254 25 is_stmt 0 discriminator 3 view .LVU117
+ 648 0008 1CF80320 		ldrb	r2, [ip, r3]	@ zero_extendqisi2
+ 649              		.loc 1 254 18 discriminator 3 view .LVU118
+ 650 000c 5040     		eors	r0, r0, r2
+ 651              	.LVL65:
+ 252:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
+ 652              		.loc 1 252 37 is_stmt 1 discriminator 3 view .LVU119
+ 252:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
+ 653              		.loc 1 252 38 is_stmt 0 discriminator 3 view .LVU120
+ 654 000e 0133     		adds	r3, r3, #1
+ 655              	.LVL66:
+ 252:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
+ 656              		.loc 1 252 38 discriminator 3 view .LVU121
+ 657 0010 DBB2     		uxtb	r3, r3
+ 658              	.LVL67:
+ 659              	.L53:
+ 252:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
+ 660              		.loc 1 252 25 is_stmt 1 discriminator 1 view .LVU122
+ 252:move/Src/Movebase.c ****     for (uint8_t i = 0; i < length; i++) 
+ 661              		.loc 1 252 5 is_stmt 0 discriminator 1 view .LVU123
+ 662 0012 8B42     		cmp	r3, r1
+ 663 0014 F8D3     		bcc	.L54
+ 664              	.LBE4:
+ 255:move/Src/Movebase.c ****     }
+ 256:move/Src/Movebase.c ****     return checksum;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 18
+
+
+ 665              		.loc 1 256 5 is_stmt 1 view .LVU124
+ 257:move/Src/Movebase.c **** }
+ 666              		.loc 1 257 1 is_stmt 0 view .LVU125
+ 667 0016 7047     		bx	lr
+ 668              		.cfi_endproc
+ 669              	.LFE137:
+ 671              		.section	.text.LockZ,"ax",%progbits
+ 672              		.align	1
+ 673              		.global	LockZ
+ 674              		.syntax unified
+ 675              		.thumb
+ 676              		.thumb_func
+ 678              	LockZ:
+ 679              	.LFB133:
+ 109:move/Src/Movebase.c ****     command[3]= (uint8_t)(160);
+ 680              		.loc 1 109 1 is_stmt 1 view -0
+ 681              		.cfi_startproc
+ 682              		@ args = 0, pretend = 0, frame = 0
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 684 0000 10B5     		push	{r4, lr}
+ 685              	.LCFI12:
+ 686              		.cfi_def_cfa_offset 8
+ 687              		.cfi_offset 4, -8
+ 688              		.cfi_offset 14, -4
+ 110:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
+ 689              		.loc 1 110 5 view .LVU127
+ 110:move/Src/Movebase.c ****     command[6] = calculate_xor_checksum(command+1, 5);
+ 690              		.loc 1 110 15 is_stmt 0 view .LVU128
+ 691 0002 084C     		ldr	r4, .L57
+ 692 0004 A023     		movs	r3, #160
+ 693 0006 E370     		strb	r3, [r4, #3]
+ 111:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 694              		.loc 1 111 5 is_stmt 1 view .LVU129
+ 111:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 695              		.loc 1 111 18 is_stmt 0 view .LVU130
+ 696 0008 0521     		movs	r1, #5
+ 697 000a 601C     		adds	r0, r4, #1
+ 698 000c FFF7FEFF 		bl	calculate_xor_checksum
+ 699              	.LVL68:
+ 111:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 700              		.loc 1 111 16 view .LVU131
+ 701 0010 A071     		strb	r0, [r4, #6]
+ 112:move/Src/Movebase.c **** }
+ 702              		.loc 1 112 5 is_stmt 1 view .LVU132
+ 703 0012 4FF47A73 		mov	r3, #1000
+ 704 0016 0822     		movs	r2, #8
+ 705 0018 2146     		mov	r1, r4
+ 706 001a 0348     		ldr	r0, .L57+4
+ 707 001c FFF7FEFF 		bl	HAL_UART_Transmit
+ 708              	.LVL69:
+ 113:move/Src/Movebase.c **** 
+ 709              		.loc 1 113 1 is_stmt 0 view .LVU133
+ 710 0020 10BD     		pop	{r4, pc}
+ 711              	.L58:
+ 712 0022 00BF     		.align	2
+ 713              	.L57:
+ 714 0024 00000000 		.word	.LANCHOR7
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 19
+
+
+ 715 0028 00000000 		.word	huart3
+ 716              		.cfi_endproc
+ 717              	.LFE133:
+ 719              		.section	.text.Fly_FSM,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	Fly_FSM
+ 722              		.syntax unified
+ 723              		.thumb
+ 724              		.thumb_func
+ 726              	Fly_FSM:
+ 727              	.LVL70:
+ 728              	.LFB134:
+ 116:move/Src/Movebase.c ****     float pos_z;
+ 729              		.loc 1 116 1 is_stmt 1 view -0
+ 730              		.cfi_startproc
+ 731              		@ args = 0, pretend = 0, frame = 0
+ 732              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116:move/Src/Movebase.c ****     float pos_z;
+ 733              		.loc 1 116 1 is_stmt 0 view .LVU135
+ 734 0000 10B5     		push	{r4, lr}
+ 735              	.LCFI13:
+ 736              		.cfi_def_cfa_offset 8
+ 737              		.cfi_offset 4, -8
+ 738              		.cfi_offset 14, -4
+ 117:move/Src/Movebase.c ****     // HCSR04_GetData();
+ 739              		.loc 1 117 5 is_stmt 1 view .LVU136
+ 133:move/Src/Movebase.c **** 
+ 740              		.loc 1 133 5 view .LVU137
+ 133:move/Src/Movebase.c **** 
+ 741              		.loc 1 133 16 is_stmt 0 view .LVU138
+ 742 0002 204B     		ldr	r3, .L70
+ 743 0004 8022     		movs	r2, #128
+ 744 0006 1A71     		strb	r2, [r3, #4]
+ 135:move/Src/Movebase.c ****     {    
+ 745              		.loc 1 135 5 is_stmt 1 view .LVU139
+ 135:move/Src/Movebase.c ****     {    
+ 746              		.loc 1 135 14 is_stmt 0 view .LVU140
+ 747 0008 1F4B     		ldr	r3, .L70+4
+ 748 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 135:move/Src/Movebase.c ****     {    
+ 749              		.loc 1 135 7 view .LVU141
+ 750 000c 012B     		cmp	r3, #1
+ 751 000e 0FD0     		beq	.L66
+ 140:move/Src/Movebase.c ****     {
+ 752              		.loc 1 140 10 is_stmt 1 view .LVU142
+ 140:move/Src/Movebase.c ****     {
+ 753              		.loc 1 140 12 is_stmt 0 view .LVU143
+ 754 0010 022B     		cmp	r3, #2
+ 755 0012 1FD0     		beq	.L67
+ 145:move/Src/Movebase.c ****     {
+ 756              		.loc 1 145 10 is_stmt 1 view .LVU144
+ 145:move/Src/Movebase.c ****     {
+ 757              		.loc 1 145 12 is_stmt 0 view .LVU145
+ 758 0014 032B     		cmp	r3, #3
+ 759 0016 25D0     		beq	.L68
+ 150:move/Src/Movebase.c ****     {
+ 760              		.loc 1 150 10 is_stmt 1 view .LVU146
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 20
+
+
+ 150:move/Src/Movebase.c ****     {
+ 761              		.loc 1 150 12 is_stmt 0 view .LVU147
+ 762 0018 042B     		cmp	r3, #4
+ 763 001a 2BD0     		beq	.L69
+ 155:move/Src/Movebase.c ****     {
+ 764              		.loc 1 155 10 is_stmt 1 view .LVU148
+ 155:move/Src/Movebase.c ****     {
+ 765              		.loc 1 155 12 is_stmt 0 view .LVU149
+ 766 001c 052B     		cmp	r3, #5
+ 767 001e 0AD1     		bne	.L61
+ 157:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 768              		.loc 1 157 9 is_stmt 1 view .LVU150
+ 157:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 769              		.loc 1 157 19 is_stmt 0 view .LVU151
+ 770 0020 1848     		ldr	r0, .L70
+ 771              	.LVL71:
+ 157:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 772              		.loc 1 157 19 view .LVU152
+ 773 0022 8023     		movs	r3, #128
+ 774 0024 C370     		strb	r3, [r0, #3]
+ 158:move/Src/Movebase.c ****     }
+ 775              		.loc 1 158 9 is_stmt 1 view .LVU153
+ 776 0026 0021     		movs	r1, #0
+ 777 0028 0A46     		mov	r2, r1
+ 778 002a FFF7FEFF 		bl	Angle_adjust
+ 779              	.LVL72:
+ 780 002e 02E0     		b	.L61
+ 781              	.LVL73:
+ 782              	.L66:
+ 137:move/Src/Movebase.c ****         
+ 783              		.loc 1 137 9 view .LVU154
+ 137:move/Src/Movebase.c ****         
+ 784              		.loc 1 137 19 is_stmt 0 view .LVU155
+ 785 0030 144B     		ldr	r3, .L70
+ 786 0032 BE22     		movs	r2, #190
+ 787 0034 DA70     		strb	r2, [r3, #3]
+ 788              	.LVL74:
+ 789              	.L61:
+ 160:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 790              		.loc 1 160 5 is_stmt 1 view .LVU156
+ 160:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 791              		.loc 1 160 18 is_stmt 0 view .LVU157
+ 792 0036 134C     		ldr	r4, .L70
+ 793 0038 0521     		movs	r1, #5
+ 794 003a 601C     		adds	r0, r4, #1
+ 795 003c FFF7FEFF 		bl	calculate_xor_checksum
+ 796              	.LVL75:
+ 160:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 797              		.loc 1 160 16 view .LVU158
+ 798 0040 A071     		strb	r0, [r4, #6]
+ 161:move/Src/Movebase.c ****     // command[3]=0xFF;
+ 799              		.loc 1 161 5 is_stmt 1 view .LVU159
+ 800 0042 4FF47A73 		mov	r3, #1000
+ 801 0046 0822     		movs	r2, #8
+ 802 0048 2146     		mov	r1, r4
+ 803 004a 1048     		ldr	r0, .L70+8
+ 804 004c FFF7FEFF 		bl	HAL_UART_Transmit
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 21
+
+
+ 805              	.LVL76:
+ 177:move/Src/Movebase.c **** }
+ 806              		.loc 1 177 5 view .LVU160
+ 178:move/Src/Movebase.c **** 
+ 807              		.loc 1 178 1 is_stmt 0 view .LVU161
+ 808 0050 0120     		movs	r0, #1
+ 809 0052 10BD     		pop	{r4, pc}
+ 810              	.LVL77:
+ 811              	.L67:
+ 142:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 812              		.loc 1 142 9 is_stmt 1 view .LVU162
+ 142:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 813              		.loc 1 142 19 is_stmt 0 view .LVU163
+ 814 0054 0B48     		ldr	r0, .L70
+ 815              	.LVL78:
+ 142:move/Src/Movebase.c ****         Angle_adjust(command, 0, 0);
+ 816              		.loc 1 142 19 view .LVU164
+ 817 0056 8023     		movs	r3, #128
+ 818 0058 C370     		strb	r3, [r0, #3]
+ 143:move/Src/Movebase.c ****     }
+ 819              		.loc 1 143 9 is_stmt 1 view .LVU165
+ 820 005a 0021     		movs	r1, #0
+ 821 005c 0A46     		mov	r2, r1
+ 822 005e FFF7FEFF 		bl	Angle_adjust
+ 823              	.LVL79:
+ 824 0062 E8E7     		b	.L61
+ 825              	.LVL80:
+ 826              	.L68:
+ 147:move/Src/Movebase.c ****         Angle_adjust(command, -5, 0);
+ 827              		.loc 1 147 9 view .LVU166
+ 147:move/Src/Movebase.c ****         Angle_adjust(command, -5, 0);
+ 828              		.loc 1 147 19 is_stmt 0 view .LVU167
+ 829 0064 0748     		ldr	r0, .L70
+ 830              	.LVL81:
+ 147:move/Src/Movebase.c ****         Angle_adjust(command, -5, 0);
+ 831              		.loc 1 147 19 view .LVU168
+ 832 0066 8023     		movs	r3, #128
+ 833 0068 C370     		strb	r3, [r0, #3]
+ 148:move/Src/Movebase.c ****     }
+ 834              		.loc 1 148 9 is_stmt 1 view .LVU169
+ 835 006a 0022     		movs	r2, #0
+ 836 006c 0849     		ldr	r1, .L70+12
+ 837 006e FFF7FEFF 		bl	Angle_adjust
+ 838              	.LVL82:
+ 839 0072 E0E7     		b	.L61
+ 840              	.LVL83:
+ 841              	.L69:
+ 152:move/Src/Movebase.c ****         Angle_adjust(command, 0, 10);
+ 842              		.loc 1 152 9 view .LVU170
+ 152:move/Src/Movebase.c ****         Angle_adjust(command, 0, 10);
+ 843              		.loc 1 152 19 is_stmt 0 view .LVU171
+ 844 0074 0348     		ldr	r0, .L70
+ 845              	.LVL84:
+ 152:move/Src/Movebase.c ****         Angle_adjust(command, 0, 10);
+ 846              		.loc 1 152 19 view .LVU172
+ 847 0076 8023     		movs	r3, #128
+ 848 0078 C370     		strb	r3, [r0, #3]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 22
+
+
+ 153:move/Src/Movebase.c ****     }
+ 849              		.loc 1 153 9 is_stmt 1 view .LVU173
+ 850 007a 064A     		ldr	r2, .L70+16
+ 851 007c 0021     		movs	r1, #0
+ 852 007e FFF7FEFF 		bl	Angle_adjust
+ 853              	.LVL85:
+ 854 0082 D8E7     		b	.L61
+ 855              	.L71:
+ 856              		.align	2
+ 857              	.L70:
+ 858 0084 00000000 		.word	.LANCHOR7
+ 859 0088 00000000 		.word	finish
+ 860 008c 00000000 		.word	huart3
+ 861 0090 0000A0C0 		.word	-1063256064
+ 862 0094 00002041 		.word	1092616192
+ 863              		.cfi_endproc
+ 864              	.LFE134:
+ 866              		.global	__aeabi_f2d
+ 867              		.global	__aeabi_dsub
+ 868              		.global	__aeabi_dmul
+ 869              		.global	__aeabi_dadd
+ 870              		.global	__aeabi_d2f
+ 871              		.global	__aeabi_ddiv
+ 872              		.section	.text.PointTrace,"ax",%progbits
+ 873              		.align	1
+ 874              		.global	PointTrace
+ 875              		.syntax unified
+ 876              		.thumb
+ 877              		.thumb_func
+ 879              	PointTrace:
+ 880              	.LVL86:
+ 881              	.LFB136:
+ 212:move/Src/Movebase.c ****     // YawAdjust(POS_YAW);
+ 882              		.loc 1 212 1 view -0
+ 883              		.cfi_startproc
+ 884              		@ args = 0, pretend = 0, frame = 24
+ 885              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212:move/Src/Movebase.c ****     // YawAdjust(POS_YAW);
+ 886              		.loc 1 212 1 is_stmt 0 view .LVU175
+ 887 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 888              	.LCFI14:
+ 889              		.cfi_def_cfa_offset 36
+ 890              		.cfi_offset 4, -36
+ 891              		.cfi_offset 5, -32
+ 892              		.cfi_offset 6, -28
+ 893              		.cfi_offset 7, -24
+ 894              		.cfi_offset 8, -20
+ 895              		.cfi_offset 9, -16
+ 896              		.cfi_offset 10, -12
+ 897              		.cfi_offset 11, -8
+ 898              		.cfi_offset 14, -4
+ 899 0004 87B0     		sub	sp, sp, #28
+ 900              	.LCFI15:
+ 901              		.cfi_def_cfa_offset 64
+ 902 0006 0646     		mov	r6, r0
+ 903 0008 0C46     		mov	r4, r1
+ 214:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 23
+
+
+ 904              		.loc 1 214 5 is_stmt 1 view .LVU176
+ 905 000a 1046     		mov	r0, r2
+ 906              	.LVL87:
+ 214:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
+ 907              		.loc 1 214 5 is_stmt 0 view .LVU177
+ 908 000c FFF7FEFF 		bl	__aeabi_f2d
+ 909              	.LVL88:
+ 214:move/Src/Movebase.c ****     if(xQueueReceive(UWB_RxPort, &data, 0) == pdPASS)
+ 910              		.loc 1 214 5 view .LVU178
+ 911 0010 FFF7FEFF 		bl	Fly_KEEP
+ 912              	.LVL89:
+ 215:move/Src/Movebase.c ****     {
+ 913              		.loc 1 215 5 is_stmt 1 view .LVU179
+ 215:move/Src/Movebase.c ****     {
+ 914              		.loc 1 215 8 is_stmt 0 view .LVU180
+ 915 0014 0022     		movs	r2, #0
+ 916 0016 6249     		ldr	r1, .L81
+ 917 0018 624B     		ldr	r3, .L81+4
+ 918 001a 1868     		ldr	r0, [r3]
+ 919 001c FFF7FEFF 		bl	xQueueReceive
+ 920              	.LVL90:
+ 215:move/Src/Movebase.c ****     {
+ 921              		.loc 1 215 7 view .LVU181
+ 922 0020 0128     		cmp	r0, #1
+ 923 0022 0FD0     		beq	.L80
+ 243:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 924              		.loc 1 243 5 is_stmt 1 view .LVU182
+ 243:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 925              		.loc 1 243 18 is_stmt 0 view .LVU183
+ 926 0024 604C     		ldr	r4, .L81+8
+ 927              	.LVL91:
+ 243:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 928              		.loc 1 243 18 view .LVU184
+ 929 0026 0521     		movs	r1, #5
+ 930 0028 601C     		adds	r0, r4, #1
+ 931 002a FFF7FEFF 		bl	calculate_xor_checksum
+ 932              	.LVL92:
+ 243:move/Src/Movebase.c ****     HAL_UART_Transmit(&huart3, command, 8, 1000);
+ 933              		.loc 1 243 16 view .LVU185
+ 934 002e A071     		strb	r0, [r4, #6]
+ 244:move/Src/Movebase.c **** 
+ 935              		.loc 1 244 5 is_stmt 1 view .LVU186
+ 936 0030 4FF47A73 		mov	r3, #1000
+ 937 0034 0822     		movs	r2, #8
+ 938 0036 2146     		mov	r1, r4
+ 939 0038 5C48     		ldr	r0, .L81+12
+ 940 003a FFF7FEFF 		bl	HAL_UART_Transmit
+ 941              	.LVL93:
+ 942              	.LVL94:
+ 943              	.L72:
+ 246:move/Src/Movebase.c **** 
+ 944              		.loc 1 246 1 is_stmt 0 view .LVU187
+ 945 003e 07B0     		add	sp, sp, #28
+ 946              	.LCFI16:
+ 947              		.cfi_remember_state
+ 948              		.cfi_def_cfa_offset 36
+ 949              		@ sp needed
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 24
+
+
+ 950 0040 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 951              	.LVL95:
+ 952              	.L80:
+ 953              	.LCFI17:
+ 954              		.cfi_restore_state
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 955              		.loc 1 218 9 is_stmt 1 view .LVU188
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 956              		.loc 1 218 27 is_stmt 0 view .LVU189
+ 957 0044 564D     		ldr	r5, .L81
+ 958 0046 D5E90089 		ldrd	r8, [r5]
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 959              		.loc 1 218 30 view .LVU190
+ 960 004a 3046     		mov	r0, r6
+ 961 004c FFF7FEFF 		bl	__aeabi_f2d
+ 962              	.LVL96:
+ 963 0050 0646     		mov	r6, r0
+ 964              	.LVL97:
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 965              		.loc 1 218 30 view .LVU191
+ 966 0052 0F46     		mov	r7, r1
+ 967 0054 0246     		mov	r2, r0
+ 968 0056 0B46     		mov	r3, r1
+ 969 0058 4046     		mov	r0, r8
+ 970 005a 4946     		mov	r1, r9
+ 971 005c FFF7FEFF 		bl	__aeabi_dsub
+ 972              	.LVL98:
+ 973 0060 0246     		mov	r2, r0
+ 974 0062 0B46     		mov	r3, r1
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 975              		.loc 1 218 39 view .LVU192
+ 976 0064 FFF7FEFF 		bl	__aeabi_dmul
+ 977              	.LVL99:
+ 978 0068 8246     		mov	r10, r0
+ 979 006a 8B46     		mov	fp, r1
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 980              		.loc 1 218 65 view .LVU193
+ 981 006c D5E90289 		ldrd	r8, [r5, #8]
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 982              		.loc 1 218 68 view .LVU194
+ 983 0070 2046     		mov	r0, r4
+ 984 0072 FFF7FEFF 		bl	__aeabi_f2d
+ 985              	.LVL100:
+ 986 0076 CDE90001 		strd	r0, [sp]
+ 987 007a 0246     		mov	r2, r0
+ 988 007c 0B46     		mov	r3, r1
+ 989 007e 4046     		mov	r0, r8
+ 990 0080 4946     		mov	r1, r9
+ 991 0082 FFF7FEFF 		bl	__aeabi_dsub
+ 992              	.LVL101:
+ 993 0086 0246     		mov	r2, r0
+ 994 0088 0B46     		mov	r3, r1
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 995              		.loc 1 218 77 view .LVU195
+ 996 008a FFF7FEFF 		bl	__aeabi_dmul
+ 997              	.LVL102:
+ 998 008e 0246     		mov	r2, r0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 25
+
+
+ 999 0090 0B46     		mov	r3, r1
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 1000              		.loc 1 218 17 view .LVU196
+ 1001 0092 5046     		mov	r0, r10
+ 1002 0094 5946     		mov	r1, fp
+ 1003 0096 FFF7FEFF 		bl	__aeabi_dadd
+ 1004              	.LVL103:
+ 1005 009a FFF7FEFF 		bl	sqrt
+ 1006              	.LVL104:
+ 1007 009e FFF7FEFF 		bl	__aeabi_d2f
+ 1008              	.LVL105:
+ 1009 00a2 0146     		mov	r1, r0
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 1010              		.loc 1 218 15 view .LVU197
+ 1011 00a4 424C     		ldr	r4, .L81+16
+ 1012              	.LVL106:
+ 218:move/Src/Movebase.c ****         point_pid.outputmax = 127;
+ 1013              		.loc 1 218 15 view .LVU198
+ 1014 00a6 2060     		str	r0, [r4]	@ float
+ 219:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&point_pid, error);
+ 1015              		.loc 1 219 9 is_stmt 1 view .LVU199
+ 219:move/Src/Movebase.c ****         PID_position_PID_calculation_by_error(&point_pid, error);
+ 1016              		.loc 1 219 29 is_stmt 0 view .LVU200
+ 1017 00a8 DFF80881 		ldr	r8, .L81+20
+ 1018 00ac 424B     		ldr	r3, .L81+24
+ 1019 00ae C8F82830 		str	r3, [r8, #40]	@ float
+ 220:move/Src/Movebase.c **** 
+ 1020              		.loc 1 220 9 is_stmt 1 view .LVU201
+ 1021 00b2 4046     		mov	r0, r8
+ 1022 00b4 FFF7FEFF 		bl	PID_position_PID_calculation_by_error
+ 1023              	.LVL107:
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1024              		.loc 1 222 9 view .LVU202
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1025              		.loc 1 222 47 is_stmt 0 view .LVU203
+ 1026 00b8 D8F82400 		ldr	r0, [r8, #36]	@ float
+ 1027 00bc FFF7FEFF 		bl	__aeabi_f2d
+ 1028              	.LVL108:
+ 1029 00c0 8246     		mov	r10, r0
+ 1030 00c2 8B46     		mov	fp, r1
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1031              		.loc 1 222 62 view .LVU204
+ 1032 00c4 3246     		mov	r2, r6
+ 1033 00c6 3B46     		mov	r3, r7
+ 1034 00c8 D5E90001 		ldrd	r0, [r5]
+ 1035 00cc FFF7FEFF 		bl	__aeabi_dsub
+ 1036              	.LVL109:
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1037              		.loc 1 222 53 view .LVU205
+ 1038 00d0 CDE90401 		strd	r0, [sp, #16]
+ 1039 00d4 0246     		mov	r2, r0
+ 1040 00d6 0B46     		mov	r3, r1
+ 1041 00d8 5046     		mov	r0, r10
+ 1042 00da 5946     		mov	r1, fp
+ 1043 00dc FFF7FEFF 		bl	__aeabi_dmul
+ 1044              	.LVL110:
+ 1045 00e0 0646     		mov	r6, r0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 26
+
+
+ 1046 00e2 0F46     		mov	r7, r1
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1047              		.loc 1 222 71 view .LVU206
+ 1048 00e4 2068     		ldr	r0, [r4]	@ float
+ 1049 00e6 FFF7FEFF 		bl	__aeabi_f2d
+ 1050              	.LVL111:
+ 1051 00ea 0346     		mov	r3, r0
+ 1052 00ec 0C46     		mov	r4, r1
+ 1053 00ee CDE90234 		strd	r3, [sp, #8]
+ 1054 00f2 0246     		mov	r2, r0
+ 1055 00f4 0B46     		mov	r3, r1
+ 1056 00f6 3046     		mov	r0, r6
+ 1057 00f8 3946     		mov	r1, r7
+ 1058 00fa FFF7FEFF 		bl	__aeabi_ddiv
+ 1059              	.LVL112:
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1060              		.loc 1 222 22 view .LVU207
+ 1061 00fe FFF7FEFF 		bl	__aeabi_d2f
+ 1062              	.LVL113:
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1063              		.loc 1 222 21 view .LVU208
+ 1064 0102 00F10044 		add	r4, r0, #-2147483648
+ 222:move/Src/Movebase.c ****         Plane_V[1] = (float)(point_pid.output * 1.0f*(data.y - POS_Y) /error);//y轴
+ 1065              		.loc 1 222 20 view .LVU209
+ 1066 0106 DFF8B480 		ldr	r8, .L81+28
+ 1067 010a C8F80040 		str	r4, [r8]	@ float
+ 223:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 1068              		.loc 1 223 9 is_stmt 1 view .LVU210
+ 223:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 1069              		.loc 1 223 62 is_stmt 0 view .LVU211
+ 1070 010e DDE90023 		ldrd	r2, [sp]
+ 1071 0112 D5E90201 		ldrd	r0, [r5, #8]
+ 1072 0116 FFF7FEFF 		bl	__aeabi_dsub
+ 1073              	.LVL114:
+ 1074 011a 0646     		mov	r6, r0
+ 1075 011c 0F46     		mov	r7, r1
+ 223:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 1076              		.loc 1 223 53 view .LVU212
+ 1077 011e 0246     		mov	r2, r0
+ 1078 0120 0B46     		mov	r3, r1
+ 1079 0122 5046     		mov	r0, r10
+ 1080 0124 5946     		mov	r1, fp
+ 1081 0126 FFF7FEFF 		bl	__aeabi_dmul
+ 1082              	.LVL115:
+ 223:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 1083              		.loc 1 223 71 view .LVU213
+ 1084 012a DDE90223 		ldrd	r2, [sp, #8]
+ 1085 012e FFF7FEFF 		bl	__aeabi_ddiv
+ 1086              	.LVL116:
+ 223:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 1087              		.loc 1 223 22 view .LVU214
+ 1088 0132 FFF7FEFF 		bl	__aeabi_d2f
+ 1089              	.LVL117:
+ 1090 0136 0546     		mov	r5, r0
+ 223:move/Src/Movebase.c ****         // Plane_V[2] = (float)(point_pid.output * 1.0f*(data.z - POS_Z) /error);//z轴
+ 1091              		.loc 1 223 20 view .LVU215
+ 1092 0138 C8F80400 		str	r0, [r8, #4]	@ float
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 27
+
+
+ 226:move/Src/Movebase.c ****         {
+ 1093              		.loc 1 226 9 is_stmt 1 view .LVU216
+ 226:move/Src/Movebase.c ****         {
+ 1094              		.loc 1 226 12 is_stmt 0 view .LVU217
+ 1095 013c DDE90401 		ldrd	r0, [sp, #16]
+ 1096 0140 FFF7FEFF 		bl	__aeabi_d2f
+ 1097              	.LVL118:
+ 1098 0144 FFF7FEFF 		bl	ABS
+ 1099              	.LVL119:
+ 226:move/Src/Movebase.c ****         {
+ 1100              		.loc 1 226 11 view .LVU218
+ 1101 0148 1D49     		ldr	r1, .L81+32
+ 1102 014a FFF7FEFF 		bl	__aeabi_fcmplt
+ 1103              	.LVL120:
+ 1104 014e 48B1     		cbz	r0, .L74
+ 226:move/Src/Movebase.c ****         {
+ 1105              		.loc 1 226 38 discriminator 1 view .LVU219
+ 1106 0150 3046     		mov	r0, r6
+ 1107 0152 3946     		mov	r1, r7
+ 1108 0154 FFF7FEFF 		bl	__aeabi_d2f
+ 1109              	.LVL121:
+ 1110 0158 FFF7FEFF 		bl	ABS
+ 1111              	.LVL122:
+ 226:move/Src/Movebase.c ****         {
+ 1112              		.loc 1 226 35 discriminator 1 view .LVU220
+ 1113 015c 1849     		ldr	r1, .L81+32
+ 1114 015e FFF7FEFF 		bl	__aeabi_fcmplt
+ 1115              	.LVL123:
+ 1116 0162 D8B9     		cbnz	r0, .L77
+ 1117              	.L74:
+ 232:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
+ 1118              		.loc 1 232 13 is_stmt 1 view .LVU221
+ 232:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
+ 1119              		.loc 1 232 29 is_stmt 0 view .LVU222
+ 1120 0164 4FF08641 		mov	r1, #1124073472
+ 1121 0168 2046     		mov	r0, r4
+ 1122 016a FFF7FEFF 		bl	__aeabi_fadd
+ 1123              	.LVL124:
+ 1124 016e 0646     		mov	r6, r0
+ 232:move/Src/Movebase.c ****             Plane_V[1] = 128+Plane_V[1];
+ 1125              		.loc 1 232 24 view .LVU223
+ 1126 0170 124F     		ldr	r7, .L81+28
+ 1127 0172 3860     		str	r0, [r7]	@ float
+ 233:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
+ 1128              		.loc 1 233 13 is_stmt 1 view .LVU224
+ 233:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
+ 1129              		.loc 1 233 29 is_stmt 0 view .LVU225
+ 1130 0174 4FF08641 		mov	r1, #1124073472
+ 1131 0178 2846     		mov	r0, r5
+ 1132 017a FFF7FEFF 		bl	__aeabi_fadd
+ 1133              	.LVL125:
+ 1134 017e 0446     		mov	r4, r0
+ 233:move/Src/Movebase.c ****             // Plane_V[2] = 128+Plane_V[2];
+ 1135              		.loc 1 233 24 view .LVU226
+ 1136 0180 7860     		str	r0, [r7, #4]	@ float
+ 235:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
+ 1137              		.loc 1 235 13 is_stmt 1 view .LVU227
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 28
+
+
+ 235:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
+ 1138              		.loc 1 235 26 is_stmt 0 view .LVU228
+ 1139 0182 3046     		mov	r0, r6
+ 1140 0184 FFF7FEFF 		bl	__aeabi_f2uiz
+ 1141              	.LVL126:
+ 235:move/Src/Movebase.c ****             command[2] = (uint8_t)(Plane_V[1]);
+ 1142              		.loc 1 235 24 view .LVU229
+ 1143 0188 074D     		ldr	r5, .L81+8
+ 1144 018a 6870     		strb	r0, [r5, #1]
+ 236:move/Src/Movebase.c **** 
+ 1145              		.loc 1 236 13 is_stmt 1 view .LVU230
+ 236:move/Src/Movebase.c **** 
+ 1146              		.loc 1 236 26 is_stmt 0 view .LVU231
+ 1147 018c 2046     		mov	r0, r4
+ 1148 018e FFF7FEFF 		bl	__aeabi_f2uiz
+ 1149              	.LVL127:
+ 236:move/Src/Movebase.c **** 
+ 1150              		.loc 1 236 24 view .LVU232
+ 1151 0192 A870     		strb	r0, [r5, #2]
+ 238:move/Src/Movebase.c ****             
+ 1152              		.loc 1 238 13 is_stmt 1 view .LVU233
+ 238:move/Src/Movebase.c ****             
+ 1153              		.loc 1 238 24 is_stmt 0 view .LVU234
+ 1154 0194 8023     		movs	r3, #128
+ 1155 0196 2B71     		strb	r3, [r5, #4]
+ 240:move/Src/Movebase.c ****         }
+ 1156              		.loc 1 240 13 is_stmt 1 view .LVU235
+ 240:move/Src/Movebase.c ****         }
+ 1157              		.loc 1 240 20 is_stmt 0 view .LVU236
+ 1158 0198 0020     		movs	r0, #0
+ 1159 019a 50E7     		b	.L72
+ 1160              	.L77:
+ 228:move/Src/Movebase.c ****         }
+ 1161              		.loc 1 228 20 view .LVU237
+ 1162 019c 0120     		movs	r0, #1
+ 1163 019e 4EE7     		b	.L72
+ 1164              	.L82:
+ 1165              		.align	2
+ 1166              	.L81:
+ 1167 01a0 00000000 		.word	.LANCHOR8
+ 1168 01a4 00000000 		.word	UWB_RxPort
+ 1169 01a8 00000000 		.word	.LANCHOR7
+ 1170 01ac 00000000 		.word	huart3
+ 1171 01b0 00000000 		.word	.LANCHOR9
+ 1172 01b4 00000000 		.word	.LANCHOR1
+ 1173 01b8 0000FE42 		.word	1123942400
+ 1174 01bc 00000000 		.word	.LANCHOR10
+ 1175 01c0 00004842 		.word	1112014848
+ 1176              		.cfi_endproc
+ 1177              	.LFE136:
+ 1179              		.global	error
+ 1180              		.global	q
+ 1181              		.global	command
+ 1182              		.global	Plane_V
+ 1183              		.global	pitch_pid
+ 1184              		.global	roll_pid
+ 1185              		.global	height_pid
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 29
+
+
+ 1186              		.global	point_pid
+ 1187              		.global	imu_data
+ 1188              		.global	data
+ 1189              		.section	.rodata
+ 1190              		.align	2
+ 1191              		.set	.LANCHOR6,. + 0
+ 1192              	.LC0:
+ 1193 0000 66808080 		.ascii	"f\200\200\200\200\000\000\231"
+ 1193      80000099 
+ 1194              	.LC1:
+ 1195 0008 668080FF 		.ascii	"f\200\200\377\200\000\177\231"
+ 1195      80007F99 
+ 1196              	.LC2:
+ 1197 0010 66808000 		.ascii	"f\200\200\000\200\000\200\231"
+ 1197      80008099 
+ 1198              		.section	.bss.Plane_V,"aw",%nobits
+ 1199              		.align	2
+ 1200              		.set	.LANCHOR10,. + 0
+ 1203              	Plane_V:
+ 1204 0000 00000000 		.space	12
+ 1204      00000000 
+ 1204      00000000 
+ 1205              		.section	.bss.data,"aw",%nobits
+ 1206              		.align	3
+ 1207              		.set	.LANCHOR8,. + 0
+ 1210              	data:
+ 1211 0000 00000000 		.space	24
+ 1211      00000000 
+ 1211      00000000 
+ 1211      00000000 
+ 1211      00000000 
+ 1212              		.section	.bss.error,"aw",%nobits
+ 1213              		.align	2
+ 1214              		.set	.LANCHOR9,. + 0
+ 1217              	error:
+ 1218 0000 00000000 		.space	4
+ 1219              		.section	.bss.height_pid,"aw",%nobits
+ 1220              		.align	2
+ 1221              		.set	.LANCHOR2,. + 0
+ 1224              	height_pid:
+ 1225 0000 00000000 		.space	56
+ 1225      00000000 
+ 1225      00000000 
+ 1225      00000000 
+ 1225      00000000 
+ 1226              		.section	.bss.imu_data,"aw",%nobits
+ 1227              		.align	2
+ 1228              		.set	.LANCHOR5,. + 0
+ 1231              	imu_data:
+ 1232 0000 00000000 		.space	124
+ 1232      00000000 
+ 1232      00000000 
+ 1232      00000000 
+ 1232      00000000 
+ 1233              		.section	.bss.pitch_pid,"aw",%nobits
+ 1234              		.align	2
+ 1235              		.set	.LANCHOR4,. + 0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 30
+
+
+ 1238              	pitch_pid:
+ 1239 0000 00000000 		.space	56
+ 1239      00000000 
+ 1239      00000000 
+ 1239      00000000 
+ 1239      00000000 
+ 1240              		.section	.bss.point_pid,"aw",%nobits
+ 1241              		.align	2
+ 1242              		.set	.LANCHOR1,. + 0
+ 1245              	point_pid:
+ 1246 0000 00000000 		.space	56
+ 1246      00000000 
+ 1246      00000000 
+ 1246      00000000 
+ 1246      00000000 
+ 1247              		.section	.bss.q,"aw",%nobits
+ 1248              		.align	2
+ 1251              	q:
+ 1252 0000 00000000 		.space	4
+ 1253              		.section	.bss.recursiveTimes.0,"aw",%nobits
+ 1254              		.set	.LANCHOR0,. + 0
+ 1257              	recursiveTimes.0:
+ 1258 0000 00       		.space	1
+ 1259              		.section	.bss.roll_pid,"aw",%nobits
+ 1260              		.align	2
+ 1261              		.set	.LANCHOR3,. + 0
+ 1264              	roll_pid:
+ 1265 0000 00000000 		.space	56
+ 1265      00000000 
+ 1265      00000000 
+ 1265      00000000 
+ 1265      00000000 
+ 1266              		.section	.data.command,"aw"
+ 1267              		.align	2
+ 1268              		.set	.LANCHOR7,. + 0
+ 1271              	command:
+ 1272 0000 66808080 		.ascii	"f\200\200\200\200\000\000\231"
+ 1272      80000099 
+ 1273              		.text
+ 1274              	.Letext0:
+ 1275              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 1276              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1277              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 1278              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1279              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1280              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 1281              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 1282              		.file 9 "DWM1000/Inc/trilateration.h"
+ 1283              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 1284              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 1285              		.file 12 "BMI088/Inc/ins_task.h"
+ 1286              		.file 13 "application/data_pool.h"
+ 1287              		.file 14 "algorithm/pid.h"
+ 1288              		.file 15 "Core/Inc/usart.h"
+ 1289              		.file 16 "Core/Inc/tim.h"
+ 1290              		.file 17 "application/plane.h"
+ 1291              		.file 18 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\math.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 31
+
+
+ 1292              		.file 19 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 32
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Movebase.c
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:19     .text.ABS:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:25     .text.ABS:00000000 ABS
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:64     .text.Fly_init:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:70     .text.Fly_init:00000000 Fly_init
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:118    .text.Fly_init:0000003c $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:131    .text.StartFly:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:137    .text.StartFly:00000000 StartFly
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:223    .text.StartFly:0000007c $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:229    .text.calculate_xor_checksum:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:235    .text.calculate_xor_checksum:00000000 calculate_xor_checksum
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:287    .text.LockZ:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:293    .text.LockZ:00000000 LockZ
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:329    .text.LockZ:00000024 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:338    .text.Fly_KEEP:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:344    .text.Fly_KEEP:00000000 Fly_KEEP
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:445    .text.Fly_KEEP:0000005c $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:462    .text.PointTrace:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:468    .text.PointTrace:00000000 PointTrace
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:746    .text.PointTrace:00000188 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:795    .bss.error:00000000 error
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:815    .bss.q:00000000 q
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:822    .data.command:00000000 command
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:781    .bss.Plane_V:00000000 Plane_V
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:802    .bss.height_pid:00000000 height_pid
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:809    .bss.point_pid:00000000 point_pid
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:788    .bss.data:00000000 data
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:768    .rodata:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:777    .bss.Plane_V:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:784    .bss.data:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:791    .bss.error:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:798    .bss.height_pid:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:805    .bss.point_pid:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:812    .bss.q:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s:818    .data.command:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:19     .text.ABS:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:25     .text.ABS:00000000 ABS
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:67     .text.AngleLimit:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:73     .text.AngleLimit:00000000 AngleLimit
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:159    .text.AngleLimit:00000058 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:167    .text.Fly_init:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:173    .text.Fly_init:00000000 Fly_init
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:250    .text.Fly_init:00000078 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:271    .text.Angle_adjust:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:277    .text.Angle_adjust:00000000 Angle_adjust
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:499    .text.Angle_adjust:00000104 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:510    .text.StartFly:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:516    .text.StartFly:00000000 StartFly
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:607    .text.StartFly:00000084 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:614    .text.calculate_xor_checksum:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:620    .text.calculate_xor_checksum:00000000 calculate_xor_checksum
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:672    .text.LockZ:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:678    .text.LockZ:00000000 LockZ
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:714    .text.LockZ:00000024 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:720    .text.Fly_FSM:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:726    .text.Fly_FSM:00000000 Fly_FSM
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:858    .text.Fly_FSM:00000084 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:873    .text.PointTrace:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:879    .text.PointTrace:00000000 PointTrace
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1167   .text.PointTrace:000001a0 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1217   .bss.error:00000000 error
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1251   .bss.q:00000000 q
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1271   .data.command:00000000 command
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1203   .bss.Plane_V:00000000 Plane_V
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1238   .bss.pitch_pid:00000000 pitch_pid
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1264   .bss.roll_pid:00000000 roll_pid
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1224   .bss.height_pid:00000000 height_pid
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1245   .bss.point_pid:00000000 point_pid
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1231   .bss.imu_data:00000000 imu_data
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1210   .bss.data:00000000 data
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1190   .rodata:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1199   .bss.Plane_V:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1206   .bss.data:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1213   .bss.error:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1220   .bss.height_pid:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1227   .bss.imu_data:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1234   .bss.pitch_pid:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1241   .bss.point_pid:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1248   .bss.q:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1257   .bss.recursiveTimes.0:00000000 recursiveTimes.0
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1258   .bss.recursiveTimes.0:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1260   .bss.roll_pid:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s:1267   .data.command:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_fcmplt
-PID_parameter_init
-HAL_UART_Transmit
-HAL_Delay
-huart3
+__aeabi_fcmpgt
 __aeabi_fsub
 __aeabi_fadd
+PID_parameter_init
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc3yj5MN.s 			page 33
+
+
+__aeabi_fmul
+__aeabi_fcmpge
+__aeabi_fcmple
 __aeabi_f2uiz
 xQueueReceiveFromISR
 PID_position_PID_calculation_by_error
-HIGH_RxPort
+IMU_RxPort
+HAL_UART_Transmit
+HAL_Delay
+huart3
+htim2
+finish
 __aeabi_f2d
 __aeabi_dsub
 __aeabi_dmul
 __aeabi_dadd
 __aeabi_d2f
-__aeabi_fmul
 __aeabi_ddiv
+Fly_KEEP
 xQueueReceive
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc2ak8w2.s 			page 22
-
-
 sqrt
 UWB_RxPort

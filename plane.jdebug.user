@@ -1,28 +1,29 @@
 
 GraphedExpression="distance", Color=#a00909
 GraphedExpression="1.0", Color=#09a01b
+OpenDocument="stm32f1xx_it.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Core/Src/stm32f1xx_it.c", Line=86
+OpenDocument="tasks.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Middlewares/Third_Party/FreeRTOS/Source/tasks.c", Line=3417
+OpenDocument="stm32f1xx_hal.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c", Line=291
+OpenDocument="measure.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/wave/measure.c", Line=0
+OpenDocument="stm32f1xx_hal_spi.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c", Line=3658
 OpenDocument="startup_stm32f103xb.s", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/startup_stm32f103xb.s", Line=49
 OpenDocument="main.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Core/Src/main.c", Line=58
-OpenDocument="deca_device.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/decadriver/deca_device.c", Line=1220
-OpenDocument="deca_spi.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/platform/deca_spi.c", Line=87
-OpenDocument="stm32f1xx_hal_gpio.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c", Line=425
-OpenDocument="measure.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/wave/measure.c", Line=0
+OpenDocument="stm32f1xx_hal_gpio.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c", Line=423
 OpenDocument="plane_task.h", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/application/plane_task.h", Line=46
-OpenDocument="tasks.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Middlewares/Third_Party/FreeRTOS/Source/tasks.c", Line=1334
-OpenDocument="stm32f1xx_it.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Core/Src/stm32f1xx_it.c", Line=75
-OpenDocument="stm32f1xx_hal_spi.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c", Line=3592
-OpenDocument="stm32f1xx_hal.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c", Line=293
-OpenDocument="ex_05a_main.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/DWM1000/Src/ex_05a_main.c", Line=728
+OpenDocument="trilateration.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/DWM1000/Src/trilateration.c", Line=73
+OpenDocument="DWMport.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/platform/DWMport.c", Line=345
+OpenDocument="stm32f1xx_hal_uart.c", FilePath="D:/DesktopFile/Competition/2024ST_innovation/plane/newplane/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c", Line=3179
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=1, w=839, h=673, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Watched Data 1", DockArea=LEFT, x=0, y=0, w=515, h=1098, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=0, w=839, h=424, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
-OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=2560, h=323, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-TableHeader="Data Sampling Table", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time";" distance";" 1.0"], ColWidths=[100;100;100;100]
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=1, w=839, h=698, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Watched Data 1", DockArea=LEFT, x=0, y=0, w=515, h=1226, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=0, w=839, h=527, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
+OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=3072, h=323, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+TableHeader="Data Sampling Table", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";" distance";" 1.0"], ColWidths=[100;100;100;100]
 TableHeader="Data Sampling Setup", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[100;100;100;100;100;100;110;126;126]
 TableHeader="Power Sampling", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
 TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Refresh"], ColWidths=[191;104;100;120]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
+TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;340]
 WatchedExpression="ins", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="dt", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="accel", RefreshRate=5, Window=Watched Data 1
@@ -37,3 +38,15 @@ WatchedExpression="distance", Window=Watched Data 1
 WatchedExpression="pos_z", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="command", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="height_pid", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="command", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="INS", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="uwb_data", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="real_dis1", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="real_dis2", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="real_dis3", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="real_dis4", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="finish", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="second", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="roll_pid", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="pitch_pid", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="finish", RefreshRate=5, Window=Watched Data 1

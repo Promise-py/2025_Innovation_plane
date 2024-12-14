@@ -51,6 +51,8 @@ void PID_position_PID_calculation_by_error(pid *pp, float error)
 	{
 		pp->output = 0;
 	}
+
+	// last_out=pp->output;
 }
 
 

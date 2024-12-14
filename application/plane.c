@@ -1,4 +1,8 @@
 #include "plane_task.h"
+#include "main.h"
+#include "trilateration.h"
+#include "tim.h"
+
 
 
 void PlaneInit(void)
@@ -7,7 +11,10 @@ void PlaneInit(void)
     
     Fly_init();
     DataPool_Init();
-    
+
+    KalmanFilter_Init(&uwbkx);
+    KalmanFilter_Init(&uwbky);
+    HAL_TIM_Base_Start_IT(&htim2);
     OSTASKInit();
 
 
@@ -23,15 +30,10 @@ void FSM_Plane(void)
             if(StartFly())finish++;
         break;
 
-        case 1:
-            if(Fly_KEEP(1000));
-        break;
-        case 2:
-            // LockZ();
-        break;
-        case 3:
-
+        default:
+            Fly_FSM(1);
         break;
     }
 }
+
 

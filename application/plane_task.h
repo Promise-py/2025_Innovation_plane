@@ -11,6 +11,7 @@
 #include <math.h>
 #include "Movebase.h"
 #include "measure.h"
+#include "trilateration.h"
 
 
 /*任务节点创建区*/
@@ -30,13 +31,13 @@ void FlyTask(void const *argument);
  */
 void OSTASKInit(void)
 {
-    // osThreadDef(instask,StartINSTASK,osPriorityNormal,0,512);
-    // insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
+    osThreadDef(instask,StartINSTASK,osPriorityAboveNormal,0,1024);
+    insTaskHandle = osThreadCreate(osThread(instask),NULL); //设置较高优先级
 
-    osThreadDef(uwbtask,StartUWBTask,osPriorityNormal,0,1024);
-    uwbTaskHandle = osThreadCreate(osThread(uwbtask),NULL);
+    // osThreadDef(uwbtask,StartUWBTask,osPriorityAboveNormal,0,1024);
+    // uwbTaskHandle = osThreadCreate(osThread(uwbtask),NULL);
 
-    osThreadDef(flytask,FlyTask,osPriorityAboveNormal,0,512);
+    osThreadDef(flytask,FlyTask,osPriorityNormal,0,512);
     FlyTaskHandle = osThreadCreate(osThread(flytask),NULL);
 }
 
@@ -46,13 +47,13 @@ void StartINSTASK(void const *argument)
 {
     static float ins_start;
     static float ins_dt;
-    // INS_Init();
+    INS_Init();
     for (;;)
     {
         // 1kHz
-        // INS_Task();
+        INS_Task();
         // HCSR04_GetData();
-        osDelay(10);
+        osDelay(1);
     }
 }
 
@@ -65,7 +66,6 @@ void StartUWBTask(void const *argument)
     {
         // 1kHz
         dw_Receive();
-        HCSR04_GetData();
         osDelay(1);
     }
 }

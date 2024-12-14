@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   29:Core/Src/main.c **** /* USER CODE BEGIN Includes */
   30:Core/Src/main.c **** #include "BMI088driver.h"
   31:Core/Src/main.c **** #include "plane.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 2
 
 
   32:Core/Src/main.c **** #include "ex_05a_main.h"
@@ -89,7 +89,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   57:Core/Src/main.c **** void SystemClock_Config(void);
   58:Core/Src/main.c **** void MX_FREERTOS_Init(void);
   59:Core/Src/main.c **** /* USER CODE BEGIN PFP */
-  60:Core/Src/main.c **** 
+  60:Core/Src/main.c **** uint8_t second;   //秒计数器
   61:Core/Src/main.c **** /* USER CODE END PFP */
   62:Core/Src/main.c **** 
   63:Core/Src/main.c **** /* Private user code ---------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   86:Core/Src/main.c ****   /* USER CODE END Init */
   87:Core/Src/main.c **** 
   88:Core/Src/main.c ****   /* Configure the system clock */
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 3
 
 
   89:Core/Src/main.c ****   SystemClock_Config();
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
  143:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
  144:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
  145:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 4
 
 
  146:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
@@ -221,86 +221,347 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		.loc 1 180 1 is_stmt 0 view .LVU1
-  33 0000 08B5     		push	{r3, lr}
+  33 0000 10B5     		push	{r4, lr}
   34              	.LCFI0:
   35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 3, -8
+  36              		.cfi_offset 4, -8
   37              		.cfi_offset 14, -4
+  38 0002 0446     		mov	r4, r0
  181:Core/Src/main.c ****   /* USER CODE BEGIN Callback 0 */
  182:Core/Src/main.c **** 
  183:Core/Src/main.c ****   /* USER CODE END Callback 0 */
  184:Core/Src/main.c ****   if (htim->Instance == TIM4) {
-  38              		.loc 1 184 3 is_stmt 1 view .LVU2
-  39              		.loc 1 184 11 is_stmt 0 view .LVU3
-  40 0002 0268     		ldr	r2, [r0]
-  41              		.loc 1 184 6 view .LVU4
-  42 0004 034B     		ldr	r3, .L5
-  43 0006 9A42     		cmp	r2, r3
-  44 0008 00D0     		beq	.L4
-  45              	.LVL1:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 5
+  39              		.loc 1 184 3 is_stmt 1 view .LVU2
+  40              		.loc 1 184 11 is_stmt 0 view .LVU3
+  41 0004 0268     		ldr	r2, [r0]
+  42              		.loc 1 184 6 view .LVU4
+  43 0006 314B     		ldr	r3, .L21
+  44 0008 9A42     		cmp	r2, r3
+  45 000a 04D0     		beq	.L12
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 5
 
 
-  46              	.L1:
+  46              	.LVL1:
+  47              	.L2:
  185:Core/Src/main.c ****     HAL_IncTick();
  186:Core/Src/main.c ****   }
- 187:Core/Src/main.c ****   /* USER CODE BEGIN Callback 1 */
- 188:Core/Src/main.c **** 
- 189:Core/Src/main.c ****   /* USER CODE END Callback 1 */
- 190:Core/Src/main.c **** }
-  47              		.loc 1 190 1 view .LVU5
-  48 000a 08BD     		pop	{r3, pc}
-  49              	.LVL2:
-  50              	.L4:
+ 187:Core/Src/main.c **** 
+ 188:Core/Src/main.c ****   /* 逐步推进状态机 */
+ 189:Core/Src/main.c ****   if(htim->Instance == TIM2)
+  48              		.loc 1 189 3 is_stmt 1 view .LVU5
+  49              		.loc 1 189 10 is_stmt 0 view .LVU6
+  50 000c 2368     		ldr	r3, [r4]
+  51              		.loc 1 189 5 view .LVU7
+  52 000e B3F1804F 		cmp	r3, #1073741824
+  53 0012 03D0     		beq	.L13
+  54              	.L1:
+ 190:Core/Src/main.c ****   {
+ 191:Core/Src/main.c ****     if(finish==1)second++;
+ 192:Core/Src/main.c ****     if(second==2&&finish==1)
+ 193:Core/Src/main.c ****     {
+ 194:Core/Src/main.c ****       second=0;
+ 195:Core/Src/main.c ****       finish=2;
+ 196:Core/Src/main.c ****     }
+ 197:Core/Src/main.c **** 
+ 198:Core/Src/main.c ****     if(finish==2)second++;
+ 199:Core/Src/main.c ****     if(second==5&&finish==2)
+ 200:Core/Src/main.c ****     {
+ 201:Core/Src/main.c ****       second=0;
+ 202:Core/Src/main.c ****       finish=3;
+ 203:Core/Src/main.c ****     }
+ 204:Core/Src/main.c **** 
+ 205:Core/Src/main.c ****     if(finish==3)second++; //越过圆环之后前进时间
+ 206:Core/Src/main.c ****     if(second==2&&finish==3)
+ 207:Core/Src/main.c ****     {
+ 208:Core/Src/main.c ****       second=0;
+ 209:Core/Src/main.c ****       finish=4;
+ 210:Core/Src/main.c ****     }
+ 211:Core/Src/main.c **** 
+ 212:Core/Src/main.c ****     if(finish==4)second++;
+ 213:Core/Src/main.c ****     if(second==2&&finish==4)
+ 214:Core/Src/main.c ****     {
+ 215:Core/Src/main.c ****       second=0;
+ 216:Core/Src/main.c ****       finish=5;
+ 217:Core/Src/main.c ****     }
+ 218:Core/Src/main.c ****   }
+ 219:Core/Src/main.c ****   /* USER CODE END Callback 1 */
+ 220:Core/Src/main.c **** }
+  55              		.loc 1 220 1 view .LVU8
+  56 0014 10BD     		pop	{r4, pc}
+  57              	.LVL2:
+  58              	.L12:
  185:Core/Src/main.c ****     HAL_IncTick();
-  51              		.loc 1 185 5 is_stmt 1 view .LVU6
-  52 000c FFF7FEFF 		bl	HAL_IncTick
-  53              	.LVL3:
-  54              		.loc 1 190 1 is_stmt 0 view .LVU7
-  55 0010 FBE7     		b	.L1
-  56              	.L6:
-  57 0012 00BF     		.align	2
-  58              	.L5:
-  59 0014 00080040 		.word	1073743872
-  60              		.cfi_endproc
-  61              	.LFE72:
-  63              		.section	.text.Error_Handler,"ax",%progbits
-  64              		.align	1
-  65              		.global	Error_Handler
-  66              		.syntax unified
-  67              		.thumb
-  68              		.thumb_func
-  70              	Error_Handler:
-  71              	.LFB73:
- 191:Core/Src/main.c **** 
- 192:Core/Src/main.c **** /**
- 193:Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
- 194:Core/Src/main.c ****   * @retval None
- 195:Core/Src/main.c ****   */
- 196:Core/Src/main.c **** void Error_Handler(void)
- 197:Core/Src/main.c **** {
-  72              		.loc 1 197 1 is_stmt 1 view -0
-  73              		.cfi_startproc
-  74              		@ Volatile: function does not return.
-  75              		@ args = 0, pretend = 0, frame = 0
-  76              		@ frame_needed = 0, uses_anonymous_args = 0
-  77              		@ link register save eliminated.
- 198:Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
- 199:Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
- 200:Core/Src/main.c ****   __disable_irq();
-  78              		.loc 1 200 3 view .LVU9
-  79              	.LBB4:
-  80              	.LBI4:
-  81              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
+  59              		.loc 1 185 5 is_stmt 1 view .LVU9
+  60 0016 FFF7FEFF 		bl	HAL_IncTick
+  61              	.LVL3:
+ 185:Core/Src/main.c ****     HAL_IncTick();
+  62              		.loc 1 185 5 is_stmt 0 view .LVU10
+  63 001a F7E7     		b	.L2
+  64              	.L13:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 6
+
+
+ 191:Core/Src/main.c ****     if(second==2&&finish==1)
+  65              		.loc 1 191 5 is_stmt 1 view .LVU11
+ 191:Core/Src/main.c ****     if(second==2&&finish==1)
+  66              		.loc 1 191 14 is_stmt 0 view .LVU12
+  67 001c 2C4B     		ldr	r3, .L21+4
+  68 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 191:Core/Src/main.c ****     if(second==2&&finish==1)
+  69              		.loc 1 191 7 view .LVU13
+  70 0020 012B     		cmp	r3, #1
+  71 0022 24D0     		beq	.L14
+  72              	.L4:
+ 192:Core/Src/main.c ****     {
+  73              		.loc 1 192 5 is_stmt 1 view .LVU14
+ 192:Core/Src/main.c ****     {
+  74              		.loc 1 192 14 is_stmt 0 view .LVU15
+  75 0024 2B4A     		ldr	r2, .L21+8
+  76 0026 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 192:Core/Src/main.c ****     {
+  77              		.loc 1 192 7 view .LVU16
+  78 0028 022A     		cmp	r2, #2
+  79 002a 25D0     		beq	.L15
+  80              	.L5:
+ 198:Core/Src/main.c ****     if(second==5&&finish==2)
+  81              		.loc 1 198 5 is_stmt 1 view .LVU17
+ 198:Core/Src/main.c ****     if(second==5&&finish==2)
+  82              		.loc 1 198 14 is_stmt 0 view .LVU18
+  83 002c 284B     		ldr	r3, .L21+4
+  84 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 198:Core/Src/main.c ****     if(second==5&&finish==2)
+  85              		.loc 1 198 7 view .LVU19
+  86 0030 022B     		cmp	r3, #2
+  87 0032 2AD0     		beq	.L16
+  88              	.L6:
+ 199:Core/Src/main.c ****     {
+  89              		.loc 1 199 5 is_stmt 1 view .LVU20
+ 199:Core/Src/main.c ****     {
+  90              		.loc 1 199 14 is_stmt 0 view .LVU21
+  91 0034 274A     		ldr	r2, .L21+8
+  92 0036 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 199:Core/Src/main.c ****     {
+  93              		.loc 1 199 7 view .LVU22
+  94 0038 052A     		cmp	r2, #5
+  95 003a 2BD0     		beq	.L17
+  96              	.L7:
+ 205:Core/Src/main.c ****     if(second==2&&finish==3)
+  97              		.loc 1 205 5 is_stmt 1 view .LVU23
+ 205:Core/Src/main.c ****     if(second==2&&finish==3)
+  98              		.loc 1 205 14 is_stmt 0 view .LVU24
+  99 003c 244B     		ldr	r3, .L21+4
+ 100 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 205:Core/Src/main.c ****     if(second==2&&finish==3)
+ 101              		.loc 1 205 7 view .LVU25
+ 102 0040 032B     		cmp	r3, #3
+ 103 0042 30D0     		beq	.L18
+ 104              	.L8:
+ 206:Core/Src/main.c ****     {
+ 105              		.loc 1 206 5 is_stmt 1 view .LVU26
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 7
+
+
+ 206:Core/Src/main.c ****     {
+ 106              		.loc 1 206 14 is_stmt 0 view .LVU27
+ 107 0044 234A     		ldr	r2, .L21+8
+ 108 0046 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 206:Core/Src/main.c ****     {
+ 109              		.loc 1 206 7 view .LVU28
+ 110 0048 022A     		cmp	r2, #2
+ 111 004a 31D0     		beq	.L19
+ 112              	.L9:
+ 212:Core/Src/main.c ****     if(second==2&&finish==4)
+ 113              		.loc 1 212 5 is_stmt 1 view .LVU29
+ 212:Core/Src/main.c ****     if(second==2&&finish==4)
+ 114              		.loc 1 212 14 is_stmt 0 view .LVU30
+ 115 004c 204B     		ldr	r3, .L21+4
+ 116 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 212:Core/Src/main.c ****     if(second==2&&finish==4)
+ 117              		.loc 1 212 7 view .LVU31
+ 118 0050 042B     		cmp	r3, #4
+ 119 0052 36D0     		beq	.L20
+ 120              	.L10:
+ 213:Core/Src/main.c ****     {
+ 121              		.loc 1 213 5 is_stmt 1 view .LVU32
+ 213:Core/Src/main.c ****     {
+ 122              		.loc 1 213 14 is_stmt 0 view .LVU33
+ 123 0054 1F4A     		ldr	r2, .L21+8
+ 124 0056 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 213:Core/Src/main.c ****     {
+ 125              		.loc 1 213 7 view .LVU34
+ 126 0058 022A     		cmp	r2, #2
+ 127 005a DBD1     		bne	.L1
+ 213:Core/Src/main.c ****     {
+ 128              		.loc 1 213 17 discriminator 1 view .LVU35
+ 129 005c 042B     		cmp	r3, #4
+ 130 005e D9D1     		bne	.L1
+ 215:Core/Src/main.c ****       finish=5;
+ 131              		.loc 1 215 7 is_stmt 1 view .LVU36
+ 215:Core/Src/main.c ****       finish=5;
+ 132              		.loc 1 215 13 is_stmt 0 view .LVU37
+ 133 0060 1C4B     		ldr	r3, .L21+8
+ 134 0062 0022     		movs	r2, #0
+ 135 0064 1A70     		strb	r2, [r3]
+ 216:Core/Src/main.c ****     }
+ 136              		.loc 1 216 7 is_stmt 1 view .LVU38
+ 216:Core/Src/main.c ****     }
+ 137              		.loc 1 216 13 is_stmt 0 view .LVU39
+ 138 0066 1A4B     		ldr	r3, .L21+4
+ 139 0068 0522     		movs	r2, #5
+ 140 006a 1A70     		strb	r2, [r3]
+ 141              		.loc 1 220 1 view .LVU40
+ 142 006c D2E7     		b	.L1
+ 143              	.L14:
+ 191:Core/Src/main.c ****     if(second==2&&finish==1)
+ 144              		.loc 1 191 18 is_stmt 1 discriminator 1 view .LVU41
+ 191:Core/Src/main.c ****     if(second==2&&finish==1)
+ 145              		.loc 1 191 24 is_stmt 0 discriminator 1 view .LVU42
+ 146 006e 1949     		ldr	r1, .L21+8
+ 147 0070 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 8
+
+
+ 148 0072 0132     		adds	r2, r2, #1
+ 149 0074 0A70     		strb	r2, [r1]
+ 150 0076 D5E7     		b	.L4
+ 151              	.L15:
+ 192:Core/Src/main.c ****     {
+ 152              		.loc 1 192 17 discriminator 1 view .LVU43
+ 153 0078 012B     		cmp	r3, #1
+ 154 007a D7D1     		bne	.L5
+ 194:Core/Src/main.c ****       finish=2;
+ 155              		.loc 1 194 7 is_stmt 1 view .LVU44
+ 194:Core/Src/main.c ****       finish=2;
+ 156              		.loc 1 194 13 is_stmt 0 view .LVU45
+ 157 007c 154B     		ldr	r3, .L21+8
+ 158 007e 0022     		movs	r2, #0
+ 159 0080 1A70     		strb	r2, [r3]
+ 195:Core/Src/main.c ****     }
+ 160              		.loc 1 195 7 is_stmt 1 view .LVU46
+ 195:Core/Src/main.c ****     }
+ 161              		.loc 1 195 13 is_stmt 0 view .LVU47
+ 162 0082 134B     		ldr	r3, .L21+4
+ 163 0084 0222     		movs	r2, #2
+ 164 0086 1A70     		strb	r2, [r3]
+ 165 0088 D0E7     		b	.L5
+ 166              	.L16:
+ 198:Core/Src/main.c ****     if(second==5&&finish==2)
+ 167              		.loc 1 198 18 is_stmt 1 discriminator 1 view .LVU48
+ 198:Core/Src/main.c ****     if(second==5&&finish==2)
+ 168              		.loc 1 198 24 is_stmt 0 discriminator 1 view .LVU49
+ 169 008a 1249     		ldr	r1, .L21+8
+ 170 008c 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 171 008e 0132     		adds	r2, r2, #1
+ 172 0090 0A70     		strb	r2, [r1]
+ 173 0092 CFE7     		b	.L6
+ 174              	.L17:
+ 199:Core/Src/main.c ****     {
+ 175              		.loc 1 199 17 discriminator 1 view .LVU50
+ 176 0094 022B     		cmp	r3, #2
+ 177 0096 D1D1     		bne	.L7
+ 201:Core/Src/main.c ****       finish=3;
+ 178              		.loc 1 201 7 is_stmt 1 view .LVU51
+ 201:Core/Src/main.c ****       finish=3;
+ 179              		.loc 1 201 13 is_stmt 0 view .LVU52
+ 180 0098 0E4B     		ldr	r3, .L21+8
+ 181 009a 0022     		movs	r2, #0
+ 182 009c 1A70     		strb	r2, [r3]
+ 202:Core/Src/main.c ****     }
+ 183              		.loc 1 202 7 is_stmt 1 view .LVU53
+ 202:Core/Src/main.c ****     }
+ 184              		.loc 1 202 13 is_stmt 0 view .LVU54
+ 185 009e 0C4B     		ldr	r3, .L21+4
+ 186 00a0 0322     		movs	r2, #3
+ 187 00a2 1A70     		strb	r2, [r3]
+ 188 00a4 CAE7     		b	.L7
+ 189              	.L18:
+ 205:Core/Src/main.c ****     if(second==2&&finish==3)
+ 190              		.loc 1 205 18 is_stmt 1 discriminator 1 view .LVU55
+ 205:Core/Src/main.c ****     if(second==2&&finish==3)
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 9
+
+
+ 191              		.loc 1 205 24 is_stmt 0 discriminator 1 view .LVU56
+ 192 00a6 0B49     		ldr	r1, .L21+8
+ 193 00a8 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 194 00aa 0132     		adds	r2, r2, #1
+ 195 00ac 0A70     		strb	r2, [r1]
+ 196 00ae C9E7     		b	.L8
+ 197              	.L19:
+ 206:Core/Src/main.c ****     {
+ 198              		.loc 1 206 17 discriminator 1 view .LVU57
+ 199 00b0 032B     		cmp	r3, #3
+ 200 00b2 CBD1     		bne	.L9
+ 208:Core/Src/main.c ****       finish=4;
+ 201              		.loc 1 208 7 is_stmt 1 view .LVU58
+ 208:Core/Src/main.c ****       finish=4;
+ 202              		.loc 1 208 13 is_stmt 0 view .LVU59
+ 203 00b4 074B     		ldr	r3, .L21+8
+ 204 00b6 0022     		movs	r2, #0
+ 205 00b8 1A70     		strb	r2, [r3]
+ 209:Core/Src/main.c ****     }
+ 206              		.loc 1 209 7 is_stmt 1 view .LVU60
+ 209:Core/Src/main.c ****     }
+ 207              		.loc 1 209 13 is_stmt 0 view .LVU61
+ 208 00ba 054B     		ldr	r3, .L21+4
+ 209 00bc 0422     		movs	r2, #4
+ 210 00be 1A70     		strb	r2, [r3]
+ 211 00c0 C4E7     		b	.L9
+ 212              	.L20:
+ 212:Core/Src/main.c ****     if(second==2&&finish==4)
+ 213              		.loc 1 212 18 is_stmt 1 discriminator 1 view .LVU62
+ 212:Core/Src/main.c ****     if(second==2&&finish==4)
+ 214              		.loc 1 212 24 is_stmt 0 discriminator 1 view .LVU63
+ 215 00c2 0449     		ldr	r1, .L21+8
+ 216 00c4 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 217 00c6 0132     		adds	r2, r2, #1
+ 218 00c8 0A70     		strb	r2, [r1]
+ 219 00ca C3E7     		b	.L10
+ 220              	.L22:
+ 221              		.align	2
+ 222              	.L21:
+ 223 00cc 00080040 		.word	1073743872
+ 224 00d0 00000000 		.word	finish
+ 225 00d4 00000000 		.word	.LANCHOR0
+ 226              		.cfi_endproc
+ 227              	.LFE72:
+ 229              		.section	.text.Error_Handler,"ax",%progbits
+ 230              		.align	1
+ 231              		.global	Error_Handler
+ 232              		.syntax unified
+ 233              		.thumb
+ 234              		.thumb_func
+ 236              	Error_Handler:
+ 237              	.LFB73:
+ 221:Core/Src/main.c **** 
+ 222:Core/Src/main.c **** /**
+ 223:Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
+ 224:Core/Src/main.c ****   * @retval None
+ 225:Core/Src/main.c ****   */
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 10
+
+
+ 226:Core/Src/main.c **** void Error_Handler(void)
+ 227:Core/Src/main.c **** {
+ 238              		.loc 1 227 1 is_stmt 1 view -0
+ 239              		.cfi_startproc
+ 240              		@ Volatile: function does not return.
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243              		@ link register save eliminated.
+ 228:Core/Src/main.c ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 229:Core/Src/main.c ****   /* User can add his own implementation to report the HAL error return state */
+ 230:Core/Src/main.c ****   __disable_irq();
+ 244              		.loc 1 230 3 view .LVU65
+ 245              	.LBB4:
+ 246              	.LBI4:
+ 247              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
    1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
    2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
    4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
    5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
    6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 6
-
-
    7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
    8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
    9:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
@@ -337,6 +598,9 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
   41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
   42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 11
+
+
   43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
   44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
   45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -358,9 +622,6 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
   62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
   63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 7
-
-
   64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
   65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
   66:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -397,6 +658,9 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
   97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
   99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 12
+
+
  100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
  101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
@@ -418,9 +682,6 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
  118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
  119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
  120:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 8
-
-
  121:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
  122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  123:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -441,308 +702,316 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 1
  138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
  139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
-  82              		.loc 2 140 27 view .LVU10
-  83              	.LBB5:
+ 248              		.loc 2 140 27 view .LVU66
+ 249              	.LBB5:
  141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
-  84              		.loc 2 142 3 view .LVU11
-  85              		.syntax unified
-  86              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
-  87 0000 72B6     		cpsid i
-  88              	@ 0 "" 2
-  89              		.thumb
-  90              		.syntax unified
-  91              	.L8:
-  92              	.LBE5:
-  93              	.LBE4:
- 201:Core/Src/main.c ****   while (1)
-  94              		.loc 1 201 3 discriminator 1 view .LVU12
- 202:Core/Src/main.c ****   {
- 203:Core/Src/main.c ****   }
-  95              		.loc 1 203 3 discriminator 1 view .LVU13
- 201:Core/Src/main.c ****   while (1)
-  96              		.loc 1 201 9 discriminator 1 view .LVU14
-  97 0002 FEE7     		b	.L8
-  98              		.cfi_endproc
-  99              	.LFE73:
- 101              		.section	.text.SystemClock_Config,"ax",%progbits
- 102              		.align	1
- 103              		.global	SystemClock_Config
- 104              		.syntax unified
- 105              		.thumb
- 106              		.thumb_func
- 108              	SystemClock_Config:
- 109              	.LFB71:
+ 250              		.loc 2 142 3 view .LVU67
+ 251              		.syntax unified
+ 252              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 253 0000 72B6     		cpsid i
+ 254              	@ 0 "" 2
+ 255              		.thumb
+ 256              		.syntax unified
+ 257              	.L24:
+ 258              	.LBE5:
+ 259              	.LBE4:
+ 231:Core/Src/main.c ****   while (1)
+ 260              		.loc 1 231 3 discriminator 1 view .LVU68
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 13
+
+
+ 232:Core/Src/main.c ****   {
+ 233:Core/Src/main.c ****   }
+ 261              		.loc 1 233 3 discriminator 1 view .LVU69
+ 231:Core/Src/main.c ****   while (1)
+ 262              		.loc 1 231 9 discriminator 1 view .LVU70
+ 263 0002 FEE7     		b	.L24
+ 264              		.cfi_endproc
+ 265              	.LFE73:
+ 267              		.section	.text.SystemClock_Config,"ax",%progbits
+ 268              		.align	1
+ 269              		.global	SystemClock_Config
+ 270              		.syntax unified
+ 271              		.thumb
+ 272              		.thumb_func
+ 274              	SystemClock_Config:
+ 275              	.LFB71:
  133:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 110              		.loc 1 133 1 view -0
- 111              		.cfi_startproc
- 112              		@ args = 0, pretend = 0, frame = 64
- 113              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 9
+ 276              		.loc 1 133 1 view -0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 64
+ 279              		@ frame_needed = 0, uses_anonymous_args = 0
+ 280 0000 00B5     		push	{lr}
+ 281              	.LCFI1:
+ 282              		.cfi_def_cfa_offset 4
+ 283              		.cfi_offset 14, -4
+ 284 0002 91B0     		sub	sp, sp, #68
+ 285              	.LCFI2:
+ 286              		.cfi_def_cfa_offset 72
+ 134:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 287              		.loc 1 134 3 view .LVU72
+ 134:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 288              		.loc 1 134 22 is_stmt 0 view .LVU73
+ 289 0004 2822     		movs	r2, #40
+ 290 0006 0021     		movs	r1, #0
+ 291 0008 06A8     		add	r0, sp, #24
+ 292 000a FFF7FEFF 		bl	memset
+ 293              	.LVL4:
+ 135:Core/Src/main.c **** 
+ 294              		.loc 1 135 3 is_stmt 1 view .LVU74
+ 135:Core/Src/main.c **** 
+ 295              		.loc 1 135 22 is_stmt 0 view .LVU75
+ 296 000e 0023     		movs	r3, #0
+ 297 0010 0193     		str	r3, [sp, #4]
+ 298 0012 0293     		str	r3, [sp, #8]
+ 299 0014 0393     		str	r3, [sp, #12]
+ 300 0016 0493     		str	r3, [sp, #16]
+ 301 0018 0593     		str	r3, [sp, #20]
+ 140:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 302              		.loc 1 140 3 is_stmt 1 view .LVU76
+ 140:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 303              		.loc 1 140 36 is_stmt 0 view .LVU77
+ 304 001a 0122     		movs	r2, #1
+ 305 001c 0692     		str	r2, [sp, #24]
+ 141:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 306              		.loc 1 141 3 is_stmt 1 view .LVU78
+ 141:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 307              		.loc 1 141 30 is_stmt 0 view .LVU79
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 14
 
 
- 114 0000 00B5     		push	{lr}
- 115              	.LCFI1:
- 116              		.cfi_def_cfa_offset 4
- 117              		.cfi_offset 14, -4
- 118 0002 91B0     		sub	sp, sp, #68
- 119              	.LCFI2:
- 120              		.cfi_def_cfa_offset 72
- 134:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 121              		.loc 1 134 3 view .LVU16
- 134:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 122              		.loc 1 134 22 is_stmt 0 view .LVU17
- 123 0004 2822     		movs	r2, #40
- 124 0006 0021     		movs	r1, #0
- 125 0008 06A8     		add	r0, sp, #24
- 126 000a FFF7FEFF 		bl	memset
- 127              	.LVL4:
- 135:Core/Src/main.c **** 
- 128              		.loc 1 135 3 is_stmt 1 view .LVU18
- 135:Core/Src/main.c **** 
- 129              		.loc 1 135 22 is_stmt 0 view .LVU19
- 130 000e 0023     		movs	r3, #0
- 131 0010 0193     		str	r3, [sp, #4]
- 132 0012 0293     		str	r3, [sp, #8]
- 133 0014 0393     		str	r3, [sp, #12]
- 134 0016 0493     		str	r3, [sp, #16]
- 135 0018 0593     		str	r3, [sp, #20]
- 140:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 136              		.loc 1 140 3 is_stmt 1 view .LVU20
- 140:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 137              		.loc 1 140 36 is_stmt 0 view .LVU21
- 138 001a 0122     		movs	r2, #1
- 139 001c 0692     		str	r2, [sp, #24]
- 141:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 140              		.loc 1 141 3 is_stmt 1 view .LVU22
- 141:Core/Src/main.c ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 141              		.loc 1 141 30 is_stmt 0 view .LVU23
- 142 001e 4FF48033 		mov	r3, #65536
- 143 0022 0793     		str	r3, [sp, #28]
+ 308 001e 4FF48033 		mov	r3, #65536
+ 309 0022 0793     		str	r3, [sp, #28]
  142:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
- 144              		.loc 1 142 3 is_stmt 1 view .LVU24
+ 310              		.loc 1 142 3 is_stmt 1 view .LVU80
  143:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 145              		.loc 1 143 3 view .LVU25
+ 311              		.loc 1 143 3 view .LVU81
  143:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 146              		.loc 1 143 30 is_stmt 0 view .LVU26
- 147 0024 0A92     		str	r2, [sp, #40]
+ 312              		.loc 1 143 30 is_stmt 0 view .LVU82
+ 313 0024 0A92     		str	r2, [sp, #40]
  144:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 148              		.loc 1 144 3 is_stmt 1 view .LVU27
+ 314              		.loc 1 144 3 is_stmt 1 view .LVU83
  144:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 149              		.loc 1 144 34 is_stmt 0 view .LVU28
- 150 0026 0222     		movs	r2, #2
- 151 0028 0D92     		str	r2, [sp, #52]
+ 315              		.loc 1 144 34 is_stmt 0 view .LVU84
+ 316 0026 0222     		movs	r2, #2
+ 317 0028 0D92     		str	r2, [sp, #52]
  145:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 152              		.loc 1 145 3 is_stmt 1 view .LVU29
+ 318              		.loc 1 145 3 is_stmt 1 view .LVU85
  145:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 153              		.loc 1 145 35 is_stmt 0 view .LVU30
- 154 002a 0E93     		str	r3, [sp, #56]
+ 319              		.loc 1 145 35 is_stmt 0 view .LVU86
+ 320 002a 0E93     		str	r3, [sp, #56]
  146:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 10
+ 321              		.loc 1 146 3 is_stmt 1 view .LVU87
+ 146:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 322              		.loc 1 146 32 is_stmt 0 view .LVU88
+ 323 002c 4FF4E013 		mov	r3, #1835008
+ 324 0030 0F93     		str	r3, [sp, #60]
+ 147:Core/Src/main.c ****   {
+ 325              		.loc 1 147 3 is_stmt 1 view .LVU89
+ 147:Core/Src/main.c ****   {
+ 326              		.loc 1 147 7 is_stmt 0 view .LVU90
+ 327 0032 06A8     		add	r0, sp, #24
+ 328 0034 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 329              	.LVL5:
+ 147:Core/Src/main.c ****   {
+ 330              		.loc 1 147 6 view .LVU91
+ 331 0038 80B9     		cbnz	r0, .L29
+ 154:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 332              		.loc 1 154 3 is_stmt 1 view .LVU92
+ 154:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 333              		.loc 1 154 31 is_stmt 0 view .LVU93
+ 334 003a 0F23     		movs	r3, #15
+ 335 003c 0193     		str	r3, [sp, #4]
+ 156:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 336              		.loc 1 156 3 is_stmt 1 view .LVU94
+ 156:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 337              		.loc 1 156 34 is_stmt 0 view .LVU95
+ 338 003e 0221     		movs	r1, #2
+ 339 0040 0291     		str	r1, [sp, #8]
+ 157:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 340              		.loc 1 157 3 is_stmt 1 view .LVU96
+ 157:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 341              		.loc 1 157 35 is_stmt 0 view .LVU97
+ 342 0042 0023     		movs	r3, #0
+ 343 0044 0393     		str	r3, [sp, #12]
+ 158:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 344              		.loc 1 158 3 is_stmt 1 view .LVU98
+ 158:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 15
 
 
- 155              		.loc 1 146 3 is_stmt 1 view .LVU31
- 146:Core/Src/main.c ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 156              		.loc 1 146 32 is_stmt 0 view .LVU32
- 157 002c 4FF4E013 		mov	r3, #1835008
- 158 0030 0F93     		str	r3, [sp, #60]
- 147:Core/Src/main.c ****   {
- 159              		.loc 1 147 3 is_stmt 1 view .LVU33
- 147:Core/Src/main.c ****   {
- 160              		.loc 1 147 7 is_stmt 0 view .LVU34
- 161 0032 06A8     		add	r0, sp, #24
- 162 0034 FFF7FEFF 		bl	HAL_RCC_OscConfig
- 163              	.LVL5:
- 147:Core/Src/main.c ****   {
- 164              		.loc 1 147 6 view .LVU35
- 165 0038 80B9     		cbnz	r0, .L13
- 154:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
- 166              		.loc 1 154 3 is_stmt 1 view .LVU36
- 154:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
- 167              		.loc 1 154 31 is_stmt 0 view .LVU37
- 168 003a 0F23     		movs	r3, #15
- 169 003c 0193     		str	r3, [sp, #4]
- 156:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 170              		.loc 1 156 3 is_stmt 1 view .LVU38
- 156:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 171              		.loc 1 156 34 is_stmt 0 view .LVU39
- 172 003e 0221     		movs	r1, #2
- 173 0040 0291     		str	r1, [sp, #8]
- 157:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 174              		.loc 1 157 3 is_stmt 1 view .LVU40
- 157:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 175              		.loc 1 157 35 is_stmt 0 view .LVU41
- 176 0042 0023     		movs	r3, #0
- 177 0044 0393     		str	r3, [sp, #12]
- 158:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 178              		.loc 1 158 3 is_stmt 1 view .LVU42
- 158:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 179              		.loc 1 158 36 is_stmt 0 view .LVU43
- 180 0046 4FF48062 		mov	r2, #1024
- 181 004a 0492     		str	r2, [sp, #16]
+ 345              		.loc 1 158 36 is_stmt 0 view .LVU99
+ 346 0046 4FF48062 		mov	r2, #1024
+ 347 004a 0492     		str	r2, [sp, #16]
  159:Core/Src/main.c **** 
- 182              		.loc 1 159 3 is_stmt 1 view .LVU44
+ 348              		.loc 1 159 3 is_stmt 1 view .LVU100
  159:Core/Src/main.c **** 
- 183              		.loc 1 159 36 is_stmt 0 view .LVU45
- 184 004c 0593     		str	r3, [sp, #20]
+ 349              		.loc 1 159 36 is_stmt 0 view .LVU101
+ 350 004c 0593     		str	r3, [sp, #20]
  161:Core/Src/main.c ****   {
- 185              		.loc 1 161 3 is_stmt 1 view .LVU46
+ 351              		.loc 1 161 3 is_stmt 1 view .LVU102
  161:Core/Src/main.c ****   {
- 186              		.loc 1 161 7 is_stmt 0 view .LVU47
- 187 004e 01A8     		add	r0, sp, #4
- 188 0050 FFF7FEFF 		bl	HAL_RCC_ClockConfig
- 189              	.LVL6:
+ 352              		.loc 1 161 7 is_stmt 0 view .LVU103
+ 353 004e 01A8     		add	r0, sp, #4
+ 354 0050 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 355              	.LVL6:
  161:Core/Src/main.c ****   {
- 190              		.loc 1 161 6 view .LVU48
- 191 0054 20B9     		cbnz	r0, .L14
+ 356              		.loc 1 161 6 view .LVU104
+ 357 0054 20B9     		cbnz	r0, .L30
  165:Core/Src/main.c **** 
- 192              		.loc 1 165 1 view .LVU49
- 193 0056 11B0     		add	sp, sp, #68
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 11
-
-
- 194              	.LCFI3:
- 195              		.cfi_remember_state
- 196              		.cfi_def_cfa_offset 4
- 197              		@ sp needed
- 198 0058 5DF804FB 		ldr	pc, [sp], #4
- 199              	.L13:
- 200              	.LCFI4:
- 201              		.cfi_restore_state
+ 358              		.loc 1 165 1 view .LVU105
+ 359 0056 11B0     		add	sp, sp, #68
+ 360              	.LCFI3:
+ 361              		.cfi_remember_state
+ 362              		.cfi_def_cfa_offset 4
+ 363              		@ sp needed
+ 364 0058 5DF804FB 		ldr	pc, [sp], #4
+ 365              	.L29:
+ 366              	.LCFI4:
+ 367              		.cfi_restore_state
  149:Core/Src/main.c ****   }
- 202              		.loc 1 149 5 is_stmt 1 view .LVU50
- 203 005c FFF7FEFF 		bl	Error_Handler
- 204              	.LVL7:
- 205              	.L14:
+ 368              		.loc 1 149 5 is_stmt 1 view .LVU106
+ 369 005c FFF7FEFF 		bl	Error_Handler
+ 370              	.LVL7:
+ 371              	.L30:
  163:Core/Src/main.c ****   }
- 206              		.loc 1 163 5 view .LVU51
- 207 0060 FFF7FEFF 		bl	Error_Handler
- 208              	.LVL8:
- 209              		.cfi_endproc
- 210              	.LFE71:
- 212              		.section	.text.main,"ax",%progbits
- 213              		.align	1
- 214              		.global	main
- 215              		.syntax unified
- 216              		.thumb
- 217              		.thumb_func
- 219              	main:
- 220              	.LFB70:
+ 372              		.loc 1 163 5 view .LVU107
+ 373 0060 FFF7FEFF 		bl	Error_Handler
+ 374              	.LVL8:
+ 375              		.cfi_endproc
+ 376              	.LFE71:
+ 378              		.section	.text.main,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	main
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 385              	main:
+ 386              	.LFB70:
   73:Core/Src/main.c **** 
- 221              		.loc 1 73 1 view -0
- 222              		.cfi_startproc
- 223              		@ Volatile: function does not return.
- 224              		@ args = 0, pretend = 0, frame = 0
- 225              		@ frame_needed = 0, uses_anonymous_args = 0
- 226 0000 08B5     		push	{r3, lr}
- 227              	.LCFI5:
- 228              		.cfi_def_cfa_offset 8
- 229              		.cfi_offset 3, -8
- 230              		.cfi_offset 14, -4
+ 387              		.loc 1 73 1 view -0
+ 388              		.cfi_startproc
+ 389              		@ Volatile: function does not return.
+ 390              		@ args = 0, pretend = 0, frame = 0
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392 0000 08B5     		push	{r3, lr}
+ 393              	.LCFI5:
+ 394              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 16
+
+
+ 395              		.cfi_offset 3, -8
+ 396              		.cfi_offset 14, -4
   82:Core/Src/main.c **** 
- 231              		.loc 1 82 3 view .LVU53
- 232 0002 FFF7FEFF 		bl	HAL_Init
- 233              	.LVL9:
+ 397              		.loc 1 82 3 view .LVU109
+ 398 0002 FFF7FEFF 		bl	HAL_Init
+ 399              	.LVL9:
   89:Core/Src/main.c **** 
- 234              		.loc 1 89 3 view .LVU54
- 235 0006 FFF7FEFF 		bl	SystemClock_Config
- 236              	.LVL10:
+ 400              		.loc 1 89 3 view .LVU110
+ 401 0006 FFF7FEFF 		bl	SystemClock_Config
+ 402              	.LVL10:
   96:Core/Src/main.c ****   MX_DMA_Init();
- 237              		.loc 1 96 3 view .LVU55
- 238 000a FFF7FEFF 		bl	MX_GPIO_Init
- 239              	.LVL11:
+ 403              		.loc 1 96 3 view .LVU111
+ 404 000a FFF7FEFF 		bl	MX_GPIO_Init
+ 405              	.LVL11:
   97:Core/Src/main.c ****   MX_SPI2_Init();
- 240              		.loc 1 97 3 view .LVU56
- 241 000e FFF7FEFF 		bl	MX_DMA_Init
- 242              	.LVL12:
+ 406              		.loc 1 97 3 view .LVU112
+ 407 000e FFF7FEFF 		bl	MX_DMA_Init
+ 408              	.LVL12:
   98:Core/Src/main.c ****   MX_SPI1_Init();
- 243              		.loc 1 98 3 view .LVU57
- 244 0012 FFF7FEFF 		bl	MX_SPI2_Init
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 12
-
-
- 245              	.LVL13:
+ 409              		.loc 1 98 3 view .LVU113
+ 410 0012 FFF7FEFF 		bl	MX_SPI2_Init
+ 411              	.LVL13:
   99:Core/Src/main.c ****   MX_TIM2_Init();
- 246              		.loc 1 99 3 view .LVU58
- 247 0016 FFF7FEFF 		bl	MX_SPI1_Init
- 248              	.LVL14:
+ 412              		.loc 1 99 3 view .LVU114
+ 413 0016 FFF7FEFF 		bl	MX_SPI1_Init
+ 414              	.LVL14:
  100:Core/Src/main.c ****   MX_USART3_UART_Init();
- 249              		.loc 1 100 3 view .LVU59
- 250 001a FFF7FEFF 		bl	MX_TIM2_Init
- 251              	.LVL15:
+ 415              		.loc 1 100 3 view .LVU115
+ 416 001a FFF7FEFF 		bl	MX_TIM2_Init
+ 417              	.LVL15:
  101:Core/Src/main.c ****   MX_TIM3_Init();
- 252              		.loc 1 101 3 view .LVU60
- 253 001e FFF7FEFF 		bl	MX_USART3_UART_Init
- 254              	.LVL16:
+ 418              		.loc 1 101 3 view .LVU116
+ 419 001e FFF7FEFF 		bl	MX_USART3_UART_Init
+ 420              	.LVL16:
  102:Core/Src/main.c ****   MX_TIM1_Init();
- 255              		.loc 1 102 3 view .LVU61
- 256 0022 FFF7FEFF 		bl	MX_TIM3_Init
- 257              	.LVL17:
+ 421              		.loc 1 102 3 view .LVU117
+ 422 0022 FFF7FEFF 		bl	MX_TIM3_Init
+ 423              	.LVL17:
  103:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
- 258              		.loc 1 103 3 view .LVU62
- 259 0026 FFF7FEFF 		bl	MX_TIM1_Init
- 260              	.LVL18:
+ 424              		.loc 1 103 3 view .LVU118
+ 425 0026 FFF7FEFF 		bl	MX_TIM1_Init
+ 426              	.LVL18:
  105:Core/Src/main.c ****   // __HAL_TIM_ENABLE(&htim2);
- 261              		.loc 1 105 3 view .LVU63
- 262 002a FFF7FEFF 		bl	PlaneInit
- 263              	.LVL19:
+ 427              		.loc 1 105 3 view .LVU119
+ 428 002a FFF7FEFF 		bl	PlaneInit
+ 429              	.LVL19:
  110:Core/Src/main.c **** 
- 264              		.loc 1 110 3 view .LVU64
- 265 002e FFF7FEFF 		bl	MX_FREERTOS_Init
- 266              	.LVL20:
+ 430              		.loc 1 110 3 view .LVU120
+ 431 002e FFF7FEFF 		bl	MX_FREERTOS_Init
+ 432              	.LVL20:
  113:Core/Src/main.c **** 
- 267              		.loc 1 113 3 view .LVU65
- 268 0032 FFF7FEFF 		bl	osKernelStart
- 269              	.LVL21:
- 270              	.L16:
+ 433              		.loc 1 113 3 view .LVU121
+ 434 0032 FFF7FEFF 		bl	osKernelStart
+ 435              	.LVL21:
+ 436              	.L32:
  119:Core/Src/main.c ****   {
- 271              		.loc 1 119 3 discriminator 1 view .LVU66
+ 437              		.loc 1 119 3 discriminator 1 view .LVU122
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 17
+
+
  124:Core/Src/main.c ****   /* USER CODE END 3 */
- 272              		.loc 1 124 3 discriminator 1 view .LVU67
+ 438              		.loc 1 124 3 discriminator 1 view .LVU123
  119:Core/Src/main.c ****   {
- 273              		.loc 1 119 9 discriminator 1 view .LVU68
- 274 0036 FEE7     		b	.L16
- 275              		.cfi_endproc
- 276              	.LFE70:
- 278              		.text
- 279              	.Letext0:
- 280              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
- 281              		.file 4 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 282              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 283              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 284              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
- 285              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
- 286              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 287              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 288              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 289              		.file 12 "Core/Inc/gpio.h"
- 290              		.file 13 "Core/Inc/dma.h"
- 291              		.file 14 "Core/Inc/spi.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 13
-
-
- 292              		.file 15 "Core/Inc/tim.h"
- 293              		.file 16 "Core/Inc/usart.h"
- 294              		.file 17 "application/plane.h"
- 295              		.file 18 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 296              		.file 19 "<built-in>"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s 			page 14
+ 439              		.loc 1 119 9 discriminator 1 view .LVU124
+ 440 0036 FEE7     		b	.L32
+ 441              		.cfi_endproc
+ 442              	.LFE70:
+ 444              		.global	second
+ 445              		.section	.bss.second,"aw",%nobits
+ 446              		.set	.LANCHOR0,. + 0
+ 449              	second:
+ 450 0000 00       		.space	1
+ 451              		.text
+ 452              	.Letext0:
+ 453              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 454              		.file 4 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 455              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 456              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 457              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 458              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
+ 459              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 460              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 461              		.file 11 "application/plane.h"
+ 462              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 463              		.file 13 "Core/Inc/gpio.h"
+ 464              		.file 14 "Core/Inc/dma.h"
+ 465              		.file 15 "Core/Inc/spi.h"
+ 466              		.file 16 "Core/Inc/tim.h"
+ 467              		.file 17 "Core/Inc/usart.h"
+ 468              		.file 18 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 469              		.file 19 "<built-in>"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:18     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:24     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:59     .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:64     .text.Error_Handler:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:70     .text.Error_Handler:00000000 Error_Handler
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:102    .text.SystemClock_Config:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:108    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:213    .text.main:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\cczkWWIq.s:219    .text.main:00000000 main
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:18     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:24     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:223    .text.HAL_TIM_PeriodElapsedCallback:000000cc $d
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:230    .text.Error_Handler:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:236    .text.Error_Handler:00000000 Error_Handler
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:268    .text.SystemClock_Config:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:274    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:379    .text.main:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:385    .text.main:00000000 main
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:449    .bss.second:00000000 second
+C:\Users\Lenovo\AppData\Local\Temp\cc1NuoUx.s:450    .bss.second:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
+finish
 memset
 HAL_RCC_OscConfig
 HAL_RCC_ClockConfig

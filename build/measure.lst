@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -33,7 +33,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
    4:wave/measure.c **** float distance;      //测量距离
    5:wave/measure.c **** float last_distance;  //上一次测量距离
    6:wave/measure.c **** uint8_t count_10;   //计数器
-   7:wave/measure.c **** uint8_t second;   //秒计数器
+   7:wave/measure.c **** // uint8_t second;   //秒计数器
    8:wave/measure.c **** 
    9:wave/measure.c **** uint32_t Buf[3] = {0};   //存放定时器计数值的数组
   10:wave/measure.c **** uint8_t  Cnt = 0;    //状态标志位
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
   40 000a 42F00102 		orr	r2, r2, #1
   41 000e 1A60     		str	r2, [r3]
   17:wave/measure.c ****     while(__HAL_TIM_GetCounter(&htim1) < us);
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 2
 
 
   42              		.loc 1 17 5 view .LVU3
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
   91              		@ args = 0, pretend = 0, frame = 0
   92              		@ frame_needed = 0, uses_anonymous_args = 0
   93 0000 10B5     		push	{r4, lr}
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 3
 
 
   94              	.LCFI0:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
  139 003c 1A60     		str	r2, [r3]
   34:wave/measure.c **** 
   35:wave/measure.c ****     while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_7) == GPIO_PIN_SET);  //等待低电平
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 4
 
 
  140              		.loc 1 35 5 view .LVU27
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
  190              		.loc 1 39 14 is_stmt 0 discriminator 5 view .LVU44
  191 0088 0D4C     		ldr	r4, .L11+20
  192 008a 00EB0010 		add	r0, r0, r0, lsl #4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 5
 
 
  193 008e FFF7FEFF 		bl	__aeabi_ui2f
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
   49:wave/measure.c **** 	if(htim == &htim3)// 判断触发的中断的定时器为TIM3
  240              		.loc 1 49 2 view .LVU50
  241              		.loc 1 49 4 is_stmt 0 view .LVU51
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 6
 
 
  242 0000 044B     		ldr	r3, .L16
@@ -309,13 +309,12 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
   51:wave/measure.c **** 		count_10++;
   52:wave/measure.c **** 	}
   53:wave/measure.c **** 
-  54:wave/measure.c ****   // if(htim==&htim2)
-  55:wave/measure.c ****   // {
-  56:wave/measure.c ****     // if(finish==1)second++;
-  57:wave/measure.c ****     // if(second==3)finish=2;
-  58:wave/measure.c ****   // }
-  59:wave/measure.c **** }...
- 246              		.loc 1 59 1 view .LVU52
+  54:wave/measure.c ****   if(htim==&htim2)
+  55:wave/measure.c ****   {
+  56:wave/measure.c ****     
+  57:wave/measure.c ****   }
+  58:wave/measure.c **** }...
+ 246              		.loc 1 58 1 view .LVU52
  247 0006 7047     		bx	lr
  248              	.L15:
   51:wave/measure.c **** 		count_10++;
@@ -326,98 +325,96 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 1
  252 000a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  253 000c 0133     		adds	r3, r3, #1
  254 000e 1370     		strb	r3, [r2]
- 255              		.loc 1 59 1 view .LVU55
- 256 0010 F9E7     		b	.L13
- 257              	.L17:
- 258 0012 00BF     		.align	2
- 259              	.L16:
- 260 0014 00000000 		.word	htim3
- 261 0018 00000000 		.word	.LANCHOR0
- 262              		.cfi_endproc
- 263              	.LFE131:
- 265              		.global	high_time
- 266              		.global	Cnt
- 267              		.global	Buf
- 268              		.global	second
- 269              		.global	count_10
- 270              		.global	last_distance
- 271              		.global	distance
- 272              		.section	.bss.Buf,"aw",%nobits
- 273              		.align	2
- 276              	Buf:
- 277 0000 00000000 		.space	12
- 277      00000000 
- 277      00000000 
- 278              		.section	.bss.Cnt,"aw",%nobits
- 281              	Cnt:
- 282 0000 00       		.space	1
- 283              		.section	.bss.count_10,"aw",%nobits
- 284              		.set	.LANCHOR0,. + 0
- 287              	count_10:
- 288 0000 00       		.space	1
- 289              		.section	.bss.distance,"aw",%nobits
- 290              		.align	2
- 291              		.set	.LANCHOR2,. + 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 7
+  54:wave/measure.c ****   if(htim==&htim2)
+ 255              		.loc 1 54 3 is_stmt 1 view .LVU55
+  57:wave/measure.c ****   }
+ 256              		.loc 1 57 3 view .LVU56
+ 257              		.loc 1 58 1 is_stmt 0 view .LVU57
+ 258 0010 F9E7     		b	.L13
+ 259              	.L17:
+ 260 0012 00BF     		.align	2
+ 261              	.L16:
+ 262 0014 00000000 		.word	htim3
+ 263 0018 00000000 		.word	.LANCHOR0
+ 264              		.cfi_endproc
+ 265              	.LFE131:
+ 267              		.global	high_time
+ 268              		.global	Cnt
+ 269              		.global	Buf
+ 270              		.global	count_10
+ 271              		.global	last_distance
+ 272              		.global	distance
+ 273              		.section	.bss.Buf,"aw",%nobits
+ 274              		.align	2
+ 277              	Buf:
+ 278 0000 00000000 		.space	12
+ 278      00000000 
+ 278      00000000 
+ 279              		.section	.bss.Cnt,"aw",%nobits
+ 282              	Cnt:
+ 283 0000 00       		.space	1
+ 284              		.section	.bss.count_10,"aw",%nobits
+ 285              		.set	.LANCHOR0,. + 0
+ 288              	count_10:
+ 289 0000 00       		.space	1
+ 290              		.section	.bss.distance,"aw",%nobits
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 7
 
 
- 294              	distance:
- 295 0000 00000000 		.space	4
- 296              		.section	.bss.high_time,"aw",%nobits
- 297              		.align	2
- 298              		.set	.LANCHOR1,. + 0
- 301              	high_time:
- 302 0000 00000000 		.space	4
- 303              		.section	.bss.last_distance,"aw",%nobits
- 304              		.align	2
- 305              		.set	.LANCHOR3,. + 0
- 308              	last_distance:
- 309 0000 00000000 		.space	4
- 310              		.section	.bss.second,"aw",%nobits
- 313              	second:
- 314 0000 00       		.space	1
- 315              		.text
- 316              	.Letext0:
- 317              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
- 318              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 319              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 320              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 321              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 322              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 323              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 324              		.file 9 "Core/Inc/tim.h"
- 325              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
- 326              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
- 327              		.file 12 "application/data_pool.h"
- 328              		.file 13 "wave/measure.h"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s 			page 8
+ 291              		.align	2
+ 292              		.set	.LANCHOR2,. + 0
+ 295              	distance:
+ 296 0000 00000000 		.space	4
+ 297              		.section	.bss.high_time,"aw",%nobits
+ 298              		.align	2
+ 299              		.set	.LANCHOR1,. + 0
+ 302              	high_time:
+ 303 0000 00000000 		.space	4
+ 304              		.section	.bss.last_distance,"aw",%nobits
+ 305              		.align	2
+ 306              		.set	.LANCHOR3,. + 0
+ 309              	last_distance:
+ 310 0000 00000000 		.space	4
+ 311              		.text
+ 312              	.Letext0:
+ 313              		.file 2 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\machine\\_default_typ
+ 314              		.file 3 "d:\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 315              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 316              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 317              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 318              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 319              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 320              		.file 9 "Core/Inc/tim.h"
+ 321              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h"
+ 322              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/include/queue.h"
+ 323              		.file 12 "application/data_pool.h"
+ 324              		.file 13 "wave/measure.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 measure.c
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:18     .text.delay_us:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:24     .text.delay_us:00000000 delay_us
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:75     .text.delay_us:00000038 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:81     .text.HCSR04_GetData:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:87     .text.HCSR04_GetData:00000000 HCSR04_GetData
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:214    .text.HCSR04_GetData:000000ac $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:226    .text.HAL_TIM_IC_CaptureCallback:00000000 $t
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:232    .text.HAL_TIM_IC_CaptureCallback:00000000 HAL_TIM_IC_CaptureCallback
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:260    .text.HAL_TIM_IC_CaptureCallback:00000014 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:301    .bss.high_time:00000000 high_time
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:281    .bss.Cnt:00000000 Cnt
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:276    .bss.Buf:00000000 Buf
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:313    .bss.second:00000000 second
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:287    .bss.count_10:00000000 count_10
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:308    .bss.last_distance:00000000 last_distance
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:294    .bss.distance:00000000 distance
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:273    .bss.Buf:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:282    .bss.Cnt:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:288    .bss.count_10:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:290    .bss.distance:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:297    .bss.high_time:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:304    .bss.last_distance:00000000 $d
-C:\Users\Lenovo\AppData\Local\Temp\ccjzIEjo.s:314    .bss.second:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:18     .text.delay_us:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:24     .text.delay_us:00000000 delay_us
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:75     .text.delay_us:00000038 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:81     .text.HCSR04_GetData:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:87     .text.HCSR04_GetData:00000000 HCSR04_GetData
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:214    .text.HCSR04_GetData:000000ac $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:226    .text.HAL_TIM_IC_CaptureCallback:00000000 $t
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:232    .text.HAL_TIM_IC_CaptureCallback:00000000 HAL_TIM_IC_CaptureCallback
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:262    .text.HAL_TIM_IC_CaptureCallback:00000014 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:302    .bss.high_time:00000000 high_time
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:282    .bss.Cnt:00000000 Cnt
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:277    .bss.Buf:00000000 Buf
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:288    .bss.count_10:00000000 count_10
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:309    .bss.last_distance:00000000 last_distance
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:295    .bss.distance:00000000 distance
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:274    .bss.Buf:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:283    .bss.Cnt:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:289    .bss.count_10:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:291    .bss.distance:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:298    .bss.high_time:00000000 $d
+C:\Users\Lenovo\AppData\Local\Temp\cc97kOf8.s:305    .bss.last_distance:00000000 $d
 
 UNDEFINED SYMBOLS
 htim1
